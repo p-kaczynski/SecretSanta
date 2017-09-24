@@ -1,4 +1,5 @@
-﻿using SecretSanta.Domain.Attributes;
+﻿using System;
+using SecretSanta.Domain.Attributes;
 
 namespace SecretSanta.Domain.Models
 {
@@ -22,6 +23,9 @@ namespace SecretSanta.Domain.Models
         public string Country { get; set; }
         [DataProtection]
         public string Note { get; set; }
+        public bool EmailConfirmed { get; set; }
+        public bool AdminConfirmed { get; set; }
+        public DateTime CreateDate { get; set; }
 
         protected override string IVSource => Email + DisplayName;
     }

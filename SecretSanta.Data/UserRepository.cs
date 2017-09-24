@@ -22,9 +22,18 @@ namespace SecretSanta.Data
             return WithConnection(conn => conn.Insert(user));
         }
 
+        public bool UpdateUser(SantaUser user)
+        {
+            _encryptionProvider.Encrypt(user);
+            return WithConnection(conn => conn.Update(user));
+        }
+
         public SantaUser GetUser(long id)
         {
             var model = WithConnection(conn => conn.Get<SantaUser>(id));
+            if (model == null)
+                return null;
+
             _encryptionProvider.Decrypt(model);
             return model;
         }

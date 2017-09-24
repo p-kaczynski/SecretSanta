@@ -189,6 +189,9 @@
   <data name="FullName_TooLong" xml:space="preserve">
     <value>The full name is limited to 200 characters</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
   <data name="Note" xml:space="preserve">
     <value>Note</value>
   </data>
@@ -209,5 +212,11 @@
   </data>
   <data name="SiteName" xml:space="preserve">
     <value>Secret Santa</value>
+  </data>
+  <data name="Login_LockedOut" xml:space="preserve">
+    <value>Account is locked</value>
+  </data>
+  <data name="Login_Invalid" xml:space="preserve">
+    <value>Login or password invalid</value>
   </data>
 </root>

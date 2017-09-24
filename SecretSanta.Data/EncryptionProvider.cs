@@ -10,6 +10,7 @@ using System.Text;
 using Isopoh.Cryptography.Argon2;
 using Isopoh.Cryptography.SecureArray;
 using JetBrains.Annotations;
+using Microsoft.AspNet.Identity;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Attributes;
 using SecretSanta.Domain.Models;

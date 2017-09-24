@@ -9,21 +9,22 @@ namespace SecretSanta.Controllers
     public class RegistrationController : Controller
     {
         private readonly IUserRepository _userRepository;
-        private readonly IEncryptionProvider _encryptionProvider;
 
-        public RegistrationController(IUserRepository userRepository, IEncryptionProvider encryptionProvider)
+        public RegistrationController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _encryptionProvider = encryptionProvider;
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(new SantaUserPostModel());
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(SantaUserPostModel model)
         {
             if (!ModelState.IsValid)

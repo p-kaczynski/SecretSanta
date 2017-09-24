@@ -4,7 +4,7 @@ using SecretSanta.Models.Validation;
 
 namespace SecretSanta.Models
 {
-    public class SantaUserPostModel
+    public class SantaUserPostModel : LoginModel
     {
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email", ResourceType = typeof(Global))]
@@ -14,14 +14,14 @@ namespace SecretSanta.Models
         public string Email { get; set; }
 
         [DataType(DataType.Url)]
-        [Display(Name="FacebookURL", ResourceType = typeof(Global))]
+        [Display(Name = "FacebookURL", ResourceType = typeof(Global))]
         [Required(ErrorMessageResourceName = "FacebookURL_Required", ErrorMessageResourceType = typeof(Global))]
         [Url(ErrorMessageResourceName = "FacebookURL_Invalid", ErrorMessageResourceType = typeof(Global))]
         public string FacebookProfileUrl { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        [CustomValidation(typeof(PasswordValidator),"Validate", ErrorMessageResourceName = "Password_Invalid", ErrorMessageResourceType = typeof(Global))]
+        [CustomValidation(typeof(PasswordValidator), "Validate", ErrorMessageResourceName = "Password_Invalid", ErrorMessageResourceType = typeof(Global))]
         public string Password { get; set; }
 
         [DataType(DataType.Text)]

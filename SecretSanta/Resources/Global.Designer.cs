@@ -277,6 +277,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login or password invalid.
+        /// </summary>
+        public static string Login_Invalid {
+            get {
+                return ResourceManager.GetString("Login_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account is locked.
+        /// </summary>
+        public static string Login_LockedOut {
+            get {
+                return ResourceManager.GetString("Login_LockedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Note.
         /// </summary>
         public static string Note {

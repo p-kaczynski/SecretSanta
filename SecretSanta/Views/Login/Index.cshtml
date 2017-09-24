@@ -1,0 +1,22 @@
+﻿@using SecretSanta.Models
+@model LoginModel
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Login}";
+}
+
+<h2>Resources.Global.Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    foreach (var lambda in ModelHelper.SelectProperties<LoginModel>(m => m.Email, m=>m.Password))
+    {
+        <div class="form-group">
+            @Html.ValidationMessageFor(lambda)
+            @Html.LabelFor(lambda)
+            @Html.EditorFor(lambda, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    }
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
