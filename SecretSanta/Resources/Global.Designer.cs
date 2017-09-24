@@ -133,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        public static string Confirmation {
+            get {
+                return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string Country {
@@ -210,6 +219,33 @@ namespace Resources {
         public static string Email_Required {
             get {
                 return ResourceManager.GetString("Email_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URL to the Facebook profile.
+        /// </summary>
+        public static string FacebookURL {
+            get {
+                return ResourceManager.GetString("FacebookURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The URL is invalid.
+        /// </summary>
+        public static string FacebookURL_Invalid {
+            get {
+                return ResourceManager.GetString("FacebookURL_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URL to the Facebook profile is required for verification.
+        /// </summary>
+        public static string FacebookURL_Required {
+            get {
+                return ResourceManager.GetString("FacebookURL_Required", resourceCulture);
             }
         }
         

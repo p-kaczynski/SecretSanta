@@ -18,6 +18,8 @@ namespace SecretSanta
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DependencyConfig.RegisterDependencies();
+            // Must be after DI:
+            MappingConfig.Configure();
         }
     }
 }

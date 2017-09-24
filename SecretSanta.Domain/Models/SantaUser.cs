@@ -5,8 +5,8 @@ namespace SecretSanta.Domain.Models
     public class SantaUser : ModelBase
     {
         public string Email { get; set; }
-        public string PerUserSalt { get; set; }
-        public string PasswordHash { get; set; }
+        public string FacebookProfileUrl { get; set; }
+        public byte[] PasswordHash { get; set; }
         public string DisplayName { get; set; }
         [DataProtection]
         public string FullName{ get; set; }
@@ -23,6 +23,6 @@ namespace SecretSanta.Domain.Models
         [DataProtection]
         public string Note { get; set; }
 
-        protected override string IVSource => Email + PerUserSalt;
+        protected override string IVSource => Email + DisplayName;
     }
 }

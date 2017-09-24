@@ -10,13 +10,14 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    foreach(var lambda in ModelHelper.SelectProperties<SantaUserPostModel>(m => m.DisplayName, m => m.Email, m => m.Password, m => m.FullName, m => m.AddressLine1, m => m.AddressLine2, m => m.PostalCode, m => m.City, m => m.Country, m => m.Note))
+    foreach(var lambda in ModelHelper.SelectProperties<SantaUserPostModel>(m => m.DisplayName, m => m.Email, m=>m.FacebookProfileUrl, m => m.Password, m => m.FullName, m => m.AddressLine1, m => m.AddressLine2, m => m.PostalCode, m => m.City, m => m.Country, m => m.Note))
     {
         <div class="form-group">
             @Html.ValidationMessageFor(lambda)
             @Html.LabelFor(lambda)
-            @Html.TextBoxFor(lambda, new {@class = "form-control"})
+            @Html.EditorFor(lambda, new{ htmlAttributes = new { @class = "form-control" } })
         </div>
     }
-    
+    <button type="submit" class="btn btn-primary">Submit</button>
+
 }

@@ -141,6 +141,9 @@
   <data name="City_TooLong" xml:space="preserve">
     <value>City is limited to 200 characters</value>
   </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
   <data name="Country" xml:space="preserve">
     <value>Country</value>
   </data>
@@ -167,6 +170,15 @@
   </data>
   <data name="Email_Required" xml:space="preserve">
     <value>Email is required to send the confirmation and details of a person chosen for you</value>
+  </data>
+  <data name="FacebookURL" xml:space="preserve">
+    <value>URL to the Facebook profile</value>
+  </data>
+  <data name="FacebookURL_Invalid" xml:space="preserve">
+    <value>The URL is invalid</value>
+  </data>
+  <data name="FacebookURL_Required" xml:space="preserve">
+    <value>URL to the Facebook profile is required for verification</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Full Name</value>
