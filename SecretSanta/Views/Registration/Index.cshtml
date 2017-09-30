@@ -7,6 +7,13 @@
 
 <h2>@Resources.Global.Registration</h2>
 
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationSummary(true)
+    </div>
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

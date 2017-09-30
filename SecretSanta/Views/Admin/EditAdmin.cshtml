@@ -1,11 +1,11 @@
 ﻿@using SecretSanta.Models
-@model LoginModel
+@model SantaAdminPostModel
 
 @{
-    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Login}";
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.EditAdmin}";
 }
 
-<h2>@Resources.Global.Login</h2>
+<h2>@Resources.Global.EditAdmin</h2>
 
 @if (!ViewData.ModelState.IsValid)
 {
@@ -13,11 +13,10 @@
         @Html.ValidationSummary(true)
     </div>
 }
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    foreach (var lambda in ModelHelper.SelectProperties<LoginModel>(m => m.Login, m=>m.Password))
+    foreach (var lambda in ModelHelper.SelectProperties<SantaAdminPostModel>(m=>m.UserName, m=>m.Password))
     {
         <div class="form-group">
             @Html.ValidationMessageFor(lambda)
@@ -26,4 +25,5 @@
         </div>
     }
     <button type="submit" class="btn btn-primary">Submit</button>
+
 }

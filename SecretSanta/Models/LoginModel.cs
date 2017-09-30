@@ -6,10 +6,10 @@ namespace SecretSanta.Models
 {
     public class LoginModel
     {
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email", ResourceType = typeof(Global))]
-        [Required(ErrorMessageResourceName = "Email_Required", ErrorMessageResourceType = typeof(Global))]
-        public string Email { get; set; }
+        [DataType(DataType.Text)]
+        [Display(Name = "LoginName", ResourceType = typeof(Global))]
+        [Required]
+        public string Login { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

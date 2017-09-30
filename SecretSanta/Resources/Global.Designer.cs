@@ -106,6 +106,60 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Administrators.
+        /// </summary>
+        public static string AdminIndex {
+            get {
+                return ResourceManager.GetString("AdminIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Awaiting confirmations.
+        /// </summary>
+        public static string AdminUnconfirmed {
+            get {
+                return ResourceManager.GetString("AdminUnconfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admin User Name.
+        /// </summary>
+        public static string AdminUserName {
+            get {
+                return ResourceManager.GetString("AdminUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user name for admin account must be alphanumerical (no whitespace or special characters).
+        /// </summary>
+        public static string AdminUserName_Invalid {
+            get {
+                return ResourceManager.GetString("AdminUserName_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user name for admin account is required.
+        /// </summary>
+        public static string AdminUserName_Required {
+            get {
+                return ResourceManager.GetString("AdminUserName_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user name for admin account is limited to 200 characters.
+        /// </summary>
+        public static string AdminUserName_TooLong {
+            get {
+                return ResourceManager.GetString("AdminUserName_TooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>
         public static string City {
@@ -169,6 +223,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create admin account.
+        /// </summary>
+        public static string CreateAdmin {
+            get {
+                return ResourceManager.GetString("CreateAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Display Name.
         /// </summary>
         public static string DisplayName {
@@ -192,6 +255,15 @@ namespace Resources {
         public static string DisplayName_TooLong {
             get {
                 return ResourceManager.GetString("DisplayName_TooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit admin.
+        /// </summary>
+        public static string EditAdmin {
+            get {
+                return ResourceManager.GetString("EditAdmin", resourceCulture);
             }
         }
         
@@ -304,11 +376,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email or admin login.
+        /// </summary>
+        public static string LoginName {
+            get {
+                return ResourceManager.GetString("LoginName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Note.
         /// </summary>
         public static string Note {
             get {
                 return ResourceManager.GetString("Note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No users require confirmation!.
+        /// </summary>
+        public static string NothingToConfirm {
+            get {
+                return ResourceManager.GetString("NothingToConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         

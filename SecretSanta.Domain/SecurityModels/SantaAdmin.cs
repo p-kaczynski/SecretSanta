@@ -1,4 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
+using JetBrains.Annotations;
 
 namespace SecretSanta.Domain.SecurityModels
 {
@@ -8,7 +9,7 @@ namespace SecretSanta.Domain.SecurityModels
         public long AdminId
         {
             get => GetId(Id, out var _);
-            set => Id = GetId(value, true);
+            [UsedImplicitly]set => Id = GetId(value, true);
         }
 
         [Computed]

@@ -219,4 +219,37 @@
   <data name="Login_Invalid" xml:space="preserve">
     <value>Login or password invalid</value>
   </data>
+  <data name="AdminIndex" xml:space="preserve">
+    <value>Administrators</value>
+  </data>
+  <data name="AdminUserName" xml:space="preserve">
+    <value>Admin User Name</value>
+  </data>
+  <data name="AdminUserName_Invalid" xml:space="preserve">
+    <value>The user name for admin account must be alphanumerical (no whitespace or special characters)</value>
+  </data>
+  <data name="AdminUserName_Required" xml:space="preserve">
+    <value>The user name for admin account is required</value>
+  </data>
+  <data name="AdminUserName_TooLong" xml:space="preserve">
+    <value>The user name for admin account is limited to 200 characters</value>
+  </data>
+  <data name="CreateAdmin" xml:space="preserve">
+    <value>Create admin account</value>
+  </data>
+  <data name="EditAdmin" xml:space="preserve">
+    <value>Edit admin</value>
+  </data>
+  <data name="LoginName" xml:space="preserve">
+    <value>Email or admin login</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="AdminUnconfirmed" xml:space="preserve">
+    <value>Awaiting confirmations</value>
+  </data>
+  <data name="NothingToConfirm" xml:space="preserve">
+    <value>No users require confirmation!</value>
+  </data>
 </root>

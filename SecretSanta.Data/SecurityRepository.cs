@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Dapper;
@@ -12,7 +14,7 @@ using SecretSanta.Domain.SecurityModels;
 
 namespace SecretSanta.Data
 {
-    public class SecurityRepository : IUserStore<SantaSecurityUser>
+    public class SecurityRepository : ISantaUserStore
     {
         private readonly string _connectionString;
         
@@ -109,6 +111,14 @@ namespace SecretSanta.Data
                     new {userName});
 
                 return santaUser == null ? null : Mapper.Map<SantaSecurityUser>(santaUser);
+            }
+        }
+
+        public IList<SantaAdmin> GetAllAdmins()
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                return conn.GetAll<SantaAdmin>().ToList();
             }
         }
     }

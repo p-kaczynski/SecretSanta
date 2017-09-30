@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using Dapper.Contrib.Extensions;
+using SecretSanta.Common.Helpers;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
 
@@ -36,6 +39,35 @@ namespace SecretSanta.Data
 
             _encryptionProvider.Decrypt(model);
             return model;
+        }
+
+        public SantaUser GetUserWithoutProtectedData(long id)
+        {
+            var model = WithConnection(conn => conn.Get<SantaUser>(id));
+            if (model == null)
+                return null;
+
+            model.ClearDataProtected();
+            return model;
+        }
+
+        public IList<SantaUser> GetAllUsersWithoutProtectedData()
+        {
+            var models = WithConnection(conn => conn.GetAll<SantaUser>().ToArray());
+            foreach(var model in models)
+                model.ClearDataProtected();
+
+            return models;
+        }
+
+        public void AdminConfirm(long id)
+        {
+            WithConnection(conn =>
+            {
+                var model = conn.Get<SantaUser>(id);
+                model.AdminConfirmed = true;
+                conn.Update(model);
+            });
         }
 
         private T WithConnection<T>(Func<SqlConnection, T> func)

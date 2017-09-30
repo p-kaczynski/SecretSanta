@@ -1,0 +1,32 @@
+﻿@model System.Collections.Generic.IEnumerable<SecretSanta.Models.SantaAdminViewModel>
+
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.AdminIndex}";
+}
+
+<h2>@Resources.Global.AdminIndex</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>@Resources.Global.AdminUserName</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var adminDesc in Model)
+    {
+        <tr>
+        <td>@adminDesc.Id</td>
+        <td><a href="@Url.Action("EditAdmin",new{id=adminDesc.Id})">@adminDesc.UserName</a></td>
+        </tr>
+    }
+    </tbody>
+    <tfoot>
+    <tr>
+        <td></td>
+        <td><a href="@Url.Action("CreateAdmin")">@Resources.Global.CreateAdmin</a></td>
+    </tr>
+    </tfoot>
+</table>

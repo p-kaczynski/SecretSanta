@@ -32,6 +32,15 @@ namespace SecretSanta
             cfg.CreateMap<SantaUser, SantaSecurityUser>()
                 .ForMember(dest => dest.Id, opt => opt.ResolveUsing(model => SantaSecurityUser.GetId(model.Id, false)))
                 .ForMember(dest => dest.UserName, opt => opt.ResolveUsing(model => model.Email));
+
+            cfg.CreateMap<SantaAdminPostModel, SantaAdmin>()
+                .ForMember(dest => dest.PasswordHash,
+                    opt => opt.ResolveUsing(post => encryptionProvider.CalculatePasswordHash(post.Password)))
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.AdminId, opt => opt.Ignore());
+
+            cfg.CreateMap<SantaAdmin, SantaAdminPostModel>()
+                .ForMember(dest => dest.Password, opt => opt.Ignore());
         }
     }
 }

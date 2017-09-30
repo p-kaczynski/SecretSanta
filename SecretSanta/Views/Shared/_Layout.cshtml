@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using SecretSanta.Models
+@using SecretSanta.Security
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,8 +23,15 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Registration", "Index", "Registration")</li>
+                    }
+                    @if (User.IsInRole(SantaUserManager.AdminRole))
+                    {
+                        <li>@Html.ActionLink(Resources.Global.AdminIndex, "Index", "Admin")</li>
+                        <li>@Html.ActionLink(Resources.Global.AdminUnconfirmed, "Index", "Verification")@Html.Action("GetAwaitingVerifications","Verification")</li>
+                    }
                 </ul>
                 @if (User?.Identity?.IsAuthenticated != true)
                 {
@@ -37,15 +46,15 @@
                                         <div class="col-md-12">
                                             @using (Html.BeginForm("Index", "Login", FormMethod.Post, new {@role = "form", @id = "login-nav"}))
                                             {
+                                                @Html.AntiForgeryToken()
                                                 <div class="form-group">
-                                                    <label class="sr-only" for="email">Email address</label>
-                                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required>
+                                                    <label class="sr-only" for="@nameof(LoginModel.Login)">@Resources.Global.Login</label>
+                                                    <input type="text" class="form-control" id="@nameof(LoginModel.Login)" name="@nameof(LoginModel.Login)" placeholder="@Resources.Global.LoginName" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="sr-only" for="password">Password</label>
-                                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                                                    <div class="help-block text-right"><a href="">Forget the password ?</a>
-                                                    </div>
+                                                    <label class="sr-only" for="@nameof(LoginModel.Password)">@Resources.Global.Password</label>
+                                                    <input type="password" class="form-control" id="@nameof(LoginModel.Password)" name="@nameof(LoginModel.Password)" placeholder="@Resources.Global.Password" required>
+                                                    @*<div class="help-block text-right"><a href="">Forget the password ?</a></div>*@
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary btn-block">Sign in</button>

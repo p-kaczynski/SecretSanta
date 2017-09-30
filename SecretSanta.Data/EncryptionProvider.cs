@@ -11,6 +11,7 @@ using Isopoh.Cryptography.Argon2;
 using Isopoh.Cryptography.SecureArray;
 using JetBrains.Annotations;
 using Microsoft.AspNet.Identity;
+using SecretSanta.Common.Helpers;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Attributes;
 using SecretSanta.Domain.Models;
@@ -135,7 +136,7 @@ namespace SecretSanta.Data
 
         private void WithCrypto<T>(T model, Action<T,PropertyInfo,ICryptoTransform> action) where T : ModelBase
         {
-            var properties = _propertyCache.GetOrAdd(typeof(T), LoadPropertiesFromType);
+            var properties = _propertyCache.GetOrAdd(typeof(T), DataProtection.LoadDataProtectedPropertiesFromType);
             using (var aes = Aes.Create())
             {
                 if(aes == null)
@@ -177,10 +178,6 @@ namespace SecretSanta.Data
             using (var sr = new StreamReader(cs))
                 return sr.ReadToEnd();
         }
-
-        private static PropertyInfo[] LoadPropertiesFromType(Type type) => type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
-            .Where(prop => prop.CanRead && prop.CanWrite && prop.PropertyType == typeof(string) &&
-                           prop.GetCustomAttribute<DataProtectionAttribute>() != null).ToArray();
 
         public void Dispose()
         {

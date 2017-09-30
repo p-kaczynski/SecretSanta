@@ -15,6 +15,11 @@ namespace SecretSanta.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View(new LoginModel());
         }
 
@@ -27,7 +32,7 @@ namespace SecretSanta.Controllers
             {
                 return View(model);
             }
-            var status = await HttpContext.GetOwinContext().Get<SantaSignInManager>().PasswordSignInAsync(model.Email, model.Password, true, false);
+            var status = await HttpContext.GetOwinContext().Get<SantaSignInManager>().PasswordSignInAsync(model.Login, model.Password, true, false);
             switch (status)
             {
                 case SignInStatus.Success:

@@ -8,13 +8,19 @@ using SecretSanta.Domain.SecurityModels;
 
 namespace SecretSanta.Security
 {
-    public class SantaUserManager : UserManager<SantaSecurityUser>
+    public class SantaUserManager : UserManager<SantaSecurityUser>, ISantaAdminProvider
     {
+        // TODO: Move somewhere else
+        public const string AdminRole = "Admin";
+        public const string UserRole = "User";
+
+        private readonly ISantaUserStore _santaStore;
         private readonly IEncryptionProvider _encryptionProvider;
 
-        public SantaUserManager(IUserStore<SantaSecurityUser> store, IEncryptionProvider encryptionProvider) :
+        public SantaUserManager(ISantaUserStore store, IEncryptionProvider encryptionProvider) :
             base(store)
         {
+            _santaStore = store;
             _encryptionProvider = encryptionProvider;
         }
 
@@ -156,15 +162,19 @@ namespace SecretSanta.Security
             throw new NotSupportedException();
         }
 
-        public override Task<IList<string>> GetRolesAsync(string userId)
+        public override async Task<IList<string>> GetRolesAsync(string userId)
         {
-            throw new NotSupportedException();
+            var user = await Store.FindByIdAsync(userId);
+            return user.IsPrivileged ? new[] {AdminRole} : new[] {UserRole};
         }
 
-        public override Task<bool> IsInRoleAsync(string userId, string role)
+        public override async Task<bool> IsInRoleAsync(string userId, string role)
         {
-            throw new NotSupportedException();
+            var roles = await GetRolesAsync(userId);
+            return roles.Contains(role);
         }
+
+        public override bool SupportsUserRole { get; } = true;
 
         public override async Task<string> GetEmailAsync(string userId)
         {
@@ -314,5 +324,9 @@ namespace SecretSanta.Security
         }
 
 
+        public IList<SantaAdmin> GetAllAdmins()
+        {
+            return _santaStore.GetAllAdmins();
+        }
     }
 }

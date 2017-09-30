@@ -1,0 +1,34 @@
+﻿@model dynamic
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Secret Santa Test</title>
+</head>
+<body>
+<div>
+    @if (!string.IsNullOrEmpty(ViewBag.Password))
+    {
+        <h1>Results</h1>
+        <ol>
+            <li>Password = @ViewBag.Password</li>
+            <li>Hash= @ViewBag.Hash</li>
+            <li>Validates= @ViewBag.Validates</li>
+            <li>Other= @ViewBag.Other</li>
+        </ol>
+    }
+</div>
+<div>
+    @using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
+        <form>
+            <label for="password">Input password</label>
+            <input type="text" id="password" name="password"/>
+            <input type="submit"/>
+        </form>
+    }
+</div>
+</body>
+</html>

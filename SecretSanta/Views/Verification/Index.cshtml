@@ -1,0 +1,62 @@
+﻿@using SecretSanta.Domain.Models
+@using SecretSanta.Models
+@model IList<SantaUser>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryajax")
+}
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.AdminUnconfirmed}";
+}
+
+<h2>@Resources.Global.AdminUnconfirmed</h2>
+@if (!Model.Any())
+{
+    <div class="alert alert-success">@Resources.Global.NothingToConfirm</div>
+}
+else
+{
+    <table class="table table-striped">
+        @Html.Partial("_SantaUserTableHeader", Model.First())
+        <tbody>
+        @foreach (var adminDesc in Model)
+        {
+            <tr>
+                <td>@adminDesc.DisplayName</td>
+                <td>@adminDesc.Email</td>
+                <td><a href="@adminDesc.FacebookProfileUrl">@adminDesc.FacebookProfileUrl</a></td>
+
+                @if (adminDesc.EmailConfirmed)
+                {
+                    <td class="success">
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        <span class="sr-only">Confirmed</span>
+                    </td>
+                }
+                else
+                {
+                    <td class="warning">
+                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                        <span class="sr-only">Awaiting confirmation</span>
+                    </td>
+                }
+
+                @if (adminDesc.AdminConfirmed)
+                {
+                    @Html.Partial("_ConfirmationCell", ConfirmationHelperModel.ConfirmedModel)
+                }
+                else
+                {
+                    using (Ajax.BeginForm("AdminConfirmUser", "Verification", new {id = adminDesc.Id}, new AjaxOptions {InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = $"confirmation_{adminDesc.Id}", LoadingElementId = $"loader_{adminDesc.Id}"}))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Partial("_ConfirmationCell", ConfirmationHelperModel.UnconfirmedModel(adminDesc.Id))
+                    }
+
+                }
+            </tr>
+        }
+        </tbody>
+    </table>
+}

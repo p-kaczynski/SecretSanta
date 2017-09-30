@@ -1,0 +1,20 @@
+﻿@model SecretSanta.Models.ConfirmationHelperModel
+
+@if (Model.Confirmed)
+{
+    <td class="success">
+        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+        <span class="sr-only">Confirmed</span>
+    </td>
+}
+else
+{
+    <td id="confirmation_@Model.UserId">
+        <input type="hidden" name="id" value="@Model.UserId" aria-hidden="True"/>
+        <button type="submit" class="btn btn-success btn-" aria-label="Confirm">
+            <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+        </button>
+        <span id="loader_@Model.UserId" class="glyphicon glyphicon-repeat normal-right-spinner" style="display:none" aria-label="Loading"></span>
+    </td>
+}
+
