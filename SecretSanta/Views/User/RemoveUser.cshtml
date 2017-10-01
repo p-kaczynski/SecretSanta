@@ -1,0 +1,36 @@
+﻿@model SecretSanta.Domain.Models.SantaUser
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.RemoveUser}";
+    ViewBag.NoDataMessage = Resources.Global.NothingToConfirm;
+}
+
+<h2>@Resources.Global.RemoveUser</h2>
+
+<div class="alert alert-danger">
+    <p>@Resources.Global.RemoveUserIntro</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m=>m.Id)</th>
+            <th>@Html.DisplayNameFor(m=>m.DisplayName)</th>
+            <th>@Html.DisplayNameFor(m=>m.Email)</th>
+            <th>@Html.DisplayNameFor(m=>m.FacebookProfileUrl)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.DisplayName</td>
+            <td>@Model.Email</td>
+            <td><a href="@Model.FacebookProfileUrl">@Model.FacebookProfileUrl</a></td>
+        </tr>
+        </tbody>
+    </table>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m=>m.Id)
+        <input type="submit" value="@Resources.Global.RemoveUser" class="btn btn-danger"/>
+    }
+</div>

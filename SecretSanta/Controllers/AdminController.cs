@@ -73,7 +73,7 @@ namespace SecretSanta.Controllers
             var santaAdmin = Mapper.Map<SantaAdmin>(model);
             var result = await _userManager.UpdateAsync(santaAdmin);
             if (result.Succeeded)
-                RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
 
             ModelState.AddModelError("", string.Join("<br />", result.Errors));
             return View(model);

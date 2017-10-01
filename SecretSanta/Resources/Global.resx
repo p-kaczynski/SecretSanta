@@ -252,4 +252,49 @@
   <data name="NothingToConfirm" xml:space="preserve">
     <value>No users require confirmation!</value>
   </data>
+  <data name="AdminUser" xml:space="preserve">
+    <value>Registered Users</value>
+  </data>
+  <data name="CloseRegistration" xml:space="preserve">
+    <value>Close registration</value>
+  </data>
+  <data name="ConfirmationEmailSent" xml:space="preserve">
+    <value>Registration succesful. Email with a confirmation link was sent to</value>
+  </data>
+  <data name="InitialSetup" xml:space="preserve">
+    <value>Setup</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="NoUsers" xml:space="preserve">
+    <value>No one has yet registered</value>
+  </data>
+  <data name="OpenRegistration" xml:space="preserve">
+    <value>Open registration</value>
+  </data>
+  <data name="RegistrationClosed" xml:space="preserve">
+    <value>The registrations has been closed.</value>
+  </data>
+  <data name="RegistrationOpen" xml:space="preserve">
+    <value>Is registration open?</value>
+  </data>
+  <data name="RemoveUser" xml:space="preserve">
+    <value>Remove User</value>
+  </data>
+  <data name="RemoveUserIntro" xml:space="preserve">
+    <value>You are about to remove the following user. This action cannot be reversed and the user will have to register again.</value>
+  </data>
+  <data name="SettingName" xml:space="preserve">
+    <value>Setting Name</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingValue" xml:space="preserve">
+    <value>Current Value</value>
+  </data>
+  <data name="SystemMessage" xml:space="preserve">
+    <value>Information</value>
+  </data>
 </root>

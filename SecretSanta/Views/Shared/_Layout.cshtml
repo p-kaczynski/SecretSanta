@@ -30,7 +30,8 @@
                     @if (User.IsInRole(SantaUserManager.AdminRole))
                     {
                         <li>@Html.ActionLink(Resources.Global.AdminIndex, "Index", "Admin")</li>
-                        <li>@Html.ActionLink(Resources.Global.AdminUnconfirmed, "Index", "Verification")@Html.Action("GetAwaitingVerifications","Verification")</li>
+                        <li>@Html.ActionLink(Resources.Global.AdminUser, "Index", "User")</li>
+                        <li><a href="@Url.Action("Index", "Verification")">@Resources.Global.AdminUnconfirmed @Html.Action("GetAwaitingVerifications","Verification")</a></li>
                     }
                 </ul>
                 @if (User?.Identity?.IsAuthenticated != true)
@@ -81,7 +82,14 @@
                         <li>
                             <p class="navbar-text">Hello @User.Identity.Name</p>
                         </li>
-                        </ul>
+                        <li>
+                            @using (Html.BeginForm("Logout", "Login",FormMethod.Post,new {@class= "navbar-form navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-link">@Resources.Global.Logout</button>
+                            }
+                        </li>
+                    </ul>
                 }
             </div>
         </div>
@@ -90,7 +98,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>@DateTime.Now.Year - @Resources.Global.SiteName</p>
         </footer>
     </div>
 

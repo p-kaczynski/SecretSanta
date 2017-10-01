@@ -16,6 +16,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.AdminId)
     foreach (var lambda in ModelHelper.SelectProperties<SantaAdminPostModel>(m=>m.UserName, m=>m.Password))
     {
         <div class="form-group">

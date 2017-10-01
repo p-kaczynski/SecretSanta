@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Resources;
 using SecretSanta.Models;
@@ -9,6 +10,7 @@ using SecretSanta.Security;
 
 namespace SecretSanta.Controllers
 {
+    [Authorize]
     public class LoginController : Controller
     {
         [HttpGet]
@@ -48,7 +50,16 @@ namespace SecretSanta.Controllers
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Logout()
+        {
+            HttpContext.GetOwinContext().Authentication
+                .SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            return RedirectToAction("Index", "Home");
         }
 
     }

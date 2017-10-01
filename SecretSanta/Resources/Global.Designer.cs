@@ -124,6 +124,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registered Users.
+        /// </summary>
+        public static string AdminUser {
+            get {
+                return ResourceManager.GetString("AdminUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Admin User Name.
         /// </summary>
         public static string AdminUserName {
@@ -187,11 +196,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close registration.
+        /// </summary>
+        public static string CloseRegistration {
+            get {
+                return ResourceManager.GetString("CloseRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirmation.
         /// </summary>
         public static string Confirmation {
             get {
                 return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration succesful. Email with a confirmation link was sent to.
+        /// </summary>
+        public static string ConfirmationEmailSent {
+            get {
+                return ResourceManager.GetString("ConfirmationEmailSent", resourceCulture);
             }
         }
         
@@ -349,6 +376,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setup.
+        /// </summary>
+        public static string InitialSetup {
+            get {
+                return ResourceManager.GetString("InitialSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {
@@ -385,6 +421,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Note.
         /// </summary>
         public static string Note {
@@ -399,6 +444,24 @@ namespace Resources {
         public static string NothingToConfirm {
             get {
                 return ResourceManager.GetString("NothingToConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No one has yet registered.
+        /// </summary>
+        public static string NoUsers {
+            get {
+                return ResourceManager.GetString("NoUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open registration.
+        /// </summary>
+        public static string OpenRegistration {
+            get {
+                return ResourceManager.GetString("OpenRegistration", resourceCulture);
             }
         }
         
@@ -457,11 +520,83 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The registrations has been closed..
+        /// </summary>
+        public static string RegistrationClosed {
+            get {
+                return ResourceManager.GetString("RegistrationClosed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is registration open?.
+        /// </summary>
+        public static string RegistrationOpen {
+            get {
+                return ResourceManager.GetString("RegistrationOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove User.
+        /// </summary>
+        public static string RemoveUser {
+            get {
+                return ResourceManager.GetString("RemoveUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are about to remove the following user. This action cannot be reversed and the user will have to register again..
+        /// </summary>
+        public static string RemoveUserIntro {
+            get {
+                return ResourceManager.GetString("RemoveUserIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Name.
+        /// </summary>
+        public static string SettingName {
+            get {
+                return ResourceManager.GetString("SettingName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Value.
+        /// </summary>
+        public static string SettingValue {
+            get {
+                return ResourceManager.GetString("SettingValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secret Santa.
         /// </summary>
         public static string SiteName {
             get {
                 return ResourceManager.GetString("SiteName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        public static string SystemMessage {
+            get {
+                return ResourceManager.GetString("SystemMessage", resourceCulture);
             }
         }
     }

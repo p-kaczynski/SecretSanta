@@ -1,0 +1,40 @@
+﻿@model SecretSanta.Models.SettingsViewModel
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Settings}";
+}
+
+<h2>@Resources.Global.Settings</h2>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>@Resources.Global.SettingName</th>
+        <th>@Resources.Global.SettingValue</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>@Html.DisplayNameFor(m=>m.RegistrationOpen)</td>
+        <td>@Html.DisplayFor(m=>m.RegistrationOpen)</td>
+        <td>
+            @if (Model.RegistrationOpen)
+            {
+                using (Html.BeginForm("CloseRegistration","Setting"))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-remove"></span>@Resources.Global.CloseRegistration</button>
+                }
+            }
+            else
+            {
+                using (Html.BeginForm("OpenRegistration", "Setting"))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span>@Resources.Global.OpenRegistration</button>
+                }
+            }
+        </td>
+    </tr>
+    </tbody>
+</table>

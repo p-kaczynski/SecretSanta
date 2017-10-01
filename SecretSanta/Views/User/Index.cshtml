@@ -1,0 +1,10 @@
+﻿@model System.Collections.Generic.IList<SecretSanta.Domain.Models.SantaUser>
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.AdminUser}";
+    ViewBag.NoDataMessage = Resources.Global.NoUsers;
+}
+
+<h2>@Resources.Global.AdminUser</h2>
+
+@Html.Partial("_UserTable", Model)

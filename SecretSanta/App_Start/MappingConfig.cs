@@ -36,11 +36,12 @@ namespace SecretSanta
             cfg.CreateMap<SantaAdminPostModel, SantaAdmin>()
                 .ForMember(dest => dest.PasswordHash,
                     opt => opt.ResolveUsing(post => encryptionProvider.CalculatePasswordHash(post.Password)))
-                .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest => dest.AdminId, opt => opt.Ignore());
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
 
             cfg.CreateMap<SantaAdmin, SantaAdminPostModel>()
                 .ForMember(dest => dest.Password, opt => opt.Ignore());
+
+            cfg.CreateMap<ISettingsRepository, SettingsViewModel>();
         }
     }
 }

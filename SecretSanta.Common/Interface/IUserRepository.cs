@@ -12,5 +12,7 @@ namespace SecretSanta.Common.Interface
         IList<SantaUser> GetAllUsersWithoutProtectedData();
 
         void AdminConfirm(long id);
+
+        void DeleteUser(long id);
     }
 }

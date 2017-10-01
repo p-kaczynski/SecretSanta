@@ -9,17 +9,21 @@ namespace SecretSanta.Controllers
     public class RegistrationController : Controller
     {
         private readonly IUserRepository _userRepository;
+        private readonly ISettingsRepository _settingsRepository;
 
-        public RegistrationController(IUserRepository userRepository)
+        public RegistrationController(IUserRepository userRepository, ISettingsRepository settingsRepository)
         {
             _userRepository = userRepository;
+            _settingsRepository = settingsRepository;
         }
 
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View(new SantaUserPostModel());
+            if(_settingsRepository.RegistrationOpen)
+                return View(new SantaUserPostModel());
+            return View("Message", Resources.Global.RegistrationClosed);
         }
 
         [HttpPost]
@@ -27,6 +31,9 @@ namespace SecretSanta.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(SantaUserPostModel model)
         {
+            if(!_settingsRepository.RegistrationOpen)
+                return View("Message", Resources.Global.RegistrationClosed);
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -37,15 +44,7 @@ namespace SecretSanta.Controllers
             var domainModel = Mapper.Map<SantaUser>(model);
             _userRepository.InsertUser(domainModel);
             // TODO: change to confirmaton
-            return RedirectToAction(nameof(Confirmation), new {domainModel});
-        }
-
-        public ActionResult Confirmation(SantaUser model)
-        {
-            if (model == null)
-                return HttpNotFound();
-
-            return View(model);
+            return View("Confirmation", model.Email);
         }
     }
 }

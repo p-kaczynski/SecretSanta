@@ -1,0 +1,14 @@
+﻿@model string
+
+@using SecretSanta.Domain.Models
+@model IList<SantaUser>
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.SystemMessage}";
+}
+
+<h2>@Resources.Global.SystemMessage</h2>
+
+<div class="alert alert-info">
+    <p>@Model</p>
+</div>

@@ -29,6 +29,7 @@ namespace SecretSanta.DI
         private static void RegisterDependencies(ContainerBuilder builder)
         {
             builder.RegisterType<ConfigProvider>().As<IConfigProvider>().SingleInstance();
+            builder.RegisterType<SettingsRepository>().As<ISettingsRepository>().SingleInstance();
             builder.RegisterType<EncryptionProvider>().As<IEncryptionProvider>().SingleInstance();
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
             builder.RegisterType<SecurityRepository>().As<ISantaUserStore>().SingleInstance();

@@ -70,6 +70,15 @@ namespace SecretSanta.Data
             });
         }
 
+        public void DeleteUser(long id)
+        {
+            WithConnection(conn =>
+            {
+                var model = conn.Get<SantaUser>(id);
+                conn.Delete(model);
+            });
+        }
+
         private T WithConnection<T>(Func<SqlConnection, T> func)
         {
             using (var conn = new SqlConnection(_connectionString))
