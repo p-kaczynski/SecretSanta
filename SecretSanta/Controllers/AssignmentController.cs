@@ -6,7 +6,7 @@ using SecretSanta.Security;
 namespace SecretSanta.Controllers
 {
     [Authorize(Roles = SantaUserManager.AdminRole)]
-    public class AssignmentController : Controller
+    public class AssignmentController : BaseController
     {
         private readonly IUserRepository _userRepository;
 

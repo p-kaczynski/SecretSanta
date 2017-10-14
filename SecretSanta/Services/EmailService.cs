@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.Hosting;
 using System.Web.Mvc;
+using NLog;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
 
@@ -12,6 +13,8 @@ namespace SecretSanta.Services
 {
     public class EmailService : IEmailService
     {
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+
         private readonly SmtpClient _smtp = new SmtpClient();
         private readonly IEncryptionProvider _encryptionProvider;
         private readonly TimeSpan _resendConfirmationCooldown;
@@ -73,7 +76,7 @@ namespace SecretSanta.Services
                 }
                 catch (SmtpException smptException)
                 {
-                    // TODO: Log
+                    Log.Error(smptException, $"{nameof(SendEmail)}: Error while sending email");
                     return false;
                 }
             }

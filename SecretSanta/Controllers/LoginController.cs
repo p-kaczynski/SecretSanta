@@ -11,7 +11,7 @@ using SecretSanta.Security;
 namespace SecretSanta.Controllers
 {
     [Authorize]
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
         [HttpGet]
         [AllowAnonymous]

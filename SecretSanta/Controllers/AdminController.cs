@@ -11,7 +11,7 @@ using SecretSanta.Security;
 namespace SecretSanta.Controllers
 {
     [Authorize(Roles = SantaUserManager.AdminRole)]
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private readonly UserManager<SantaSecurityUser, string> _userManager;
         private readonly ISantaAdminProvider _adminProvider;

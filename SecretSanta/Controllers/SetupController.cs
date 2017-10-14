@@ -10,7 +10,7 @@ using SecretSanta.Models;
 
 namespace SecretSanta.Controllers
 {
-    public class SetupController : Controller
+    public class SetupController : BaseController
     {
         private readonly IConfigProvider _configProvider;
         private readonly UserManager<SantaSecurityUser, string> _userManager;

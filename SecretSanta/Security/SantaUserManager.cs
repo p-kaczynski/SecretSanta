@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
+using NLog;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.SecurityModels;
 
@@ -10,6 +11,8 @@ namespace SecretSanta.Security
 {
     public class SantaUserManager : UserManager<SantaSecurityUser>, ISantaAdminProvider
     {
+        private static readonly Logger Log = LogManager.GetCurrentClassLogger();
+
         // TODO: Move somewhere else
         public const string AdminRole = "Admin";
         public const string UserRole = "User";
@@ -33,7 +36,7 @@ namespace SecretSanta.Security
             }
             catch (Exception exception)
             {
-                // TODO: Log
+                Log.Error(exception, $"{nameof(CreateAsync)}: Error while creating admin");
                 return IdentityResult.Failed(exception.Message);
             }
         }
@@ -47,7 +50,7 @@ namespace SecretSanta.Security
             }
             catch (Exception exception)
             {
-                // TODO: Log
+                Log.Error(exception, $"{nameof(CreateAsync)}: Error while updating admin");
                 return IdentityResult.Failed(exception.Message);
             }
         }

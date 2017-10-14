@@ -12,7 +12,7 @@ using SecretSanta.Security;
 namespace SecretSanta.Controllers
 {
     [Authorize(Roles=SantaUserManager.UserRole)]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IUserRepository _userRepository;
         private readonly UserManager<SantaSecurityUser, string> _userManager;
@@ -123,7 +123,8 @@ namespace SecretSanta.Controllers
             var domainModel = _userRepository.GetUserWithoutProtectedData(userId);
             if (domainModel == null)
             {
-                // TODO: Notify admin, this is bad
+                // TODO: This is bad
+                Log.Error($"Tried to retrieve current user id={userId} from repository, but got null");
                 return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
             }
 
