@@ -25,7 +25,7 @@ namespace SecretSanta.Controllers
         {
             if(_settingsRepository.RegistrationOpen)
                 return View(new SantaUserPostModel());
-            return View("Message", Resources.Global.RegistrationClosed);
+            return View("Message", model:Resources.Global.RegistrationClosed);
         }
 
         [HttpPost]
@@ -34,7 +34,7 @@ namespace SecretSanta.Controllers
         public ActionResult Index(SantaUserPostModel model)
         {
             if(!_settingsRepository.RegistrationOpen)
-                return View("Message", Resources.Global.RegistrationClosed);
+                return View("Message", model:Resources.Global.RegistrationClosed);
 
             if (!ModelState.IsValid)
             {
