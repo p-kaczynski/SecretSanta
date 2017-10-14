@@ -583,6 +583,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis nisl nec molestie suscipit. Pellentesque finibus pretium iaculis. Mauris tempus dui at odio feugiat, non hendrerit lorem tincidunt. Aenean id tincidunt ex. Suspendisse gravida ornare turpis sit amet ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque nisi nec tempus vestibulum. Vestibulum ipsum enim, cursus vitae eros ac, ullamcorper sodales purus. Donec eget nisl pellentesque, eleifend lectus quis,  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Intro {
+            get {
+                return ResourceManager.GetString("Intro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {
