@@ -1,7 +1,10 @@
 ﻿@model dynamic
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = Resources.Global.SiteName;
 }
 
-<h2>title</h2>
+<div class="jumbotron">
+    <h1>@Resources.Global.SiteName</h1>
+    <p class="lead">@Resources.Global.Intro</p>
+</div>
