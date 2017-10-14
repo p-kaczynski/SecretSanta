@@ -18,13 +18,13 @@ namespace SecretSanta.Controllers
         private readonly IEncryptionProvider _encryptionProvider;
         private readonly IUserRepository _userRepository;
 
-        public SetupController(IConfigProvider configProvider, UserManager<SantaSecurityUser, string> userManager, ISantaAdminProvider adminProvider, IEncryptionProvider encryptionProvider, IUserRepository _userRepository)
+        public SetupController(IConfigProvider configProvider, UserManager<SantaSecurityUser, string> userManager, ISantaAdminProvider adminProvider, IEncryptionProvider encryptionProvider, IUserRepository userRepository)
         {
             _configProvider = configProvider;
             _userManager = userManager;
             _adminProvider = adminProvider;
             _encryptionProvider = encryptionProvider;
-            this._userRepository = _userRepository;
+            _userRepository = userRepository;
         }
 
         public async Task<ActionResult> Index()
