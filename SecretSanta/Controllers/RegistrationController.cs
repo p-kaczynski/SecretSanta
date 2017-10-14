@@ -10,11 +10,13 @@ namespace SecretSanta.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly ISettingsRepository _settingsRepository;
+        private readonly IEmailService _emailService;
 
-        public RegistrationController(IUserRepository userRepository, ISettingsRepository settingsRepository)
+        public RegistrationController(IUserRepository userRepository, ISettingsRepository settingsRepository, IEmailService emailService)
         {
             _userRepository = userRepository;
             _settingsRepository = settingsRepository;
+            _emailService = emailService;
         }
 
         [HttpGet]
@@ -39,12 +41,20 @@ namespace SecretSanta.Controllers
                 return View(model);
             }
 
+            // check fo existing user
+            if (!_userRepository.CheckEmail(model.Email))
+            {
+                ModelState.AddModelError(nameof(SantaUser.Email), Resources.Global.EmailTaken);
+                return View(model);
+            }
 
             // save to db
             var domainModel = Mapper.Map<SantaUser>(model);
             _userRepository.InsertUser(domainModel);
-            // TODO: change to confirmaton
-            return View("Confirmation", model.Email);
+            
+            _emailService.SendConfirmationEmail(domainModel);
+
+            return View("Confirmation", (object)model.Email);
         }
     }
 }

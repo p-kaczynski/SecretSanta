@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using SecretSanta.Domain.SecurityModels;
 
 namespace SecretSanta.Common.Interface

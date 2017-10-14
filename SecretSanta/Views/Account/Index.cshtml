@@ -1,0 +1,43 @@
+﻿@model SecretSanta.Domain.Models.SantaUser
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.AccountSettings}";
+}
+
+<h2>@Resources.Global.AccountSettings</h2>
+
+<div class="panel panel-info">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Id)</th>
+                <th>@Html.DisplayNameFor(m => m.DisplayName)</th>
+                <th>@Html.DisplayNameFor(m => m.Email)</th>
+                <th>@Html.DisplayNameFor(m => m.FacebookProfileUrl)</th>
+                <th>@Html.DisplayNameFor(m => m.FullName)</th>
+                <th>@Html.DisplayNameFor(m => m.AddressLine1)</th>
+                <th>@Html.DisplayNameFor(m => m.AddressLine2)</th>
+                <th>@Html.DisplayNameFor(m => m.PostalCode)</th>
+                <th>@Html.DisplayNameFor(m => m.City)</th>
+                <th>@Html.DisplayNameFor(m => m.Country)</th>
+                <th>@Html.DisplayNameFor(m => m.Note)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(m=>m.Id)</td>
+                <td>@Html.DisplayFor(m => m.DisplayName)</td>
+                <td>@Html.DisplayFor(m => m.Email, "_EmailCensored")</td>
+                <td><a href="@Model.FacebookProfileUrl">@Model.FacebookProfileUrl</a></td>
+                <td>@Html.DisplayFor(m => m.FullName)</td>
+                <td>@Html.DisplayFor(m => m.AddressLine1)</td>
+                <td>@Html.DisplayFor(m => m.AddressLine2)</td>
+                <td>@Html.DisplayFor(m => m.PostalCode)</td>
+                <td>@Html.DisplayFor(m => m.City)</td>
+                <td>@Html.DisplayFor(m => m.Country)</td>
+                <td>@Html.DisplayFor(m => m.Note)</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="@Url.Action("RemoveAccount")" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>@Resources.Global.RemoveUser</a>
+</div>

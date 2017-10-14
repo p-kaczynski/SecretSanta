@@ -19,7 +19,7 @@ namespace Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Global {
@@ -57,6 +57,42 @@ namespace Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users that could not be matched.
+        /// </summary>
+        public static string AbandonedUsers {
+            get {
+                return ResourceManager.GetString("AbandonedUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Account.
+        /// </summary>
+        public static string AccountRemove {
+            get {
+                return ResourceManager.GetString("AccountRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are about to delete your account. This action cannot be reversed and you will have to register again. Are you sure?.
+        /// </summary>
+        public static string AccountRemoveIntro {
+            get {
+                return ResourceManager.GetString("AccountRemoveIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Settings.
+        /// </summary>
+        public static string AccountSettings {
+            get {
+                return ResourceManager.GetString("AccountSettings", resourceCulture);
             }
         }
         
@@ -102,6 +138,24 @@ namespace Resources {
         public static string AddressLine2_TooLong {
             get {
                 return ResourceManager.GetString("AddressLine2_TooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your account has been approved by an admin..
+        /// </summary>
+        public static string Admin_Confirmed {
+            get {
+                return ResourceManager.GetString("Admin_Confirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your account has not been yet approved by an admin..
+        /// </summary>
+        public static string Admin_NotConfirmed {
+            get {
+                return ResourceManager.GetString("Admin_NotConfirmed", resourceCulture);
             }
         }
         
@@ -165,6 +219,60 @@ namespace Resources {
         public static string AdminUserName_TooLong {
             get {
                 return ResourceManager.GetString("AdminUserName_TooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are all done - now wait for the assignment of the recepient of your gift..
+        /// </summary>
+        public static string AllReady {
+            get {
+                return ResourceManager.GetString("AllReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All users were matched!.
+        /// </summary>
+        public static string AllUsersMatched {
+            get {
+                return ResourceManager.GetString("AllUsersMatched", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign recepients.
+        /// </summary>
+        public static string Assignment {
+            get {
+                return ResourceManager.GetString("Assignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assignment completed.
+        /// </summary>
+        public static string AssignmentCompleted {
+            get {
+                return ResourceManager.GetString("AssignmentCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The assignment has been already done..
+        /// </summary>
+        public static string AssignmentDone {
+            get {
+                return ResourceManager.GetString("AssignmentDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assignments.
+        /// </summary>
+        public static string Assignments {
+            get {
+                return ResourceManager.GetString("Assignments", resourceCulture);
             }
         }
         
@@ -304,6 +412,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your email has been confirmed..
+        /// </summary>
+        public static string Email_Confirmed {
+            get {
+                return ResourceManager.GetString("Email_Confirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The email is invalid.
         /// </summary>
         public static string Email_Invalid {
@@ -313,11 +430,65 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your email address has not been yet confirmed..
+        /// </summary>
+        public static string Email_NotConfirmed {
+            get {
+                return ResourceManager.GetString("Email_NotConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email is required to send the confirmation and details of a person chosen for you.
         /// </summary>
         public static string Email_Required {
             get {
                 return ResourceManager.GetString("Email_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resend confirmation email.
+        /// </summary>
+        public static string Email_ResendConfirmatioon {
+            get {
+                return ResourceManager.GetString("Email_ResendConfirmatioon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hi {0}! To complete your registration please open following link in your browser: {1}.
+        /// </summary>
+        public static string Email_Verification_Body {
+            get {
+                return ResourceManager.GetString("Email_Verification_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret Santa account creation confirmation.
+        /// </summary>
+        public static string Email_Verification_Subject {
+            get {
+                return ResourceManager.GetString("Email_Verification_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your email has been confirmed..
+        /// </summary>
+        public static string EmailConfirmedMessage {
+            get {
+                return ResourceManager.GetString("EmailConfirmedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This email has been already registered.
+        /// </summary>
+        public static string EmailTaken {
+            get {
+                return ResourceManager.GetString("EmailTaken", resourceCulture);
             }
         }
         
@@ -376,6 +547,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Giver.
+        /// </summary>
+        public static string Giver {
+            get {
+                return ResourceManager.GetString("Giver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go back.
+        /// </summary>
+        public static string GoBack {
+            get {
+                return ResourceManager.GetString("GoBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Witaj.
+        /// </summary>
+        public static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setup.
         /// </summary>
         public static string InitialSetup {
@@ -426,6 +624,24 @@ namespace Resources {
         public static string Logout {
             get {
                 return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The assignment has been already done - you cannot remove your account!.
+        /// </summary>
+        public static string Message_CannotRemoveAccountAfterAssignment {
+            get {
+                return ResourceManager.GetString("Message_CannotRemoveAccountAfterAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The confirmation link was sent to your email address..
+        /// </summary>
+        public static string Message_ResendConfirmation {
+            get {
+                return ResourceManager.GetString("Message_ResendConfirmation", resourceCulture);
             }
         }
         
@@ -511,6 +727,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reason.
+        /// </summary>
+        public static string Reason {
+            get {
+                return ResourceManager.GetString("Reason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have been assigned a recepient! Check the information below and send your gift as soon as you can!.
+        /// </summary>
+        public static string RecepientAssigned {
+            get {
+                return ResourceManager.GetString("RecepientAssigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The recipient also left a note:.
+        /// </summary>
+        public static string RecepientLeftNote {
+            get {
+                return ResourceManager.GetString("RecepientLeftNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipient.
+        /// </summary>
+        public static string Recipient {
+            get {
+                return ResourceManager.GetString("Recipient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registration.
         /// </summary>
         public static string Registration {
@@ -556,6 +808,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I agree to send gift abroad (be aware of potential costs, which might be very high!).
+        /// </summary>
+        public static string SentAbroad {
+            get {
+                return ResourceManager.GetString("SentAbroad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting Name.
         /// </summary>
         public static string SettingName {
@@ -597,6 +858,24 @@ namespace Resources {
         public static string SystemMessage {
             get {
                 return ResourceManager.GetString("SystemMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The confirmation token is invalid..
+        /// </summary>
+        public static string TokenInvalid {
+            get {
+                return ResourceManager.GetString("TokenInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will Send Abroad.
+        /// </summary>
+        public static string WillSendAbroad {
+            get {
+                return ResourceManager.GetString("WillSendAbroad", resourceCulture);
             }
         }
     }

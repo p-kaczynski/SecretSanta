@@ -1,0 +1,87 @@
+﻿@using SecretSanta.Domain.Models
+@model SecretSanta.Domain.Models.AssignmentResult
+
+@helper GenerateRow(Assignment assignment)
+{
+var giver = Model.UserDisplayById[assignment.GiverId];
+var recipient = Model.UserDisplayById[assignment.RecepientId];
+    <tr>
+        <td>@giver.DisplayName</td>
+        <td>@giver.Email</td>
+        <td>@giver.Country</td>
+        <td>@giver.SentAbroad</td>
+        <td>@recipient.DisplayName</td>
+        <td>@recipient.Email</td>
+        <td>@recipient.Country</td>
+        <td>@recipient.SentAbroad</td>
+    </tr>
+}
+
+@helper GenerateRow(Abandoned abandoned)
+{
+var user = Model.UserDisplayById[abandoned.SantaUserId];
+
+    <tr>
+        <td>@user.DisplayName</td>
+        <td>@user.Email</td>
+        <td>@user.Country</td>
+        <td>@user.SentAbroad</td>
+        <td>@abandoned.Reason</td>
+    </tr>
+}
+<table class="table table-striped">
+    <caption>@Resources.Global.Assignments</caption>
+    <thead>
+    <tr>
+        <th colspan="3">@Resources.Global.Giver</th>
+        <th colspan="3">@Resources.Global.Recipient</th>
+    </tr>
+    <tr>
+        <th>@Resources.Global.DisplayName</th>
+        <th>@Resources.Global.Email</th>
+        <th>@Resources.Global.Country</th>
+        <th>@Resources.Global.WillSendAbroad</th>
+        
+        <th>@Resources.Global.DisplayName</th>
+        <th>@Resources.Global.Email</th>
+        <th>@Resources.Global.Country</th>
+        <th>@Resources.Global.WillSendAbroad</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var assignment in Model.Assignments)
+        {
+            @GenerateRow(assignment)
+        }
+    </tbody>
+</table>
+
+@if (Model.Abandoned.Any())
+{
+    <div class="panel panel-warning">
+        <table class="table table-striped">
+            <caption>@Resources.Global.AbandonedUsers</caption>
+            <thead>
+                <tr>
+                    <th>@Resources.Global.DisplayName</th>
+                    <th>@Resources.Global.Email</th>
+                    <th>@Resources.Global.Country</th>
+                    <th>@Resources.Global.WillSendAbroad</th>
+                    <th>@Resources.Global.Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var abandoned in Model.Abandoned)
+                {
+                    @GenerateRow(abandoned)
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="panel panel-success">
+        <p>@Resources.Global.AllUsersMatched</p>
+    </div>
+}

@@ -14,7 +14,11 @@ namespace SecretSanta
             public const string HashSecret = "santa.encryption.hashSecret";
             public const string SaltLength = "santa.user.salt_length";
             public const string DevMode = "santa.dev.devmode";
+            public const string GenerateTestData = "santa.dev.generate_test_data";
             public const string SettingsCacheSeconds = "santa.cache.settings.seconds";
+            public const string DefaultCountryTwoLetterCode = "santa.ui.default_country";
+            public const string UICultureTwoLetterCode = "santa.ui.culture";
+            public const string ResendConfirmationCooldown = "santa.user.resend_confirmation_cooldown_minutes";
         }
 
         public string ConnectionString 
@@ -32,7 +36,17 @@ namespace SecretSanta
 
         public bool DevMode => WebConfigurationManager.AppSettings.GetBoolOrDefault(ConfigKeys.DevMode, false);
 
+        public bool GenerateTestData =>
+            WebConfigurationManager.AppSettings.GetBoolOrDefault(ConfigKeys.GenerateTestData, false);
+
         public TimeSpan SettingCacheTime =>
             TimeSpan.FromSeconds(WebConfigurationManager.AppSettings.GetInt(ConfigKeys.SettingsCacheSeconds, 15));
+
+        public string DefaultCountryTwoLetterCode =>
+            WebConfigurationManager.AppSettings[ConfigKeys.DefaultCountryTwoLetterCode]?.ToLower() ?? "en";
+
+        public string UICultureTwoLetterCode => WebConfigurationManager.AppSettings[ConfigKeys.UICultureTwoLetterCode].ToLower() ?? "en";
+        public TimeSpan ResendConfirmationCooldown =>
+            TimeSpan.FromMinutes(WebConfigurationManager.AppSettings.GetInt(ConfigKeys.ResendConfirmationCooldown, 15));
     }
 }

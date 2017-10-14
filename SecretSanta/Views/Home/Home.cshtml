@@ -1,0 +1,66 @@
+﻿@model SecretSanta.Models.UserHomeViewModel
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName}";
+}
+
+<h2>@Resources.Global.Hello @Model.DisplayName!</h2>
+
+@if (Model.EmailConfirmed)
+{
+    <div class="alert alert-success"><p>@Resources.Global.Email_Confirmed</p></div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <p>@Resources.Global.Email_NotConfirmed</p>
+        @using (Html.BeginForm("ResendConfirmation", "Verification"))
+        {
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn"></button>
+        }
+    </div>
+}
+
+@if (Model.AdminConfirmed)
+{
+    <div class="alert alert-success">
+        <p>@Resources.Global.Admin_Confirmed</p>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning"><p>@Resources.Global.Admin_NotConfirmed</p></div>
+}
+
+@if (Model.EmailConfirmed && Model.AdminConfirmed)
+{
+    if (Model.Assignment == null)
+    {
+        <div class="alert alert-success"><p>@Resources.Global.AllReady</p></div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <p>
+                <span class="text-primary">@Resources.Global.RecepientAssigned</span>
+            </p>
+            <div class="panel panel-success">
+                <address>
+                    <strong>@Model.Assignment.FullName</strong><br/>
+                    @Model.Assignment.AddressLine1<br/>
+                    @Model.Assignment.AddressLine2<br/>
+                    @Model.Assignment.PostalCode @Model.Assignment.City<br/>
+                    @Model.Assignment.Country
+                </address>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(Model.Assignment.Note))
+            {
+                <p>
+                    <span class="text-primary">@Resources.Global.RecepientLeftNote </span>
+                </p>
+                <div class="panel panel-success">@Model.Assignment.Note</div>
+            }
+        </div>
+    }
+}

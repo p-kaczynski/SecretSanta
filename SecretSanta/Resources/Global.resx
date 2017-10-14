@@ -297,4 +297,97 @@
   <data name="SystemMessage" xml:space="preserve">
     <value>Information</value>
   </data>
+  <data name="AccountRemove" xml:space="preserve">
+    <value>Remove Account</value>
+  </data>
+  <data name="AccountRemoveIntro" xml:space="preserve">
+    <value>You are about to delete your account. This action cannot be reversed and you will have to register again. Are you sure?</value>
+  </data>
+  <data name="AccountSettings" xml:space="preserve">
+    <value>Account Settings</value>
+  </data>
+  <data name="EmailTaken" xml:space="preserve">
+    <value>This email has been already registered</value>
+  </data>
+  <data name="GoBack" xml:space="preserve">
+    <value>Go back</value>
+  </data>
+  <data name="Admin_Confirmed" xml:space="preserve">
+    <value>Your account has been approved by an admin.</value>
+  </data>
+  <data name="Admin_NotConfirmed" xml:space="preserve">
+    <value>Your account has not been yet approved by an admin.</value>
+  </data>
+  <data name="AllReady" xml:space="preserve">
+    <value>You are all done - now wait for the assignment of the recepient of your gift.</value>
+  </data>
+  <data name="Assignment" xml:space="preserve">
+    <value>Assign recepients</value>
+  </data>
+  <data name="AssignmentDone" xml:space="preserve">
+    <value>The assignment has been already done.</value>
+  </data>
+  <data name="Email_Confirmed" xml:space="preserve">
+    <value>Your email has been confirmed.</value>
+  </data>
+  <data name="Email_NotConfirmed" xml:space="preserve">
+    <value>Your email address has not been yet confirmed.</value>
+  </data>
+  <data name="Email_ResendConfirmatioon" xml:space="preserve">
+    <value>Resend confirmation email</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Witaj</value>
+  </data>
+  <data name="RecepientAssigned" xml:space="preserve">
+    <value>You have been assigned a recepient! Check the information below and send your gift as soon as you can!</value>
+  </data>
+  <data name="AbandonedUsers" xml:space="preserve">
+    <value>Users that could not be matched</value>
+  </data>
+  <data name="AllUsersMatched" xml:space="preserve">
+    <value>All users were matched!</value>
+  </data>
+  <data name="AssignmentCompleted" xml:space="preserve">
+    <value>Assignment completed</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Assignments</value>
+  </data>
+  <data name="Giver" xml:space="preserve">
+    <value>Giver</value>
+  </data>
+  <data name="Recipient" xml:space="preserve">
+    <value>Recipient</value>
+  </data>
+  <data name="SentAbroad" xml:space="preserve">
+    <value>I agree to send gift abroad (be aware of potential costs, which might be very high!)</value>
+  </data>
+  <data name="WillSendAbroad" xml:space="preserve">
+    <value>Will Send Abroad</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="EmailConfirmedMessage" xml:space="preserve">
+    <value>Your email has been confirmed.</value>
+  </data>
+  <data name="Email_Verification_Body" xml:space="preserve">
+    <value>Hi {0}! To complete your registration please open following link in your browser: {1}</value>
+  </data>
+  <data name="Email_Verification_Subject" xml:space="preserve">
+    <value>Secret Santa account creation confirmation</value>
+  </data>
+  <data name="TokenInvalid" xml:space="preserve">
+    <value>The confirmation token is invalid.</value>
+  </data>
+  <data name="Message_ResendConfirmation" xml:space="preserve">
+    <value>The confirmation link was sent to your email address.</value>
+  </data>
+  <data name="RecepientLeftNote" xml:space="preserve">
+    <value>The recipient also left a note:</value>
+  </data>
+  <data name="Message_CannotRemoveAccountAfterAssignment" xml:space="preserve">
+    <value>The assignment has been already done - you cannot remove your account!</value>
+  </data>
 </root>

@@ -12,7 +12,18 @@ namespace SecretSanta.Common.Interface
         IList<SantaUser> GetAllUsersWithoutProtectedData();
 
         void AdminConfirm(long id);
+        void EmailConfirm(long id);
 
         void DeleteUser(long id);
+
+        bool CheckEmail(string email);
+
+        long? GetAssignedPartnerIdForUser(long id);
+
+        bool WasAssigned();
+
+        AssignmentResult AssignRecipients();
+
+        AssignmentResult GetAssignments();
     }
 }
