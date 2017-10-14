@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -10,10 +9,8 @@ using System.Text;
 using Isopoh.Cryptography.Argon2;
 using Isopoh.Cryptography.SecureArray;
 using JetBrains.Annotations;
-using Microsoft.AspNet.Identity;
 using SecretSanta.Common.Helpers;
 using SecretSanta.Common.Interface;
-using SecretSanta.Domain.Attributes;
 using SecretSanta.Domain.Models;
 
 namespace SecretSanta.Data
@@ -71,8 +68,8 @@ namespace SecretSanta.Data
 
         public void Decrypt<T>(T theModel) where T : ModelBase
             => WithCrypto(theModel,
-                (model, property, encryptor) => property.SetValue(model,
-                    DecryptValue(encryptor, property.GetValue(model) as string)));
+                (model, property, decryptor) => property.SetValue(model,
+                    DecryptValue(decryptor, property.GetValue(model) as string)), decrypt: true);
 
         public byte[] NewSalt()
         {
@@ -134,7 +131,18 @@ namespace SecretSanta.Data
             return false;
         }
 
-        private void WithCrypto<T>(T model, Action<T,PropertyInfo,ICryptoTransform> action) where T : ModelBase
+        public string GetEmailVerificationToken(SantaUser user)
+        {
+            var hmac = new HMACSHA512(_key);
+            var hashBytes = hmac.ComputeHash(Encoding.UTF8.GetBytes($"{user.Id}:{user.Email}"));
+            return string.Join(string.Empty,
+                Enumerable.Range(0, hashBytes.Length / sizeof(long))
+                    .Select(i => BitConverter.ToUInt64(hashBytes, i * sizeof(long))));
+        }
+
+        public bool VerifyEmailVerificationToken(SantaUser user, string token) => token == GetEmailVerificationToken(user);
+
+        private void WithCrypto<T>(T model, Action<T,PropertyInfo,ICryptoTransform> action, bool decrypt = false) where T : ModelBase
         {
             var properties = _propertyCache.GetOrAdd(typeof(T), DataProtection.LoadDataProtectedPropertiesFromType);
             using (var aes = Aes.Create())
@@ -144,12 +152,16 @@ namespace SecretSanta.Data
 
                 aes.IV = FitBytes(model.IV(), aes.BlockSize / 8);
                 aes.Key = _key;
+                aes.Padding = PaddingMode.PKCS7;
 
-                var encryptor = aes.CreateEncryptor(aes.Key
-                    , aes.IV);
+
 
                 foreach (var property in properties)
-                    action(model, property, encryptor);
+                {
+                    var transform = decrypt ? aes.CreateDecryptor(aes.Key, aes.IV) : aes.CreateEncryptor(aes.Key
+                        , aes.IV);
+                    action(model, property, transform);
+                }
             }
         }
 
@@ -168,13 +180,13 @@ namespace SecretSanta.Data
             }
         }
 
-        private static string DecryptValue([NotNull] ICryptoTransform encryptor, [CanBeNull] string value)
+        private static string DecryptValue([NotNull] ICryptoTransform decryptor, [CanBeNull] string value)
         {
             if (string.IsNullOrEmpty(value))
                 return value;
 
             using (var ms = new MemoryStream(Convert.FromBase64String(value)))
-            using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Read))
+            using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
             using (var sr = new StreamReader(cs))
                 return sr.ReadToEnd();
         }

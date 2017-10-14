@@ -3,7 +3,7 @@ using SecretSanta.Domain.Attributes;
 
 namespace SecretSanta.Domain.Models
 {
-    public class SantaUser : ModelBase
+    public class SantaUser : ModelBase, IEquatable<SantaUser>
     {
         public string Email { get; set; }
         public string FacebookProfileUrl { get; set; }
@@ -19,14 +19,32 @@ namespace SecretSanta.Domain.Models
         public string PostalCode { get; set; }
         [DataProtection]
         public string City { get; set; }
-        [DataProtection]
         public string Country { get; set; }
         [DataProtection]
         public string Note { get; set; }
+        public bool SentAbroad { get; set; }
         public bool EmailConfirmed { get; set; }
         public bool AdminConfirmed { get; set; }
         public DateTime CreateDate { get; set; }
 
-        protected override string IVSource => Email + DisplayName;
+        protected override string IVSource => Email.ToLowerInvariant();
+        public bool Equals(SantaUser other)
+        {
+            return Id.Equals(other?.Id);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            return Equals((SantaUser) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            // ReSharper disable once NonReadonlyMemberInGetHashCode - what am  I gonna do. It's id...
+            return Id.GetHashCode();
+        }
     }
 }

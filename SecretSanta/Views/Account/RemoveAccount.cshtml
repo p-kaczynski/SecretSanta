@@ -1,0 +1,18 @@
+﻿@model SecretSanta.Domain.Models.SantaUser
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.AccountSettings}";
+}
+
+<h2>@Resources.Global.AccountSettings</h2>
+
+<div class="alert alert-danger">
+    <p>@Resources.Global.AccountRemoveIntro</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>@Resources.Global.AccountRemove</button>
+        <a href="@Url.Action("Index")" class="btn btn-success">@Resources.Global.GoBack</a>
+    }
+</div>

@@ -9,5 +9,7 @@ namespace SecretSanta.Common.Interface
         byte[] NewSalt();
         byte[] CalculatePasswordHash(string password, byte[] associatedData = null);
         bool VerifyPasswordHash(string password, byte[] storedHash);
+        string GetEmailVerificationToken(SantaUser user);
+        bool VerifyEmailVerificationToken(SantaUser user, string token);
     }
 }

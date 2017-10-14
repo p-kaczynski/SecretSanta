@@ -1,0 +1,6 @@
+﻿@inherits CountryProviderViewPage
+
+@if (Model != null)
+{
+    @CountryProvider.ById[Model.Id].Name
+}

@@ -19,10 +19,12 @@ namespace SecretSanta
         private static void RegisterMappings(IMapperConfigurationExpression cfg)
         {
             var encryptionProvider = DependencyResolver.Current.GetService<IEncryptionProvider>();
+            var countryProvider = DependencyResolver.Current.GetService<CountryProvider>();
 
             cfg.CreateMap<SantaUserPostModel, SantaUser>()
                 .ForMember(dest => dest.PasswordHash,
                     opt => opt.ResolveUsing(post => encryptionProvider.CalculatePasswordHash(post.Password)))
+                .ForMember(dest=>dest.Country, opt=>opt.ResolveUsing(post=>countryProvider.ById[post.Country.Id].ThreeLetterIsoCode))
                 .ForMember(dest=>dest.EmailConfirmed, opt=>opt.Ignore())
                 .ForMember(dest=>dest.AdminConfirmed, opt=>opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
@@ -42,6 +44,12 @@ namespace SecretSanta
                 .ForMember(dest => dest.Password, opt => opt.Ignore());
 
             cfg.CreateMap<ISettingsRepository, SettingsViewModel>();
+
+            cfg.CreateMap<SantaUser, UserHomeViewModel>()
+                .ForMember(dest => dest.Assignment, opt => opt.Ignore());
+
+            cfg.CreateMap<SantaUser, AssignmentViewModel>()
+                .ForMember(dest=>dest.Country, opt=>opt.ResolveUsing(src=>countryProvider.ByThreeLetterCode[src.Country].Name));
         }
     }
 }

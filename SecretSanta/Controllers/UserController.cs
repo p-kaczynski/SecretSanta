@@ -30,6 +30,9 @@ namespace SecretSanta.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RemoveUser(SantaUser user)
         {
+            if (_userRepository.WasAssigned())
+                return View("Message", model: Resources.Global.Message_CannotRemoveAccountAfterAssignment);
+
             _userRepository.DeleteUser(user.Id);
             return RedirectToAction("Index");
         }

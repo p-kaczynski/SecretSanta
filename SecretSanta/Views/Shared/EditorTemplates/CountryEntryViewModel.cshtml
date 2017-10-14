@@ -1,0 +1,3 @@
+﻿@inherits CountryProviderViewPage
+
+@Html.DropDownListFor(x=>x,CountryProvider.ById.Select(kvp=>new SelectListItem{Text = kvp.Value.Name, Value = kvp.Key.ToString(), Selected = Model == null? kvp.Key == CountryProvider.Default.Id : Model.Id == kvp.Key}), new { @class = "form-control" })

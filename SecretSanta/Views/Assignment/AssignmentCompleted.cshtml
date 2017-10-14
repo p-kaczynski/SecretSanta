@@ -1,0 +1,11 @@
+﻿@using SecretSanta.Domain.Models
+@model SecretSanta.Domain.Models.AssignmentResult
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.AssignmentCompleted}";
+}
+
+
+<h2>@Resources.Global.AssignmentCompleted</h2>
+
+@Html.Partial("_AssignmentResult", Model)

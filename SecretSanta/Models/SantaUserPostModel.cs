@@ -59,11 +59,12 @@ namespace SecretSanta.Models
         [StringLength(200, ErrorMessageResourceName = "City_TooLong", ErrorMessageResourceType = typeof(Global))]
         public string City { get; set; }
 
-        [DataType(DataType.Text)]
         [Display(Name = "Country", ResourceType = typeof(Global))]
         [Required(ErrorMessageResourceName = "Country_Required", ErrorMessageResourceType = typeof(Global))]
-        [StringLength(200, ErrorMessageResourceName = "Country_TooLong", ErrorMessageResourceType = typeof(Global))]
-        public string Country { get; set; }
+        public CountryEntryViewModel Country { get; set; }
+
+        [Display(Name="SentAbroad", ResourceType = typeof(Global))]
+        public bool SentAbroad { get; set; }
 
         [DataType(DataType.MultilineText)]
         [Display(Name = "Note", ResourceType = typeof(Global))]

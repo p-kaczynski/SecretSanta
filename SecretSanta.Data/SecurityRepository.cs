@@ -7,7 +7,6 @@ using AutoMapper;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using JetBrains.Annotations;
-using Microsoft.AspNet.Identity;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
 using SecretSanta.Domain.SecurityModels;

@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using AutoMapper;
 using SecretSanta.Common.Interface;
 using SecretSanta.Models;
 

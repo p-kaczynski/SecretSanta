@@ -4,12 +4,9 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.Owin;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using SecretSanta.Common.Interface;
-using SecretSanta.Data;
 using SecretSanta.Domain.SecurityModels;
 using SecretSanta.Security;
 

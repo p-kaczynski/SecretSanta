@@ -1,0 +1,22 @@
+﻿@model SecretSanta.Domain.Models.AssignmentResult
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Assignment}";
+}
+
+<h2>@Resources.Global.Assignment</h2>
+
+@if (Model != null)
+{
+    <div class="alert alert-info"><p>@Resources.Global.AssignmentDone</p></div>
+
+    @Html.Partial("_AssignmentResult", Model)
+}
+ else
+{
+    using (Html.BeginForm("Assign", "Assignment"))
+    {
+     @Html.AntiForgeryToken()
+     <button type="submit" class="btn btn-info">@Resources.Global.Assignment</button>
+ }
+}
