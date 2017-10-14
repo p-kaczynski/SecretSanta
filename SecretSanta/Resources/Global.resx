@@ -390,4 +390,7 @@
   <data name="Message_CannotRemoveAccountAfterAssignment" xml:space="preserve">
     <value>The assignment has been already done - you cannot remove your account!</value>
   </data>
+  <data name="Warning_TestMode" xml:space="preserve">
+    <value>Warning! The app is runing in test mode. All data will be purged before full launch.</value>
+  </data>
 </root>
