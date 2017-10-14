@@ -21,6 +21,7 @@ namespace SecretSanta
             // Must be after DI:
             MappingConfig.Configure();
             BindingConfig.Configure();
+            Log.Info("App is starting.");
         }
 
         protected void Application_Error()
