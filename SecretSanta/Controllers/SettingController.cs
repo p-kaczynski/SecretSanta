@@ -5,7 +5,7 @@ using SecretSanta.Models;
 namespace SecretSanta.Controllers
 {
     [Authorize]
-    public class SettingController : Controller
+    public class SettingController : BaseController
     {
         private readonly ISettingsRepository _settingsRepository;
 

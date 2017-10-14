@@ -6,7 +6,7 @@ using SecretSanta.Models;
 
 namespace SecretSanta.Controllers
 {
-    public class RegistrationController : Controller
+    public class RegistrationController : BaseController
     {
         private readonly IUserRepository _userRepository;
         private readonly ISettingsRepository _settingsRepository;

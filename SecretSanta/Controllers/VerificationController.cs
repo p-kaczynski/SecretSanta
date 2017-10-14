@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using SecretSanta.Common.Interface;
 using SecretSanta.Models;
@@ -7,7 +8,7 @@ using SecretSanta.Security;
 namespace SecretSanta.Controllers
 {
     [Authorize(Roles = SantaUserManager.AdminRole)]
-    public class VerificationController : Controller
+    public class VerificationController : BaseController
     {
         private readonly IUserRepository _userRepository;
 
@@ -32,9 +33,9 @@ namespace SecretSanta.Controllers
                 _userRepository.AdminConfirm(model.Id);
                 result = ConfirmationHelperModel.ConfirmedModel;
             }
-            catch
+            catch(Exception exception)
             {
-                // TODO: Log
+                Log.Error(exception, $"{nameof(AdminConfirmUser)} error while confirming user");
                 result = ConfirmationHelperModel.UnconfirmedModel(model.Id);
             }
             return PartialView("_ConfirmationCell", result);

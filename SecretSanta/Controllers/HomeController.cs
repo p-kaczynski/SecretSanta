@@ -10,7 +10,7 @@ using SecretSanta.Security;
 
 namespace SecretSanta.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly IUserRepository _userRepository;
         private readonly UserManager<SantaSecurityUser, string> _userManager;
@@ -61,6 +61,7 @@ namespace SecretSanta.Controllers
                 if (assignedUser == null)
                 {
                     // TODO: NOTIFY ADMIN - THIS IS BAD
+                    Log.Error($"Tried to retrieve current user id={userId} from repository, but got null");
                     return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
                 }
                 model.Assignment = Mapper.Map<AssignmentViewModel>(assignedUser);
