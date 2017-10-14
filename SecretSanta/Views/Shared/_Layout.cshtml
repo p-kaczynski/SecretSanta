@@ -101,13 +101,14 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>@DateTime.Now.Year - @Resources.Global.SiteName</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    <h1 class="h1 text-danger">@Resources.Global.Warning_TestMode</h1>
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>@DateTime.Now.Year - @Resources.Global.SiteName</p>
+    </footer>
+</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

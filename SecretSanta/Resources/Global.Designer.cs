@@ -871,6 +871,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Warning! The app is runing in test mode. All data will be purged before full launch..
+        /// </summary>
+        public static string Warning_TestMode {
+            get {
+                return ResourceManager.GetString("Warning_TestMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Will Send Abroad.
         /// </summary>
         public static string WillSendAbroad {
