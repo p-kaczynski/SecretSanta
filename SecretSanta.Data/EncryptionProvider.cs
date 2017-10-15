@@ -87,9 +87,9 @@ namespace SecretSanta.Data
             {
                 Type = Argon2Type.DataDependentAddressing,
                 Version = Argon2Version.Nineteen,
-                TimeCost = 10,
+                TimeCost = 3,
                 MemoryCost = 65536,
-                Lanes = 5,
+                Lanes = 4,
                 Threads = Environment.ProcessorCount,
                 Password = passwordBytes,
                 Salt = salt, // >= 8 bytes if not null
@@ -97,7 +97,7 @@ namespace SecretSanta.Data
                 AssociatedData = associatedData, // from item
                 HashLength = 32 // >= 4
             };
-            var argon2A = new Argon2(config);
+            using (var argon2A = new Argon2(config))
             using (var hashA = argon2A.Hash())
             {
                 return Encoding.UTF8.GetBytes(config.EncodeString(hashA.Buffer));
@@ -158,9 +158,11 @@ namespace SecretSanta.Data
 
                 foreach (var property in properties)
                 {
-                    var transform = decrypt ? aes.CreateDecryptor(aes.Key, aes.IV) : aes.CreateEncryptor(aes.Key
-                        , aes.IV);
-                    action(model, property, transform);
+                    using (var transform = decrypt ? aes.CreateDecryptor(aes.Key, aes.IV) : aes.CreateEncryptor(aes.Key, aes.IV))
+                    {
+                        action(model, property, transform);
+                    }
+                    aes.Clear();
                 }
             }
         }
