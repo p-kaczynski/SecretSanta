@@ -6,9 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using Isopoh.Cryptography.Argon2;
-using Isopoh.Cryptography.SecureArray;
 using JetBrains.Annotations;
+using Scrypt;
 using SecretSanta.Common.Helpers;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
@@ -71,64 +70,20 @@ namespace SecretSanta.Data
                 (model, property, decryptor) => property.SetValue(model,
                     DecryptValue(decryptor, property.GetValue(model) as string)), decrypt: true);
 
-        public byte[] NewSalt()
-        {
-            var result = new byte[_saltLength];
-            _rngProvider.GetBytes(result);
-            return result;
-        }
-
         public byte[] CalculatePasswordHash(string password, byte[] associatedData = null)
         {
-            var passwordBytes = Encoding.UTF8.GetBytes(password);
-            var salt = new byte[16];
-            _rngProvider.GetBytes(salt);
-            var config = new Argon2Config
-            {
-                Type = Argon2Type.DataDependentAddressing,
-                Version = Argon2Version.Nineteen,
-                TimeCost = 3,
-                MemoryCost = 65536,
-                Lanes = 4,
-                Threads = Environment.ProcessorCount,
-                Password = passwordBytes,
-                Salt = salt, // >= 8 bytes if not null
-                Secret = _secret, // from config
-                AssociatedData = associatedData, // from item
-                HashLength = 32 // >= 4
-            };
-            using (var argon2A = new Argon2(config))
-            using (var hashA = argon2A.Hash())
-            {
-                return Encoding.UTF8.GetBytes(config.EncodeString(hashA.Buffer));
-            }
+            var encoder = new ScryptEncoder();
+            var hash = encoder.Encode(password);
+
+            return Encoding.UTF8.GetBytes(hash);
         }
 
         public bool VerifyPasswordHash(string password, byte[] storedHash)
         {
-            var passwordBytes = Encoding.UTF8.GetBytes(password);
-            var argonString = Encoding.UTF8.GetString(storedHash);
-            var configOfPasswordToVerify = new Argon2Config
-            {
-                Password = passwordBytes,
-                Secret = _secret,
-                Threads = 1
-            };
-            SecureArray<byte> hashB = null;
-            try
-            {
-                if (configOfPasswordToVerify.DecodeString(argonString, out hashB) && hashB != null)
-                {
-                    var argon2ToVerify = new Argon2(configOfPasswordToVerify);
-                    using (var hashToVerify = argon2ToVerify.Hash())
-                        return !hashB.Buffer.Where((b, i) => b != hashToVerify[i]).Any();
-                }
-            }
-            finally
-            {
-                hashB?.Dispose();
-            }
-            return false;
+            var hashString = Encoding.UTF8.GetString(storedHash);
+
+            var encoder = new ScryptEncoder();
+            return encoder.Compare(password, hashString);
         }
 
         public string GetEmailVerificationToken(SantaUser user)
@@ -162,8 +117,8 @@ namespace SecretSanta.Data
                     {
                         action(model, property, transform);
                     }
-                    aes.Clear();
                 }
+                aes.Clear();
             }
         }
 
