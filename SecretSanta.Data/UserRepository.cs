@@ -4,9 +4,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using JetBrains.Annotations;
 using SecretSanta.Common.Helpers;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
+using SecretSanta.Domain.SecurityModels;
 using Utilities.Collections.Entities;
 using Utilities.Collections.Enumerables;
 
@@ -29,18 +31,20 @@ namespace SecretSanta.Data
             return WithConnection(conn => conn.Insert(user));
         }
 
+        public void SetPassword(PasswordResetModel model) 
+            => WithConnection(conn =>
+            conn.Execute($"UPDATE {nameof(SantaUser)}s SET PasswordHash = @passwordBytes WHERE Id = @userId",
+                new {model.UserId, model.PasswordBytes}));
+
         public bool UpdateUser(SantaUser user)
         {
             _encryptionProvider.Encrypt(user);
             return WithConnection(conn => conn.Update(user));
         }
 
-        public bool CheckEmail(string email)
-        {
-            return WithConnection(conn =>
-                       conn.QuerySingleOrDefault<SantaUser>(
-                           $"SELECT Email FROM {nameof(SantaUser)}s WHERE Email = @email", new {email})) == null;
-        }
+        public bool CheckEmail(string email) 
+            => WithConnection(conn =>conn.QuerySingleOrDefault<SantaUser>(
+                                     $"SELECT Email FROM {nameof(SantaUser)}s WHERE Email = @email", new {email})) == null;
 
         public SantaUser GetUser(long id)
         {
@@ -55,6 +59,16 @@ namespace SecretSanta.Data
         public SantaUser GetUserWithoutProtectedData(long id)
         {
             var model = WithConnection(conn => conn.Get<SantaUser>(id));
+            if (model == null)
+                return null;
+
+            model.ClearDataProtected();
+            return model;
+        }
+
+        public SantaUser GetUserWithoutProtectedDataByEmail([NotNull]string emailAddress)
+        {
+            var model = WithConnection(conn => conn.QuerySingleOrDefault<SantaUser>($"SELECT * FROM {nameof(SantaUser)}s WHERE Email = @emailAddress", new {emailAddress}));
             if (model == null)
                 return null;
 

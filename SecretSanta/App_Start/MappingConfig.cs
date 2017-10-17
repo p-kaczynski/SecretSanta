@@ -50,6 +50,10 @@ namespace SecretSanta
 
             cfg.CreateMap<SantaUser, AssignmentViewModel>()
                 .ForMember(dest=>dest.Country, opt=>opt.ResolveUsing(src=>countryProvider.ByThreeLetterCode[src.Country].Name));
+
+            cfg.CreateMap<PasswordResetViewModel, PasswordResetModel>()
+                .ForMember(dest => dest.PasswordBytes,
+                    opt => opt.ResolveUsing(post => encryptionProvider.CalculatePasswordHash(post.NewPassword)));
         }
     }
 }

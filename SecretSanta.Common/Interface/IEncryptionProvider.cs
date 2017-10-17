@@ -8,7 +8,5 @@ namespace SecretSanta.Common.Interface
         void Encrypt<T>(T theModel) where T : ModelBase;
         byte[] CalculatePasswordHash(string password, byte[] associatedData = null);
         bool VerifyPasswordHash(string password, byte[] storedHash);
-        string GetEmailVerificationToken(SantaUser user);
-        bool VerifyEmailVerificationToken(SantaUser user, string token);
     }
 }

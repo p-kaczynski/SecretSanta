@@ -2,11 +2,17 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Autofac.Features.Indexed;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using SaturnV;
+using SecretSanta.Common;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
+using SecretSanta.Domain.Models.Extensions;
 using SecretSanta.Domain.SecurityModels;
+using SecretSanta.Models;
 using SecretSanta.Security;
 
 namespace SecretSanta.Controllers
@@ -16,15 +22,17 @@ namespace SecretSanta.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly UserManager<SantaSecurityUser, string> _userManager;
-        private readonly IEncryptionProvider _encryptionProvider;
         private readonly IEmailService _emailService;
+        private readonly SecureAccessTokenSource _emailConfirmationTokenSource;
+        private readonly SecureAccessTokenSource _passwordResetTokenSource;
 
-        public AccountController(IUserRepository userRepository, UserManager<SantaSecurityUser, string> userManager, IEncryptionProvider encryptionProvider, IEmailService emailService)
+        public AccountController(IUserRepository userRepository, UserManager<SantaSecurityUser, string> userManager, IEmailService emailService, IIndex<TokenSourceType,SecureAccessTokenSource> satIndex)
         {
             _userRepository = userRepository;
             _userManager = userManager;
-            _encryptionProvider = encryptionProvider;
             _emailService = emailService;
+            _emailConfirmationTokenSource = satIndex[TokenSourceType.EmailConfirmation];
+            _passwordResetTokenSource = satIndex[TokenSourceType.PasswordReset];
         }
 
         [HttpGet]
@@ -100,10 +108,10 @@ namespace SecretSanta.Controllers
 
             var user = _userRepository.GetUserWithoutProtectedData(userId);
             if (user == null)
-                return View("Message", model: Resources.Global.TokenInvalid);
+                return View("Message", model: Resources.Global.PasswordReset_TokenInvalid);
 
-            if (!_encryptionProvider.VerifyEmailVerificationToken(user, token))
-                return View("Message", model:Resources.Global.TokenInvalid);
+            if (!_emailConfirmationTokenSource.Validate(user.GetEmailConfirmationTokenGenerationInputString(), token))
+                return View("Message", model:Resources.Global.PasswordReset_TokenInvalid);
 
             _userRepository.EmailConfirm(userId);
             return View("Message", model:Resources.Global.EmailConfirmedMessage);
@@ -131,6 +139,73 @@ namespace SecretSanta.Controllers
             _emailService.SendConfirmationEmail(domainModel);
 
             return View("Message", model:Resources.Global.Message_ResendConfirmation);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ForgotPassword()
+        {
+            return View(new ForgotPasswordPostModel());
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ForgotPassword(ForgotPasswordPostModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = _userRepository.GetUserWithoutProtectedDataByEmail(model.EmailAddress);
+            if (user == null)
+                return View("Message", model: Resources.Global.PasswordReset_Sent);
+
+            // we have user, so email is ok, send a reset
+            if(_emailService.SendPasswordResetEmail(user))
+                return View("Message", model:Resources.Global.PasswordReset_Sent);
+
+            // error!
+            return View("Message", model: Resources.Global.Email_SendingFailure);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult ResetPassword(long userId, string token)
+        {
+            if (string.IsNullOrWhiteSpace(token))
+                return HttpNotFound();
+
+            var user = _userRepository.GetUserWithoutProtectedData(userId);
+            if (user == null)
+                return View("Message", model: Resources.Global.PasswordReset_TokenInvalid);
+
+            return View(new PasswordResetViewModel { Token = token });
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ResetPassword(PasswordResetViewModel model)
+        {
+            if (model.ConfirmNewPassword != model.NewPassword)
+            {
+                ModelState.AddModelError(nameof(PasswordResetViewModel.ConfirmNewPassword),Resources.Global.PasswordConfirmation_NoMatch);
+                return View(model);
+            }
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var user = _userRepository.GetUserWithoutProtectedData(model.UserId);
+            if (user == null)
+                return View("Message", model: Resources.Global.PasswordReset_TokenInvalid);
+
+            if (!_passwordResetTokenSource.Validate(user.GetPasswordResetTokenGenerationInputString(), model.Token))
+            {
+                ModelState.AddModelError(nameof(PasswordResetViewModel.Token), Resources.Global.PasswordReset_TokenInvalid);
+                return View(model);
+            }
+
+            // all good, reset password
+            _userRepository.SetPassword(Mapper.Map<PasswordResetModel>(model));
+            return View("Message", model: Resources.Global.PasswordReset_Success);
         }
     }
 }
