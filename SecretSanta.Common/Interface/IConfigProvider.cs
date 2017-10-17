@@ -14,5 +14,8 @@ namespace SecretSanta.Common.Interface
         string DefaultCountryTwoLetterCode { get; }
         string UICultureTwoLetterCode { get; }
         TimeSpan ResendConfirmationCooldown { get;}
+        TimeSpan PasswordResetCooldown { get;}
+        TimeSpan PasswordResetValidFor { get; }
+        string SATSecret { get; }
     }
 }

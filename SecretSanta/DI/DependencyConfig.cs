@@ -2,6 +2,8 @@
 using Autofac;
 using Autofac.Integration.Mvc;
 using Microsoft.AspNet.Identity;
+using SaturnV;
+using SecretSanta.Common;
 using SecretSanta.Common.Interface;
 using SecretSanta.Data;
 using SecretSanta.Domain.SecurityModels;
@@ -36,6 +38,31 @@ namespace SecretSanta.DI
             builder.RegisterType<SecurityRepository>().As<ISantaUserStore>().SingleInstance();
             builder.RegisterType<SantaUserManager>().As<UserManager<SantaSecurityUser, string>>().As<ISantaAdminProvider>().SingleInstance();
             builder.RegisterType<EmailService>().As<IEmailService>().SingleInstance();
+
+            // expiry, as needs to expire as password reset links are dangerous
+            builder.Register(context =>
+                {
+                    var config = context.Resolve<IConfigProvider>();
+                    return new SecureAccessTokenSource(new SecureAccessTokenSettings
+                    {
+                        Secret = config.SATSecret,
+                        EnsureAtLeastValidFor = true,
+                        ValidateData = true,
+                        ValidateTime = true,
+                        ValidFor = config.PasswordResetValidFor
+                    });
+                }).Keyed<SecureAccessTokenSource>(TokenSourceType.PasswordReset).SingleInstance();
+
+            // no expiry, just provide a token that can be validated
+            builder.Register(context =>
+                {
+                    var config = context.Resolve<IConfigProvider>();
+                    return new SecureAccessTokenSource(new SecureAccessTokenSettings
+                    {
+                        Secret = config.SATSecret,
+                        ValidateData = true,
+                    });
+                }).Keyed<SecureAccessTokenSource>(TokenSourceType.EmailConfirmation).SingleInstance();
         }
     }
 }

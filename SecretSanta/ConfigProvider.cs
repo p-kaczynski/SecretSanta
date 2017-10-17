@@ -19,6 +19,9 @@ namespace SecretSanta
             public const string DefaultCountryTwoLetterCode = "santa.ui.default_country";
             public const string UICultureTwoLetterCode = "santa.ui.culture";
             public const string ResendConfirmationCooldown = "santa.user.resend_confirmation_cooldown_minutes";
+            public const string PasswordResetCooldown = "santa.user.pasword_reset_cooldown_minutes";
+            public const string PasswordResetValidFor = "santa.user.pasword_reset_valid_minutes";
+            public const string SATSecret = "santa.encryption.sat.secret";
         }
 
         public string ConnectionString 
@@ -45,8 +48,17 @@ namespace SecretSanta
         public string DefaultCountryTwoLetterCode =>
             WebConfigurationManager.AppSettings[ConfigKeys.DefaultCountryTwoLetterCode]?.ToLower() ?? "en";
 
-        public string UICultureTwoLetterCode => WebConfigurationManager.AppSettings[ConfigKeys.UICultureTwoLetterCode].ToLower() ?? "en";
+        public string UICultureTwoLetterCode => WebConfigurationManager.AppSettings[ConfigKeys.UICultureTwoLetterCode]?.ToLower() ?? "en";
         public TimeSpan ResendConfirmationCooldown =>
             TimeSpan.FromMinutes(WebConfigurationManager.AppSettings.GetInt(ConfigKeys.ResendConfirmationCooldown, 15));
+
+        public TimeSpan PasswordResetCooldown 
+            => TimeSpan.FromMinutes(WebConfigurationManager.AppSettings.GetInt(ConfigKeys.PasswordResetCooldown, 15));
+
+        public TimeSpan PasswordResetValidFor 
+            => TimeSpan.FromMinutes(WebConfigurationManager.AppSettings.GetInt(ConfigKeys.PasswordResetValidFor, 120));
+
+        public string SATSecret
+            => WebConfigurationManager.AppSettings[ConfigKeys.SATSecret];
     }
 }
