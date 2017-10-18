@@ -196,7 +196,7 @@
     <value>Note</value>
   </data>
   <data name="Password_Invalid" xml:space="preserve">
-    <value>Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern.</value>
+    <value>Password does not meet the complexity requirements.</value>
   </data>
   <data name="PostalCode" xml:space="preserve">
     <value>Postal Code</value>
@@ -428,5 +428,17 @@
   </data>
   <data name="PasswordReset_Success" xml:space="preserve">
     <value>Password reset succesfully</value>
+  </data>
+  <data name="Email_HelpText" xml:space="preserve">
+    <value>A valid email address</value>
+  </data>
+  <data name="FacebookURL_HelpText" xml:space="preserve">
+    <value>A valid URL to your Facebook profile (including http:// or https://)</value>
+  </data>
+  <data name="Password_HelpText" xml:space="preserve">
+    <value>Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity"&gt;OWASP recommendation&lt;/a&gt; for details.</value>
+  </data>
+  <data name="Registration_FieldsWithAsterisk" xml:space="preserve">
+    <value>Fields with asterisk (*) are required.</value>
   </data>
 </root>

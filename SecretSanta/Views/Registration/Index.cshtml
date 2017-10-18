@@ -14,6 +14,8 @@
     </div>
 }
 
+<p class="text-info">@Resources.Global.Registration_FieldsWithAsterisk</p>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -23,6 +25,7 @@
             @Html.ValidationMessageFor(lambda)
             @Html.LabelFor(lambda)
             @Html.EditorFor(lambda, new{ htmlAttributes = new { @class = "form-control" } })
+            @Html.HelpTextFor(lambda)
         </div>
     }
     @* At this moment I have no idea how to create the above pattern for "any" property type. I don't think it's doable really *@
@@ -30,16 +33,19 @@
         @Html.ValidationMessageFor(m => m.Country)
         @Html.LabelFor(m => m.Country)
         @Html.EditorFor(m => m.Country)
+        @Html.HelpTextFor(m=>m.Country)
     </div>
     <div class="form-group">
         @Html.ValidationMessageFor(m => m.SentAbroad)
         @Html.EditorFor(m => m.SentAbroad)
         @Html.LabelFor(m => m.SentAbroad)
+        @Html.HelpTextFor(m => m.SentAbroad)
     </div>
     <div class="form-group">
         @Html.ValidationMessageFor(m => m.Note)
         @Html.LabelFor(m => m.Note)
         @Html.EditorFor(m => m.Note, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HelpTextFor(m => m.Note)
     </div>
     <button type="submit" class="btn btn-primary">@Resources.Global.Button_Submit</button>
 

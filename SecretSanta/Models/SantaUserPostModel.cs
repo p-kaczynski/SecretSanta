@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Resources;
+using SecretSanta.Models.Attributes;
 using SecretSanta.Models.Validation;
 
 namespace SecretSanta.Models
@@ -7,6 +8,7 @@ namespace SecretSanta.Models
     public class SantaUserPostModel
     {
         [DataType(DataType.EmailAddress)]
+        [HelpText(typeof(Global), "Email_HelpText")]
         [Display(Name = "Email", ResourceType = typeof(Global))]
         [Required(ErrorMessageResourceName = "Email_Required", ErrorMessageResourceType = typeof(Global))]
         [EmailAddress(ErrorMessageResourceName = "Email_Invalid", ErrorMessageResourceType = typeof(Global))]
@@ -14,12 +16,14 @@ namespace SecretSanta.Models
         public string Email { get; set; }
 
         [DataType(DataType.Url)]
+        [HelpText(typeof(Global), "FacebookURL_HelpText")]
         [Display(Name = "FacebookURL", ResourceType = typeof(Global))]
         [Required(ErrorMessageResourceName = "FacebookURL_Required", ErrorMessageResourceType = typeof(Global))]
         [Url(ErrorMessageResourceName = "FacebookURL_Invalid", ErrorMessageResourceType = typeof(Global))]
         public string FacebookProfileUrl { get; set; }
 
         [DataType(DataType.Password)]
+        [HelpText(typeof(Global), "Password_HelpText")]
         [Display(Name = "Password", ResourceType = typeof(Global))]
         [CustomValidation(typeof(CustomValidators), "ValidatePassword", ErrorMessageResourceName = "Password_Invalid", ErrorMessageResourceType = typeof(Global))]
         public string Password { get; set; }

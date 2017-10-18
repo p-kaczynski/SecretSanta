@@ -430,6 +430,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid email address.
+        /// </summary>
+        public static string Email_HelpText {
+            get {
+                return ResourceManager.GetString("Email_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The email is invalid.
         /// </summary>
         public static string Email_Invalid {
@@ -543,6 +552,15 @@ namespace Resources {
         public static string FacebookURL {
             get {
                 return ResourceManager.GetString("FacebookURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid URL to your Facebook profile (including http:// or https://).
+        /// </summary>
+        public static string FacebookURL_HelpText {
+            get {
+                return ResourceManager.GetString("FacebookURL_HelpText", resourceCulture);
             }
         }
         
@@ -754,7 +772,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern..
+        ///   Looks up a localized string similar to Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a href=&quot;https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity&quot;&gt;OWASP recommendation&lt;/a&gt; for details..
+        /// </summary>
+        public static string Password_HelpText {
+            get {
+                return ResourceManager.GetString("Password_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password does not meet the complexity requirements..
         /// </summary>
         public static string Password_Invalid {
             get {
@@ -885,6 +912,15 @@ namespace Resources {
         public static string Registration {
             get {
                 return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fields with asterisk (*) are required..
+        /// </summary>
+        public static string Registration_FieldsWithAsterisk {
+            get {
+                return ResourceManager.GetString("Registration_FieldsWithAsterisk", resourceCulture);
             }
         }
         
