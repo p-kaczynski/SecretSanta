@@ -7,7 +7,7 @@
 
 <h2>@Resources.Global.EditAdmin</h2>
 
-@if (!ViewData.ModelState.IsValid)
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState.Keys.Contains(Constants.GlobalModerError))
 {
     <div class="alert alert-danger" role="alert">
         @Html.ValidationSummary(true)
