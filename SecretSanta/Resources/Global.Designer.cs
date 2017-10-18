@@ -277,6 +277,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string Button_Submit {
+            get {
+                return ResourceManager.GetString("Button_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>
         public static string City {
@@ -439,6 +448,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hi {0}! Click on following link to go to your password reset form. If you have not requested a password reset, you can safely delete this email. The token will be valid for {2} minutes. {1}.
+        /// </summary>
+        public static string Email_PasswordReset_Body {
+            get {
+                return ResourceManager.GetString("Email_PasswordReset_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret Santa Password Reset.
+        /// </summary>
+        public static string Email_PasswordReset_Subject {
+            get {
+                return ResourceManager.GetString("Email_PasswordReset_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email is required to send the confirmation and details of a person chosen for you.
         /// </summary>
         public static string Email_Required {
@@ -457,6 +484,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We were unable to send an email. Please wait 15 minutes and try again, and if you see this message again contact an administrator..
+        /// </summary>
+        public static string Email_SendingFailure {
+            get {
+                return ResourceManager.GetString("Email_SendingFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hi {0}! To complete your registration please open following link in your browser: {1}.
         /// </summary>
         public static string Email_Verification_Body {
@@ -471,6 +507,15 @@ namespace Resources {
         public static string Email_Verification_Subject {
             get {
                 return ResourceManager.GetString("Email_Verification_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The confirmation token is invalid..
+        /// </summary>
+        public static string EmailConfirmation_TokenInvalid {
+            get {
+                return ResourceManager.GetString("EmailConfirmation_TokenInvalid", resourceCulture);
             }
         }
         
@@ -637,6 +682,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Have you forgotten your password?.
+        /// </summary>
+        public static string Menu_ForgotPassword {
+            get {
+                return ResourceManager.GetString("Menu_ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The assignment has been already done - you cannot remove your account!.
         /// </summary>
         public static string Message_CannotRemoveAccountAfterAssignment {
@@ -705,6 +759,60 @@ namespace Resources {
         public static string Password_Invalid {
             get {
                 return ResourceManager.GetString("Password_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password confirmation does not equal password..
+        /// </summary>
+        public static string PasswordConfirmation_NoMatch {
+            get {
+                return ResourceManager.GetString("PasswordConfirmation_NoMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If there is an account registered with provided email address, an email with password reset link was sent to it..
+        /// </summary>
+        public static string PasswordReset_Sent {
+            get {
+                return ResourceManager.GetString("PasswordReset_Sent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password reset succesfully.
+        /// </summary>
+        public static string PasswordReset_Success {
+            get {
+                return ResourceManager.GetString("PasswordReset_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset password.
+        /// </summary>
+        public static string PasswordReset_Title {
+            get {
+                return ResourceManager.GetString("PasswordReset_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password reset token.
+        /// </summary>
+        public static string PasswordReset_Token_Display {
+            get {
+                return ResourceManager.GetString("PasswordReset_Token_Display", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password reset token is invalid or has expired..
+        /// </summary>
+        public static string PasswordReset_TokenInvalid {
+            get {
+                return ResourceManager.GetString("PasswordReset_TokenInvalid", resourceCulture);
             }
         }
         
@@ -867,15 +975,6 @@ namespace Resources {
         public static string SystemMessage {
             get {
                 return ResourceManager.GetString("SystemMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The confirmation token is invalid..
-        /// </summary>
-        public static string TokenInvalid {
-            get {
-                return ResourceManager.GetString("TokenInvalid", resourceCulture);
             }
         }
         

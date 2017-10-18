@@ -5,7 +5,8 @@ namespace SecretSanta.Common.Interface
     public interface IEmailService
     {
         bool SendConfirmationEmail(SantaUser user);
-        void SendAssignmentEmail(SantaUser user, SantaUser target);
-        void SendAbandonmentEmail(SantaUser user);
+        bool SendPasswordResetEmail(SantaUser user);
+        bool SendAssignmentEmail(SantaUser user, SantaUser target);
+        bool SendAbandonmentEmail(SantaUser user);
     }
 }

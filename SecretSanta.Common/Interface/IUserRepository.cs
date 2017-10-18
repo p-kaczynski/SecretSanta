@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SecretSanta.Domain.Models;
+using SecretSanta.Domain.SecurityModels;
 
 namespace SecretSanta.Common.Interface
 {
@@ -7,8 +8,10 @@ namespace SecretSanta.Common.Interface
     {
         SantaUser GetUser(long id);
         long InsertUser(SantaUser user);
+        void SetPassword(PasswordResetModel model);
 
         SantaUser GetUserWithoutProtectedData(long id);
+        SantaUser GetUserWithoutProtectedDataByEmail(string emailAddress);
         IList<SantaUser> GetAllUsersWithoutProtectedData();
 
         void AdminConfirm(long id);

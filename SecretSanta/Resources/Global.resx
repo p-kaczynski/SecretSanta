@@ -378,7 +378,7 @@
   <data name="Email_Verification_Subject" xml:space="preserve">
     <value>Secret Santa account creation confirmation</value>
   </data>
-  <data name="TokenInvalid" xml:space="preserve">
+  <data name="EmailConfirmation_TokenInvalid" xml:space="preserve">
     <value>The confirmation token is invalid.</value>
   </data>
   <data name="Message_ResendConfirmation" xml:space="preserve">
@@ -395,5 +395,38 @@
   </data>
   <data name="Warning_TestMode" xml:space="preserve">
     <value>Warning! The app is runing in test mode. All data will be purged before full launch.</value>
+  </data>
+  <data name="Button_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="PasswordConfirmation_NoMatch" xml:space="preserve">
+    <value>The password confirmation does not equal password.</value>
+  </data>
+  <data name="PasswordReset_Title" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="PasswordReset_TokenInvalid" xml:space="preserve">
+    <value>The password reset token is invalid or has expired.</value>
+  </data>
+  <data name="PasswordReset_Token_Display" xml:space="preserve">
+    <value>Password reset token</value>
+  </data>
+  <data name="Email_PasswordReset_Body" xml:space="preserve">
+    <value>Hi {0}! Click on following link to go to your password reset form. If you have not requested a password reset, you can safely delete this email. The token will be valid for {2} minutes. {1}</value>
+  </data>
+  <data name="Email_PasswordReset_Subject" xml:space="preserve">
+    <value>Secret Santa Password Reset</value>
+  </data>
+  <data name="Email_SendingFailure" xml:space="preserve">
+    <value>We were unable to send an email. Please wait 15 minutes and try again, and if you see this message again contact an administrator.</value>
+  </data>
+  <data name="Menu_ForgotPassword" xml:space="preserve">
+    <value>Have you forgotten your password?</value>
+  </data>
+  <data name="PasswordReset_Sent" xml:space="preserve">
+    <value>If there is an account registered with provided email address, an email with password reset link was sent to it.</value>
+  </data>
+  <data name="PasswordReset_Success" xml:space="preserve">
+    <value>Password reset succesfully</value>
   </data>
 </root>

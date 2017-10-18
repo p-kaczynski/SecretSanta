@@ -86,17 +86,6 @@ namespace SecretSanta.Data
             return encoder.Compare(password, hashString);
         }
 
-        public string GetEmailVerificationToken(SantaUser user)
-        {
-            var hmac = new HMACSHA512(_key);
-            var hashBytes = hmac.ComputeHash(Encoding.UTF8.GetBytes($"{user.Id}:{user.Email}"));
-            return string.Join(string.Empty,
-                Enumerable.Range(0, hashBytes.Length / sizeof(long))
-                    .Select(i => BitConverter.ToUInt64(hashBytes, i * sizeof(long))));
-        }
-
-        public bool VerifyEmailVerificationToken(SantaUser user, string token) => token == GetEmailVerificationToken(user);
-
         private void WithCrypto<T>(T model, Action<T,PropertyInfo,ICryptoTransform> action, bool decrypt = false) where T : ModelBase
         {
             var properties = _propertyCache.GetOrAdd(typeof(T), DataProtection.LoadDataProtectedPropertiesFromType);
