@@ -1,14 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Web.Mvc;
+using YourPasswordSucks;
 
 namespace SecretSanta.Models.Validation
 {
     public static class CustomValidators
     {
-        private static readonly YourPasswordSucks.PasswordValidator Validator = new YourPasswordSucks.PasswordValidator();
         public static ValidationResult ValidatePassword(string password)
         {
-            var result = Validator.Validate(password);
+            var validator = DependencyResolver.Current.GetService<PasswordValidator>();
+            var result = validator.Validate(password);
             if(result.Success)
                 return ValidationResult.Success;
             return new ValidationResult(result.Message);
