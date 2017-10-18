@@ -17,5 +17,6 @@ namespace SecretSanta.Common.Interface
         TimeSpan PasswordResetCooldown { get;}
         TimeSpan PasswordResetValidFor { get; }
         string SATSecret { get; }
+        int MinimumPasswordLength { get; }
     }
 }
