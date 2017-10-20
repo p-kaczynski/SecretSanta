@@ -62,9 +62,9 @@ namespace SecretSanta.Controllers
             return _userManager.CreateAsync(santaAdmin);
         }
 
-        private static readonly SantaUserPostModel[] TestUsers =
+        private static readonly RegistrationPostModel[] TestUsers =
         {
-            new SantaUserPostModel
+            new RegistrationPostModel
             {
                 DisplayName = "Janusz Maj",
                 Email = "janusz.maj@example.local",
@@ -79,7 +79,7 @@ namespace SecretSanta.Controllers
                 Note = "Bardzo lubię naleśniki",
                 SentAbroad = true
             },
-            new SantaUserPostModel
+            new RegistrationPostModel
             {
                 DisplayName = "Zenek",
                 Email = "z.kowalski@example.local",
@@ -94,7 +94,7 @@ namespace SecretSanta.Controllers
                 Note = "Chciałbym kucyka",
                 SentAbroad = true
             },
-            new SantaUserPostModel
+            new RegistrationPostModel
             {
                 DisplayName = "Ania",
                 Email = "anna.radosc@example.local",
@@ -109,7 +109,7 @@ namespace SecretSanta.Controllers
                 Note = "Chciałbym kucyka",
                 SentAbroad = false
             },
-            new SantaUserPostModel
+            new RegistrationPostModel
             {
                 DisplayName = "TęgiRuchacz",
                 Email = "prezes.nowak@example.local",
@@ -124,7 +124,7 @@ namespace SecretSanta.Controllers
                 Note = "Nie wiem co tu wpisać",
                 SentAbroad = false
             },
-            new SantaUserPostModel
+            new RegistrationPostModel
             {
                 DisplayName = "xxxtentatcion",
                 Email = "mirek@example.local",
@@ -138,7 +138,7 @@ namespace SecretSanta.Controllers
                 Note = "kończą mi się pomysły",
                 SentAbroad = true
             },
-            new SantaUserPostModel
+            new RegistrationPostModel
             {
                 DisplayName = "stasiek",
                 Email = "szagran@example.local",
@@ -152,7 +152,7 @@ namespace SecretSanta.Controllers
                 Note = "ile można xD",
                 SentAbroad = false
             },
-            new SantaUserPostModel
+            new RegistrationPostModel
             {
                 DisplayName = "iza12",
                 Email = "izabellla@example.local",
@@ -166,7 +166,7 @@ namespace SecretSanta.Controllers
                 Note = "Jedna osoba we francji",
                 SentAbroad = false
             },
-            new SantaUserPostModel
+            new RegistrationPostModel
             {
                 DisplayName = "panjanek",
                 Email = "janek@example.local",

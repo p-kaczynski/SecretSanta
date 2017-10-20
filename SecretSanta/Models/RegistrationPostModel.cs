@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Resources;
 using SecretSanta.Models.Attributes;
+using SecretSanta.Models.Validation;
 
 namespace SecretSanta.Models
 {
-    public class SantaUserPostModel
+    public class RegistrationPostModel
     {
         [DataType(DataType.EmailAddress)]
         [HelpText(typeof(Global), "Email_HelpText")]
@@ -12,7 +13,6 @@ namespace SecretSanta.Models
         [Required(ErrorMessageResourceName = "Email_Required", ErrorMessageResourceType = typeof(Global))]
         [EmailAddress(ErrorMessageResourceName = "Email_Invalid", ErrorMessageResourceType = typeof(Global))]
         [StringLength(254, ErrorMessageResourceName = "Email_Invalid", ErrorMessageResourceType = typeof(Global))]
-
         public string Email { get; set; }
 
         [DataType(DataType.Url)]
@@ -21,6 +21,12 @@ namespace SecretSanta.Models
         [Required(ErrorMessageResourceName = "FacebookURL_Required", ErrorMessageResourceType = typeof(Global))]
         [Url(ErrorMessageResourceName = "FacebookURL_Invalid", ErrorMessageResourceType = typeof(Global))]
         public string FacebookProfileUrl { get; set; }
+
+        [DataType(DataType.Password)]
+        [HelpText(typeof(Global), "Password_HelpText")]
+        [Display(Name = "Password", ResourceType = typeof(Global))]
+        [CustomValidation(typeof(CustomValidators), "ValidatePassword", ErrorMessageResourceName = "Password_Invalid", ErrorMessageResourceType = typeof(Global))]
+        public string Password { get; set; }
 
         [DataType(DataType.Text)]
         [Display(Name = "DisplayName", ResourceType = typeof(Global))]
@@ -61,11 +67,12 @@ namespace SecretSanta.Models
         [Required(ErrorMessageResourceName = "Country_Required", ErrorMessageResourceType = typeof(Global))]
         public CountryEntryViewModel Country { get; set; }
 
-        [Display(Name = "SentAbroad", ResourceType = typeof(Global))]
+        [Display(Name="SentAbroad", ResourceType = typeof(Global))]
         public bool SentAbroad { get; set; }
 
         [DataType(DataType.MultilineText)]
         [Display(Name = "Note", ResourceType = typeof(Global))]
         public string Note { get; set; }
+
     }
 }

@@ -8,6 +8,7 @@ namespace SecretSanta.Common.Interface
     {
         SantaUser GetUser(long id);
         long InsertUser(SantaUser user);
+        void Updateuser(SantaUser updateUser);
         void SetPassword(PasswordResetModel model);
 
         SantaUser GetUserWithoutProtectedData(long id);

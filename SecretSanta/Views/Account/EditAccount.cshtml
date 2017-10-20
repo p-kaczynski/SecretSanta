@@ -1,30 +1,21 @@
 ﻿@using SecretSanta.Models
-@model SecretSanta.Models.RegistrationPostModel
+@model SecretSanta.Models.SantaUserPostModel
 
 @{
-    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Registration}";
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.User_Edit_Title}";
 }
 
-<h2>@Resources.Global.Registration</h2>
-
-@if (!ViewData.ModelState.IsValid && ViewData.ModelState.Keys.Contains(Constants.GlobalModerError))
-{
-    <div class="alert alert-danger" role="alert">
-        @Html.ValidationSummary(true)
-    </div>
-}
-
-<p class="text-info">@Resources.Global.Registration_FieldsWithAsterisk</p>
+<h2>@Resources.Global.User_Edit_Title</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    foreach(var lambda in ModelHelper.SelectProperties<RegistrationPostModel>(m => m.DisplayName, m => m.Email, m=>m.FacebookProfileUrl, m => m.Password, m => m.FullName, m => m.AddressLine1, m => m.AddressLine2, m => m.PostalCode, m => m.City))
+    foreach (var lambda in ModelHelper.SelectProperties<SantaUserPostModel>(m => m.DisplayName, m => m.Email, m => m.FacebookProfileUrl, m => m.FullName, m => m.AddressLine1, m => m.AddressLine2, m => m.PostalCode, m => m.City))
     {
         <div class="form-group">
             @Html.ValidationMessageFor(lambda)
             @Html.LabelFor(lambda)
-            @Html.EditorFor(lambda, new{ htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(lambda, new { htmlAttributes = new { @class = "form-control" } })
             @Html.HelpTextFor(lambda)
         </div>
     }
@@ -33,7 +24,7 @@
         @Html.ValidationMessageFor(m => m.Country)
         @Html.LabelFor(m => m.Country)
         @Html.EditorFor(m => m.Country)
-        @Html.HelpTextFor(m=>m.Country)
+        @Html.HelpTextFor(m => m.Country)
     </div>
     <div class="form-group">
         @Html.ValidationMessageFor(m => m.SentAbroad)
@@ -48,5 +39,4 @@
         @Html.HelpTextFor(m => m.Note)
     </div>
     <button type="submit" class="btn btn-primary">@Resources.Global.Button_Submit</button>
-
 }

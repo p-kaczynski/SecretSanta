@@ -1,4 +1,4 @@
-﻿@model SecretSanta.Domain.Models.SantaUser
+﻿@model SecretSanta.Models.SantaUserViewModel
 
 @{
     ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.AccountSettings}";
@@ -10,7 +10,6 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>@Html.DisplayNameFor(m => m.Id)</th>
                 <th>@Html.DisplayNameFor(m => m.DisplayName)</th>
                 <th>@Html.DisplayNameFor(m => m.Email)</th>
                 <th>@Html.DisplayNameFor(m => m.FacebookProfileUrl)</th>
@@ -21,11 +20,12 @@
                 <th>@Html.DisplayNameFor(m => m.City)</th>
                 <th>@Html.DisplayNameFor(m => m.Country)</th>
                 <th>@Html.DisplayNameFor(m => m.Note)</th>
+                <th>@Html.DisplayNameFor(m => m.EmailConfirmed)</th>
+                <th>@Html.DisplayNameFor(m => m.AdminConfirmed)</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>@Html.DisplayFor(m=>m.Id)</td>
                 <td>@Html.DisplayFor(m => m.DisplayName)</td>
                 <td>@Html.DisplayFor(m => m.Email, "_EmailCensored")</td>
                 <td><a href="@Model.FacebookProfileUrl">@Model.FacebookProfileUrl</a></td>
@@ -36,8 +36,37 @@
                 <td>@Html.DisplayFor(m => m.City)</td>
                 <td>@Html.DisplayFor(m => m.Country)</td>
                 <td>@Html.DisplayFor(m => m.Note)</td>
+                @if (Model.EmailConfirmed)
+                {
+                    <td class="success">
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        <span class="sr-only">Confirmed</span>
+                    </td>
+                }
+                else
+                {
+                    <td class="warning">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="sr-only">Not confirmed</span>
+                    </td>
+                }
+                @if (Model.AdminConfirmed)
+                {
+                    <td class="success">
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        <span class="sr-only">Confirmed</span>
+                    </td>
+                }
+                else
+                {
+                    <td class="warning">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="sr-only">Not confirmed</span>
+                    </td>
+                }
             </tr>
         </tbody>
     </table>
+    <a href="@Url.Action("EditAccount")" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span>@Resources.Global.User_View_Edit</a>
     <a href="@Url.Action("RemoveAccount")" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>@Resources.Global.RemoveUser</a>
 </div>

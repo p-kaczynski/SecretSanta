@@ -24,14 +24,14 @@ namespace SecretSanta.Controllers
         public ActionResult Index()
         {
             if(_settingsRepository.RegistrationOpen)
-                return View(new SantaUserPostModel());
+                return View(new RegistrationPostModel());
             return View("Message", model:Resources.Global.RegistrationClosed);
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(SantaUserPostModel model)
+        public ActionResult Index(RegistrationPostModel model)
         {
             if(!_settingsRepository.RegistrationOpen)
                 return View("Message", model:Resources.Global.RegistrationClosed);

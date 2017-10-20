@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using Autofac.Features.Indexed;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using SaturnV;
 using SecretSanta.Common;
 using SecretSanta.Common.Interface;
@@ -47,7 +46,14 @@ namespace SecretSanta.Controllers
                 return RedirectToAction("Index", "Home");
 
             var santaUser = _userRepository.GetUser(userId);
-            return View(santaUser);
+            if (santaUser == null)
+            {
+                // TODO: Notify admin
+                Log.Error($"Cannot load a user id={userId}");
+                return HttpNotFound();
+            }
+            var model = Mapper.Map<SantaUserViewModel>(santaUser);
+            return View(model);
         }
 
         [HttpGet]
@@ -62,7 +68,7 @@ namespace SecretSanta.Controllers
                 return RedirectToAction("Index", "Home");
 
             var santaUser = _userRepository.GetUser(userId);
-            // TODO: change to a viewmodel...
+           
             return View(santaUser);
         }
 
@@ -206,6 +212,41 @@ namespace SecretSanta.Controllers
             // all good, reset password
             _userRepository.SetPassword(Mapper.Map<PasswordResetModel>(model));
             return View("Message", model: Resources.Global.PasswordReset_Success);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> EditAccount()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+                return HttpNotFound();
+
+            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
+            if (isAdmin)
+                return RedirectToAction("Index", "Home");
+
+            var santaUser = _userRepository.GetUser(userId);
+            SantaUserPostModel model = Mapper.Map<SantaUserViewModel>(santaUser);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditAccount(SantaUserPostModel model)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+                return HttpNotFound();
+
+            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
+            if (isAdmin)
+                return RedirectToAction("Index", "Home");
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var updateModel = Mapper.Map<SantaUser>(model);
+            updateModel.Id = userId;
         }
     }
 }
