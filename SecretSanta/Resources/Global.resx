@@ -441,4 +441,16 @@
   <data name="Registration_FieldsWithAsterisk" xml:space="preserve">
     <value>Fields with asterisk (*) are required.</value>
   </data>
+  <data name="User_Edit_Title" xml:space="preserve">
+    <value>Edit Account</value>
+  </data>
+  <data name="User_View_AdminConfirmed" xml:space="preserve">
+    <value>Confirmed by admin</value>
+  </data>
+  <data name="User_View_Edit" xml:space="preserve">
+    <value>Edit account</value>
+  </data>
+  <data name="User_View_EmailConfirmed" xml:space="preserve">
+    <value>Email confirmed</value>
+  </data>
 </root>

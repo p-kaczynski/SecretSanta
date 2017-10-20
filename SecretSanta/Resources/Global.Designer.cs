@@ -1015,6 +1015,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Account.
+        /// </summary>
+        public static string User_Edit_Title {
+            get {
+                return ResourceManager.GetString("User_Edit_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmed by admin.
+        /// </summary>
+        public static string User_View_AdminConfirmed {
+            get {
+                return ResourceManager.GetString("User_View_AdminConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit account.
+        /// </summary>
+        public static string User_View_Edit {
+            get {
+                return ResourceManager.GetString("User_View_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email confirmed.
+        /// </summary>
+        public static string User_View_EmailConfirmed {
+            get {
+                return ResourceManager.GetString("User_View_EmailConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warning! The app is runing in test mode. All data will be purged before full launch..
         /// </summary>
         public static string Warning_TestMode {
