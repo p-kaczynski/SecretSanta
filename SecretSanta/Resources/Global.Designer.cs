@@ -718,6 +718,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something went wrong!.
+        /// </summary>
+        public static string Message_Error {
+            get {
+                return ResourceManager.GetString("Message_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The confirmation link was sent to your email address..
         /// </summary>
         public static string Message_ResendConfirmation {
@@ -871,6 +880,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        public static string PrivacyPolicy {
+            get {
+                return ResourceManager.GetString("PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reason.
         /// </summary>
         public static string Reason {
@@ -921,6 +939,33 @@ namespace Resources {
         public static string Registration_FieldsWithAsterisk {
             get {
                 return ResourceManager.GetString("Registration_FieldsWithAsterisk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I agree.
+        /// </summary>
+        public static string Registration_Form_Agreement {
+            get {
+                return ResourceManager.GetString("Registration_Form_Agreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must agree to the privacy policy..
+        /// </summary>
+        public static string Registration_Form_Agreement_Error {
+            get {
+                return ResourceManager.GetString("Registration_Form_Agreement_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I understand and agree to the {0}.
+        /// </summary>
+        public static string Registration_Form_Agreement_HelpText {
+            get {
+                return ResourceManager.GetString("Registration_Form_Agreement_HelpText", resourceCulture);
             }
         }
         
@@ -1015,11 +1060,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update succesful. Because you have changed your email, a confirmation link has been sent to provided address: {0}. You must also sign-in again!.
+        /// </summary>
+        public static string User_Edit_EmailSent {
+            get {
+                return ResourceManager.GetString("User_Edit_EmailSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Account.
         /// </summary>
         public static string User_Edit_Title {
             get {
                 return ResourceManager.GetString("User_Edit_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning, changing your data will revoke the admin confirmation of your account. Also, changing your email address will revoke the email confirmation!.
+        /// </summary>
+        public static string User_Edit_Warning {
+            get {
+                return ResourceManager.GetString("User_Edit_Warning", resourceCulture);
             }
         }
         

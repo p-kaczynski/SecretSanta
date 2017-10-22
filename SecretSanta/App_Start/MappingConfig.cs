@@ -62,16 +62,16 @@ namespace SecretSanta
             cfg.CreateMap<SantaUserPostModel, SantaUser>()
                 // let's do explicit for safety
                 .ForMember(dest => dest.DisplayName, opt=>opt.MapFrom(src => src.DisplayName))
-                .ForMember(dest => dest.DisplayName, opt=>opt.MapFrom(src => src.Email))
-                .ForMember(dest => dest.DisplayName, opt=>opt.MapFrom(src => src.FacebookProfileUrl))
-                .ForMember(dest => dest.DisplayName, opt=>opt.MapFrom(src => src.FullName))
-                .ForMember(dest => dest.DisplayName, opt=>opt.MapFrom(src => src.AddressLine1))
-                .ForMember(dest => dest.DisplayName, opt=>opt.MapFrom(src => src.AddressLine2))
-                .ForMember(dest => dest.DisplayName, opt=>opt.MapFrom(src => src.City))
-                .ForMember(dest => dest.DisplayName, opt=>opt.MapFrom(src => src.PostalCode))
+                .ForMember(dest => dest.Email, opt=>opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.FacebookProfileUrl, opt=>opt.MapFrom(src => src.FacebookProfileUrl))
+                .ForMember(dest => dest.FullName, opt=>opt.MapFrom(src => src.FullName))
+                .ForMember(dest => dest.AddressLine1, opt=>opt.MapFrom(src => src.AddressLine1))
+                .ForMember(dest => dest.AddressLine2, opt=>opt.MapFrom(src => src.AddressLine2))
+                .ForMember(dest => dest.City, opt=>opt.MapFrom(src => src.City))
+                .ForMember(dest => dest.PostalCode, opt=>opt.MapFrom(src => src.PostalCode))
                 .ForMember(dest => dest.Country, opt => opt.ResolveUsing(post => countryProvider.ById[post.Country.Id].ThreeLetterIsoCode))
-                .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.SentAbroad))
-                .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.Note))
+                .ForMember(dest => dest.SentAbroad, opt => opt.MapFrom(src => src.SentAbroad))
+                .ForMember(dest => dest.Note, opt => opt.MapFrom(src => src.Note))
                 .ForAllOtherMembers(opt=>opt.Ignore());
         }
     }

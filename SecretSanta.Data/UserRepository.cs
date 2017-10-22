@@ -11,6 +11,7 @@ using SecretSanta.Domain.Models;
 using SecretSanta.Domain.SecurityModels;
 using Utilities.Collections.Entities;
 using Utilities.Collections.Enumerables;
+using SecretSanta.Common.Result;
 
 namespace SecretSanta.Data
 {
@@ -25,10 +26,59 @@ namespace SecretSanta.Data
             _connectionString = configProvider.ConnectionString;
         }
 
-        public long InsertUser(SantaUser user)
+        public long InsertUser([NotNull] SantaUser user)
         {
             _encryptionProvider.Encrypt(user);
             return WithConnection(conn => conn.Insert(user));
+        }
+
+        public UserEditResult UpdateUser([NotNull] SantaUser updateUser)
+        {
+            var emailChanged = !updateUser.Email.Equals(
+                WithConnection(conn => conn.Get<SantaUser>(updateUser.Id)).Email, StringComparison.OrdinalIgnoreCase);
+
+            if(emailChanged && !CheckEmail(updateUser.Email))
+                    return new UserEditResult{EmailChanged = true, EmailUnavailable = true, Success = false};
+
+            _encryptionProvider.Encrypt(updateUser);
+
+            WithConnection(conn =>
+                    conn.Execute($"UPDATE [dbo].[{nameof(SantaUser)}s]   SET " +
+                                 "[Email] = @Email " +
+                                 "     ,[FacebookProfileUrl] = @FacebookProfileUrl" +
+                                 "      ,[DisplayName] = @DisplayName" +
+                                 "      ,[FullName] = @FullName" +
+                                 "      ,[AddressLine1] = @AddressLine1" +
+                                 "      ,[AddressLine2] = @AddressLine2" +
+                                 "      ,[PostalCode] = @PostalCode" +
+                                 "      ,[City] = @City" +
+                                 "      ,[Country] = @Country" +
+                                 "      ,[SentAbroad] = @SentAbroad" +
+                                 "      ,[Note] = @Note " +
+                                 "      ,[AdminConfirmed] = 0 " +
+                                 "WHERE [Id] = @Id",
+                new
+                {
+                    updateUser.Id,
+                    updateUser.Email,
+                    updateUser.FacebookProfileUrl,
+                    updateUser.DisplayName,
+                    updateUser.FullName,
+                    updateUser.AddressLine1,
+                    updateUser.AddressLine2,
+                    updateUser.PostalCode,
+                    updateUser.City,
+                    updateUser.Country,
+                    updateUser.SentAbroad,
+                    updateUser.Note
+                }));
+
+
+            if (emailChanged)
+                WithConnection(conn =>
+                    conn.Execute($"UPDATE [dbo].[{nameof(SantaUser)}s]   SET [EmailConfirmed] = 0"));
+
+            return new UserEditResult{Success = true, EmailChanged = emailChanged};
         }
 
         public void SetPassword(PasswordResetModel model) 
@@ -36,11 +86,6 @@ namespace SecretSanta.Data
             conn.Execute($"UPDATE {nameof(SantaUser)}s SET PasswordHash = @passwordBytes WHERE Id = @userId",
                 new {model.UserId, model.PasswordBytes}));
 
-        public bool UpdateUser(SantaUser user)
-        {
-            _encryptionProvider.Encrypt(user);
-            return WithConnection(conn => conn.Update(user));
-        }
 
         public bool CheckEmail(string email) 
             => WithConnection(conn =>conn.QuerySingleOrDefault<SantaUser>(

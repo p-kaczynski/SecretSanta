@@ -101,3 +101,5 @@ textarea {
         transform: rotate(0deg);
     }
 }
+
+span.field-validation-error { color: red; }

@@ -38,6 +38,7 @@ namespace SecretSanta.Controllers
 
             if (!ModelState.IsValid)
             {
+                model.Password = null;
                 return View(model);
             }
 
@@ -45,6 +46,7 @@ namespace SecretSanta.Controllers
             if (!_userRepository.CheckEmail(model.Email))
             {
                 ModelState.AddModelError(nameof(SantaUser.Email), Resources.Global.EmailTaken);
+                model.Password = null;
                 return View(model);
             }
 
@@ -54,7 +56,7 @@ namespace SecretSanta.Controllers
             
             _emailService.SendConfirmationEmail(domainModel);
 
-            return View("Confirmation", (object)model.Email);
+            return View("Confirmation", model: model.Email);
         }
     }
 }

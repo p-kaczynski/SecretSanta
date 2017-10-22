@@ -74,5 +74,9 @@ namespace SecretSanta.Models
         [Display(Name = "Note", ResourceType = typeof(Global))]
         public string Note { get; set; }
 
+        [Range(typeof(bool), "true", "true", ErrorMessageResourceName= "Registration_Form_Agreement_Error", ErrorMessageResourceType = typeof(Global))]
+        [Display(Name = "Registration_Form_Agreement", ResourceType = typeof(Global))]
+        public bool DataProtectionPolicyAgreement { get; set; }
+
     }
 }
