@@ -453,4 +453,25 @@
   <data name="User_View_EmailConfirmed" xml:space="preserve">
     <value>Email confirmed</value>
   </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>Something went wrong!</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Registration_Form_Agreement" xml:space="preserve">
+    <value>I agree</value>
+  </data>
+  <data name="Registration_Form_Agreement_HelpText" xml:space="preserve">
+    <value>I understand and agree to the {0}</value>
+  </data>
+  <data name="User_Edit_EmailSent" xml:space="preserve">
+    <value>Update succesful. Because you have changed your email, a confirmation link has been sent to provided address: {0}. You must also sign-in again!</value>
+  </data>
+  <data name="User_Edit_Warning" xml:space="preserve">
+    <value>Warning, changing your data will revoke the admin confirmation of your account. Also, changing your email address will revoke the email confirmation!</value>
+  </data>
+  <data name="Registration_Form_Agreement_Error" xml:space="preserve">
+    <value>You must agree to the privacy policy.</value>
+  </data>
 </root>

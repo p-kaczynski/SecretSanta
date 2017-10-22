@@ -114,10 +114,10 @@ namespace SecretSanta.Controllers
 
             var user = _userRepository.GetUserWithoutProtectedData(userId);
             if (user == null)
-                return View("Message", model: Resources.Global.PasswordReset_TokenInvalid);
+                return View("Message", model: Resources.Global.EmailConfirmation_TokenInvalid);
 
             if (!_emailConfirmationTokenSource.Validate(user.GetEmailConfirmationTokenGenerationInputString(), token))
-                return View("Message", model:Resources.Global.PasswordReset_TokenInvalid);
+                return View("Message", model:Resources.Global.EmailConfirmation_TokenInvalid);
 
             _userRepository.EmailConfirm(userId);
             return View("Message", model:Resources.Global.EmailConfirmedMessage);
@@ -194,10 +194,16 @@ namespace SecretSanta.Controllers
             if (model.ConfirmNewPassword != model.NewPassword)
             {
                 ModelState.AddModelError(nameof(PasswordResetViewModel.ConfirmNewPassword),Resources.Global.PasswordConfirmation_NoMatch);
+                model.NewPassword = null;
+                model.ConfirmNewPassword = null;
                 return View(model);
             }
             if (!ModelState.IsValid)
+            {
+                model.NewPassword = null;
+                model.ConfirmNewPassword = null;
                 return View(model);
+            }
 
             var user = _userRepository.GetUserWithoutProtectedData(model.UserId);
             if (user == null)
@@ -247,6 +253,31 @@ namespace SecretSanta.Controllers
 
             var updateModel = Mapper.Map<SantaUser>(model);
             updateModel.Id = userId;
+
+            var updateResult = _userRepository.UpdateUser(updateModel);
+            if (!updateResult.Success)
+            {
+                if (updateResult.EmailUnavailable)
+                {
+                    ModelState.AddModelError(nameof(SantaUserPostModel.Email), Resources.Global.EmailTaken);
+                    return View(model);
+                }
+
+                return View("Message", model: Resources.Global.Message_Error);
+            }
+
+            if (updateResult.EmailChanged)
+            {
+                _emailService.SendConfirmationEmail(updateModel);
+
+                // sign out, email is used to find people in the user db!
+                HttpContext.GetOwinContext().Authentication
+                    .SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+                return View("Message", model: string.Format(Resources.Global.User_Edit_EmailSent, updateModel.Email));
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
