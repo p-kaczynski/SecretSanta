@@ -17,7 +17,7 @@ else
         @using (Html.BeginForm("ResendConfirmation", "Account"))
         {
             @Html.AntiForgeryToken()
-            <button type="submit" class="btn"></button>
+            <button type="submit" class="btn btn-warning">@Resources.Global.Email_ResendConfirmatioon</button>
         }
     </div>
 }

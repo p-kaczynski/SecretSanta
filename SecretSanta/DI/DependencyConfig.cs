@@ -38,6 +38,16 @@ namespace SecretSanta.DI
             builder.RegisterType<SecurityRepository>().As<ISantaUserStore>().SingleInstance();
             builder.RegisterType<SantaUserManager>().As<UserManager<SantaSecurityUser, string>>().As<ISantaAdminProvider>().SingleInstance();
             builder.RegisterType<EmailService>().As<IEmailService>().SingleInstance();
+            builder.Register(context =>
+            {
+                var config = context.Resolve<IConfigProvider>();
+                return new YourPasswordSucks.PasswordValidator(
+                    new YourPasswordSucks.PasswordValidatorSettings
+                    {
+                        // rest leave with OWASP defaults
+                        MinimumPasswordLength = config.MinimumPasswordLength
+                    });
+            });
 
             // expiry, as needs to expire as password reset links are dangerous
             builder.Register(context =>

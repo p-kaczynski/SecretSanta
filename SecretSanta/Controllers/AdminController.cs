@@ -47,7 +47,7 @@ namespace SecretSanta.Controllers
             if (result.Succeeded)
                 return RedirectToAction("Index", "Admin");
 
-            ModelState.AddModelError("", string.Join("<br />", result.Errors));
+            ModelState.AddModelError(Constants.GlobalModerError, string.Join("<br />", result.Errors));
             return View("EditAdmin", model);
         }
 
@@ -75,7 +75,7 @@ namespace SecretSanta.Controllers
             if (result.Succeeded)
                 return RedirectToAction("Index", "Home");
 
-            ModelState.AddModelError("", string.Join("<br />", result.Errors));
+            ModelState.AddModelError(Constants.GlobalModerError, string.Join("<br />", result.Errors));
             return View(model);
         }
     }

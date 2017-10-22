@@ -13,6 +13,7 @@ namespace SecretSanta
             public const string EncryptionKey = "santa.dataprotection.encryptionkey";
             public const string HashSecret = "santa.encryption.hashSecret";
             public const string SaltLength = "santa.user.salt_length";
+            public const string PasswordLength = "santa.user.password_length";
             public const string DevMode = "santa.dev.devmode";
             public const string GenerateTestData = "santa.dev.generate_test_data";
             public const string SettingsCacheSeconds = "santa.cache.settings.seconds";
@@ -33,9 +34,7 @@ namespace SecretSanta
             => WebConfigurationManager.AppSettings[ConfigKeys.HashSecret];
 
         public int SaltLength
-            => int.TryParse(WebConfigurationManager.AppSettings[ConfigKeys.SaltLength], out int length)
-                ? length
-                : 16;
+            => WebConfigurationManager.AppSettings.GetInt(ConfigKeys.SaltLength, 16);
 
         public bool DevMode => WebConfigurationManager.AppSettings.GetBoolOrDefault(ConfigKeys.DevMode, false);
 
@@ -60,5 +59,8 @@ namespace SecretSanta
 
         public string SATSecret
             => WebConfigurationManager.AppSettings[ConfigKeys.SATSecret];
+
+        public int MinimumPasswordLength =>
+            WebConfigurationManager.AppSettings.GetInt(ConfigKeys.PasswordLength, 10);
     }
 }

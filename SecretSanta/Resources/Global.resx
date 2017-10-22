@@ -196,7 +196,7 @@
     <value>Note</value>
   </data>
   <data name="Password_Invalid" xml:space="preserve">
-    <value>Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern.</value>
+    <value>Password does not meet the complexity requirements.</value>
   </data>
   <data name="PostalCode" xml:space="preserve">
     <value>Postal Code</value>
@@ -428,5 +428,50 @@
   </data>
   <data name="PasswordReset_Success" xml:space="preserve">
     <value>Password reset succesfully</value>
+  </data>
+  <data name="Email_HelpText" xml:space="preserve">
+    <value>A valid email address</value>
+  </data>
+  <data name="FacebookURL_HelpText" xml:space="preserve">
+    <value>A valid URL to your Facebook profile (including http:// or https://)</value>
+  </data>
+  <data name="Password_HelpText" xml:space="preserve">
+    <value>Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity"&gt;OWASP recommendation&lt;/a&gt; for details.</value>
+  </data>
+  <data name="Registration_FieldsWithAsterisk" xml:space="preserve">
+    <value>Fields with asterisk (*) are required.</value>
+  </data>
+  <data name="User_Edit_Title" xml:space="preserve">
+    <value>Edit Account</value>
+  </data>
+  <data name="User_View_AdminConfirmed" xml:space="preserve">
+    <value>Confirmed by admin</value>
+  </data>
+  <data name="User_View_Edit" xml:space="preserve">
+    <value>Edit account</value>
+  </data>
+  <data name="User_View_EmailConfirmed" xml:space="preserve">
+    <value>Email confirmed</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>Something went wrong!</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Registration_Form_Agreement" xml:space="preserve">
+    <value>I agree</value>
+  </data>
+  <data name="Registration_Form_Agreement_HelpText" xml:space="preserve">
+    <value>I understand and agree to the {0}</value>
+  </data>
+  <data name="User_Edit_EmailSent" xml:space="preserve">
+    <value>Update succesful. Because you have changed your email, a confirmation link has been sent to provided address: {0}. You must also sign-in again!</value>
+  </data>
+  <data name="User_Edit_Warning" xml:space="preserve">
+    <value>Warning, changing your data will revoke the admin confirmation of your account. Also, changing your email address will revoke the email confirmation!</value>
+  </data>
+  <data name="Registration_Form_Agreement_Error" xml:space="preserve">
+    <value>You must agree to the privacy policy.</value>
   </data>
 </root>

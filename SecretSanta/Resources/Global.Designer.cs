@@ -430,6 +430,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid email address.
+        /// </summary>
+        public static string Email_HelpText {
+            get {
+                return ResourceManager.GetString("Email_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The email is invalid.
         /// </summary>
         public static string Email_Invalid {
@@ -543,6 +552,15 @@ namespace Resources {
         public static string FacebookURL {
             get {
                 return ResourceManager.GetString("FacebookURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid URL to your Facebook profile (including http:// or https://).
+        /// </summary>
+        public static string FacebookURL_HelpText {
+            get {
+                return ResourceManager.GetString("FacebookURL_HelpText", resourceCulture);
             }
         }
         
@@ -700,6 +718,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something went wrong!.
+        /// </summary>
+        public static string Message_Error {
+            get {
+                return ResourceManager.GetString("Message_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The confirmation link was sent to your email address..
         /// </summary>
         public static string Message_ResendConfirmation {
@@ -754,7 +781,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern..
+        ///   Looks up a localized string similar to Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a href=&quot;https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity&quot;&gt;OWASP recommendation&lt;/a&gt; for details..
+        /// </summary>
+        public static string Password_HelpText {
+            get {
+                return ResourceManager.GetString("Password_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password does not meet the complexity requirements..
         /// </summary>
         public static string Password_Invalid {
             get {
@@ -844,6 +880,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        public static string PrivacyPolicy {
+            get {
+                return ResourceManager.GetString("PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reason.
         /// </summary>
         public static string Reason {
@@ -885,6 +930,42 @@ namespace Resources {
         public static string Registration {
             get {
                 return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fields with asterisk (*) are required..
+        /// </summary>
+        public static string Registration_FieldsWithAsterisk {
+            get {
+                return ResourceManager.GetString("Registration_FieldsWithAsterisk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I agree.
+        /// </summary>
+        public static string Registration_Form_Agreement {
+            get {
+                return ResourceManager.GetString("Registration_Form_Agreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must agree to the privacy policy..
+        /// </summary>
+        public static string Registration_Form_Agreement_Error {
+            get {
+                return ResourceManager.GetString("Registration_Form_Agreement_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I understand and agree to the {0}.
+        /// </summary>
+        public static string Registration_Form_Agreement_HelpText {
+            get {
+                return ResourceManager.GetString("Registration_Form_Agreement_HelpText", resourceCulture);
             }
         }
         
@@ -975,6 +1056,60 @@ namespace Resources {
         public static string SystemMessage {
             get {
                 return ResourceManager.GetString("SystemMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update succesful. Because you have changed your email, a confirmation link has been sent to provided address: {0}. You must also sign-in again!.
+        /// </summary>
+        public static string User_Edit_EmailSent {
+            get {
+                return ResourceManager.GetString("User_Edit_EmailSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Account.
+        /// </summary>
+        public static string User_Edit_Title {
+            get {
+                return ResourceManager.GetString("User_Edit_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning, changing your data will revoke the admin confirmation of your account. Also, changing your email address will revoke the email confirmation!.
+        /// </summary>
+        public static string User_Edit_Warning {
+            get {
+                return ResourceManager.GetString("User_Edit_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmed by admin.
+        /// </summary>
+        public static string User_View_AdminConfirmed {
+            get {
+                return ResourceManager.GetString("User_View_AdminConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit account.
+        /// </summary>
+        public static string User_View_Edit {
+            get {
+                return ResourceManager.GetString("User_View_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email confirmed.
+        /// </summary>
+        public static string User_View_EmailConfirmed {
+            get {
+                return ResourceManager.GetString("User_View_EmailConfirmed", resourceCulture);
             }
         }
         

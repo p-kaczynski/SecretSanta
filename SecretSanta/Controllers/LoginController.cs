@@ -40,12 +40,12 @@ namespace SecretSanta.Controllers
                 case SignInStatus.Success:
                     return RedirectToAction(nameof(Index), "Home");
                 case SignInStatus.LockedOut:
-                    ModelState.AddModelError("", Global.Login_LockedOut);
+                    ModelState.AddModelError(Constants.GlobalModerError, Global.Login_LockedOut);
                     return View(model);
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("TODO");
                 case SignInStatus.Failure:
-                    ModelState.AddModelError("",Global.Login_Invalid);
+                    ModelState.AddModelError(Constants.GlobalModerError, Global.Login_Invalid);
                     return View(model);
                 default:
                     throw new ArgumentOutOfRangeException();

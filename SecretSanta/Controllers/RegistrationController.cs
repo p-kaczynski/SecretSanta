@@ -24,20 +24,21 @@ namespace SecretSanta.Controllers
         public ActionResult Index()
         {
             if(_settingsRepository.RegistrationOpen)
-                return View(new SantaUserPostModel());
+                return View(new RegistrationPostModel());
             return View("Message", model:Resources.Global.RegistrationClosed);
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(SantaUserPostModel model)
+        public ActionResult Index(RegistrationPostModel model)
         {
             if(!_settingsRepository.RegistrationOpen)
                 return View("Message", model:Resources.Global.RegistrationClosed);
 
             if (!ModelState.IsValid)
             {
+                model.Password = null;
                 return View(model);
             }
 
@@ -45,6 +46,7 @@ namespace SecretSanta.Controllers
             if (!_userRepository.CheckEmail(model.Email))
             {
                 ModelState.AddModelError(nameof(SantaUser.Email), Resources.Global.EmailTaken);
+                model.Password = null;
                 return View(model);
             }
 
@@ -54,7 +56,7 @@ namespace SecretSanta.Controllers
             
             _emailService.SendConfirmationEmail(domainModel);
 
-            return View("Confirmation", (object)model.Email);
+            return View("Confirmation", model: model.Email);
         }
     }
 }
