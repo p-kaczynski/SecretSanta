@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AbandonedUsers" xml:space="preserve">
+    <value>Kurdoni którzy nie mogli być sparowani</value>
+  </data>
+  <data name="AccountRemove" xml:space="preserve">
+    <value>Usuń się</value>
+  </data>
+  <data name="AccountRemoveIntro" xml:space="preserve">
+    <value>Zamierzasz usunąć swoje konto. Proces ten nie może być odwrócony. Niezbędna będzie ponowna rejestracja. Czy jesteś pewien kurde xD?</value>
+  </data>
+  <data name="AccountSettings" xml:space="preserve">
+    <value>Ustawienia konta</value>
+  </data>
+  <data name="AddressLine1" xml:space="preserve">
+    <value>Pierwsza linia adresowa</value>
+  </data>
+  <data name="AddressLine1_Required" xml:space="preserve">
+    <value>Pierwsza linia adresowa jest wymagana w celach wysyłkowych</value>
+  </data>
+  <data name="AddressLine1_TooLong" xml:space="preserve">
+    <value>Liczba znaków pierwszej linii adresowej jest ograniczona do 200.</value>
+  </data>
+  <data name="AddressLine2" xml:space="preserve">
+    <value>Druga linia adresowa</value>
+  </data>
+  <data name="AddressLine2_TooLong" xml:space="preserve">
+    <value>Liczba znaków drugiej linii adresowej jest ograniczona do 200.</value>
+  </data>
+  <data name="AdminIndex" xml:space="preserve">
+    <value>Administratorzy</value>
+  </data>
+  <data name="AdminUnconfirmed" xml:space="preserve">
+    <value>Oczekuje na potwierdzenie</value>
+  </data>
+  <data name="AdminUser" xml:space="preserve">
+    <value>Zarajestrowani użyszkodnicy</value>
+  </data>
+  <data name="AdminUserName" xml:space="preserve">
+    <value>Nazwa administratora</value>
+  </data>
+  <data name="AdminUserName_Invalid" xml:space="preserve">
+    <value>Nazwa użytkownika konta administratora musi być alfanumeryczna (bez białych i specjalnych znaków)</value>
+  </data>
+  <data name="AdminUserName_Required" xml:space="preserve">
+    <value>Nazwa użytkownika konta administratora jest niezbędna</value>
+  </data>
+  <data name="AdminUserName_TooLong" xml:space="preserve">
+    <value>Nazwa użytkownika konta administartora jest ograniczona do 200 znaków.</value>
+  </data>
+  <data name="Admin_Confirmed" xml:space="preserve">
+    <value>Twoje konto zostało zatwierdzone przez administratora.</value>
+  </data>
+  <data name="Admin_NotConfirmed" xml:space="preserve">
+    <value>Twoje konto nie zostało jeszcze zatwierdzone przez administratora.</value>
+  </data>
+  <data name="AllReady" xml:space="preserve">
+    <value>Rejestracja ukończona – teraz czekaj na przypianie Kurdona.</value>
+  </data>
+  <data name="AllUsersMatched" xml:space="preserve">
+    <value>Wszyscy użyszkodnicy zostali sparowani</value>
+  </data>
+  <data name="Assignment" xml:space="preserve">
+    <value>Przypisz odbiorców</value>
+  </data>
+  <data name="AssignmentCompleted" xml:space="preserve">
+    <value>Przypisania Kurdonów ukończone</value>
+  </data>
+  <data name="AssignmentDone" xml:space="preserve">
+    <value>Kurdoni zostali sobie przypisani.</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Przypisania</value>
+  </data>
+  <data name="Button_Submit" xml:space="preserve">
+    <value>Wyślij</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Miasto</value>
+  </data>
+  <data name="City_Required" xml:space="preserve">
+    <value>Nazwa miasta jest wymagana w celach wysyłkowych</value>
+  </data>
+  <data name="City_TooLong" xml:space="preserve">
+    <value>Nazwa miasta</value>
+  </data>
+  <data name="CloseRegistration" xml:space="preserve">
+    <value>Zamknij rejestrację</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Potwierdzenie</value>
+  </data>
+  <data name="ConfirmationEmailSent" xml:space="preserve">
+    <value>Rejestracja zakończona powodzeniem. Email z linkiem potwierdzającym został wysłany do</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Kraj</value>
+  </data>
+  <data name="Country_Required" xml:space="preserve">
+    <value>Nazwa kraju jest wymagana w celach wysyłkowych</value>
+  </data>
+  <data name="Country_TooLong" xml:space="preserve">
+    <value>Nazwa kraju jest ograniczona do 200 znaków</value>
+  </data>
+  <data name="CreateAdmin" xml:space="preserve">
+    <value>Stwórz konto administratora</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Nazwa użytkownika</value>
+  </data>
+  <data name="DisplayName_Required" xml:space="preserve">
+    <value>Nazwa użytkownika jest wymagana</value>
+  </data>
+  <data name="DisplayName_TooLong" xml:space="preserve">
+    <value>Nazwa użytkownika jest ograniczona do 200 znaków</value>
+  </data>
+  <data name="EditAdmin" xml:space="preserve">
+    <value>Edytuj administratora</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Adres email</value>
+  </data>
+  <data name="EmailConfirmation_TokenInvalid" xml:space="preserve">
+    <value>Podany token jest nieprawidłowy lub wygasł. Skontaktuj się z administratorem.</value>
+  </data>
+  <data name="EmailConfirmedMessage" xml:space="preserve">
+    <value>Twój email został zatwierdzony</value>
+  </data>
+  <data name="EmailTaken" xml:space="preserve">
+    <value>Ten email jest już zarejestrowany</value>
+  </data>
+  <data name="Email_Confirmed" xml:space="preserve">
+    <value>Twój email został potwierdzony</value>
+  </data>
+  <data name="Email_HelpText" xml:space="preserve">
+    <value>Poprawny adres email</value>
+  </data>
+  <data name="Email_Invalid" xml:space="preserve">
+    <value>Adres email nieprawidłowy</value>
+  </data>
+  <data name="Email_NotConfirmed" xml:space="preserve">
+    <value>Twój adres email oczekuje na potwierdzenie</value>
+  </data>
+  <data name="Email_PasswordReset_Body" xml:space="preserve">
+    <value>Cześć {0}! Kliknij w podany link aby przejść do formularza resetującego hasło:{1} Jeżeli nie chciałeś resetować hasła możesz spokojnie usunąć tą wiadomość. Token będzie ważny przez {2} minut.</value>
+  </data>
+  <data name="Email_PasswordReset_Subject" xml:space="preserve">
+    <value>Zmiana hasła w Kurde Mikołajkach</value>
+  </data>
+  <data name="Email_Required" xml:space="preserve">
+    <value>Email jest wymagany do wysłania potwierdzenia i informacji o dobranym Kurdonie.</value>
+  </data>
+  <data name="Email_ResendConfirmatioon" xml:space="preserve">
+    <value>Wyśli ponownie wiadomość potwierdzającą</value>
+  </data>
+  <data name="Email_SendingFailure" xml:space="preserve">
+    <value>Nie udało się wysłać wiadomości. Poczekaj proszę 15 minut i spróbuj ponowanie. Jeżeli ta wiadomość pojawi się ponownie, skontaktuj się z administratorem.</value>
+  </data>
+  <data name="Email_Verification_Body" xml:space="preserve">
+    <value>Cześć {0}! Aby potwierdzić swój email klinkij w poniższy link: {1}</value>
+  </data>
+  <data name="Email_Verification_Subject" xml:space="preserve">
+    <value>Potwierdzenie adresu email Kurde Mikołajek</value>
+  </data>
+  <data name="FacebookURL" xml:space="preserve">
+    <value>Odnośnik do profilu na Facebooku</value>
+  </data>
+  <data name="FacebookURL_HelpText" xml:space="preserve">
+    <value>Poprawny adres do twojego profilu na facebooku</value>
+  </data>
+  <data name="FacebookURL_Invalid" xml:space="preserve">
+    <value>Odnośnik jest nieprawidłowy</value>
+  </data>
+  <data name="FacebookURL_Required" xml:space="preserve">
+    <value>Odnośnik jest wymagany do weryfikacji</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Imię i nazwisko</value>
+  </data>
+  <data name="FullName_Required" xml:space="preserve">
+    <value>Pełne imię jest wymagane do wysyłki</value>
+  </data>
+  <data name="FullName_TooLong" xml:space="preserve">
+    <value>Pełne imię jest ograniczone do 200 znaków</value>
+  </data>
+  <data name="Giver" xml:space="preserve">
+    <value>Nadawca</value>
+  </data>
+  <data name="GoBack" xml:space="preserve">
+    <value>Powrót</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>śWitaj</value>
+  </data>
+  <data name="InitialSetup" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="Intro" xml:space="preserve">
+    <value>Zażółć gęślą jaźń</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginName" xml:space="preserve">
+    <value>Adres email lub login</value>
+  </data>
+  <data name="Login_Invalid" xml:space="preserve">
+    <value>Login albo hasło są niepoprawne</value>
+  </data>
+  <data name="Login_LockedOut" xml:space="preserve">
+    <value>Konto zablokowane</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Wyloguj</value>
+  </data>
+  <data name="Menu_ForgotPassword" xml:space="preserve">
+    <value>Kurdonie, czyżbyś zapomniał swojego hasła?</value>
+  </data>
+  <data name="Message_CannotRemoveAccountAfterAssignment" xml:space="preserve">
+    <value>Nie możesz usunąć konta po przypisaniu Kurdona!</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>Coś poszło nie tak. Spróbuj jeszcze raz lub skontaktuj się z adminem.</value>
+  </data>
+  <data name="Message_ResendConfirmation" xml:space="preserve">
+    <value>Link potwierdzający został wysłany na twój email</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Uwaga</value>
+  </data>
+  <data name="NothingToConfirm" xml:space="preserve">
+    <value>Brak użytkowników do zatwierdzenia!</value>
+  </data>
+  <data name="NoUsers" xml:space="preserve">
+    <value>Nikt jeszcze się nie zarejestrował</value>
+  </data>
+  <data name="OpenRegistration" xml:space="preserve">
+    <value>Otwarta rejestracja</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Hasło</value>
+  </data>
+  <data name="PasswordConfirmation_NoMatch" xml:space="preserve">
+    <value>Powtórzone hasło nie jest identyczne z uprzednio podanym.</value>
+  </data>
+  <data name="PasswordReset_Sent" xml:space="preserve">
+    <value>Jeżeli istnieje konto z podanym adresem email, został na niego wysłany link do zresetowania hasła.</value>
+  </data>
+  <data name="PasswordReset_Success" xml:space="preserve">
+    <value>Pomyślnie zresetowano hasło</value>
+  </data>
+  <data name="PasswordReset_Title" xml:space="preserve">
+    <value>Resetuj hasło</value>
+  </data>
+  <data name="PasswordReset_TokenInvalid" xml:space="preserve">
+    <value>Token resetu hasła jest niepoprawny albo wygasł</value>
+  </data>
+  <data name="PasswordReset_Token_Display" xml:space="preserve">
+    <value>Token resetu hasła</value>
+  </data>
+  <data name="Password_HelpText" xml:space="preserve">
+    <value>Hasło musi mieć 10 znaków</value>
+  </data>
+  <data name="Password_Invalid" xml:space="preserve">
+    <value>Hasło musi mieć minimum 10 znaków. Musi zawierać</value>
+  </data>
+  <data name="PostalCode" xml:space="preserve">
+    <value>Kod pocztowy</value>
+  </data>
+  <data name="PostalCode_Required" xml:space="preserve">
+    <value>Kod pocztowy jest wymagany do wysyłki</value>
+  </data>
+  <data name="PostalCode_TooLong" xml:space="preserve">
+    <value>Kod pocztowy jest ograniczony do 32 znaków</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Polityka Prywatności</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Powód</value>
+  </data>
+  <data name="RecepientAssigned" xml:space="preserve">
+    <value>Przypisano Ci Kurdona! Sprawdź poniższe informacje i wyślij prezent jak najszybciej!</value>
+  </data>
+  <data name="RecepientLeftNote" xml:space="preserve">
+    <value>Uwagi od odbiorcy</value>
+  </data>
+  <data name="Recipient" xml:space="preserve">
+    <value>Adresat</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="RegistrationClosed" xml:space="preserve">
+    <value>Rejestracja została zamknięta</value>
+  </data>
+  <data name="RegistrationOpen" xml:space="preserve">
+    <value>Czy rejestracja jest otwarta?</value>
+  </data>
+  <data name="Registration_FieldsWithAsterisk" xml:space="preserve">
+    <value>Pola oznaczone gwiazdką są obowiązkowe.</value>
+  </data>
+  <data name="Registration_Form_Agreement" xml:space="preserve">
+    <value>Zgadzam się</value>
+  </data>
+  <data name="Registration_Form_Agreement_Error" xml:space="preserve">
+    <value>Musisz zgodzić się na politykę prywatności.</value>
+  </data>
+  <data name="Registration_Form_Agreement_HelpText" xml:space="preserve">
+    <value>Rozumiem i zgadzam się na {0}</value>
+  </data>
+  <data name="RemoveUser" xml:space="preserve">
+    <value>Usuń użytkownika</value>
+  </data>
+  <data name="RemoveUserIntro" xml:space="preserve">
+    <value>Zamierzasz usunąć użytkownika. Proces jest nieodwracalny i niezbędna będzie ponowna rejestracja.</value>
+  </data>
+  <data name="SentAbroad" xml:space="preserve">
+    <value>Zgadzam się na wysyłkę za granicę (będąc świadom dodatkowych, możliwie wysokich kosztów)</value>
+  </data>
+  <data name="SettingName" xml:space="preserve">
+    <value>Ustaw nazwę</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="SettingValue" xml:space="preserve">
+    <value>Obecna wartość</value>
+  </data>
+  <data name="SiteName" xml:space="preserve">
+    <value>Kurde Mikołajki</value>
+  </data>
+  <data name="SystemMessage" xml:space="preserve">
+    <value>Informacje</value>
+  </data>
+  <data name="User_Edit_EmailSent" xml:space="preserve">
+    <value>Dane zostały uaktualnione. Ponieważ zmieniłeś adres e-mail na podany adres: {0} została wysłana wiadomość z linkiem potwierdzającym. Dodatkowo będziesz musiał zalogować się ponownie.</value>
+  </data>
+  <data name="User_Edit_Title" xml:space="preserve">
+    <value>Edycja danych</value>
+  </data>
+  <data name="User_Edit_Warning" xml:space="preserve">
+    <value>Uwaga, wysłanie tego formularza unieważni twoją akceptację przed administratora! Dodatkow, jeśli zmienisz swój email, będziesz musiał go potwierdzić ponownie.</value>
+  </data>
+  <data name="User_View_AdminConfirmed" xml:space="preserve">
+    <value>Zatwierdzone przez admina</value>
+  </data>
+  <data name="User_View_Edit" xml:space="preserve">
+    <value>Edycja danych</value>
+  </data>
+  <data name="User_View_EmailConfirmed" xml:space="preserve">
+    <value>Email potwierdzony</value>
+  </data>
+  <data name="Warning_TestMode" xml:space="preserve">
+    <value>Uwaga! Aplikacja działa w trybie testowym. Wszystkie dane zostaną wyjebawczanione przed oficjalnym uruchomieniem.</value>
+  </data>
+  <data name="WillSendAbroad" xml:space="preserve">
+    <value>Mogę wysłać za granicę</value>
+  </data>
+</root>
