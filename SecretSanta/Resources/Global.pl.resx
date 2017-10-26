@@ -223,13 +223,13 @@
     <value>Stwórz konto administratora</value>
   </data>
   <data name="DisplayName" xml:space="preserve">
-    <value>Nazwa użytkownika</value>
+    <value>Nazwa wyświetlana</value>
   </data>
   <data name="DisplayName_Required" xml:space="preserve">
-    <value>Nazwa użytkownika jest wymagana</value>
+    <value>Nazwa wyświetlana jest wymagana</value>
   </data>
   <data name="DisplayName_TooLong" xml:space="preserve">
-    <value>Nazwa użytkownika jest ograniczona do 200 znaków</value>
+    <value>Nazwa wyświetlana jest ograniczona do 200 znaków</value>
   </data>
   <data name="EditAdmin" xml:space="preserve">
     <value>Edytuj administratora</value>
@@ -292,7 +292,7 @@
     <value>Odnośnik jest wymagany do weryfikacji</value>
   </data>
   <data name="FullName" xml:space="preserve">
-    <value>Imię i nazwisko</value>
+    <value>Pełna nazwa (do wysyłki)</value>
   </data>
   <data name="FullName_Required" xml:space="preserve">
     <value>Pełne imię jest wymagane do wysyłki</value>
@@ -319,7 +319,7 @@
     <value>Login</value>
   </data>
   <data name="LoginName" xml:space="preserve">
-    <value>Adres email lub login</value>
+    <value>E-mail lub login admina</value>
   </data>
   <data name="Login_Invalid" xml:space="preserve">
     <value>Login albo hasło są niepoprawne</value>
@@ -473,5 +473,11 @@
   </data>
   <data name="WillSendAbroad" xml:space="preserve">
     <value>Mogę wysłać za granicę</value>
+  </data>
+  <data name="CookieBanner_Accept" xml:space="preserve">
+    <value>Rozumiem i zgadzam się na ciasteczka</value>
+  </data>
+  <data name="CookieBanner_Message" xml:space="preserve">
+    <value>Prawo wymaga aby poinformować użytkowników o tym, że strona używa ciasteczek - jak każda inna w całym internecie. Kliknij, że rozumiesz i się zgadzasz, oraz, że Unia Europejska to banda idiotów.</value>
   </data>
 </root>

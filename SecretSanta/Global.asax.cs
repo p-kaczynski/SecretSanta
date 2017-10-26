@@ -29,5 +29,7 @@ namespace SecretSanta
             var exception = Server.GetLastError();
             Log.Error(exception, $"Unhandled exception was detected by {nameof(Application_Error)}");
         }
+
+
     }
 }
