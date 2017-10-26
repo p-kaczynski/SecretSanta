@@ -10,6 +10,30 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryajax")
+    @* COOKIES INFO *@
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+    <script>
+        window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#eaf7f7",
+                        "text": "#5c7291"
+                    },
+                    "button": {
+                        "background": "#56cbdb",
+                        "text": "#ffffff"
+                    }
+                },
+                "content": {
+                    "message": "@Resources.Global.CookieBanner_Message",
+                    "dismiss": "@Resources.Global.CookieBanner_Accept",
+                    "link": "@Resources.Global.PrivacyPolicy",
+                    "href": "@Url.Action("Index", "Privacy")"
+                }
+            })});
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">

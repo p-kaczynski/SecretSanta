@@ -474,4 +474,10 @@
   <data name="Registration_Form_Agreement_Error" xml:space="preserve">
     <value>You must agree to the privacy policy.</value>
   </data>
+  <data name="CookieBanner_Accept" xml:space="preserve">
+    <value>I understand and accept usage of cookies</value>
+  </data>
+  <data name="CookieBanner_Message" xml:space="preserve">
+    <value>The law requires to inform users about usage of cookies, which is just as universal as the internet itself. Click that you understand and accept. Also, The EU should be destroyed.</value>
+  </data>
 </root>

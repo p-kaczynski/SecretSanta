@@ -340,6 +340,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I understand and accept usage of cookies.
+        /// </summary>
+        public static string CookieBanner_Accept {
+            get {
+                return ResourceManager.GetString("CookieBanner_Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The law requires to inform users about usage of cookies, which is just as universal as the internet itself. Click that you understand and accept. Also, The EU should be destroyed..
+        /// </summary>
+        public static string CookieBanner_Message {
+            get {
+                return ResourceManager.GetString("CookieBanner_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string Country {
