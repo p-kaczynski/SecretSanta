@@ -10,7 +10,7 @@
 @if (!ViewData.ModelState.IsValid && ViewData.ModelState.Keys.Contains(Constants.GlobalModerError))
 {
     <div class="alert alert-danger" role="alert">
-        @Html.ValidationSummary(true)
+        @Html.ValidationMessage(Constants.GlobalModerError)
     </div>
 }
 
