@@ -106,7 +106,7 @@ namespace SecretSanta.Data
                     return santaAdmin;
 
                 var santaUser = await conn.QuerySingleOrDefaultAsync<SantaUser>(
-                    $"SELECT {nameof(SantaUser.Id)}, {nameof(SantaUser.Email)}, {nameof(SantaUser.PasswordHash)} FROM {nameof(SantaUser)}s WHERE {nameof(SantaUser.Email)} = @userName",
+                    $"SELECT {nameof(SantaUser.Id)}, {nameof(SantaUser.DisplayName)}, {nameof(SantaUser.Email)}, {nameof(SantaUser.PasswordHash)} FROM {nameof(SantaUser)}s WHERE {nameof(SantaUser.Email)} = @userName",
                     new {userName});
 
                 return santaUser == null ? null : Mapper.Map<SantaSecurityUser>(santaUser);

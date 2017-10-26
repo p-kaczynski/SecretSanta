@@ -39,6 +39,7 @@ namespace SecretSanta.Domain.SecurityModels
 
         public virtual string Id { get; set; }
         public string UserName { get; set; }
+        public virtual string DisplayName { get; set; }
         public virtual bool IsPrivileged { get; } = false;
         public byte[] PasswordHash { get; set; }
     }
