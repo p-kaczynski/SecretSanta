@@ -25,6 +25,7 @@ namespace SecretSanta.Models
         [DataType(DataType.Password)]
         [HelpText(typeof(Global), "Password_HelpText")]
         [Display(Name = "Password", ResourceType = typeof(Global))]
+        [Required(ErrorMessageResourceName = "Password_Invalid", ErrorMessageResourceType = typeof(Global))]
         [CustomValidation(typeof(CustomValidators), "ValidatePassword", ErrorMessageResourceName = "Password_Invalid", ErrorMessageResourceType = typeof(Global))]
         public string Password { get; set; }
 
