@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using NLog;
 using SecretSanta.Common.Interface;
+using SecretSanta.Domain.Models;
 using SecretSanta.Domain.SecurityModels;
 
 namespace SecretSanta.Security
@@ -326,6 +327,12 @@ namespace SecretSanta.Security
             throw new NotSupportedException();
         }
 
+        public override async Task<ClaimsIdentity> CreateIdentityAsync(SantaSecurityUser santaSecurityUser, string authenticationType)
+        {
+            var result = await base.CreateIdentityAsync(santaSecurityUser, authenticationType);
+            result.AddClaim(new Claim(ClaimTypes.GivenName, santaSecurityUser.DisplayName));
+            return result;
+        }
 
         public IList<SantaAdmin> GetAllAdmins()
         {

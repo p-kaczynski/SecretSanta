@@ -87,7 +87,7 @@
                 {
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <p class="navbar-text">Hello @User.Identity.Name</p>
+                            <p class="navbar-text">@Resources.Global.Hello @ClaimHelper.GetUserName(User)</p>
                         </li>
                         <li>
                             @using (Html.BeginForm("Logout", "Login",FormMethod.Post,new {@class= "navbar-form navbar-right" }))

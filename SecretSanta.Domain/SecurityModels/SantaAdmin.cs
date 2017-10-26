@@ -17,5 +17,14 @@ namespace SecretSanta.Domain.SecurityModels
 
         [Computed]
         public override bool IsPrivileged { get; } = true;
+
+        [Computed]
+        public override string DisplayName
+        {
+            get => UserName;
+            set
+            {
+            }
+        }
     }
 }
