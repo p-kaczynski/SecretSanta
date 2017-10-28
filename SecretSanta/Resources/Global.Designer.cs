@@ -988,6 +988,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Repeat password.
+        /// </summary>
+        public static string Registration_Form_Repeat_Password_HelpText {
+            get {
+                return ResourceManager.GetString("Registration_Form_Repeat_Password_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords don&apos;t match.
+        /// </summary>
+        public static string Registration_Form_Repeat_Password_Invalid {
+            get {
+                return ResourceManager.GetString("Registration_Form_Repeat_Password_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The registrations has been closed..
         /// </summary>
         public static string RegistrationClosed {

@@ -19,7 +19,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    foreach(var lambda in ModelHelper.SelectProperties<RegistrationPostModel>(m => m.DisplayName, m => m.Email, m=>m.FacebookProfileUrl, m => m.Password, m => m.FullName, m => m.AddressLine1, m => m.AddressLine2, m => m.PostalCode, m => m.City))
+    foreach(var lambda in ModelHelper.SelectProperties<RegistrationPostModel>(m => m.DisplayName, m => m.Email, m=>m.FacebookProfileUrl, m => m.Password, m=>m.RepeatPassword, m => m.FullName, m => m.AddressLine1, m => m.AddressLine2, m => m.PostalCode, m => m.City))
     {
         <div class="form-group">
             @Html.ValidationMessageFor(lambda)

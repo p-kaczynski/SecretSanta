@@ -480,4 +480,10 @@
   <data name="CookieBanner_Message" xml:space="preserve">
     <value>Prawo wymaga aby poinformować użytkowników o tym, że strona używa ciasteczek - jak każda inna w całym internecie. Kliknij, że rozumiesz i się zgadzasz, oraz, że Unia Europejska to banda idiotów.</value>
   </data>
+  <data name="Registration_Form_Repeat_Password_HelpText" xml:space="preserve">
+    <value>Powtórz hasło</value>
+  </data>
+  <data name="Registration_Form_Repeat_Password_Invalid" xml:space="preserve">
+    <value>Hasła nie są identyczne</value>
+  </data>
 </root>
