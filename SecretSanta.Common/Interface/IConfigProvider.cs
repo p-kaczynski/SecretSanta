@@ -13,10 +13,16 @@ namespace SecretSanta.Common.Interface
         TimeSpan SettingCacheTime { get; }
         string DefaultCountryTwoLetterCode { get; }
         string UICultureTwoLetterCode { get; }
-        TimeSpan ResendConfirmationCooldown { get;}
-        TimeSpan PasswordResetCooldown { get;}
+        TimeSpan ResendConfirmationCooldown { get; }
+        TimeSpan PasswordResetCooldown { get; }
         TimeSpan PasswordResetValidFor { get; }
         string SATSecret { get; }
         int MinimumPasswordLength { get; }
+
+        bool UseMailgun { get; }
+
+        string MailgunBaseDomain { get; }
+        string MailgunApiKey { get; }
+        string MailgunFrom { get; }
     }
 }

@@ -20,15 +20,21 @@ namespace SecretSanta.Services
         private readonly IConfigProvider _configProvider;
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        private readonly SmtpClient _smtp = new SmtpClient();
+        private readonly SmtpClient _smtp;
         private readonly SecureAccessTokenSource _emailConfirmationTokenSource;
         private readonly SecureAccessTokenSource _passwordResetTokenSource;
+        private readonly MailgunService _mailgun;
 
         public EmailService(IConfigProvider configProvider, IIndex<TokenSourceType,SecureAccessTokenSource> satIndex)
         {
             _configProvider = configProvider;
             _emailConfirmationTokenSource = satIndex[TokenSourceType.EmailConfirmation];
             _passwordResetTokenSource = satIndex[TokenSourceType.PasswordReset];
+
+            if (_configProvider.UseMailgun)
+                _mailgun = new MailgunService(_configProvider);
+            else
+                _smtp = new SmtpClient();
         }
 
         public bool SendConfirmationEmail(SantaUser user)
@@ -93,6 +99,12 @@ namespace SecretSanta.Services
 
         private bool SendEmail(string to, string subject, string body)
         {
+            if (_configProvider.UseMailgun)
+            {
+                return _mailgun.SendEmail(to, subject, body);
+            }
+
+            // else use SMTP
             using (var message = new MailMessage())
             {
                 message.To.Add(to);
