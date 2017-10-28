@@ -23,6 +23,10 @@ namespace SecretSanta
             public const string PasswordResetCooldown = "santa.user.pasword_reset_cooldown_minutes";
             public const string PasswordResetValidFor = "santa.user.pasword_reset_valid_minutes";
             public const string SATSecret = "santa.encryption.sat.secret";
+            public const string UseMailgun = "santa.email.use_mailgun";
+            public const string MailgunDomain = "santa.email.mailgun_domain";
+            public const string MailgunApiKey = "santa.email.mailgun_apikey";
+            public const string MailgunFrom = "santa.email.mailgun_from";
         }
 
         public string ConnectionString 
@@ -62,5 +66,17 @@ namespace SecretSanta
 
         public int MinimumPasswordLength =>
             WebConfigurationManager.AppSettings.GetInt(ConfigKeys.PasswordLength, 10);
+
+        public bool UseMailgun =>
+            WebConfigurationManager.AppSettings.GetBoolOrDefault(ConfigKeys.UseMailgun, false);
+
+        public string MailgunBaseDomain =>
+            WebConfigurationManager.AppSettings[ConfigKeys.MailgunDomain];
+
+        public string MailgunApiKey =>
+            WebConfigurationManager.AppSettings[ConfigKeys.MailgunApiKey];
+
+        public string MailgunFrom =>
+            WebConfigurationManager.AppSettings[ConfigKeys.MailgunFrom];
     }
 }

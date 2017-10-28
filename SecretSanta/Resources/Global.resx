@@ -436,7 +436,7 @@
     <value>A valid URL to your Facebook profile (including http:// or https://)</value>
   </data>
   <data name="Password_HelpText" xml:space="preserve">
-    <value>Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity"&gt;OWASP recommendation&lt;/a&gt; for details.</value>
+    <value>Password must be minimum 8 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a tabindex="-1" href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity"&gt;OWASP recommendation&lt;/a&gt; for details.</value>
   </data>
   <data name="Registration_FieldsWithAsterisk" xml:space="preserve">
     <value>Fields with asterisk (*) are required.</value>
@@ -473,5 +473,17 @@
   </data>
   <data name="Registration_Form_Agreement_Error" xml:space="preserve">
     <value>You must agree to the privacy policy.</value>
+  </data>
+  <data name="CookieBanner_Accept" xml:space="preserve">
+    <value>I understand and accept usage of cookies</value>
+  </data>
+  <data name="CookieBanner_Message" xml:space="preserve">
+    <value>The law requires to inform users about usage of cookies, which is just as universal as the internet itself. Click that you understand and accept. Also, The EU should be destroyed.</value>
+  </data>
+  <data name="Registration_Form_Repeat_Password_HelpText" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
+  <data name="Registration_Form_Repeat_Password_Invalid" xml:space="preserve">
+    <value>Passwords don't match</value>
   </data>
 </root>

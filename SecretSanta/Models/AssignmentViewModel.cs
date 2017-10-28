@@ -2,6 +2,7 @@
 {
     public class AssignmentViewModel
     {
+        public string FacebookProfileUrl { get; set; }
         public string FullName { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
