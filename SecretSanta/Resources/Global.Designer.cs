@@ -799,7 +799,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a href=&quot;https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity&quot;&gt;OWASP recommendation&lt;/a&gt; for details..
+        ///   Looks up a localized string similar to Password must be minimum 8 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a tabindex=&quot;-1&quot; href=&quot;https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity&quot;&gt;OWASP recommendation&lt;/a&gt; for details..
         /// </summary>
         public static string Password_HelpText {
             get {

@@ -436,7 +436,7 @@
     <value>A valid URL to your Facebook profile (including http:// or https://)</value>
   </data>
   <data name="Password_HelpText" xml:space="preserve">
-    <value>Password must be minimum 10 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity"&gt;OWASP recommendation&lt;/a&gt; for details.</value>
+    <value>Password must be minimum 8 characters long, three characters of (lowercase letter, uppercase letter, digit, special character) and cannot be a common pattern. See &lt;a tabindex="-1" href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity"&gt;OWASP recommendation&lt;/a&gt; for details.</value>
   </data>
   <data name="Registration_FieldsWithAsterisk" xml:space="preserve">
     <value>Fields with asterisk (*) are required.</value>
