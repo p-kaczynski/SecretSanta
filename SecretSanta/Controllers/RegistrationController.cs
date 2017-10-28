@@ -39,14 +39,24 @@ namespace SecretSanta.Controllers
             if (!ModelState.IsValid)
             {
                 model.Password = null;
+                model.RepeatPassword = null;
                 return View(model);
             }
 
             // check fo existing user
             if (!_userRepository.CheckEmail(model.Email))
             {
-                ModelState.AddModelError(nameof(SantaUser.Email), Resources.Global.EmailTaken);
+                ModelState.AddModelError(nameof(RegistrationPostModel.Email), Resources.Global.EmailTaken);
                 model.Password = null;
+                model.RepeatPassword = null;
+                return View(model);
+            }
+
+            if (model.Password != model.RepeatPassword)
+            {
+                ModelState.AddModelError(nameof(RegistrationPostModel.RepeatPassword), Resources.Global.Registration_Form_Repeat_Password_Invalid);
+                model.Password = null;
+                model.RepeatPassword = null;
                 return View(model);
             }
 

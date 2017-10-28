@@ -29,6 +29,12 @@ namespace SecretSanta.Models
         [CustomValidation(typeof(CustomValidators), "ValidatePassword", ErrorMessageResourceName = "Password_Invalid", ErrorMessageResourceType = typeof(Global))]
         public string Password { get; set; }
 
+        [DataType(DataType.Password)]
+        [HelpText(typeof(Global), "Registration_Form_Repeat_Password_HelpText")]
+        [Display(Name = "Password", ResourceType = typeof(Global))]
+        [Required(ErrorMessageResourceName = "Password_Invalid", ErrorMessageResourceType = typeof(Global))]
+        public string RepeatPassword { get; set; }
+
         [DataType(DataType.Text)]
         [Display(Name = "DisplayName", ResourceType = typeof(Global))]
         [Required(ErrorMessageResourceName = "DisplayName_Required", ErrorMessageResourceType = typeof(Global))]
