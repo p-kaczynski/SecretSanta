@@ -123,7 +123,8 @@ namespace SecretSanta.Controllers
             return View("Message", model:Resources.Global.EmailConfirmedMessage);
         }
 
-        [HttpGet]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResendConfirmation()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
