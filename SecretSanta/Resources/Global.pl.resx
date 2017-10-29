@@ -259,7 +259,7 @@
     <value>Twój adres email oczekuje na potwierdzenie</value>
   </data>
   <data name="Email_PasswordReset_Body" xml:space="preserve">
-    <value>Cześć {0}! Kliknij w podany link aby przejść do formularza resetującego hasło:{1} Jeżeli nie chciałeś resetować hasła możesz spokojnie usunąć tą wiadomość. Token będzie ważny przez {2} minut.</value>
+    <value>Cześć {0}! Kliknij w podany link aby przejść do formularza resetującego hasło: {1} Jeżeli nie chciałeś resetować hasła możesz spokojnie usunąć tą wiadomość. Token będzie ważny przez {2} minut.</value>
   </data>
   <data name="Email_PasswordReset_Subject" xml:space="preserve">
     <value>Zmiana hasła w Kurde Mikołajkach</value>
