@@ -256,46 +256,49 @@ namespace SecretSanta.Data
             // check which scenario are we in:
             var willWontTwoUserCountries = allUsers.GroupBy(user => user.Country).Where(g =>
                 g.Count() == 2 && g.Any(user => user.SentAbroad) && g.Any(user => !user.SentAbroad)).ToArray();
-
-            if (willWontTwoUserCountries.Length > 1)
+            if (willWontTwoUserCountries.Any())
             {
-                // no problem! cross-match them
-                assignments.AddRange(CrossMatch(willWontTwoUserCountries.SelectMany(g=>g)));
-            }
-            else
-            {
-                // problem! we have only one group - we will need to borrow someone from abroad
-                var problem = willWontTwoUserCountries.Single();
-
-                // do we have a donor?
-                var donor = getDonor(allUsers);
-                if (donor == null)
+                if (willWontTwoUserCountries.Length > 1)
                 {
-                    // sorry! The problematic country folk are going to get removed:
-                    foreach (var wontMatch in problem)
-                    {
-                        abandoned.Add(new Abandoned
-                        {
-                            SantaUserId = wontMatch.Id,
-                            Reason = "Cannot create at least 3-person ring due to lack of people willing to send abroad"
-                        });
-                        allUsers.Remove(wontMatch);
-                    }
+                    // no problem! cross-match them
+                    assignments.AddRange(CrossMatch(willWontTwoUserCountries.SelectMany(g => g)));
                 }
                 else
                 {
-                    // we have a donor!
-                    // create assignments - important, do not randomize order or it will not work
-                    assignments.AddRange(CreateCircularAssignment(
-                        new[]
-                        {
-                            problem.Single(user => !user.SentAbroad), problem.Single(user => user.SentAbroad), donor
-                        }, randomizeOrder: false));
+                    // problem! we have only one group - we will need to borrow someone from abroad
+                    var problem = willWontTwoUserCountries.Single();
 
-                    // remove users
-                    foreach(var user in problem)
-                        allUsers.Remove(user);
-                    allUsers.Remove(donor);
+                    // do we have a donor?
+                    var donor = getDonor(allUsers);
+                    if (donor == null)
+                    {
+                        // sorry! The problematic country folk are going to get removed:
+                        foreach (var wontMatch in problem)
+                        {
+                            abandoned.Add(new Abandoned
+                            {
+                                SantaUserId = wontMatch.Id,
+                                Reason =
+                                    "Cannot create at least 3-person ring due to lack of people willing to send abroad"
+                            });
+                            allUsers.Remove(wontMatch);
+                        }
+                    }
+                    else
+                    {
+                        // we have a donor!
+                        // create assignments - important, do not randomize order or it will not work
+                        assignments.AddRange(CreateCircularAssignment(
+                            new[]
+                            {
+                                problem.Single(user => !user.SentAbroad), problem.Single(user => user.SentAbroad), donor
+                            }, randomizeOrder: false));
+
+                        // remove users
+                        foreach (var user in problem)
+                            allUsers.Remove(user);
+                        allUsers.Remove(donor);
+                    }
                 }
             }
 
