@@ -907,6 +907,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;h1&gt;Privacy Policy&lt;/h1&gt;.
+        /// </summary>
+        public static string PrivacyPolicy_Html {
+            get {
+                return ResourceManager.GetString("PrivacyPolicy_Html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reason.
         /// </summary>
         public static string Reason {
