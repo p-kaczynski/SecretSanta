@@ -76,7 +76,7 @@ namespace SecretSanta.Services
                 var link = urlHelper.Action("ResetPassword", "Account", new { userId = user.Id, token },
                     HttpContext.Current.Request.Url.Scheme);
 
-                var body = string.Format(Resources.Global.Email_PasswordReset_Body, user.DisplayName, link, _configProvider.PasswordResetValidFor.Minutes);
+                var body = string.Format(Resources.Global.Email_PasswordReset_Body, user.DisplayName, link, _configProvider.PasswordResetValidFor.TotalMinutes);
 
                 if (!SendEmail(user.Email, Resources.Global.Email_PasswordReset_Subject, body)) return false;
 
