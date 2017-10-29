@@ -486,4 +486,21 @@
   <data name="Registration_Form_Repeat_Password_Invalid" xml:space="preserve">
     <value>Hasła nie są identyczne</value>
   </data>
+  <data name="PrivacyPolicy_Html" xml:space="preserve">
+    <value>&lt;h1&gt;Polityka prywatności&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Rejestracja w serwisie https://kurdemikolajki.gerino.net/ oznacza wyrażenie zgody na poniższą politykę.&lt;/li&gt;
+&lt;li&gt;Dane przekazywane przez użytkownika poprzez formularz rejestracyjny serwisu są przekazywane dobrowolnie i będą wykorzystywane do realizacji funkcjonalności oferowanej przez serwis.&lt;/li&gt;
+&lt;li&gt;Dane przekazywane przez użytkownika są przechowywane w bazie danych, która zabezpieczona jest zgodnie z rekomendowanymi praktykami.&lt;/li&gt;
+&lt;li&gt;Dane są przechowywane na serwerach będących własnością firmy Microsoft Corporation ("Microsofl") poprzez usługę Microsoft Azure, na serwerach zlokalizowanych na terenie Unii Europejskiej.&lt;/li&gt;
+&lt;li&gt;Dane adresowe: Imię i nazwisko odbiorcy, dwie linie adresowe, kod pocztowy oraz miasto, a także pole "Notatki są przechowywane w formie zaszyfrowanej, co znacznie redukuje możliwość ich pozyskania przez osoby nieuprawnione.&lt;/li&gt;
+&lt;li&gt;Wyżej wymienione dane, a także przekazany adres profilu w serwisie Facebook zostaną udostępnione jednej, losowo wybranej osobie, aby umożliwić jej wysyłkę prezentu, zgodnie z celem i przeznaczeniem serwisu.&lt;/li&gt;
+&lt;li&gt;Dane przechowywane przez serwis można wyświetlić logując się do serwisu i wybierając opcję "Ustawienia konta"&lt;/li&gt;
+&lt;li&gt;Rejestracja w serwisie oznacza wyrażenie zgody na otrzymywanie wiadomości e-mail. Serwis wysyła takie wiadomości jedynie w odpowiedzi na akcje podjęte przez użytkownika, takie jak: rejestracja, zmiana adresu email bądź odzyskiwanie hasła.&lt;/li&gt;
+&lt;li&gt;Mimo podjętych praktyk bezpieczeństwa, każdy system elektroniczny może być ofiarą nieuprawnionego dostępu. Wszystkie dane przekazane Serwisowi mogą zostać wykradzione. Przekazanie danych jest dobrowolne i użytkownik poprzez rejestrację akceptuje ryzyko przesłania swoich danych na serwery Serwisu.&lt;/li&gt;
+&lt;li&gt;Użytkownik ma prawo do usunięcia swoich danych, aż do czasu gdy jego dane zostaną przekazane losowo przypisanej osobie w celu realizacji funkcjonalności Serwisu. Można dokonać tego samodzielnie poprzez zalogowanie do Serwisu i w sekcji "Ustawienia konta" wybranie opcji "Usuń konto".&lt;/li&gt;
+&lt;li&gt;Po zakończeniu akcji wzajemnej wysyłki prezentów, potwierdzenia realizacji zadań i wyjaśnieniu ewentualnych nieprawidłowości, wszystkie dane zostaną usunięte z systemów elektronicznych. W szeczególności trwale usunięte zostaną klucze szyfrujące, co sprawi, że dane zaszyfrowane będą niezwykle trudne od odczytania.&lt;/li&gt;
+&lt;/ol&gt;</value>
+  </data>
 </root>
