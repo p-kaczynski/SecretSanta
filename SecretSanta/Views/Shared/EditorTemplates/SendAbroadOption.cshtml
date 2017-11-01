@@ -1,0 +1,28 @@
+﻿@using SecretSanta.Domain.Enums
+@using SecretSanta.Models
+@model SecretSanta.Domain.Enums.SendAbroadOption
+
+@{
+    var values = new[]
+    {
+        new SelectListItem
+        {
+            Text = Resources.Global.SendAbroadOption_Want,
+            Value = ((int)SendAbroadOption.Want).ToString(),
+            Selected = Model == SendAbroadOption.Want
+        },
+        new SelectListItem
+        {
+            Text = Resources.Global.SendAbroadOption_Can,
+            Value = ((int)SendAbroadOption.Can).ToString(),
+            Selected = Model == SendAbroadOption.Can
+        },
+        new SelectListItem
+        {
+            Text = Resources.Global.SendAbroadOption_WillNot,
+            Value = ((int)SendAbroadOption.WillNot).ToString(),
+            Selected = Model == SendAbroadOption.WillNot
+        }
+    };
+}
+@Html.DropDownList(string.Empty, values, new { @class = "form-control" })

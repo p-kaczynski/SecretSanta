@@ -1,5 +1,5 @@
 ﻿@using SecretSanta.Domain.Models
-@model SecretSanta.Domain.Models.AssignmentResult
+@model SecretSanta.Common.Result.AssignmentResult
 
 @helper GenerateRow(Assignment assignment)
 {
@@ -9,11 +9,11 @@ var recipient = Model.UserDisplayById[assignment.RecepientId];
         <td>@giver.DisplayName</td>
         <td>@giver.Email</td>
         <td>@giver.Country</td>
-        <td>@giver.SentAbroad</td>
+        <td>@giver.SendAbroad</td>
         <td>@recipient.DisplayName</td>
         <td>@recipient.Email</td>
         <td>@recipient.Country</td>
-        <td>@recipient.SentAbroad</td>
+        <td>@recipient.SendAbroad</td>
     </tr>
 }
 
@@ -25,7 +25,7 @@ var user = Model.UserDisplayById[abandoned.SantaUserId];
         <td>@user.DisplayName</td>
         <td>@user.Email</td>
         <td>@user.Country</td>
-        <td>@user.SentAbroad</td>
+        <td>@user.SendAbroad</td>
         <td>@abandoned.Reason</td>
     </tr>
 }

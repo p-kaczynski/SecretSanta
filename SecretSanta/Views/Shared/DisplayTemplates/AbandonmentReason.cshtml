@@ -1,0 +1,15 @@
+﻿@using SecretSanta.Domain.Enums
+@model AbandonmentReason
+
+@switch (Model)
+{
+    case AbandonmentReason.LoneWontSend:
+        @Resources.Global.AbandonmentReason_Loner
+        break;
+    case AbandonmentReason.ComputerSaysNo:
+        @Resources.Global.AbandonmentReason_Algorithm
+        break;
+    default:
+        @Resources.Global.AbandonmentReason_Unknown
+        break;
+}

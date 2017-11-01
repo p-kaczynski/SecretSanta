@@ -19,6 +19,7 @@
                 <th>@Html.DisplayNameFor(m => m.PostalCode)</th>
                 <th>@Html.DisplayNameFor(m => m.City)</th>
                 <th>@Html.DisplayNameFor(m => m.Country)</th>
+                <th>@Html.DisplayNameFor(m => m.SendAbroad)</th>
                 <th>@Html.DisplayNameFor(m => m.Note)</th>
                 <th>@Html.DisplayNameFor(m => m.EmailConfirmed)</th>
                 <th>@Html.DisplayNameFor(m => m.AdminConfirmed)</th>
@@ -33,8 +34,9 @@
                 <td>@Html.DisplayFor(m => m.AddressLine1)</td>
                 <td>@Html.DisplayFor(m => m.AddressLine2)</td>
                 <td>@Html.DisplayFor(m => m.PostalCode)</td>
-                <td>@Html.DisplayFor(m => m.City)</td>
+                <td>@Html.DisplayFor(m => m.City)</td>                
                 <td>@Html.DisplayFor(m => m.Country)</td>
+                <td>@Html.DisplayFor(m => m.SendAbroad)</td>
                 <td>@Html.DisplayFor(m => m.Note)</td>
                 @if (Model.EmailConfirmed)
                 {

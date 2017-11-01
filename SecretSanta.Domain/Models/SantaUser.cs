@@ -1,5 +1,7 @@
 ﻿using System;
 using SecretSanta.Domain.Attributes;
+using SecretSanta.Domain.Enums;
+
 
 namespace SecretSanta.Domain.Models
 {
@@ -22,7 +24,7 @@ namespace SecretSanta.Domain.Models
         public string Country { get; set; }
         [DataProtection]
         public string Note { get; set; }
-        public bool SentAbroad { get; set; }
+        public SendAbroadOption SendAbroad { get; set; }
         public bool EmailConfirmed { get; set; }
         public bool AdminConfirmed { get; set; }
         public DateTime CreateDate { get; set; }

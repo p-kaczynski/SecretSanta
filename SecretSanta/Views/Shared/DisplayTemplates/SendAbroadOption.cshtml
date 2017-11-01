@@ -1,0 +1,17 @@
+﻿@using SecretSanta.Domain.Enums
+@model SecretSanta.Domain.Enums.SendAbroadOption
+
+@switch (Model)
+{
+    case SendAbroadOption.WillNot:
+        @Resources.Global.SendAbroadOption_WillNot
+        break;
+    case SendAbroadOption.Can:
+        @Resources.Global.SendAbroadOption_Can
+        break;
+    case SendAbroadOption.Want:
+        @Resources.Global.SendAbroadOption_Want
+        break;
+    default:
+        throw new ArgumentOutOfRangeException();
+}
