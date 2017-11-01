@@ -14,7 +14,7 @@ using SecretSanta.Domain.Models;
 
 namespace SecretSanta.Data
 {
-    public class EncryptionProvider : IEncryptionProvider, IDisposable
+    public sealed class EncryptionProvider : IEncryptionProvider, IDisposable
     {
         private readonly ConcurrentDictionary<Type,PropertyInfo[]> _propertyCache = new ConcurrentDictionary<Type, PropertyInfo[]>();
         private readonly RNGCryptoServiceProvider _rngProvider = new RNGCryptoServiceProvider();

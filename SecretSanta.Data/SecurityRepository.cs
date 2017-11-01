@@ -13,7 +13,7 @@ using SecretSanta.Domain.SecurityModels;
 
 namespace SecretSanta.Data
 {
-    public class SecurityRepository : ISantaUserStore
+    public sealed class SecurityRepository : ISantaUserStore
     {
         private readonly string _connectionString;
         
