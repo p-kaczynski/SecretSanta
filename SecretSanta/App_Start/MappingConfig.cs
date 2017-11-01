@@ -71,7 +71,7 @@ namespace SecretSanta
                 .ForMember(dest => dest.City, opt=>opt.MapFrom(src => src.City))
                 .ForMember(dest => dest.PostalCode, opt=>opt.MapFrom(src => src.PostalCode))
                 .ForMember(dest => dest.Country, opt => opt.ResolveUsing(post => countryProvider.ById[post.Country.Id].ThreeLetterIsoCode))
-                .ForMember(dest => dest.SentAbroad, opt => opt.MapFrom(src => src.SentAbroad))
+                .ForMember(dest => dest.SendAbroad, opt => opt.MapFrom(src => src.SendAbroad))
                 .ForMember(dest => dest.Note, opt => opt.MapFrom(src => src.Note))
                 .ForAllOtherMembers(opt=>opt.Ignore());
         }

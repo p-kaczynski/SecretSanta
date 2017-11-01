@@ -8,5 +8,6 @@ namespace SecretSanta.Common.Interface
     public interface IAssignmentAlgorithm
     {
         AssignmentResult Assign(ICollection<SantaUser> users);
+        void Verify(AssignmentResult result);
     }
 }

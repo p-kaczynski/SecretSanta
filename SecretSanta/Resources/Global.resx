@@ -489,4 +489,28 @@
   <data name="PrivacyPolicy_Html" xml:space="preserve">
     <value>&lt;h1&gt;Privacy Policy&lt;/h1&gt;</value>
   </data>
+  <data name="AbandonmentReason_Algorithm" xml:space="preserve">
+    <value>Rejected because the algorithm was unable to find a possible match</value>
+  </data>
+  <data name="AbandonmentReason_Loner" xml:space="preserve">
+    <value>Rejected because user is alone in their country, but will not send abroad</value>
+  </data>
+  <data name="AbandonmentReason_Unknown" xml:space="preserve">
+    <value>Rejected because of unknown reason.</value>
+  </data>
+  <data name="Registration_Form_SendAbroad" xml:space="preserve">
+    <value>My preference concerning sending gifts abroad</value>
+  </data>
+  <data name="Registration_Form_SendAbroad_HelpText" xml:space="preserve">
+    <value>Choose one of the options. Please note, that sending parcels abroad might incur quite high costs</value>
+  </data>
+  <data name="SendAbroadOption_Can" xml:space="preserve">
+    <value>I can send a gift abroad, but prefer to send it within my country</value>
+  </data>
+  <data name="SendAbroadOption_Want" xml:space="preserve">
+    <value>I can send a gift wherever in the world</value>
+  </data>
+  <data name="SendAbroadOption_WillNot" xml:space="preserve">
+    <value>I can send a gift only within the borders of my country</value>
+  </data>
 </root>

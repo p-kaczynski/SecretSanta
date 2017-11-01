@@ -42,8 +42,8 @@ namespace SecretSanta.Controllers
                 case SignInStatus.LockedOut:
                     ModelState.AddModelError(Constants.GlobalModerError, Global.Login_LockedOut);
                     return View(model);
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("TODO");
+                //case SignInStatus.RequiresVerification:
+                //    return RedirectToAction("TODO");
                 case SignInStatus.Failure:
                     ModelState.AddModelError(Constants.GlobalModerError, Global.Login_Invalid);
                     return View(model);

@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Microsoft.AspNet.Identity;
 using SecretSanta.Common.Interface;
+using SecretSanta.Domain.Enums;
 using SecretSanta.Domain.Models;
 using SecretSanta.Domain.SecurityModels;
 using SecretSanta.Models;
@@ -77,7 +78,7 @@ namespace SecretSanta.Controllers
                 Password = "LubięPlacki12345",
                 PostalCode = "12-345",
                 Note = "Bardzo lubię naleśniki",
-                SentAbroad = true
+                SendAbroad = SendAbroadOption.Can
             },
             new RegistrationPostModel
             {
@@ -92,7 +93,7 @@ namespace SecretSanta.Controllers
                 Password = "OjejJakieHasło!",
                 PostalCode = "55-234",
                 Note = "Chciałbym kucyka",
-                SentAbroad = true
+                SendAbroad = SendAbroadOption.Want
             },
             new RegistrationPostModel
             {
@@ -107,7 +108,7 @@ namespace SecretSanta.Controllers
                 Password = "siedemLiczbąTo7",
                 PostalCode = "11-234",
                 Note = "Chciałbym kucyka",
-                SentAbroad = false
+                SendAbroad = SendAbroadOption.WillNot
             },
             new RegistrationPostModel
             {
@@ -122,7 +123,7 @@ namespace SecretSanta.Controllers
                 Password = "kolejorzpany",
                 PostalCode = "33-432",
                 Note = "Nie wiem co tu wpisać",
-                SentAbroad = false
+                SendAbroad = SendAbroadOption.WillNot
             },
             new RegistrationPostModel
             {
@@ -136,7 +137,7 @@ namespace SecretSanta.Controllers
                 Password = "football1",
                 PostalCode = "C1P23",
                 Note = "kończą mi się pomysły",
-                SentAbroad = true
+                SendAbroad = SendAbroadOption.Can
             },
             new RegistrationPostModel
             {
@@ -150,7 +151,7 @@ namespace SecretSanta.Controllers
                 Password = "celticMonTheHoops",
                 PostalCode = "G11P34",
                 Note = "ile można xD",
-                SentAbroad = false
+                SendAbroad = SendAbroadOption.Want
             },
             new RegistrationPostModel
             {
@@ -164,7 +165,7 @@ namespace SecretSanta.Controllers
                 Password = "ChannelNo5",
                 PostalCode = "P123423",
                 Note = "Jedna osoba we francji",
-                SentAbroad = false
+                SendAbroad = SendAbroadOption.WillNot
             },
             new RegistrationPostModel
             {
@@ -178,7 +179,7 @@ namespace SecretSanta.Controllers
                 Password = "KotwicaKołobrzeg1995",
                 PostalCode = "GBED-234-3FF",
                 Note = "Jedna osoba w Szwecji",
-                SentAbroad = true
+                SendAbroad = SendAbroadOption.Want
             }
         };
     }
