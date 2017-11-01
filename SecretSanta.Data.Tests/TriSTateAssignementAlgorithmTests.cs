@@ -52,7 +52,7 @@ namespace SecretSanta.Data.Tests
         // === TESTS ===
 
         [Theory]
-        [MemberData(nameof(SantaUserProvider),20)]
+        [MemberData(nameof(SantaUserProvider),50)]
         public void CreateAssignment(ICollection<SantaUser> users)
         {
             var result = _algorithm.Assign(users);
@@ -77,6 +77,24 @@ namespace SecretSanta.Data.Tests
             }
             output.WriteLine("Sending abroad against preferences: Not detected");
 
+            // 4. Everyone who sends, gets
+            var givers = new HashSet<long>(result.Assignments.Select(a => a.GiverId));
+            var recipients  = new HashSet<long>(result.Assignments.Select(a => a.RecepientId));
+            givers.SetEquals(recipients).ShouldBeTrue();
+            output.WriteLine("Unequal exchange: Not detected");
+
+            // 5. Duplicates?
+            result.Assignments.Select(a=>a.RecepientId).Distinct().Count().ShouldEqual(result.Assignments.Select(a=>a.RecepientId).Count());
+            output.WriteLine("Duplicates: Not detected");
+
+            var canSendAbroad = result.Assignments
+                .Select(a => new
+                {
+                    Preference = lookup[a.GiverId].SendAbroad,
+                    SendsAbroad = lookup[a.GiverId].Country != lookup[a.RecepientId].Country
+                }).Where(o => o.Preference == SendAbroadOption.Can).ToArray();
+            var willSendAbroad = (double)canSendAbroad.Count(o => o.SendsAbroad);
+            output.WriteLine($"Percentage of people who will send abroad though they rather wouldn't: {willSendAbroad/canSendAbroad.Length:P} ({willSendAbroad}/{canSendAbroad.Length})");
 
         }
 
@@ -97,7 +115,7 @@ namespace SecretSanta.Data.Tests
         private static SantaUser GetRandomUser()
         {
             var isAbroad = Random.Next(0, IsAbroad) == 0;
-            SendAbroadOption sendOption;
+            SendAbroadOption sendOption = SendAbroadOption.WillNot;
             if (isAbroad)
             {
                 if (Random.Next(0, IsAbroadWantSendAbroad) == 0)
@@ -118,7 +136,8 @@ namespace SecretSanta.Data.Tests
             {
                 // for assignment we care only about id, send option and country
                 Id = Interlocked.Increment(ref _idSource),
-                Country = isAbroad ? GetCountry() : "pol"
+                Country = isAbroad ? GetCountry() : "pol",
+                SendAbroad = sendOption
             };
         }
 
