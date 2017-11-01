@@ -70,6 +70,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rejected because the algorithm was unable to find a possible match.
+        /// </summary>
+        public static string AbandonmentReason_Algorithm {
+            get {
+                return ResourceManager.GetString("AbandonmentReason_Algorithm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rejected because user is alone in their country, but will not send abroad.
+        /// </summary>
+        public static string AbandonmentReason_Loner {
+            get {
+                return ResourceManager.GetString("AbandonmentReason_Loner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rejected because of unknown reason..
+        /// </summary>
+        public static string AbandonmentReason_Unknown {
+            get {
+                return ResourceManager.GetString("AbandonmentReason_Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Account.
         /// </summary>
         public static string AccountRemove {
@@ -1015,6 +1042,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My preference concerning sending gifts abroad.
+        /// </summary>
+        public static string Registration_Form_SendAbroad {
+            get {
+                return ResourceManager.GetString("Registration_Form_SendAbroad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose one of the options. Please note, that sending parcels abroad might incur quite high costs.
+        /// </summary>
+        public static string Registration_Form_SendAbroad_HelpText {
+            get {
+                return ResourceManager.GetString("Registration_Form_SendAbroad_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The registrations has been closed..
         /// </summary>
         public static string RegistrationClosed {
@@ -1047,6 +1092,33 @@ namespace Resources {
         public static string RemoveUserIntro {
             get {
                 return ResourceManager.GetString("RemoveUserIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I can send a gift abroad, but prefer to send it within my country.
+        /// </summary>
+        public static string SendAbroadOption_Can {
+            get {
+                return ResourceManager.GetString("SendAbroadOption_Can", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I can send a gift wherever in the world.
+        /// </summary>
+        public static string SendAbroadOption_Want {
+            get {
+                return ResourceManager.GetString("SendAbroadOption_Want", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I can send a gift only within the borders of my country.
+        /// </summary>
+        public static string SendAbroadOption_WillNot {
+            get {
+                return ResourceManager.GetString("SendAbroadOption_WillNot", resourceCulture);
             }
         }
         

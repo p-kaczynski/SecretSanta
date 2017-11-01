@@ -31,6 +31,7 @@ namespace SecretSanta.DI
         private static void RegisterDependencies(ContainerBuilder builder)
         {
             builder.RegisterType<ConfigProvider>().As<IConfigProvider>().SingleInstance();
+            builder.RegisterType<TriStateAssignmentAlgorithm>().As<IAssignmentAlgorithm>().SingleInstance();
             builder.RegisterType<SettingsRepository>().As<ISettingsRepository>().SingleInstance();
             builder.RegisterType<EncryptionProvider>().As<IEncryptionProvider>().SingleInstance();
             builder.RegisterType<CountryProvider>().SingleInstance();

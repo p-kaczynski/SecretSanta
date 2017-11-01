@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Resources;
+using SecretSanta.Domain.Enums;
 using SecretSanta.Models.Attributes;
 
 namespace SecretSanta.Models
@@ -61,8 +62,9 @@ namespace SecretSanta.Models
         [Required(ErrorMessageResourceName = "Country_Required", ErrorMessageResourceType = typeof(Global))]
         public CountryEntryViewModel Country { get; set; }
 
-        [Display(Name = "SentAbroad", ResourceType = typeof(Global))]
-        public bool SentAbroad { get; set; }
+        [Display(Name = "Registration_Form_SendAbroad", ResourceType = typeof(Global))]
+        [HelpText(typeof(Global), "Registration_Form_SendAbroad_HelpText")]
+        public SendAbroadOption SendAbroad { get; set; }
 
         [DataType(DataType.MultilineText)]
         [Display(Name = "Note", ResourceType = typeof(Global))]
