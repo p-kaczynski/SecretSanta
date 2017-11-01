@@ -42,6 +42,21 @@ namespace SecretSanta.Data
             var linkedList = new LinkedList<SantaUser>(usersThatCanBeMatched.OrderBy(_ => Random.Next()));
             while (linkedList.Count > 1) // we need at least two to make a loop
             {
+                // Check for people who now became loners
+                var newLoners = linkedList.GroupBy(user => user.Country)
+                    .Where(g => g.Count() == 1 && g.Single().SendAbroad == SendAbroadOption.WillNot)
+                    .SelectMany(g => g).ToArray();
+
+                if (newLoners.Any())
+                {
+                    foreach (var user in newLoners)
+                    {
+                        linkedList.Remove(user);
+                        abandoned.Add(new Abandoned {SantaUserId = user.Id, Reason = AbandonmentReason.ComputerSaysNo});
+                    }
+                    continue; // restart to check condition
+                }
+
                 // create a linked list by randomizing our users
                 var firstUser = linkedList.First.Value;
                 var chain = CreateChain(linkedList);
@@ -74,6 +89,26 @@ namespace SecretSanta.Data
             // so, whoever is left on the list is abandoned
             abandoned.AddRange(linkedList.Select(user => new Abandoned{SantaUserId = user.Id, Reason = AbandonmentReason.ComputerSaysNo}));
 
+            // SECOND PASS
+            // So, we are left with a number of chains and a list of abandoned people. Now, loners are loners, they will be left alone.
+            // However, we might be able to do something about other folk
+
+            // Basically take them, one by one (ComputerSaysNo) and scan EVERY place in EVERY chain for a place to insert them, where they wouldn't break the chain
+            // If that works I'm a fuckin' genius
+            foreach (var abandonedUser in abandoned.Where(a => a.Reason == AbandonmentReason.ComputerSaysNo).ToArray()) // enumeration to array as we modify collection!
+            {
+                // 1. Get the user
+                var user = users.Single(u => u.Id == abandonedUser.SantaUserId); // that must work
+
+                // 2. iterate chain collection
+                if (TryFitUser(user, closedChains, PrefersToSend)) // first pass, try to fit person not forcing anyone to send abroad
+                    abandoned.Remove(abandonedUser);
+                else if (TryFitUser(user, closedChains, CanSend)) // second pass - try to fit him forcefully utilizing "I can send if I have to"
+                    abandoned.Remove(abandonedUser);
+            }
+
+            // Now we literally tried all we can.
+
             return new AssignmentResult
             {
                 Abandoned = abandoned,
@@ -81,6 +116,36 @@ namespace SecretSanta.Data
                 Success = closedChains.Any()
             };
             
+        }
+
+        private static bool TryFitUser(SantaUser user, List<LinkedList<SantaUser>> closedChains, Func<SantaUser, SantaUser, bool> predicate)
+        {
+            foreach (var chain in closedChains)
+            {
+                // 3. iterate chain
+                var current = chain.First;
+                while (current.Next != null)
+                {
+                    if (CanFitBetween(user, current.Value, current.Next.Value, predicate))
+                    {
+                        chain.AddAfter(current, user);
+                        return true;
+                    }
+                    current = current.Next;
+                }
+            }
+            return false;
+        }
+
+        private static bool CanFitBetween(SantaUser user, SantaUser before, SantaUser next, Func<SantaUser, SantaUser,bool> predicate)
+        {
+            // the user fits if:
+            // 1. Previous user can send to the user
+            // 2. user can send to the next user
+
+            return predicate(before,user) // 1.
+                   && (user.SendAbroad == SendAbroadOption.Want || user.SendAbroad == SendAbroadOption.Can ||
+                       user.Country == next.Country); // 2.
         }
 
         private static IEnumerable<Assignment> AssignFromChain(LinkedList<SantaUser> chain)
@@ -157,6 +222,11 @@ namespace SecretSanta.Data
                         if (chain.Last.Value.Id != chain.First.Value.Id && CanSend(chain.Last.Value, chain.First.Value))
                         {
                             //  Yes we can - the last person is NOT the first person in the chain AND last person CAN send to first
+
+                            // re-add people who we rejected
+                            foreach (var user in rejects)
+                                list.AddLast(user);
+
                             // the last person would have been already removed from the list, so we... can just return the chain
                             return chain;
                         }
@@ -179,14 +249,14 @@ namespace SecretSanta.Data
                 // and remove from available list:
                 list.Remove(target);
             }
-            
+
             // we have finished with the list
             // add the rejects to the list
             foreach (var user in rejects)
                 list.AddLast(user);
 
             // now, final check: did we manage to create a chain? Maybe we ran out of people in the list?
-            if (chain.Last.Value.Id != chain.First.Value.Id && CanSend(chain.Last.Value, chain.First.Value))
+            if (chain.Last.Value.Id != chain.First.Value.Id && (CanSend(chain.Last.Value, chain.First.Value)|| PrefersToSend(chain.Last.Value, chain.First.Value)))
             {
                 // yes! it's a chain of at least two users that can loop! we can return safely
                 return chain;
@@ -212,6 +282,7 @@ namespace SecretSanta.Data
             // well, shit - the chain.Count == 1, it's not a looping chain then
             // return the person to the list and hope for next iteration
             list.AddLast(chain.Single()); // use single to make sure the algorithm is correct
+
             return null; // we failed.
         }
 

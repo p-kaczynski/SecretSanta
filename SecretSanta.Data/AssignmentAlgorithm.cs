@@ -34,6 +34,18 @@ namespace SecretSanta.Data
                 var recipient = result.UserDisplayById[a.RecepientId];
                 if (giver.SendAbroad == SendAbroadOption.WillNot && giver.Country != recipient.Country)
                     throw new InvalidOperationException($"{nameof(AssignmentAlgorithm)}.{nameof(Verify)}: Sending abroad against preferences");
+
+                // 4. Everyone who sends, gets
+                var givers = new HashSet<long>(result.Assignments.Select(a => a.GiverId));
+                var recipients = new HashSet<long>(result.Assignments.Select(a => a.RecepientId));
+                if(!givers.SetEquals(recipients))
+                    throw new InvalidOperationException($"{nameof(AssignmentAlgorithm)}.{nameof(Verify)}: Unequal exchange detected");
+
+                // 5. Duplicates?
+                if (result.Assignments.Select(a => a.RecepientId).Distinct().Count() !=
+                    result.Assignments.Select(a => a.RecepientId).Count())
+                    throw new InvalidOperationException(
+                        $"{nameof(AssignmentAlgorithm)}.{nameof(Verify)}: Duplicates detected");
             }
         }
     }
