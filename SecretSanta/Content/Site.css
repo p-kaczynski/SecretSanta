@@ -103,3 +103,6 @@ textarea {
 }
 
 span.field-validation-error { color: red; }
+td {
+    word-break: break-all;
+}
