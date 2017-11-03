@@ -1,5 +1,4 @@
-﻿using System.CodeDom;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Resources;
 using SecretSanta.Models.Validation;

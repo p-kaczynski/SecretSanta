@@ -9,8 +9,6 @@ using SecretSanta.Common.Helpers;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
 using SecretSanta.Domain.SecurityModels;
-using Utilities.Collections.Entities;
-using Utilities.Collections.Enumerables;
 using SecretSanta.Common.Result;
 
 namespace SecretSanta.Data

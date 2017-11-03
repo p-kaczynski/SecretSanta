@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using NLog;
 using SecretSanta.Common.Interface;
-using SecretSanta.Domain.Models;
 using SecretSanta.Domain.SecurityModels;
 
 namespace SecretSanta.Security
