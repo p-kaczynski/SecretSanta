@@ -51,7 +51,7 @@ namespace SecretSanta.Data.Tests
         // === TESTS ===
 
         [Theory]
-        [MemberData(nameof(SantaUserProvider),50)]
+        [MemberData(nameof(SantaUserProvider),20)]
         public void CreateAssignment(ICollection<SantaUser> users)
         {
             var result = _algorithm.Assign(users);
@@ -94,6 +94,19 @@ namespace SecretSanta.Data.Tests
                 }).Where(o => o.Preference == SendAbroadOption.Can).ToArray();
             var willSendAbroad = (double)canSendAbroad.Count(o => o.SendsAbroad);
             output.WriteLine($"Percentage of people who will send abroad though they rather wouldn't: {willSendAbroad/canSendAbroad.Length:P} ({willSendAbroad}/{canSendAbroad.Length})");
+
+        }
+
+        [Theory]
+        [MemberData(nameof(SantaUserProvider), 20)]
+        public void Verify(ICollection<SantaUser> users)
+        {
+            var result = _algorithm.Assign(users);
+            result.UserDisplayById = users.ToDictionary(u => u.Id, u => u);
+            output.WriteLine($"Success={result.Success}, user count={users.Count}, assignments={result.Assignments.Count}, abandoned={result.Abandoned.Count} (Loner:{result.Abandoned.Count(a => a.Reason == AbandonmentReason.LoneWontSend)}, Algorithm: {result.Abandoned.Count(a => a.Reason == AbandonmentReason.ComputerSaysNo)})");
+            
+            // this throws on errors.
+            _algorithm.Verify(result);
 
         }
 
