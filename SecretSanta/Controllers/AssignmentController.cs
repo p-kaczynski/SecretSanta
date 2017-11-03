@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using SecretSanta.Common.Interface;
 using SecretSanta.Common.Result;
-using SecretSanta.Domain.Models;
 using SecretSanta.Security;
 
 namespace SecretSanta.Controllers

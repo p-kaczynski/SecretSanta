@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading;
 using SecretSanta.Domain.Enums;
 using SecretSanta.Domain.Models;
-using SecretSanta.Data;
 using Should;
 using Xunit;
 using Xunit.Abstractions;
