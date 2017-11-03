@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
@@ -19,6 +20,9 @@ namespace SecretSanta.Data
         private readonly IEncryptionProvider _encryptionProvider;
         private readonly IAssignmentAlgorithm _algorithm;
         private readonly string _connectionString;
+
+        public Func<string, IDbConnection> DbConnectionFactory { get; set; } = connectionString =>  new SqlConnection(connectionString);
+
         public UserRepository(IConfigProvider configProvider, IEncryptionProvider encryptionProvider, IAssignmentAlgorithm algorithm)
         {
             _encryptionProvider = encryptionProvider;
@@ -230,15 +234,15 @@ namespace SecretSanta.Data
             return new AssignmentResult{Assignments = allAssignments, UserDisplayById = allUsers.ToDictionary(user=>user.Id, user=>user), Abandoned = allAbandoned};
         }
 
-        private T WithConnection<T>(Func<SqlConnection, T> func)
+        private T WithConnection<T>(Func<IDbConnection, T> func)
         {
-            using (var conn = new SqlConnection(_connectionString))
+            using (var conn = DbConnectionFactory(_connectionString))
                 return func(conn);
         }
 
-        private void WithConnection(Action<SqlConnection> action)
+        private void WithConnection(Action<IDbConnection> action)
         {
-            using (var conn = new SqlConnection(_connectionString))
+            using (var conn = DbConnectionFactory(_connectionString))
                 action(conn);
         }
     }
