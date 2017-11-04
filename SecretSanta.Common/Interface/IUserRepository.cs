@@ -29,6 +29,13 @@ namespace SecretSanta.Common.Interface
 
         AssignmentResult AssignRecipients();
 
+        Assignment GetOutboundAssignment(long userId);
+
+        Assignment GetInboundAssignment(long userId);
+
         AssignmentResult GetAssignments();
+
+        void SetGiftSent(long userId, string tracking);
+        void SetGiftReceived(long userId);
     }
 }

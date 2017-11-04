@@ -2,7 +2,6 @@
 using System.Collections.Concurrent;
 using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
@@ -14,7 +13,7 @@ using SecretSanta.Domain.Models;
 
 namespace SecretSanta.Data
 {
-    public class EncryptionProvider : IEncryptionProvider, IDisposable
+    public sealed class EncryptionProvider : IEncryptionProvider, IDisposable
     {
         private readonly ConcurrentDictionary<Type,PropertyInfo[]> _propertyCache = new ConcurrentDictionary<Type, PropertyInfo[]>();
         private readonly RNGCryptoServiceProvider _rngProvider = new RNGCryptoServiceProvider();

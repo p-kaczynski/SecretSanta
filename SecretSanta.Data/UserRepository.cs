@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
@@ -9,8 +10,6 @@ using SecretSanta.Common.Helpers;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
 using SecretSanta.Domain.SecurityModels;
-using Utilities.Collections.Entities;
-using Utilities.Collections.Enumerables;
 using SecretSanta.Common.Result;
 
 namespace SecretSanta.Data
@@ -21,6 +20,9 @@ namespace SecretSanta.Data
         private readonly IEncryptionProvider _encryptionProvider;
         private readonly IAssignmentAlgorithm _algorithm;
         private readonly string _connectionString;
+
+        public Func<string, IDbConnection> DbConnectionFactory { get; set; } = connectionString =>  new SqlConnection(connectionString);
+
         public UserRepository(IConfigProvider configProvider, IEncryptionProvider encryptionProvider, IAssignmentAlgorithm algorithm)
         {
             _encryptionProvider = encryptionProvider;
@@ -206,8 +208,6 @@ namespace SecretSanta.Data
             if (assignmentsFromDb != result.Assignments.Count)
                 throw new InvalidOperationException("Inserts were performed, but there is numerical mismatch!");
 
-            // set lookup for frontend
-            result.UserDisplayById = allUsers.ToDictionary(user => user.Id, user => user);
             return result;
         }
 
@@ -224,23 +224,51 @@ namespace SecretSanta.Data
             var allUsers = GetAllUsersWithoutProtectedData();
 
             // get all assignments
-            var allAssignments = WithConnection(conn => conn.Query<Assignment>("SELECT * FROM [Assignments]")).ToArray();
+            var allAssignments = WithConnection(conn => conn.Query<Assignment>($"SELECT * FROM [{nameof(Assignment)}s]")).ToArray();
 
             // get all abandoned
-            var allAbandoned = WithConnection(conn => conn.Query<Abandoned>("SELECT * FROM [Abandoned]")).ToArray();
+            var allAbandoned = WithConnection(conn => conn.Query<Abandoned>($"SELECT * FROM [{nameof(Abandoned)}]")).ToArray();
 
             return new AssignmentResult{Assignments = allAssignments, UserDisplayById = allUsers.ToDictionary(user=>user.Id, user=>user), Abandoned = allAbandoned};
         }
 
-        private T WithConnection<T>(Func<SqlConnection, T> func)
+        public void SetGiftSent(long userId, string tracking)
         {
-            using (var conn = new SqlConnection(_connectionString))
+            WithConnection(conn =>
+                conn.Execute(
+                    $"UPDATE [dbo].[{nameof(Assignment)}s] SET Sent = 1, Tracking = @tracking WHERE GiverId = @userId",
+                    new {userId, tracking}));
+        }
+
+        public Assignment GetOutboundAssignment(long userId)
+        {
+            return WithConnection(conn =>
+                conn.QuerySingle<Assignment>($"SELECT * FROM [{nameof(Assignment)}s] WHERE GiverId = @userId", new {userId}));
+        }
+
+        public Assignment GetInboundAssignment(long userId)
+        {
+            return WithConnection(conn =>
+                conn.QuerySingle<Assignment>($"SELECT * FROM [{nameof(Assignment)}s] WHERE RecepientId = @userId", new { userId }));
+        }
+
+        public void SetGiftReceived(long userId)
+        {
+            WithConnection(conn =>
+                conn.Execute(
+                    $"UPDATE [dbo].[{nameof(Assignment)}s] SET Received = 1 WHERE RecepientId = @userId",
+                    new { userId }));
+        }
+
+        private T WithConnection<T>(Func<IDbConnection, T> func)
+        {
+            using (var conn = DbConnectionFactory(_connectionString))
                 return func(conn);
         }
 
-        private void WithConnection(Action<SqlConnection> action)
+        private void WithConnection(Action<IDbConnection> action)
         {
-            using (var conn = new SqlConnection(_connectionString))
+            using (var conn = DbConnectionFactory(_connectionString))
                 action(conn);
         }
     }
