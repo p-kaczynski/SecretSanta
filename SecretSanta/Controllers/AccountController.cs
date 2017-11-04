@@ -280,5 +280,53 @@ namespace SecretSanta.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult GiftSent()
+        {
+            return View(new GiftSentPostModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> GiftSent(GiftSentPostModel model)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+                return HttpNotFound();
+
+            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
+            if (isAdmin)
+                return RedirectToAction("Index", "Home");
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+
+            // should be checked by model, leaving it here for my sanity
+            if (!model.Confirmation)
+                return View(model);
+
+            _userRepository.SetGiftSent(userId, model.Tracking);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> GiftReceived()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (user == null)
+                return HttpNotFound();
+
+            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
+            if (isAdmin)
+                return RedirectToAction("Index", "Home");
+
+            _userRepository.SetGiftReceived(userId);
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

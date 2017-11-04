@@ -7,10 +7,10 @@ using SecretSanta.Domain.Models;
 
 namespace SecretSanta.Data
 {
-    public class TriStateAssignmentAlgorithm : AssignmentAlgorithm
+    public sealed class TriStateAssignmentAlgorithm : AssignmentAlgorithm
     {
         private static readonly Random Random = new Random();
-        public override AssignmentResult Assign(ICollection<SantaUser> users)
+        protected override AssignmentResult AssignInternal(ICollection<SantaUser> users)
         {
             // prepare list for abandoned users
             var abandoned = new List<Abandoned>();

@@ -13,7 +13,13 @@ namespace SecretSanta.Data
     {
         private static readonly Logger Log = LogManager.GetCurrentClassLogger();
 
-        public abstract AssignmentResult Assign(ICollection<SantaUser> users);
+        public  AssignmentResult Assign(ICollection<SantaUser> users)
+        {
+            var result = AssignInternal(users);
+            result.UserDisplayById = users.ToDictionary(user => user.Id, user => user);
+            return result;
+        }
+        protected abstract AssignmentResult AssignInternal(ICollection<SantaUser> users);
 
         public void Verify(AssignmentResult result)
         {
