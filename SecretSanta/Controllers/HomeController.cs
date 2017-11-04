@@ -57,14 +57,34 @@ namespace SecretSanta.Controllers
             var assignedUserId = _userRepository.GetAssignedPartnerIdForUser(userId);
             if (assignedUserId.HasValue)
             {
-                var assignedUser = _userRepository.GetUser(assignedUserId.Value);
-                if (assignedUser == null)
+                model.AssignmentPerformed = true;
+                // Check assignment
+                var outbound = _userRepository.GetOutboundAssignment(userId);
+                var inbound = _userRepository.GetInboundAssignment(userId);
+
+                // Has gift been sent?
+                model.InboundGiftEnRoute = inbound.Sent;
+
+                // Has gift been confirmed as received?
+                model.InboundGiftArrived = inbound.Received;
+
+                // Has outbound gift been received?
+                model.OutboundGiftArrived = outbound.Received;
+
+                // Has outbound gift been sent?
+                model.OutboundGiftEnRoute = outbound.Sent;
+                if(!outbound.Sent)
                 {
-                    // TODO: NOTIFY ADMIN - THIS IS BAD
-                    Log.Error($"Tried to retrieve current user id={userId} from repository, but got null");
-                    return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+                    // nope, show that it awaits
+                    var assignedUser = _userRepository.GetUser(assignedUserId.Value);
+                    if (assignedUser == null)
+                    {
+                        // TODO: NOTIFY ADMIN - THIS IS BAD
+                        Log.Error($"Tried to retrieve current user id={userId} from repository, but got null");
+                        return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+                    }
+                    model.Assignment = Mapper.Map<AssignmentViewModel>(assignedUser);
                 }
-                model.Assignment = Mapper.Map<AssignmentViewModel>(assignedUser);
             }
 
             return View(model);

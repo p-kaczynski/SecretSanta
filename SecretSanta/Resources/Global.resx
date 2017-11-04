@@ -513,4 +513,47 @@
   <data name="SendAbroadOption_WillNot" xml:space="preserve">
     <value>I can send a gift only within the borders of my country</value>
   </data>
+  <data name="GiftSent" xml:space="preserve">
+    <value>Gift Sending Confirmation</value>
+  </data>
+  <data name="GiftSent_Form_Confirmation" xml:space="preserve">
+    <value>I confirm that I have sent the gift to the assigned person</value>
+  </data>
+  <data name="GiftSent_Form_Tracking" xml:space="preserve">
+    <value>Tracking number/reference</value>
+  </data>
+  <data name="GiftSent_MustConfirm" xml:space="preserve">
+    <value>You must confirm, that the gift was sent.</value>
+  </data>
+  <data name="GiftSent_Form_Confirmation_HelpText" xml:space="preserve">
+    <value>By checking this box I confirm, that I have sent a gift to the person assigned. I understand, that providing false information is shameful and will be punished to the extent of organisers capabilities.</value>
+  </data>
+  <data name="GiftSent_Form_Tracking_HelpText" xml:space="preserve">
+    <value>If you have a tracking/reference number for the parcel containing the gift you have sent, add it to this box. This will help resolve issues, if any arise</value>
+  </data>
+  <data name="Status_Inbound_EnRoute" xml:space="preserve">
+    <value>Your Secret Santa has let us know that he has sent your gift!</value>
+  </data>
+  <data name="Status_Inbound_NotSent" xml:space="preserve">
+    <value>Your Secret Santa is preparing a gift for you!</value>
+  </data>
+  <data name="Status_Inbound_Received" xml:space="preserve">
+    <value>You have let us know that your gift has arrived. We hope you have enjoyed the Secret Santa experience!</value>
+  </data>
+  <data name="Status_Inbound_Received_Submit" xml:space="preserve">
+    <value>I have received my gift!</value>
+  </data>
+  <data name="Status_Outbound_EnRoute" xml:space="preserve">
+    <value>You have let us know that your gift has been sent. Thank you for sending!</value>
+    <comment> </comment>
+  </data>
+  <data name="Status_Outbound_NotYetReceived" xml:space="preserve">
+    <value>Your gift has not yet arrived at its destination.</value>
+  </data>
+  <data name="Status_Outbound_Received" xml:space="preserve">
+    <value>Your gift has arrived! Thanks for spreading the love!</value>
+  </data>
+  <data name="Status_Outbound_Sent_Submit" xml:space="preserve">
+    <value>I have sent the gift!</value>
+  </data>
 </root>

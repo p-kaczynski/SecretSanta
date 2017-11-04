@@ -208,8 +208,6 @@ namespace SecretSanta.Data
             if (assignmentsFromDb != result.Assignments.Count)
                 throw new InvalidOperationException("Inserts were performed, but there is numerical mismatch!");
 
-            // set lookup for frontend
-            result.UserDisplayById = allUsers.ToDictionary(user => user.Id, user => user);
             return result;
         }
 
@@ -226,12 +224,40 @@ namespace SecretSanta.Data
             var allUsers = GetAllUsersWithoutProtectedData();
 
             // get all assignments
-            var allAssignments = WithConnection(conn => conn.Query<Assignment>("SELECT * FROM [Assignments]")).ToArray();
+            var allAssignments = WithConnection(conn => conn.Query<Assignment>($"SELECT * FROM [{nameof(Assignment)}s]")).ToArray();
 
             // get all abandoned
-            var allAbandoned = WithConnection(conn => conn.Query<Abandoned>("SELECT * FROM [Abandoned]")).ToArray();
+            var allAbandoned = WithConnection(conn => conn.Query<Abandoned>($"SELECT * FROM [{nameof(Abandoned)}]")).ToArray();
 
             return new AssignmentResult{Assignments = allAssignments, UserDisplayById = allUsers.ToDictionary(user=>user.Id, user=>user), Abandoned = allAbandoned};
+        }
+
+        public void SetGiftSent(long userId, string tracking)
+        {
+            WithConnection(conn =>
+                conn.Execute(
+                    $"UPDATE [dbo].[{nameof(Assignment)}s] SET Sent = 1, Tracking = @tracking WHERE GiverId = @userId",
+                    new {userId, tracking}));
+        }
+
+        public Assignment GetOutboundAssignment(long userId)
+        {
+            return WithConnection(conn =>
+                conn.QuerySingle<Assignment>($"SELECT * FROM [{nameof(Assignment)}s] WHERE GiverId = @userId", new {userId}));
+        }
+
+        public Assignment GetInboundAssignment(long userId)
+        {
+            return WithConnection(conn =>
+                conn.QuerySingle<Assignment>($"SELECT * FROM [{nameof(Assignment)}s] WHERE RecepientId = @userId", new { userId }));
+        }
+
+        public void SetGiftReceived(long userId)
+        {
+            WithConnection(conn =>
+                conn.Execute(
+                    $"UPDATE [dbo].[{nameof(Assignment)}s] SET Received = 1 WHERE RecepientId = @userId",
+                    new { userId }));
         }
 
         private T WithConnection<T>(Func<IDbConnection, T> func)

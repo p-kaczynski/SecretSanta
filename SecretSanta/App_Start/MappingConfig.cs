@@ -47,7 +47,12 @@ namespace SecretSanta
             cfg.CreateMap<ISettingsRepository, SettingsViewModel>();
 
             cfg.CreateMap<SantaUser, UserHomeViewModel>()
-                .ForMember(dest => dest.Assignment, opt => opt.Ignore());
+                .ForMember(dest => dest.Assignment, opt => opt.Ignore())
+                .ForMember(dest => dest.InboundGiftArrived, opt => opt.Ignore())
+                .ForMember(dest => dest.InboundGiftEnRoute, opt => opt.Ignore())
+                .ForMember(dest => dest.OutboundGiftEnRoute, opt => opt.Ignore())
+                .ForMember(dest => dest.OutboundGiftArrived, opt => opt.Ignore())
+                .ForMember(dest => dest.AssignmentPerformed, opt => opt.Ignore());
 
             cfg.CreateMap<SantaUser, AssignmentViewModel>()
                 .ForMember(dest=>dest.Country, opt=>opt.ResolveUsing(src=>countryProvider.ByThreeLetterCode[src.Country].Name));

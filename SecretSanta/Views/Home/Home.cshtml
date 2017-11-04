@@ -33,22 +33,25 @@ else
     <div class="alert alert-warning"><p>@Resources.Global.Admin_NotConfirmed</p></div>
 }
 
-@if (Model.EmailConfirmed && Model.AdminConfirmed)
+@if (Model.EmailConfirmed && Model.AdminConfirmed && Model.AssignmentPerformed)
 {
-    if (Model.Assignment == null)
+    if (Model.OutboundGiftEnRoute)
     {
-        <div class="alert alert-success"><p>@Resources.Global.AllReady</p></div>
+        // Gift is en route, cool
+        <div class="alert alert-success">
+            <p>@Resources.Global.Status_Outbound_EnRoute</p>
+        </div>
     }
     else
     {
+        // user has not sent yet
         <div class="alert alert-info">
             <p>
                 <span class="text-primary">@Resources.Global.RecepientAssigned</span>
             </p>
             <div class="panel panel-success">
                 <address>
-                    <strong>@Model.Assignment.FullName</strong><br/>
-                    <a href="@Model.Assignment.FacebookProfileUrl">@Resources.Global.FacebookURL</a>
+                    <strong>@Model.Assignment.FullName</strong>(<a href="@Model.Assignment.FacebookProfileUrl">@Resources.Global.FacebookURL</a>)<br/>
                     @Model.Assignment.AddressLine1<br/>
                     @Model.Assignment.AddressLine2<br/>
                     @Model.Assignment.PostalCode @Model.Assignment.City<br/>
@@ -62,6 +65,55 @@ else
                 </p>
                 <div class="panel panel-success">@Model.Assignment.Note</div>
             }
+            <a class="btn btn-success" href="@Url.Action("GiftSent", "Account")">@Resources.Global.Status_Outbound_Sent_Submit</a>
         </div>
     }
+
+    if (Model.OutboundGiftArrived)
+    {
+        <div class="alert alert-success">
+            <p>@Resources.Global.Status_Outbound_Received</p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success">
+            <p>@Resources.Global.Status_Outbound_NotYetReceived</p>
+        </div>
+    }
+
+    if (Model.InboundGiftEnRoute)
+    {
+        if (Model.InboundGiftArrived)
+        {
+            // user has already confirmed they got their gift
+            <div class="alert alert-success">
+                <p>@Resources.Global.Status_Inbound_Received</p>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                <p>@Resources.Global.Status_Inbound_EnRoute</p>
+                @using (Html.BeginForm("GiftReceived", "Account"))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">@Resources.Global.Status_Inbound_Received_Submit</button>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <p>@Resources.Global.Status_Inbound_NotSent</p>
+        </div>
+    }
+}
+else
+{
+    // not assigned yet
+    <div class="alert alert-success">
+        <p>@Resources.Global.AllReady</p>
+    </div>
 }

@@ -655,6 +655,60 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gift Sending Confirmation.
+        /// </summary>
+        public static string GiftSent {
+            get {
+                return ResourceManager.GetString("GiftSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I confirm that I have sent the gift to the assigned person.
+        /// </summary>
+        public static string GiftSent_Form_Confirmation {
+            get {
+                return ResourceManager.GetString("GiftSent_Form_Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By checking this box I confirm, that I have sent a gift to the person assigned. I understand, that providing false information is shameful and will be punished to the extent of organisers capabilities..
+        /// </summary>
+        public static string GiftSent_Form_Confirmation_HelpText {
+            get {
+                return ResourceManager.GetString("GiftSent_Form_Confirmation_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tracking number/reference.
+        /// </summary>
+        public static string GiftSent_Form_Tracking {
+            get {
+                return ResourceManager.GetString("GiftSent_Form_Tracking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you have a tracking/reference number for the parcel containing the gift you have sent, add it to this box. This will help resolve issues, if any arise.
+        /// </summary>
+        public static string GiftSent_Form_Tracking_HelpText {
+            get {
+                return ResourceManager.GetString("GiftSent_Form_Tracking_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must confirm, that the gift was sent..
+        /// </summary>
+        public static string GiftSent_MustConfirm {
+            get {
+                return ResourceManager.GetString("GiftSent_MustConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giver.
         /// </summary>
         public static string Giver {
@@ -1164,6 +1218,78 @@ namespace Resources {
         public static string SiteName {
             get {
                 return ResourceManager.GetString("SiteName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Secret Santa has let us know that he has sent your gift!.
+        /// </summary>
+        public static string Status_Inbound_EnRoute {
+            get {
+                return ResourceManager.GetString("Status_Inbound_EnRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Secret Santa is preparing a gift for you!.
+        /// </summary>
+        public static string Status_Inbound_NotSent {
+            get {
+                return ResourceManager.GetString("Status_Inbound_NotSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have let us know that your gift has arrived. We hope you have enjoyed the Secret Santa experience!.
+        /// </summary>
+        public static string Status_Inbound_Received {
+            get {
+                return ResourceManager.GetString("Status_Inbound_Received", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have received my gift!.
+        /// </summary>
+        public static string Status_Inbound_Received_Submit {
+            get {
+                return ResourceManager.GetString("Status_Inbound_Received_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have let us know that your gift has been sent. Thank you for sending!.
+        /// </summary>
+        public static string Status_Outbound_EnRoute {
+            get {
+                return ResourceManager.GetString("Status_Outbound_EnRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your gift has not yet arrived at its destination..
+        /// </summary>
+        public static string Status_Outbound_NotYetReceived {
+            get {
+                return ResourceManager.GetString("Status_Outbound_NotYetReceived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your gift has arrived! Thanks for spreading the love!.
+        /// </summary>
+        public static string Status_Outbound_Received {
+            get {
+                return ResourceManager.GetString("Status_Outbound_Received", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have sent the gift!.
+        /// </summary>
+        public static string Status_Outbound_Sent_Submit {
+            get {
+                return ResourceManager.GetString("Status_Outbound_Sent_Submit", resourceCulture);
             }
         }
         
