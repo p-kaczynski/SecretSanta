@@ -860,6 +860,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot edit your data after you have been assigned. If you need to contact a person that has you as their gift recipient, please use the &quot;Contact&quot; tab..
+        /// </summary>
+        public static string Message_CannotEditAccountAfterAssignment {
+            get {
+                return ResourceManager.GetString("Message_CannotEditAccountAfterAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The assignment has been already done - you cannot remove your account!.
         /// </summary>
         public static string Message_CannotRemoveAccountAfterAssignment {

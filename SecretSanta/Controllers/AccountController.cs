@@ -228,6 +228,9 @@ namespace SecretSanta.Controllers
             if (user == null)
                 return HttpNotFound();
 
+            if (_userRepository.WasAssigned())
+                return View("Message", model: Resources.Global.Message_CannotEditAccountAfterAssignment);
+
             var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
             if (isAdmin)
                 return RedirectToAction("Index", "Home");
@@ -244,6 +247,9 @@ namespace SecretSanta.Controllers
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             if (user == null)
                 return HttpNotFound();
+
+            if (_userRepository.WasAssigned())
+                return View("Message", model: Resources.Global.Message_CannotEditAccountAfterAssignment);
 
             var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
             if (isAdmin)
