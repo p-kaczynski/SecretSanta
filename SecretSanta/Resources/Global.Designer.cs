@@ -70,20 +70,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rejected because the algorithm was unable to find a possible match.
+        ///   Looks up a localized string similar to The algorithm was unable to create pairs for everyone, and you have been randomly chosen not to participate to allow creating maximum amount of pairs..
         /// </summary>
-        public static string AbandonmentReason_Algorithm {
+        public static string AbandonmentReason_Text_ComputerSaysNo {
             get {
-                return ResourceManager.GetString("AbandonmentReason_Algorithm", resourceCulture);
+                return ResourceManager.GetString("AbandonmentReason_Text_ComputerSaysNo", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rejected because user is alone in their country, but will not send abroad.
+        ///   Looks up a localized string similar to You were only person in selected country, and you have chosen an option not to send gifts abroad..
         /// </summary>
-        public static string AbandonmentReason_Loner {
+        public static string AbandonmentReason_Text_LoneWontSend {
             get {
-                return ResourceManager.GetString("AbandonmentReason_Loner", resourceCulture);
+                return ResourceManager.GetString("AbandonmentReason_Text_LoneWontSend", resourceCulture);
             }
         }
         
@@ -462,6 +462,58 @@ namespace Resources {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello {0},
+        ///Regretfuly we have to inform you, that you were not matched with anyone this year. This is highly unusual situation, and we assure you we have done extensive work to ensure that such cases are as rare as possible.
+        ///The reason our algorithm provided for rejecting you is: &apos;{1}&apos;.
+        ///
+        ///Once again, we are sorry that you will not be participating in this years edition of Secret Santa.
+        ///
+        ///If you think, that this should not have had happened, please contact one of the administrators and we will look into  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string Email_Abandonment_Body {
+            get {
+                return ResourceManager.GetString("Email_Abandonment_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oh no! You have been excluded from this year&apos;s Secret Santa!.
+        /// </summary>
+        public static string Email_Abandonment_Subject {
+            get {
+                return ResourceManager.GetString("Email_Abandonment_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hi! A user was randomly assigned to you. Find the best possible gift for them, and send it to following address:
+        ///{0}
+        ///{1}
+        ///{2}
+        ///{3} {4}
+        ///{5}
+        ///Note from the user: {6}
+        ///
+        ///You can also find out more about the user by checking out their Facebook profile: {7}.
+        ///
+        ///Make sure to send gift as soon as possible and confirm that you did so by loging into the website - the confirmation button will be on your homepage..
+        /// </summary>
+        public static string Email_Assignment_Body {
+            get {
+                return ResourceManager.GetString("Email_Assignment_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have just become someone&apos;s Secret Santa!.
+        /// </summary>
+        public static string Email_Assignment_Subject {
+            get {
+                return ResourceManager.GetString("Email_Assignment_Subject", resourceCulture);
             }
         }
         
@@ -1173,6 +1225,24 @@ namespace Resources {
         public static string SendAbroadOption_WillNot {
             get {
                 return ResourceManager.GetString("SendAbroadOption_WillNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email sent?.
+        /// </summary>
+        public static string SendAssignmentEmails_Result {
+            get {
+                return ResourceManager.GetString("SendAssignmentEmails_Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send emails to all users.
+        /// </summary>
+        public static string SendAssignmentEmails_Submit {
+            get {
+                return ResourceManager.GetString("SendAssignmentEmails_Submit", resourceCulture);
             }
         }
         

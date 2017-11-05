@@ -1,4 +1,5 @@
-﻿using SecretSanta.Domain.Models;
+﻿using SecretSanta.Domain.Enums;
+using SecretSanta.Domain.Models;
 
 namespace SecretSanta.Common.Interface
 {
@@ -7,6 +8,6 @@ namespace SecretSanta.Common.Interface
         bool SendConfirmationEmail(SantaUser user);
         bool SendPasswordResetEmail(SantaUser user);
         bool SendAssignmentEmail(SantaUser user, SantaUser target);
-        bool SendAbandonmentEmail(SantaUser user);
+        bool SendAbandonmentEmail(SantaUser user, AbandonmentReason reason);
     }
 }

@@ -134,6 +134,12 @@ namespace SecretSanta.Data
             return models;
         }
 
+        private IList<SantaUser> GetAllUsers() => WithConnection(conn => conn.GetAll<SantaUser>()).Select(model =>
+            {
+                _encryptionProvider.Decrypt(model);
+                return model;
+            }).ToList();
+
         public void AdminConfirm(long id)
         {
             WithConnection(conn =>
@@ -165,7 +171,7 @@ namespace SecretSanta.Data
 
         public bool WasAssigned()
         {
-            return WithConnection(conn => conn.ExecuteScalar<int>("SELECT COUNT(*) FROM Assignments") > 0);
+            return WithConnection(conn => conn.ExecuteScalar<int>($"SELECT COUNT(*) FROM [{nameof(Assignment)}s]") > 0);
         }
 
         public AssignmentResult AssignRecipients()
@@ -175,7 +181,7 @@ namespace SecretSanta.Data
             bool ConfirmedOnly(SantaUser user) => user.AdminConfirmed && user.EmailConfirmed;
 
             // get all users
-            var allUsers = GetAllUsersWithoutProtectedData().Where(ConfirmedOnly).ToArray();
+            var allUsers = GetAllUsers().Where(ConfirmedOnly).ToArray();
 
             if (!allUsers.Any())
                 throw new InvalidOperationException("No users have signed up!");
@@ -189,7 +195,7 @@ namespace SecretSanta.Data
             WithConnection(conn =>
             {
                 foreach (var assignment in result.Assignments)
-                    conn.Execute(@"INSERT INTO [Assignments] (GiverId, RecepientId) VALUES(@GiverId, @RecepientId)",
+                    conn.Execute($@"INSERT INTO [{nameof(Assignment)}s] (GiverId, RecepientId) VALUES(@GiverId, @RecepientId)",
                         new { assignment.GiverId, assignment.RecepientId });
             });
 
@@ -197,13 +203,13 @@ namespace SecretSanta.Data
             WithConnection(conn =>
             {
                 foreach (var abandonedUser in result.Abandoned)
-                    conn.Execute(@"INSERT INTO [Abandoned] (SantaUserId, Reason) VALUES(@SantaUserId, @Reason)",
+                    conn.Execute($@"INSERT INTO [{nameof(Abandoned)}] (SantaUserId, Reason) VALUES(@SantaUserId, @Reason)",
                         new { abandonedUser.SantaUserId, abandonedUser.Reason });
             });
 
             // verify
             var assignmentsFromDb =
-                WithConnection(conn => conn.ExecuteScalar<int>("SELECT COUNT(*) FROM [Assignments]"));
+                WithConnection(conn => conn.ExecuteScalar<int>($"SELECT COUNT(*) FROM [{nameof(Assignment)}s]"));
 
             if (assignmentsFromDb != result.Assignments.Count)
                 throw new InvalidOperationException("Inserts were performed, but there is numerical mismatch!");
@@ -214,14 +220,14 @@ namespace SecretSanta.Data
         public long? GetAssignedPartnerIdForUser(long id)
         {
             return WithConnection(
-                conn => conn.QuerySingleOrDefault<long?>(@"SELECT RecepientId FROM Assignments WHERE GiverId = @id",
+                conn => conn.QuerySingleOrDefault<long?>($@"SELECT RecepientId FROM [{nameof(Assignment)}s] WHERE GiverId = @id",
                 new {id}));
         }
 
         public AssignmentResult GetAssignments()
         {
             // get all users
-            var allUsers = GetAllUsersWithoutProtectedData();
+            var allUsers = GetAllUsers();
 
             // get all assignments
             var allAssignments = WithConnection(conn => conn.Query<Assignment>($"SELECT * FROM [{nameof(Assignment)}s]")).ToArray();
