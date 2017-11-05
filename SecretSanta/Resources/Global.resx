@@ -589,4 +589,7 @@ Make sure to send gift as soon as possible and confirm that you did so by loging
   <data name="SendAssignmentEmails_Submit" xml:space="preserve">
     <value>Send emails to all users</value>
   </data>
+  <data name="Message_CannotEditAccountAfterAssignment" xml:space="preserve">
+    <value>You cannot edit your data after you have been assigned. If you need to contact a person that has you as their gift recipient, please use the "Contact" tab.</value>
+  </data>
 </root>
