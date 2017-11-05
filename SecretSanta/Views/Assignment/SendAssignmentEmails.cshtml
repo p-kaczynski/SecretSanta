@@ -1,0 +1,88 @@
+﻿@model SecretSanta.Models.SendAssignmentEmailsViewModel
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Assignment}";
+}
+
+<h2>@Resources.Global.Assignment</h2>
+
+<table class="table table-striped">
+    <caption>@Resources.Global.Assignments</caption>
+    <thead>
+    <tr>
+        <th colspan="2">@Resources.Global.Giver</th>
+        <th colspan="2">@Resources.Global.Recipient</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr>
+        <th>@Resources.Global.DisplayName</th>
+        <th>@Resources.Global.Email</th>
+        
+        <th>@Resources.Global.DisplayName</th>
+        <th>@Resources.Global.Email</th>
+        
+        <th>@Resources.Global.SendAssignmentEmails_Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var assignment in Model.Assignments)
+    {
+        <tr>
+            <td>@assignment.SenderDisplayName</td>
+            <td>@assignment.SenderEmail</td>
+            <td>@assignment.TargetEmail</td>
+            <td>@assignment.TargetDisplayName</td>
+            @if (assignment.Success)
+            {
+                <td class="success">
+                    <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                    <span class="sr-only">Sent</span>
+                </td>
+            }
+            else
+            {
+                <td class="warning">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span class="sr-only">Failed</span>
+                </td>
+            }
+        </tr>
+    }
+    </tbody>
+</table>
+
+<table class="table table-striped">
+    <caption>@Resources.Global.AbandonedUsers</caption>
+    <thead>
+        <tr>
+            <th>@Resources.Global.DisplayName</th>
+            <th>@Resources.Global.Email</th>
+            <th>@Resources.Global.Reason</th>
+            <th>@Resources.Global.SendAssignmentEmails_Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var abandoned in Model.Abandonments)
+        {
+            <tr>
+                <td>@abandoned.DisplayName</td>
+                <td>@abandoned.Email</td>
+                <td>@Html.Partial("DisplayTemplates/AbandonmentReason", abandoned.Reason)</td>
+                @if (abandoned.Success)
+                {
+                    <td class="success">
+                        <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                        <span class="sr-only">Sent</span>
+                    </td>
+                }
+                else
+                {
+                    <td class="warning">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <span class="sr-only">Failed</span>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
