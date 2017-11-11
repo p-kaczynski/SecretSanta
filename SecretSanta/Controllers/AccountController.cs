@@ -11,6 +11,7 @@ using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
 using SecretSanta.Domain.Models.Extensions;
 using SecretSanta.Domain.SecurityModels;
+using SecretSanta.Helpers;
 using SecretSanta.Models;
 using SecretSanta.Security;
 
@@ -257,6 +258,15 @@ namespace SecretSanta.Controllers
 
             if (!ModelState.IsValid)
                 return View(model);
+
+            // set the correct fb uri:
+            model.FacebookProfileUrl = FacebookUriHelper.GetUniformFacebookUri(model.FacebookProfileUrl);
+
+            if (model.FacebookProfileUrl == null)
+            {
+                ModelState.AddModelError(nameof(SantaUserPostModel.FacebookProfileUrl), Resources.Global.FacebookURL_Invalid);
+                return View(model);
+            }
 
             var updateModel = Mapper.Map<SantaUser>(model);
             updateModel.Id = userId;

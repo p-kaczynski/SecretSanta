@@ -4,7 +4,7 @@ using SecretSanta.Domain.Models;
 
 namespace SecretSanta.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserRepository _userRepository;
 

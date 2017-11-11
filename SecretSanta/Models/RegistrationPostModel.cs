@@ -80,7 +80,8 @@ namespace SecretSanta.Models
         public SendAbroadOption SendAbroad { get; set; }
 
         [DataType(DataType.MultilineText)]
-        [Display(Name = "Note", ResourceType = typeof(Global))]
+        [Display(Name = "Registration_Form_Note", ResourceType = typeof(Global))]
+        [HelpText(typeof(Global), "Registration_Form_Note_HelpText")]
         public string Note { get; set; }
 
         [Range(typeof(bool), "true", "true", ErrorMessageResourceName= "Registration_Form_Agreement_Error", ErrorMessageResourceType = typeof(Global))]
