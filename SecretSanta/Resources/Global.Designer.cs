@@ -1139,6 +1139,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Note to Santa.
+        /// </summary>
+        public static string Registration_Form_Note {
+            get {
+                return ResourceManager.GetString("Registration_Form_Note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any information you would like to pass to the person who will be choosing a gift for you.
+        /// </summary>
+        public static string Registration_Form_Note_HelpText {
+            get {
+                return ResourceManager.GetString("Registration_Form_Note_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat password.
         /// </summary>
         public static string Registration_Form_Repeat_Password_HelpText {

@@ -592,4 +592,10 @@ Make sure to send gift as soon as possible and confirm that you did so by loging
   <data name="Message_CannotEditAccountAfterAssignment" xml:space="preserve">
     <value>You cannot edit your data after you have been assigned. If you need to contact a person that has you as their gift recipient, please use the "Contact" tab.</value>
   </data>
+  <data name="Registration_Form_Note" xml:space="preserve">
+    <value>Note to Santa</value>
+  </data>
+  <data name="Registration_Form_Note_HelpText" xml:space="preserve">
+    <value>Any information you would like to pass to the person who will be choosing a gift for you</value>
+  </data>
 </root>

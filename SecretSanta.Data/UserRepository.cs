@@ -38,11 +38,17 @@ namespace SecretSanta.Data
 
         public UserEditResult UpdateUser([NotNull] SantaUser updateUser)
         {
-            var emailChanged = !updateUser.Email.Equals(
-                WithConnection(conn => conn.Get<SantaUser>(updateUser.Id)).Email, StringComparison.OrdinalIgnoreCase);
+            var current = WithConnection(conn => conn.Get<SantaUser>(updateUser.Id));
+
+            var emailChanged = !updateUser.Email.Equals(current.Email, StringComparison.OrdinalIgnoreCase);
+            var fbProfileChanged =
+                !updateUser.FacebookProfileUrl.Equals(current.FacebookProfileUrl, StringComparison.OrdinalIgnoreCase);
 
             if(emailChanged && !CheckEmail(updateUser.Email))
-                    return new UserEditResult{EmailChanged = true, EmailUnavailable = true, Success = false};
+                    return new UserEditResult{ EmailUnavailable = true, Success = false};
+
+            if(fbProfileChanged && !CheckFacebookProfileUri(updateUser.FacebookProfileUrl))
+                return new UserEditResult { FacebookProfileUnavailable = true, Success = false };
 
             _encryptionProvider.Encrypt(updateUser);
 
@@ -94,6 +100,10 @@ namespace SecretSanta.Data
         public bool CheckEmail(string email) 
             => WithConnection(conn =>conn.QuerySingleOrDefault<SantaUser>(
                                      $"SELECT Email FROM {nameof(SantaUser)}s WHERE Email = @email", new {email})) == null;
+
+        public bool CheckFacebookProfileUri(string fbUri)
+            => WithConnection(conn => conn.QuerySingleOrDefault<SantaUser>(
+                   $"SELECT FacebookProfileUrl FROM {nameof(SantaUser)}s WHERE FacebookProfileUrl = @fbUri", new { fbUri })) == null;
 
         public SantaUser GetUser(long id)
         {

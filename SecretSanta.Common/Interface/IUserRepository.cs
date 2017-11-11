@@ -22,6 +22,7 @@ namespace SecretSanta.Common.Interface
         void DeleteUser(long id);
 
         bool CheckEmail(string email);
+        bool CheckFacebookProfileUri(string fbUri);
 
         long? GetAssignedPartnerIdForUser(long id);
 

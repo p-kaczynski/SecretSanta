@@ -2,6 +2,7 @@
 using AutoMapper;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
+using SecretSanta.Helpers;
 using SecretSanta.Models;
 
 namespace SecretSanta.Controllers
@@ -55,6 +56,17 @@ namespace SecretSanta.Controllers
             if (model.Password != model.RepeatPassword)
             {
                 ModelState.AddModelError(nameof(RegistrationPostModel.RepeatPassword), Resources.Global.Registration_Form_Repeat_Password_Invalid);
+                model.Password = null;
+                model.RepeatPassword = null;
+                return View(model);
+            }
+
+            // set the correct fb uri:
+            model.FacebookProfileUrl = FacebookUriHelper.GetUniformFacebookUri(model.FacebookProfileUrl);
+
+            if (model.FacebookProfileUrl == null || !_userRepository.CheckFacebookProfileUri(model.FacebookProfileUrl))
+            {
+                ModelState.AddModelError(nameof(RegistrationPostModel.FacebookProfileUrl), Resources.Global.FacebookURL_Invalid);
                 model.Password = null;
                 model.RepeatPassword = null;
                 return View(model);
