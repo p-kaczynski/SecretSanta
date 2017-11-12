@@ -58,10 +58,12 @@
                         <li>@Html.ActionLink(Resources.Global.AdminUser, "Index", "User")</li>
                         <li>@Html.ActionLink(Resources.Global.Assignment, "Index", "Assignment")</li>
                         <li><a href="@Url.Action("Index", "Verification")">@Resources.Global.AdminUnconfirmed @Html.Action("GetAwaitingVerifications","Verification")</a></li>
+                        <li>@Html.ActionLink(Resources.Global.AdminMessages, "Index", "AdminMessage")</li>
                     }
                     @if (User.IsInRole(SantaUserManager.UserRole))
                     {
                         <li>@Html.ActionLink(Resources.Global.AccountSettings, "Index", "Account")</li>
+                        <li>@Html.ActionLink(Resources.Global.Messages, "Index", "Messages")</li>
                     }
                 </ul>
                 @if (User?.Identity?.IsAuthenticated != true)

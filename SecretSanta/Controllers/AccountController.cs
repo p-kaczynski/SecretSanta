@@ -36,17 +36,13 @@ namespace SecretSanta.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
-                return HttpNotFound();
-
-            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
-            if (isAdmin)
+            var userId = GetUserId();
+            if (!userId.HasValue)
                 return RedirectToAction("Index", "Home");
 
-            var santaUser = _userRepository.GetUser(userId);
+            var santaUser = _userRepository.GetUser(userId.Value);
             if (santaUser == null)
             {
                 // TODO: Notify admin
@@ -58,24 +54,20 @@ namespace SecretSanta.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> RemoveAccount()
+        public ActionResult RemoveAccount()
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
-                return HttpNotFound();
-
-            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
-            if (isAdmin)
+            var userId = GetUserId();
+            if (!userId.HasValue)
                 return RedirectToAction("Index", "Home");
 
-            var santaUser = _userRepository.GetUser(userId);
-           
+            var santaUser = _userRepository.GetUser(userId.Value);
+
             return View(santaUser);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RemoveAccount(SantaUser model)
+        public ActionResult RemoveAccount(SantaUser model)
         {
             if (!ModelState.IsValid)
                 return RedirectToAction("Index");
@@ -84,15 +76,11 @@ namespace SecretSanta.Controllers
                 return View("Message", model: Resources.Global.Message_CannotRemoveAccountAfterAssignment);
 
             // TODO: More info
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
-                return HttpNotFound();
-
-            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
-            if (isAdmin)
+            var userId = GetUserId();
+            if (!userId.HasValue)
                 return RedirectToAction("Index", "Home");
 
-            var santaUser = _userRepository.GetUser(userId);
+            var santaUser = _userRepository.GetUser(userId.Value);
 
             if (model.Id != santaUser.Id)
                 return RedirectToAction("Index");
@@ -101,7 +89,7 @@ namespace SecretSanta.Controllers
             HttpContext.GetOwinContext().Authentication
                 .SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
-            _userRepository.DeleteUser(userId);
+            _userRepository.DeleteUser(userId.Value);
 
             return RedirectToAction("Index", "Home");
         }
@@ -126,17 +114,13 @@ namespace SecretSanta.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ResendConfirmation()
+        public ActionResult ResendConfirmation()
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
-                return HttpNotFound();
-
-            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
-            if (isAdmin)
+            var userId = GetUserId();
+            if (!userId.HasValue)
                 return RedirectToAction("Index", "Home");
 
-            var domainModel = _userRepository.GetUserWithoutProtectedData(userId);
+            var domainModel = _userRepository.GetUserWithoutProtectedData(userId.Value);
             if (domainModel == null)
             {
                 // TODO: This is bad
@@ -146,7 +130,7 @@ namespace SecretSanta.Controllers
 
             _emailService.SendConfirmationEmail(domainModel);
 
-            return View("Message", model:Resources.Global.Message_ResendConfirmation);
+            return View("Message", model: Resources.Global.Message_ResendConfirmation);
         }
 
         [HttpGet]
@@ -223,37 +207,28 @@ namespace SecretSanta.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> EditAccount()
+        public ActionResult EditAccount()
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
-                return HttpNotFound();
-
             if (_userRepository.WasAssigned())
                 return View("Message", model: Resources.Global.Message_CannotEditAccountAfterAssignment);
 
-            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
-            if (isAdmin)
+            var userId = GetUserId();
+            if (!userId.HasValue)
                 return RedirectToAction("Index", "Home");
 
-            var santaUser = _userRepository.GetUser(userId);
+            var santaUser = _userRepository.GetUser(userId.Value);
             SantaUserPostModel model = Mapper.Map<SantaUserViewModel>(santaUser);
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditAccount(SantaUserPostModel model)
+        public ActionResult EditAccount(SantaUserPostModel model)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
-                return HttpNotFound();
-
             if (_userRepository.WasAssigned())
                 return View("Message", model: Resources.Global.Message_CannotEditAccountAfterAssignment);
-
-            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
-            if (isAdmin)
+            var userId = GetUserId();
+            if (!userId.HasValue)
                 return RedirectToAction("Index", "Home");
 
             if (!ModelState.IsValid)
@@ -264,12 +239,13 @@ namespace SecretSanta.Controllers
 
             if (model.FacebookProfileUrl == null)
             {
-                ModelState.AddModelError(nameof(SantaUserPostModel.FacebookProfileUrl), Resources.Global.FacebookURL_Invalid);
+                ModelState.AddModelError(nameof(SantaUserPostModel.FacebookProfileUrl),
+                    Resources.Global.FacebookURL_Invalid);
                 return View(model);
             }
 
             var updateModel = Mapper.Map<SantaUser>(model);
-            updateModel.Id = userId;
+            updateModel.Id = userId.Value;
 
             var updateResult = _userRepository.UpdateUser(updateModel);
             if (!updateResult.Success)
@@ -305,14 +281,10 @@ namespace SecretSanta.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> GiftSent(GiftSentPostModel model)
+        public ActionResult GiftSent(GiftSentPostModel model)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
-                return HttpNotFound();
-
-            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
-            if (isAdmin)
+            var userId = GetUserId();
+            if (!userId.HasValue)
                 return RedirectToAction("Index", "Home");
 
             if (!ModelState.IsValid)
@@ -323,24 +295,20 @@ namespace SecretSanta.Controllers
             if (!model.Confirmation)
                 return View(model);
 
-            _userRepository.SetGiftSent(userId, model.Tracking);
+            _userRepository.SetGiftSent(userId.Value, model.Tracking);
 
             return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> GiftReceived()
+        public ActionResult GiftReceived()
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            if (user == null)
-                return HttpNotFound();
-
-            var userId = SantaSecurityUser.GetId(user.Id, out var isAdmin);
-            if (isAdmin)
+            var userId = GetUserId();
+            if (!userId.HasValue)
                 return RedirectToAction("Index", "Home");
 
-            _userRepository.SetGiftReceived(userId);
+            _userRepository.SetGiftReceived(userId.Value);
 
             return RedirectToAction("Index", "Home");
         }

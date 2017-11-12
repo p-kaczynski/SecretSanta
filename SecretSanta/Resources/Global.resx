@@ -253,7 +253,7 @@
     <value>No users require confirmation!</value>
   </data>
   <data name="AdminUser" xml:space="preserve">
-    <value>Registered Users</value>
+    <value>Users</value>
   </data>
   <data name="CloseRegistration" xml:space="preserve">
     <value>Close registration</value>
@@ -597,5 +597,77 @@ Make sure to send gift as soon as possible and confirm that you did so by loging
   </data>
   <data name="Registration_Form_Note_HelpText" xml:space="preserve">
     <value>Any information you would like to pass to the person who will be choosing a gift for you</value>
+  </data>
+  <data name="AdminMessages" xml:space="preserve">
+    <value>Admin Support Mailbox</value>
+  </data>
+  <data name="AdminMessages_Replied" xml:space="preserve">
+    <value>Messages that has been replied to</value>
+  </data>
+  <data name="AdminMessages_WaitingForReply" xml:space="preserve">
+    <value>Awaiting reply</value>
+  </data>
+  <data name="ConversationPostModel_MessageText" xml:space="preserve">
+    <value>Your message</value>
+  </data>
+  <data name="ConversationPostModel_MessageText_HelpText" xml:space="preserve">
+    <value>Put your message here. Please note, that your messages are not encrypted on the server and can be viewed by the Administrator regardless of who is the recipient.</value>
+  </data>
+  <data name="ConversationPostModel_MessageText_Invalid" xml:space="preserve">
+    <value>The message is limited to 2048 characters.</value>
+  </data>
+  <data name="ConversationPostModel_MessageText_Required" xml:space="preserve">
+    <value>You must put some message in here</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="Messages_FromAdmin" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Messages_FromAssigned" xml:space="preserve">
+    <value>Your Recipient</value>
+  </data>
+  <data name="Messages_FromGiftor" xml:space="preserve">
+    <value>Your Santa</value>
+  </data>
+  <data name="Messages_FromUser" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Messages_FromYou" xml:space="preserve">
+    <value>You</value>
+  </data>
+  <data name="Messages_NewConversation" xml:space="preserve">
+    <value>Start new conversation</value>
+  </data>
+  <data name="Messages_NotAssigned" xml:space="preserve">
+    <value>You are not currently assigned in Secret Santa.</value>
+  </data>
+  <data name="Messages_SendNewMessage" xml:space="preserve">
+    <value>Send message</value>
+  </data>
+  <data name="Messages_SendForm" xml:space="preserve">
+    <value>Send new message</value>
+  </data>
+  <data name="Messages_To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Messages_ToAdmin" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Messages_ToAssigned" xml:space="preserve">
+    <value>Your Recipient</value>
+  </data>
+  <data name="Messages_ToGiver" xml:space="preserve">
+    <value>Your Santa</value>
+  </data>
+  <data name="Messages_WithAdmin" xml:space="preserve">
+    <value>Your conversations with Administrator</value>
+  </data>
+  <data name="Messages_WithAssigned" xml:space="preserve">
+    <value>Your conversations with recipient of your gift</value>
+  </data>
+  <data name="Messages_WithGiftor" xml:space="preserve">
+    <value>Your conversations with your Secret Santa</value>
   </data>
 </root>

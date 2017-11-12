@@ -25,6 +25,7 @@ namespace SecretSanta.Common.Interface
         bool CheckFacebookProfileUri(string fbUri);
 
         long? GetAssignedPartnerIdForUser(long id);
+        long? GetUserAssignedTo(long id);
 
         bool WasAssigned();
 

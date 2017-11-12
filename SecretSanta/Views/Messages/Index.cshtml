@@ -1,0 +1,69 @@
+﻿@using SecretSanta.Domain.Enums
+@using SecretSanta.Helpers
+@using Utilities.Collections.Enumerables
+@model SecretSanta.Models.UserMessagesViewModel
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Messages}";
+}
+
+<h2>@Resources.Global.Messages</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">@Resources.Global.Messages_WithAdmin</div>
+    <div class="panel-body">
+        <ul class="list-group">
+        @foreach (var message in Model.WithAdmin.OrEmpty())
+        {
+            <li class="list-group-item @(!message.OwnMessage ? "list-group-item-success" : string.Empty)">
+                <div class="list-group-item-heading">
+                    <h5>@message.Label</h5>
+                    <small>@message.Timestamp</small>
+                </div>
+                <p class="list-group-item-text">@message.MessageText</p>
+            </li>
+        }
+    </ul>
+    </div>
+    <div class="panel-footer"><a href="@Url.Action("PostConversation", new {sender =MessageRole.User, recipient = MessageRole.Administrator})" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>@Resources.Global.Messages_SendNewMessage</a></div>
+</div>
+@if (Model.WasAssigned)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">@Resources.Global.Messages_WithAssigned</div>
+        <div class="panel-body">
+            <ul class="list-group">
+                @foreach (var message in Model.WithAssigned.OrEmpty())
+                {
+                    <li class="list-group-item @(!message.OwnMessage ? "list-group-item-success":string.Empty)">
+                        <div class="list-group-item-heading">
+                            <h5>@message.Label</h5>
+                            <small>@message.Timestamp</small>
+                        </div>
+                        <p class="list-group-item-text">@message.MessageText</p>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="panel-footer"><a href="@Url.Action("PostConversation", new {sender =MessageRole.GiftSender, recipient = MessageRole.GiftRecipient})" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>@Resources.Global.Messages_SendNewMessage</a></div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">@Resources.Global.Messages_WithGiftor</div>
+        <div class="panel-body">
+            <ul class="list-group">
+                @foreach (var message in Model.WithGiftor.OrEmpty())
+                {
+                    <li class="list-group-item @(!message.OwnMessage ? "list-group-item-success" : string.Empty)">
+                        <div class="list-group-item-heading">
+                            <h5>@message.Label</h5>
+                            <small>@message.Timestamp</small>
+                        </div>
+                        <p class="list-group-item-text">@message.MessageText</p>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="panel-footer"><a href="@Url.Action("PostConversation", new {sender =MessageRole.GiftRecipient, recipient = MessageRole.GiftSender})" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span>@Resources.Global.Messages_SendNewMessage</a></div>
+    </div>
+}
