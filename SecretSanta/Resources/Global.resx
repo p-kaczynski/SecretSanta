@@ -670,4 +670,28 @@ Make sure to send gift as soon as possible and confirm that you did so by loging
   <data name="Messages_WithGiftor" xml:space="preserve">
     <value>Your conversations with your Secret Santa</value>
   </data>
+  <data name="Email_NewMessage_Body" xml:space="preserve">
+    <value>Hi {0}!
+
+You have just received a new message from {1}:
+
+------------------------------------------------------------
+{2}
+------------------------------------------------------------
+
+To reply to this message visit: {3}</value>
+  </data>
+  <data name="Email_NewMessage_Subject" xml:space="preserve">
+    <value>Secret Santa: You just got new message from {0}!</value>
+  </data>
+  <data name="Email_NewSupportMessage_Body" xml:space="preserve">
+    <value>Hi!
+
+User "{0}" has just added following message for the Secret Santa Administrators:
+
+{1}</value>
+  </data>
+  <data name="Email_NewSupportMessage_Subject" xml:space="preserve">
+    <value>Secret Santa: New support message request</value>
+  </data>
 </root>

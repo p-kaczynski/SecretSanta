@@ -12,13 +12,15 @@ namespace SecretSanta.Controllers
     [Authorize(Roles = SantaUserManager.AdminRole)]
     public class AdminMessageController : BaseMessagesController
     {
-        private readonly IMessageRepository _messageRepository;
+        private readonly IMessageService _messageService;
+        private readonly IMessageReadOnlyRepository _messageRepository;
         private readonly IUserRepository _userRepository;
 
-        public AdminMessageController(IMessageRepository messageRepository, IUserRepository userRepository)
+        public AdminMessageController(IMessageReadOnlyRepository messageRepository, IUserRepository userRepository, IMessageService messageService)
         {
             _messageRepository = messageRepository;
             _userRepository = userRepository;
+            _messageService = messageService;
         }
 
         [HttpGet]
@@ -64,7 +66,7 @@ namespace SecretSanta.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PostReply(AdminReplyModel model)
         {
-            _messageRepository.SendMessageFromAdmin(model.UserId,model.MessageText);
+            _messageService.SendMessageFromAdmin(model.UserId,model.MessageText);
             return RedirectToAction("Index");
         }
     }

@@ -27,6 +27,8 @@ namespace SecretSanta
             public const string MailgunDomain = "santa.email.mailgun_domain";
             public const string MailgunApiKey = "santa.email.mailgun_apikey";
             public const string MailgunFrom = "santa.email.mailgun_from";
+            public const string AdminEmail = "santa.email.admin_email";
+            public const string SendMessageNotifications = "santa.email.send_message_notifications";
         }
 
         public string ConnectionString 
@@ -78,5 +80,11 @@ namespace SecretSanta
 
         public string MailgunFrom =>
             WebConfigurationManager.AppSettings[ConfigKeys.MailgunFrom];
+
+        public string AdminEmail =>
+            WebConfigurationManager.AppSettings[ConfigKeys.AdminEmail];
+
+        public bool SendMessageEmails =>
+            WebConfigurationManager.AppSettings.GetBoolOrDefault(ConfigKeys.SendMessageNotifications, true);
     }
 }

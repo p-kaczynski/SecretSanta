@@ -14,13 +14,15 @@ namespace SecretSanta.Controllers
     [Authorize(Roles = SantaUserManager.UserRole)]
     public class MessagesController : BaseMessagesController
     {
-        private readonly IMessageRepository _messageRepository;
+        private readonly IMessageReadOnlyRepository _messageRepository;
+        private readonly IMessageService _messageService;
         private readonly IUserRepository _userRepository;
 
-        public MessagesController(IMessageRepository messageRepository, IUserRepository userRepository)
+        public MessagesController(IMessageReadOnlyRepository messageRepository, IUserRepository userRepository, IMessageService messageService)
         {
             _messageRepository = messageRepository;
             _userRepository = userRepository;
+            _messageService = messageService;
         }
 
         [HttpGet]
@@ -100,9 +102,9 @@ namespace SecretSanta.Controllers
                 return RedirectToAction("Index", "Home");
 
             if(model.RecipientRole == MessageRole.Administrator)
-                _messageRepository.SendMessageToAdmin(userId.Value, model.MessageText);
+                _messageService.SendMessageToAdmin(userId.Value, model.MessageText);
             else
-                _messageRepository.SendMessageFromUserToUser(userId.Value, model.SenderRole, GetRecipient(model.RecipientRole, userId.Value), model.RecipientRole, model.MessageText);
+                _messageService.SendMessageFromUserToUser(userId.Value, model.SenderRole, GetRecipient(model.RecipientRole, userId.Value), model.RecipientRole, model.MessageText);
 
 
             return RedirectToAction("Index");

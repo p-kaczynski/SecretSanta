@@ -9,5 +9,7 @@ namespace SecretSanta.Common.Interface
         bool SendPasswordResetEmail(SantaUser user);
         bool SendAssignmentEmail(SantaUser user, SantaUser target);
         bool SendAbandonmentEmail(SantaUser user, AbandonmentReason reason);
+        void SendNewMessageNotification(SantaUser recipient, MessageRole from, string messageText);
+        void SendNewAdminSupportMessageNotification(SantaUser sender, string messageText);
     }
 }

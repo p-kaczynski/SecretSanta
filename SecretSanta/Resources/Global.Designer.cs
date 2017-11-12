@@ -608,6 +608,54 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hi {0}!
+        ///
+        ///You have just received a new message from {1}:
+        ///
+        ///------------------------------------------------------------
+        ///{2}
+        ///------------------------------------------------------------
+        ///
+        ///To reply to this message visit: {3}.
+        /// </summary>
+        public static string Email_NewMessage_Body {
+            get {
+                return ResourceManager.GetString("Email_NewMessage_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret Santa: You just got new message from {0}!.
+        /// </summary>
+        public static string Email_NewMessage_Subject {
+            get {
+                return ResourceManager.GetString("Email_NewMessage_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hi!
+        ///
+        ///User &quot;{0}&quot; has just added following message for the Secret Santa Administrators:
+        ///
+        ///{1}.
+        /// </summary>
+        public static string Email_NewSupportMessage_Body {
+            get {
+                return ResourceManager.GetString("Email_NewSupportMessage_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret Santa: New support message request.
+        /// </summary>
+        public static string Email_NewSupportMessage_Subject {
+            get {
+                return ResourceManager.GetString("Email_NewSupportMessage_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your email address has not been yet confirmed..
         /// </summary>
         public static string Email_NotConfirmed {
