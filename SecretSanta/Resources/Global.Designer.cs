@@ -196,6 +196,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin Support Mailbox.
+        /// </summary>
+        public static string AdminMessages {
+            get {
+                return ResourceManager.GetString("AdminMessages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Messages that has been replied to.
+        /// </summary>
+        public static string AdminMessages_Replied {
+            get {
+                return ResourceManager.GetString("AdminMessages_Replied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Awaiting reply.
+        /// </summary>
+        public static string AdminMessages_WaitingForReply {
+            get {
+                return ResourceManager.GetString("AdminMessages_WaitingForReply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Awaiting confirmations.
         /// </summary>
         public static string AdminUnconfirmed {
@@ -205,7 +232,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registered Users.
+        ///   Looks up a localized string similar to Users.
         /// </summary>
         public static string AdminUser {
             get {
@@ -363,6 +390,42 @@ namespace Resources {
         public static string ConfirmationEmailSent {
             get {
                 return ResourceManager.GetString("ConfirmationEmailSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your message.
+        /// </summary>
+        public static string ConversationPostModel_MessageText {
+            get {
+                return ResourceManager.GetString("ConversationPostModel_MessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Put your message here. Please note, that your messages are not encrypted on the server and can be viewed by the Administrator regardless of who is the recipient..
+        /// </summary>
+        public static string ConversationPostModel_MessageText_HelpText {
+            get {
+                return ResourceManager.GetString("ConversationPostModel_MessageText_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The message is limited to 2048 characters..
+        /// </summary>
+        public static string ConversationPostModel_MessageText_Invalid {
+            get {
+                return ResourceManager.GetString("ConversationPostModel_MessageText_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must put some message in here.
+        /// </summary>
+        public static string ConversationPostModel_MessageText_Required {
+            get {
+                return ResourceManager.GetString("ConversationPostModel_MessageText_Required", resourceCulture);
             }
         }
         
@@ -892,6 +955,159 @@ namespace Resources {
         public static string Message_ResendConfirmation {
             get {
                 return ResourceManager.GetString("Message_ResendConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Messages.
+        /// </summary>
+        public static string Messages {
+            get {
+                return ResourceManager.GetString("Messages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Administrator.
+        /// </summary>
+        public static string Messages_FromAdmin {
+            get {
+                return ResourceManager.GetString("Messages_FromAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Recipient.
+        /// </summary>
+        public static string Messages_FromAssigned {
+            get {
+                return ResourceManager.GetString("Messages_FromAssigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Santa.
+        /// </summary>
+        public static string Messages_FromGiftor {
+            get {
+                return ResourceManager.GetString("Messages_FromGiftor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string Messages_FromUser {
+            get {
+                return ResourceManager.GetString("Messages_FromUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You.
+        /// </summary>
+        public static string Messages_FromYou {
+            get {
+                return ResourceManager.GetString("Messages_FromYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start new conversation.
+        /// </summary>
+        public static string Messages_NewConversation {
+            get {
+                return ResourceManager.GetString("Messages_NewConversation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not currently assigned in Secret Santa..
+        /// </summary>
+        public static string Messages_NotAssigned {
+            get {
+                return ResourceManager.GetString("Messages_NotAssigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send new message.
+        /// </summary>
+        public static string Messages_SendForm {
+            get {
+                return ResourceManager.GetString("Messages_SendForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send message.
+        /// </summary>
+        public static string Messages_SendNewMessage {
+            get {
+                return ResourceManager.GetString("Messages_SendNewMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        public static string Messages_To {
+            get {
+                return ResourceManager.GetString("Messages_To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Administrator.
+        /// </summary>
+        public static string Messages_ToAdmin {
+            get {
+                return ResourceManager.GetString("Messages_ToAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Recipient.
+        /// </summary>
+        public static string Messages_ToAssigned {
+            get {
+                return ResourceManager.GetString("Messages_ToAssigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Santa.
+        /// </summary>
+        public static string Messages_ToGiver {
+            get {
+                return ResourceManager.GetString("Messages_ToGiver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your conversations with Administrator.
+        /// </summary>
+        public static string Messages_WithAdmin {
+            get {
+                return ResourceManager.GetString("Messages_WithAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your conversations with recipient of your gift.
+        /// </summary>
+        public static string Messages_WithAssigned {
+            get {
+                return ResourceManager.GetString("Messages_WithAssigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your conversations with your Secret Santa.
+        /// </summary>
+        public static string Messages_WithGiftor {
+            get {
+                return ResourceManager.GetString("Messages_WithGiftor", resourceCulture);
             }
         }
         

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Dapper.Contrib.Extensions;
@@ -14,20 +12,16 @@ using SecretSanta.Common.Result;
 
 namespace SecretSanta.Data
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : BaseRepository, IUserRepository
     {
         private static readonly Random Random = new Random();
         private readonly IEncryptionProvider _encryptionProvider;
         private readonly IAssignmentAlgorithm _algorithm;
-        private readonly string _connectionString;
 
-        public Func<string, IDbConnection> DbConnectionFactory { get; set; } = connectionString =>  new SqlConnection(connectionString);
-
-        public UserRepository(IConfigProvider configProvider, IEncryptionProvider encryptionProvider, IAssignmentAlgorithm algorithm)
+        public UserRepository(IConfigProvider configProvider, IEncryptionProvider encryptionProvider, IAssignmentAlgorithm algorithm) : base(configProvider)
         {
             _encryptionProvider = encryptionProvider;
             _algorithm = algorithm;
-            _connectionString = configProvider.ConnectionString;
         }
 
         public long InsertUser([NotNull] SantaUser user)
@@ -227,12 +221,16 @@ namespace SecretSanta.Data
             return result;
         }
 
-        public long? GetAssignedPartnerIdForUser(long id)
-        {
-            return WithConnection(
-                conn => conn.QuerySingleOrDefault<long?>($@"SELECT RecepientId FROM [{nameof(Assignment)}s] WHERE GiverId = @id",
+        public long? GetAssignedPartnerIdForUser(long id) => WithConnection(
+            conn => conn.QuerySingleOrDefault<long?>(
+                $@"SELECT RecepientId FROM [{nameof(Assignment)}s] WHERE GiverId = @id",
                 new {id}));
-        }
+
+        public long? GetUserAssignedTo(long id) => WithConnection(
+            conn => conn.QuerySingleOrDefault<long?>(
+                $@"SELECT GiverId FROM [{nameof(Assignment)}s] WHERE RecepientId = @id",
+                new {id}));
+
 
         public AssignmentResult GetAssignments()
         {
@@ -274,18 +272,6 @@ namespace SecretSanta.Data
                 conn.Execute(
                     $"UPDATE [dbo].[{nameof(Assignment)}s] SET Received = 1 WHERE RecepientId = @userId",
                     new { userId }));
-        }
-
-        private T WithConnection<T>(Func<IDbConnection, T> func)
-        {
-            using (var conn = DbConnectionFactory(_connectionString))
-                return func(conn);
-        }
-
-        private void WithConnection(Action<IDbConnection> action)
-        {
-            using (var conn = DbConnectionFactory(_connectionString))
-                action(conn);
         }
     }
 }

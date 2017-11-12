@@ -151,7 +151,7 @@
     <value>Oczekuje na potwierdzenie</value>
   </data>
   <data name="AdminUser" xml:space="preserve">
-    <value>Zarajestrowani użyszkodnicy</value>
+    <value>Użytkownicy</value>
   </data>
   <data name="AdminUserName" xml:space="preserve">
     <value>Nazwa administratora</value>
