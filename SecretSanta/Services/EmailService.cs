@@ -106,7 +106,7 @@ namespace SecretSanta.Services
         {
             var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
 
-            var subject = string.Format(Resources.Global.Email_NewMessage_Subject, from.ToString());
+            var subject = string.Format(Resources.Global.Email_NewMessage_Subject, MessageRoleTranslationHelper.From(from));
             var body = string.Format(Resources.Global.Email_NewMessage_Body, recipient.DisplayName, MessageRoleTranslationHelper.From(from),
                 messageText, urlHelper.Action("Index", "Messages", new { }, HttpContext.Current.Request.Url.Scheme));
 
