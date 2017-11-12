@@ -1,0 +1,90 @@
+﻿@using SecretSanta.Helpers
+@using SecretSanta.Models
+@using Utilities.Collections.Enumerables
+@model SecretSanta.Models.AdminMessagesViewModel
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.AdminMessages}";
+}
+
+<h2>@Resources.Global.AdminMessages</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">@Resources.Global.AdminMessages_WaitingForReply</div>
+    <div class="panel-body">
+        @foreach (var conversation in Model.WaitingForReply.OrEmpty())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>@conversation.UserDisplayName (@conversation.UserId)</h3>
+                    <small>@conversation.UserEmail - <a href="@conversation.UserFacebookProfileUrl">FB Profile</a></small>
+                </div>
+                <ul class="list-group">
+                    @foreach (var message in conversation.Messages)
+                    {
+                        <li class="list-group-item @(!message.OwnMessage ? "list-group-item-success" : string.Empty)">
+                            <div class="list-group-item-heading">
+                                <h5>@message.Label</h5>
+                                <small>@message.Timestamp</small>
+                            </div>
+                            <p class="list-group-item-text">@message.MessageText</p>
+                        </li>
+                    }
+                </ul>
+                <div class="panel-footer">
+                    @using (Html.BeginForm("PostReply", "AdminMessage"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden(nameof(AdminReplyModel.UserId), conversation.UserId)
+
+                        <div class="form-group">
+                            @Html.TextArea(nameof(AdminReplyModel.MessageText), new {@class = "form-control"})
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">@Resources.Global.Button_Submit</button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">@Resources.Global.AdminMessages_Replied</div>
+    <div class="panel-body">
+        @foreach (var conversation in Model.Replied.OrEmpty())
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>@conversation.UserDisplayName (@conversation.UserId)</h3>
+                    <small>@conversation.UserEmail - <a href="@conversation.UserFacebookProfileUrl">FB Profile</a></small>
+                </div>
+                <ul class="list-group">
+                    @foreach (var message in conversation.Messages)
+                    {
+                        <li class="list-group-item @(!message.OwnMessage ? "list-group-item-success" : string.Empty)">
+                            <div class="list-group-item-heading">
+                                <h5>@message.Label</h5>
+                                <small>@message.Timestamp</small>
+                            </div>
+                            <p class="list-group-item-text">@message.MessageText</p>
+                        </li>
+                    }
+                </ul>
+                <div class="panel-footer">
+                    @using (Html.BeginForm("PostReply", "AdminMessage"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden(nameof(AdminReplyModel.UserId), conversation.UserId)
+
+                        <div class="form-group">
+                            @Html.TextArea(nameof(AdminReplyModel.MessageText), new {@class = "form-control"})
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">@Resources.Global.Button_Submit</button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

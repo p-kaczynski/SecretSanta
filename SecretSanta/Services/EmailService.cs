@@ -6,8 +6,10 @@ using NLog;
 using SaturnV;
 using SecretSanta.Common;
 using SecretSanta.Common.Interface;
+using SecretSanta.Domain.Enums;
 using SecretSanta.Domain.Models;
 using SecretSanta.Domain.Models.Extensions;
+using SecretSanta.Helpers;
 
 namespace SecretSanta.Services
 {
@@ -19,11 +21,14 @@ namespace SecretSanta.Services
         private readonly SmtpClient _smtp;
         private readonly SecureAccessTokenSource _emailConfirmationTokenSource;
         private readonly SecureAccessTokenSource _passwordResetTokenSource;
+        private readonly CountryProvider _countryProvider;
         private readonly MailgunService _mailgun;
 
-        public EmailService(IConfigProvider configProvider, IIndex<TokenSourceType,SecureAccessTokenSource> satIndex)
+        public EmailService(IConfigProvider configProvider, IIndex<TokenSourceType,SecureAccessTokenSource> satIndex, CountryProvider countryProvider)
         {
             _configProvider = configProvider;
+            _countryProvider = countryProvider;
+
             _emailConfirmationTokenSource = satIndex[TokenSourceType.EmailConfirmation];
             _passwordResetTokenSource = satIndex[TokenSourceType.PasswordReset];
 
@@ -85,12 +90,36 @@ namespace SecretSanta.Services
 
         public bool SendAssignmentEmail(SantaUser user, SantaUser target)
         {
-            throw new System.NotImplementedException();
+            var body = string.Format(Resources.Global.Email_Assignment_Body, target.FullName, target.AddressLine1, target.AddressLine2, target.PostalCode, target.City, _countryProvider.ByThreeLetterCode[target.Country].Name, target.Note, target.FacebookProfileUrl);
+
+            return SendEmail(user.Email, Resources.Global.Email_Assignment_Subject, body);
         }
 
-        public bool SendAbandonmentEmail(SantaUser user)
+        public bool SendAbandonmentEmail(SantaUser user, AbandonmentReason reason)
         {
-            throw new System.NotImplementedException();
+            var body = string.Format(Resources.Global.Email_Abandonment_Body, user.DisplayName, reason.GetUserFriendlyDescription());
+
+            return SendEmail(user.Email, Resources.Global.Email_Abandonment_Subject, body);
+        }
+
+        public void SendNewMessageNotification(SantaUser recipient, MessageRole @from, string messageText)
+        {
+            var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+
+            var subject = string.Format(Resources.Global.Email_NewMessage_Subject, MessageRoleTranslationHelper.From(from));
+            var body = string.Format(Resources.Global.Email_NewMessage_Body, recipient.DisplayName, MessageRoleTranslationHelper.From(from),
+                messageText, urlHelper.Action("Index", "Messages", new { }, HttpContext.Current.Request.Url.Scheme));
+
+            SendEmail(recipient.Email, subject, body);
+        }
+
+        public void SendNewAdminSupportMessageNotification(SantaUser sender, string messageText)
+        {
+            if (string.IsNullOrEmpty(_configProvider.AdminEmail)) return;
+
+            var body = string.Format(Resources.Global.Email_NewSupportMessage_Body, sender.DisplayName, messageText);
+
+            SendEmail(_configProvider.AdminEmail, Resources.Global.Email_NewSupportMessage_Subject, body);
         }
 
         private bool SendEmail(string to, string subject, string body)

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Dapper.Contrib.Extensions;
@@ -14,20 +12,16 @@ using SecretSanta.Common.Result;
 
 namespace SecretSanta.Data
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : BaseRepository, IUserRepository
     {
         private static readonly Random Random = new Random();
         private readonly IEncryptionProvider _encryptionProvider;
         private readonly IAssignmentAlgorithm _algorithm;
-        private readonly string _connectionString;
 
-        public Func<string, IDbConnection> DbConnectionFactory { get; set; } = connectionString =>  new SqlConnection(connectionString);
-
-        public UserRepository(IConfigProvider configProvider, IEncryptionProvider encryptionProvider, IAssignmentAlgorithm algorithm)
+        public UserRepository(IConfigProvider configProvider, IEncryptionProvider encryptionProvider, IAssignmentAlgorithm algorithm) : base(configProvider)
         {
             _encryptionProvider = encryptionProvider;
             _algorithm = algorithm;
-            _connectionString = configProvider.ConnectionString;
         }
 
         public long InsertUser([NotNull] SantaUser user)
@@ -38,11 +32,17 @@ namespace SecretSanta.Data
 
         public UserEditResult UpdateUser([NotNull] SantaUser updateUser)
         {
-            var emailChanged = !updateUser.Email.Equals(
-                WithConnection(conn => conn.Get<SantaUser>(updateUser.Id)).Email, StringComparison.OrdinalIgnoreCase);
+            var current = WithConnection(conn => conn.Get<SantaUser>(updateUser.Id));
+
+            var emailChanged = !updateUser.Email.Equals(current.Email, StringComparison.OrdinalIgnoreCase);
+            var fbProfileChanged =
+                !updateUser.FacebookProfileUrl.Equals(current.FacebookProfileUrl, StringComparison.OrdinalIgnoreCase);
 
             if(emailChanged && !CheckEmail(updateUser.Email))
-                    return new UserEditResult{EmailChanged = true, EmailUnavailable = true, Success = false};
+                    return new UserEditResult{ EmailUnavailable = true, Success = false};
+
+            if(fbProfileChanged && !CheckFacebookProfileUri(updateUser.FacebookProfileUrl))
+                return new UserEditResult { FacebookProfileUnavailable = true, Success = false };
 
             _encryptionProvider.Encrypt(updateUser);
 
@@ -95,6 +95,10 @@ namespace SecretSanta.Data
             => WithConnection(conn =>conn.QuerySingleOrDefault<SantaUser>(
                                      $"SELECT Email FROM {nameof(SantaUser)}s WHERE Email = @email", new {email})) == null;
 
+        public bool CheckFacebookProfileUri(string fbUri)
+            => WithConnection(conn => conn.QuerySingleOrDefault<SantaUser>(
+                   $"SELECT FacebookProfileUrl FROM {nameof(SantaUser)}s WHERE FacebookProfileUrl = @fbUri", new { fbUri })) == null;
+
         public SantaUser GetUser(long id)
         {
             var model = WithConnection(conn => conn.Get<SantaUser>(id));
@@ -134,6 +138,12 @@ namespace SecretSanta.Data
             return models;
         }
 
+        private IList<SantaUser> GetAllUsers() => WithConnection(conn => conn.GetAll<SantaUser>()).Select(model =>
+            {
+                _encryptionProvider.Decrypt(model);
+                return model;
+            }).ToList();
+
         public void AdminConfirm(long id)
         {
             WithConnection(conn =>
@@ -165,7 +175,7 @@ namespace SecretSanta.Data
 
         public bool WasAssigned()
         {
-            return WithConnection(conn => conn.ExecuteScalar<int>("SELECT COUNT(*) FROM Assignments") > 0);
+            return WithConnection(conn => conn.ExecuteScalar<int>($"SELECT COUNT(*) FROM [{nameof(Assignment)}s]") > 0);
         }
 
         public AssignmentResult AssignRecipients()
@@ -175,7 +185,7 @@ namespace SecretSanta.Data
             bool ConfirmedOnly(SantaUser user) => user.AdminConfirmed && user.EmailConfirmed;
 
             // get all users
-            var allUsers = GetAllUsersWithoutProtectedData().Where(ConfirmedOnly).ToArray();
+            var allUsers = GetAllUsers().Where(ConfirmedOnly).ToArray();
 
             if (!allUsers.Any())
                 throw new InvalidOperationException("No users have signed up!");
@@ -189,7 +199,7 @@ namespace SecretSanta.Data
             WithConnection(conn =>
             {
                 foreach (var assignment in result.Assignments)
-                    conn.Execute(@"INSERT INTO [Assignments] (GiverId, RecepientId) VALUES(@GiverId, @RecepientId)",
+                    conn.Execute($@"INSERT INTO [{nameof(Assignment)}s] (GiverId, RecepientId) VALUES(@GiverId, @RecepientId)",
                         new { assignment.GiverId, assignment.RecepientId });
             });
 
@@ -197,13 +207,13 @@ namespace SecretSanta.Data
             WithConnection(conn =>
             {
                 foreach (var abandonedUser in result.Abandoned)
-                    conn.Execute(@"INSERT INTO [Abandoned] (SantaUserId, Reason) VALUES(@SantaUserId, @Reason)",
+                    conn.Execute($@"INSERT INTO [{nameof(Abandoned)}] (SantaUserId, Reason) VALUES(@SantaUserId, @Reason)",
                         new { abandonedUser.SantaUserId, abandonedUser.Reason });
             });
 
             // verify
             var assignmentsFromDb =
-                WithConnection(conn => conn.ExecuteScalar<int>("SELECT COUNT(*) FROM [Assignments]"));
+                WithConnection(conn => conn.ExecuteScalar<int>($"SELECT COUNT(*) FROM [{nameof(Assignment)}s]"));
 
             if (assignmentsFromDb != result.Assignments.Count)
                 throw new InvalidOperationException("Inserts were performed, but there is numerical mismatch!");
@@ -211,17 +221,21 @@ namespace SecretSanta.Data
             return result;
         }
 
-        public long? GetAssignedPartnerIdForUser(long id)
-        {
-            return WithConnection(
-                conn => conn.QuerySingleOrDefault<long?>(@"SELECT RecepientId FROM Assignments WHERE GiverId = @id",
+        public long? GetAssignedPartnerIdForUser(long id) => WithConnection(
+            conn => conn.QuerySingleOrDefault<long?>(
+                $@"SELECT RecepientId FROM [{nameof(Assignment)}s] WHERE GiverId = @id",
                 new {id}));
-        }
+
+        public long? GetUserAssignedTo(long id) => WithConnection(
+            conn => conn.QuerySingleOrDefault<long?>(
+                $@"SELECT GiverId FROM [{nameof(Assignment)}s] WHERE RecepientId = @id",
+                new {id}));
+
 
         public AssignmentResult GetAssignments()
         {
             // get all users
-            var allUsers = GetAllUsersWithoutProtectedData();
+            var allUsers = GetAllUsers();
 
             // get all assignments
             var allAssignments = WithConnection(conn => conn.Query<Assignment>($"SELECT * FROM [{nameof(Assignment)}s]")).ToArray();
@@ -258,18 +272,6 @@ namespace SecretSanta.Data
                 conn.Execute(
                     $"UPDATE [dbo].[{nameof(Assignment)}s] SET Received = 1 WHERE RecepientId = @userId",
                     new { userId }));
-        }
-
-        private T WithConnection<T>(Func<IDbConnection, T> func)
-        {
-            using (var conn = DbConnectionFactory(_connectionString))
-                return func(conn);
-        }
-
-        private void WithConnection(Action<IDbConnection> action)
-        {
-            using (var conn = DbConnectionFactory(_connectionString))
-                action(conn);
         }
     }
 }

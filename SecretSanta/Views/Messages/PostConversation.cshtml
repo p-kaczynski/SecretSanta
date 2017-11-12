@@ -1,0 +1,28 @@
+﻿@using SecretSanta.Domain.Enums
+@using SecretSanta.Helpers
+@model SecretSanta.Models.ConversationPostModel
+
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Messages_SendForm}";
+}
+
+<h2>@Resources.Global.Messages_SendForm</h2>
+
+<h3>@Resources.Global.Messages_To: @MessageRoleTranslationHelper.To(Model.RecipientRole)</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.SenderRole)
+    @Html.HiddenFor(m=>m.RecipientRole)
+
+    <div class="form-group">
+        @Html.ValidationMessageFor(m=>m.MessageText)
+        @Html.LabelFor(m => m.MessageText)
+        @Html.EditorFor(m => m.MessageText, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HelpTextFor(m => m.MessageText)
+    </div>
+
+    <button type="submit" class="btn btn-primary">@Resources.Global.Button_Submit</button>
+}

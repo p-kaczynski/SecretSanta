@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using SecretSanta.Helpers;
 using SecretSanta.Models;
 
 namespace SecretSanta
