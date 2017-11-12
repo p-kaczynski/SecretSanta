@@ -1061,15 +1061,6 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start new conversation.
-        /// </summary>
-        public static string Messages_NewConversation {
-            get {
-                return ResourceManager.GetString("Messages_NewConversation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You are not currently assigned in Secret Santa..
         /// </summary>
         public static string Messages_NotAssigned {
