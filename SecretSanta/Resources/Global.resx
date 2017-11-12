@@ -637,9 +637,6 @@ Make sure to send gift as soon as possible and confirm that you did so by loging
   <data name="Messages_FromYou" xml:space="preserve">
     <value>You</value>
   </data>
-  <data name="Messages_NewConversation" xml:space="preserve">
-    <value>Start new conversation</value>
-  </data>
   <data name="Messages_NotAssigned" xml:space="preserve">
     <value>You are not currently assigned in Secret Santa.</value>
   </data>
