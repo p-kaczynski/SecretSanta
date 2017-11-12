@@ -175,7 +175,7 @@
     <value>URL to the Facebook profile</value>
   </data>
   <data name="FacebookURL_Invalid" xml:space="preserve">
-    <value>The URL is invalid</value>
+    <value>The URL is invalid or has been already used by someone!</value>
   </data>
   <data name="FacebookURL_Required" xml:space="preserve">
     <value>URL to the Facebook profile is required for verification</value>

@@ -773,7 +773,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The URL is invalid.
+        ///   Looks up a localized string similar to The URL is invalid or has been already used by someone!.
         /// </summary>
         public static string FacebookURL_Invalid {
             get {
