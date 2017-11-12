@@ -24,5 +24,9 @@ namespace SecretSanta.Common.Interface
         string MailgunBaseDomain { get; }
         string MailgunApiKey { get; }
         string MailgunFrom { get; }
+
+        string AdminEmail { get; }
+
+        bool SendMessageEmails { get; }
     }
 }

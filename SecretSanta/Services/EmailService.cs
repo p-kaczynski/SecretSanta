@@ -102,6 +102,26 @@ namespace SecretSanta.Services
             return SendEmail(user.Email, Resources.Global.Email_Abandonment_Subject, body);
         }
 
+        public void SendNewMessageNotification(SantaUser recipient, MessageRole @from, string messageText)
+        {
+            var urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
+
+            var subject = string.Format(Resources.Global.Email_NewMessage_Subject, from.ToString());
+            var body = string.Format(Resources.Global.Email_NewMessage_Body, recipient.DisplayName, MessageRoleTranslationHelper.From(from),
+                messageText, urlHelper.Action("Index", "Messages", new { }, HttpContext.Current.Request.Url.Scheme));
+
+            SendEmail(recipient.Email, subject, body);
+        }
+
+        public void SendNewAdminSupportMessageNotification(SantaUser sender, string messageText)
+        {
+            if (string.IsNullOrEmpty(_configProvider.AdminEmail)) return;
+
+            var body = string.Format(Resources.Global.Email_NewSupportMessage_Body, sender.DisplayName, messageText);
+
+            SendEmail(_configProvider.AdminEmail, Resources.Global.Email_NewSupportMessage_Subject, body);
+        }
+
         private bool SendEmail(string to, string subject, string body)
         {
             if (_configProvider.UseMailgun)

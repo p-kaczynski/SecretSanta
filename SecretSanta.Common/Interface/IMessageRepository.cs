@@ -6,14 +6,17 @@ using SecretSanta.Domain.Models;
 
 namespace SecretSanta.Common.Interface
 {
-    public interface IMessageRepository
+    public interface IMessageRepository : IMessageReadOnlyRepository
     {
-        IList<Message> GetUserMessages(long userId);
-        IList<Message> GetAdminMessages();
-
         void SendMessageFromUserToUser(long sender, MessageRole senderRole, long recipient, MessageRole recipientRole, string messageText);
         void SendMessageToAdmin(long sender, string messageText);
         void SendMessageFromAdmin(long recipient, string messageText);
 
+    }
+
+    public interface IMessageReadOnlyRepository
+    {
+        IList<Message> GetUserMessages(long userId);
+        IList<Message> GetAdminMessages();
     }
 }

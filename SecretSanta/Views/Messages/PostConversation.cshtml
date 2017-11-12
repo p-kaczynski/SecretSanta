@@ -5,26 +5,11 @@
 
 @{
     ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Messages_SendForm}";
-    string to;
-    switch (Model.RecipientRole)
-    {
-        case MessageRole.Administrator:
-            to = Resources.Global.Messages_ToAdmin;
-            break;
-        case MessageRole.GiftRecipient:
-            to = Resources.Global.Messages_ToAssigned;
-            break;
-        case MessageRole.GiftSender:
-            to = Resources.Global.Messages_ToGiver;
-            break;
-        default:
-            throw new ArgumentOutOfRangeException();
-    }
 }
 
 <h2>@Resources.Global.Messages_SendForm</h2>
 
-<h3>@Resources.Global.Messages_To: @to</h3>
+<h3>@Resources.Global.Messages_To: @MessageRoleTranslationHelper.To(Model.RecipientRole)</h3>
 
 @using (Html.BeginForm())
 {
