@@ -10,6 +10,7 @@ namespace SecretSanta
         public static void Configure()
         {
             ModelBinders.Binders.Add(typeof(CountryEntryViewModel), new CountryEntryViewModelModelBinder());
+            ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
         }
 
         class CountryEntryViewModelModelBinder : IModelBinder {

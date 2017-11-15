@@ -24,6 +24,7 @@ namespace SecretSanta.Domain.Models
         public string Country { get; set; }
         [DataProtection]
         public string Note { get; set; }
+        public bool IsAdult { get; set; }
         public SendAbroadOption SendAbroad { get; set; }
         public bool EmailConfirmed { get; set; }
         public bool AdminConfirmed { get; set; }

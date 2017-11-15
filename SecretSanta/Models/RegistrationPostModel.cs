@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Resources;
 using SecretSanta.Domain.Enums;
 using SecretSanta.Models.Attributes;
@@ -83,6 +84,14 @@ namespace SecretSanta.Models
         [Display(Name = "Registration_Form_Note", ResourceType = typeof(Global))]
         [HelpText(typeof(Global), "Registration_Form_Note_HelpText")]
         public string Note { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [Required(ErrorMessageResourceName = "Registration_Form_DateOfBirth_Required",
+            ErrorMessageResourceType = typeof(Global))]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Registration_Form_DateOfBirth", ResourceType = typeof(Global))]
+        [HelpText(typeof(Global), "Registration_Form_DateOfBirth_HelpText")]
+        public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
         [Range(typeof(bool), "true", "true", ErrorMessageResourceName= "Registration_Form_Agreement_Error", ErrorMessageResourceType = typeof(Global))]
         [Display(Name = "Registration_Form_Agreement", ResourceType = typeof(Global))]

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using AutoMapper;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
@@ -12,12 +13,14 @@ namespace SecretSanta.Controllers
         private readonly IUserRepository _userRepository;
         private readonly ISettingsRepository _settingsRepository;
         private readonly IEmailService _emailService;
+        private readonly IConfigProvider _configProvider;
 
-        public RegistrationController(IUserRepository userRepository, ISettingsRepository settingsRepository, IEmailService emailService)
+        public RegistrationController(IUserRepository userRepository, ISettingsRepository settingsRepository, IEmailService emailService, IConfigProvider configProvider)
         {
             _userRepository = userRepository;
             _settingsRepository = settingsRepository;
             _emailService = emailService;
+            _configProvider = configProvider;
         }
 
         [HttpGet]
@@ -56,6 +59,14 @@ namespace SecretSanta.Controllers
             if (model.Password != model.RepeatPassword)
             {
                 ModelState.AddModelError(nameof(RegistrationPostModel.RepeatPassword), Resources.Global.Registration_Form_Repeat_Password_Invalid);
+                model.Password = null;
+                model.RepeatPassword = null;
+                return View(model);
+            }
+
+            if (model.DateOfBirth.AddYears(_configProvider.MinimumAge) > DateTime.Today)
+            {
+                ModelState.AddModelError(nameof(RegistrationPostModel.DateOfBirth), Resources.Global.Registration_Form_DateOfBirth_NotEnough);
                 model.Password = null;
                 model.RepeatPassword = null;
                 return View(model);
