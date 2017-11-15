@@ -304,7 +304,9 @@ Jeżeli uważasz, że ta sytuacja nie powinna mieć miejsca, prosimy skontaktuj 
 {5}
 Dodatkowe info od użytkownika: {6}
 
-Mozesz także postalkować profil FB tej osoby, aby wybrać jeszcze lepszy prezent: {7}.
+{7}
+
+Mozesz także postalkować profil FB tej osoby, aby wybrać jeszcze lepszy prezent: {8}.
 
 Postaraj się wysłać prezent tak szybko jak to możliwe, ponieważ czasy doręczenia są dużo dłuższe w okresie świątecznym. Gdy już to zrobisz, zaloguj się do serwisu, i potwierdź wysyłkę przyciskiem który jest na Twojej stronie głównej.
 
@@ -773,7 +775,28 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
 &lt;li&gt;Organizatorzy zapewniają, że system informatyczny został stworzony zgodnie z ogólnie przyjętymi praktykami i jest zabezpieczony przed włamaniem. Jednak mimo dołożonych starań organizatorzy nie mogą zagwarantować, że dane przekazane do serwisu nie zostaną wykradzione i nie ponoszą odpowiedzialności za zaistnienie takiej sytuacji. Rejestrując się użytkownik rozumie i zgadza się na istniejące ryzyko.&lt;/li&gt;
 &lt;/ol&gt;</value>
   </data>
+  <data name="Registration_Form_DateOfBirth" xml:space="preserve">
+    <value>Data urodzenia</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_HelpText" xml:space="preserve">
+    <value>Podaj swoją dokładną datę urodzenia w formacie dd/MM/yyyy. Nie zostanie ona zapisana, a posłuży jedynie do weryfikacji zgodności z regulaminem oraz oznaczenia Twojego konta jako osoby pełno/niepełnoletniej.</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_Invalid" xml:space="preserve">
+    <value>Data urodzenia jest niepoprawna</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_NotEnough" xml:space="preserve">
+    <value>Musisz mieć conajmniej 16 lat aby się zarejestrować.</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_Required" xml:space="preserve">
+    <value>Musisz podać swoją datę urodzenia</value>
+  </data>
   <data name="Rules" xml:space="preserve">
     <value>Zasady ogólne</value>
+  </data>
+  <data name="Assignment_Adult" xml:space="preserve">
+    <value>Odbiorca Twojego prezentu jest osobą pełnoletnią.</value>
+  </data>
+  <data name="Assignment_NotAdult" xml:space="preserve">
+    <value>Odbiorca Twojego prezentu NIE JEST osobą pełnoletnią!</value>
   </data>
 </root>

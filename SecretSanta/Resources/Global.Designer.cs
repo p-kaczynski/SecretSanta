@@ -304,6 +304,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your recipient is over 18..
+        /// </summary>
+        public static string Assignment_Adult {
+            get {
+                return ResourceManager.GetString("Assignment_Adult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your recipient  is under 18!.
+        /// </summary>
+        public static string Assignment_NotAdult {
+            get {
+                return ResourceManager.GetString("Assignment_NotAdult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assignment completed.
         /// </summary>
         public static string AssignmentCompleted {
@@ -579,7 +597,9 @@ namespace Resources {
         ///{5}
         ///Note from the user: {6}
         ///
-        ///You can also find out more about the user by checking out their Facebook profile: {7}.
+        ///{7}
+        ///
+        ///You can also find out more about the user by checking out their Facebook profile: {8}.
         ///
         ///Make sure to send gift as soon as possible and confirm that you did so by loging into the website - the confirmation button will be on your homepage..
         /// </summary>
@@ -1408,6 +1428,51 @@ namespace Resources {
         public static string Registration_Form_Agreement_HelpText {
             get {
                 return ResourceManager.GetString("Registration_Form_Agreement_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of birth.
+        /// </summary>
+        public static string Registration_Form_DateOfBirth {
+            get {
+                return ResourceManager.GetString("Registration_Form_DateOfBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provide your exact date of birth. It is not going to be stored -  only processed to verify you are over 16 years old, and make a note on your profile whether you are a minor..
+        /// </summary>
+        public static string Registration_Form_DateOfBirth_HelpText {
+            get {
+                return ResourceManager.GetString("Registration_Form_DateOfBirth_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of birth must be a valid date.
+        /// </summary>
+        public static string Registration_Form_DateOfBirth_Invalid {
+            get {
+                return ResourceManager.GetString("Registration_Form_DateOfBirth_Invalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must have minimum of 16 years to register.
+        /// </summary>
+        public static string Registration_Form_DateOfBirth_NotEnough {
+            get {
+                return ResourceManager.GetString("Registration_Form_DateOfBirth_NotEnough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must provide your date of birth.
+        /// </summary>
+        public static string Registration_Form_DateOfBirth_Required {
+            get {
+                return ResourceManager.GetString("Registration_Form_DateOfBirth_Required", resourceCulture);
             }
         }
         

@@ -57,6 +57,14 @@ else
                     @Model.Assignment.PostalCode @Model.Assignment.City<br/>
                     @Model.Assignment.Country
                 </address>
+                @if (Model.Assignment.IsAdult)
+                {
+                    <div class="alert alert-info">@Resources.Global.Assignment_Adult</div>
+                }
+                else
+                {
+                    <div class="alert alert-warning">@Resources.Global.Assignment_NotAdult</div>
+                }
             </div>
             @if (!string.IsNullOrWhiteSpace(Model.Assignment.Note))
             {
