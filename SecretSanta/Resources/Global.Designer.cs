@@ -394,6 +394,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lorem ipsum.
+        /// </summary>
+        public static string Content_Home {
+            get {
+                return ResourceManager.GetString("Content_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lorem ipsum.
+        /// </summary>
+        public static string Content_Rules {
+            get {
+                return ResourceManager.GetString("Content_Rules", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your message.
         /// </summary>
         public static string ConversationPostModel_MessageText {
@@ -1480,6 +1498,15 @@ namespace Resources {
         public static string RemoveUserIntro {
             get {
                 return ResourceManager.GetString("RemoveUserIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terms &amp; Conditions.
+        /// </summary>
+        public static string Rules {
+            get {
+                return ResourceManager.GetString("Rules", resourceCulture);
             }
         }
         

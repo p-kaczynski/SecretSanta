@@ -606,7 +606,7 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
     <value>Musisz zgodzić się na politykę prywatności.</value>
   </data>
   <data name="Registration_Form_Agreement_HelpText" xml:space="preserve">
-    <value>Rozumiem i zgadzam się na {0}</value>
+    <value>Rozumiem i zgadzam się na {0} oraz {1}</value>
   </data>
   <data name="Registration_Form_Note" xml:space="preserve">
     <value>Notka dla Kurdemikołaja</value>
@@ -712,5 +712,68 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
   </data>
   <data name="WillSendAbroad" xml:space="preserve">
     <value>Mogę wysłać za granicę</value>
+  </data>
+  <data name="Content_Home" xml:space="preserve">
+    <value>&lt;h3&gt;Cześć!&lt;/h3&gt;
+
+&lt;p&gt;Witaj na stronie Kurde Mikołajek. Strona przeznaczona jest dla członków grupy Kurde xD - jeśli trafiłeś tu przypadkiem, niestety nie znajdziesz tu nic ciekawego :)&lt;/p&gt;
+
+&lt;p&gt;Kurde Mikołajki to nasza wersja znanego chyba wszystkim konceptu: każdy, kto chce wziąć udział, rejestruje się (przycisk “Rejestracja” w górnym menu) i podaje swoje dane. Po zakończeniu rejestracji i weryfikacji użytkowników losowo przypiszemy do siebie użytkowników tak, że każdy zostanie jednocześnie odbiorcą prezentu jak i Kurde Mikołajem.&lt;/p&gt;
+
+&lt;p&gt;Mamy nadzieję, że weźmiecie udział w naszej akcji i każdy z was otrzyma w te święta dodatkowy prezent od jednego z Kurdonów.&lt;/p&gt;
+
+&lt;h3&gt;Jak to działa?&lt;/h3&gt;
+
+&lt;p&gt;Od otwarcia rejestracji do jej zakończenia możliwe będzie założenie konta w serwisie. Następnie, gdy administratorzy skończą weryfikować zarejestrowanych użytkowników, naciśniemy magiczny przycisk i komputer odpali maszynę losującą. Każdy, kogo udało się uwzględnić w zabawie dostanie e-mail z danymi adresowymi innego użytkownika, razem z odnośnikiem do jego profilu na FB oraz będzie mógł te same informacje przeczytać tutaj, po zalogowaniu się.&lt;/p&gt;
+
+&lt;p&gt;Gdy już wybierzecie idealny prezent dla swojego odbiorcy oraz wyślecie paczkę, będziecie mogli ten fakt zarejestrować klikając przycisk, który będziecie widzieć na stronie głównej. Będzie tam też miejsce na numer referencyjny/śledzenia paczki, jeśli jest to przesyłka rejestrowana (do czego zachęcamy, aby uniknąć zaginięć). Ten numer będzie przechowywany w naszej bazie danych i domyślnie niewidoczny dla odbiorcy.&lt;/p&gt;
+
+&lt;p&gt;Gdy już dojdzie do was Kurde Prezent również będziecie mogli nas o tym poinformować klikając stosowny guzik, który będzie wyświetlony na stronie głównej. To pozwoli nam na monitorowanie postępu akcji. To pierwszy raz gdy organizujemy taką akcję i nie mamy pojęcia, jak to będzie w praktyce wyglądać :)&lt;/p&gt;
+
+&lt;p&gt;Jeżeli będziecie musieli pilnie skontaktować się ze swoim Kurde Mikołajem, albo chcieli przesłać wiadomość do odbiorcy swojego prezentu, będziecie mogli skorzystać z systemu wiadomości (“Wiadomości” w menu górnym). Dane waszego Kurde Mikołaja będą przed wami ukryte, jak również wasza tożsamość będzie niewidoczna dla odbiorcy waszego prezentu. Nie przynieście nam wstydu i pamiętajcie, że Administracja widzi wszystko ;)&lt;/p&gt;
+
+&lt;h3&gt;Zasady&lt;/h3&gt;
+
+&lt;p&gt;Przed rejestracją KONIECZNIE przeczytajcie “Zasady ogólne” oraz “Politykę Prywatności”. Musicie w końcu wiedzieć, na co się zgadzacie :)&lt;/p&gt;
+
+&lt;p&gt;Ponadto obowiązują te same zasady co na grupie: kochajmy i szanujmy się wszyscy, i spróbujmy uczynić te święta trochę bardziej magiczne.&lt;/p&gt;</value>
+  </data>
+  <data name="Content_Rules" xml:space="preserve">
+    <value>&lt;h2&gt;Kurde Mikołajki - Zasady ogólne&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Organizatorzy zabawy zapewniają dostęp do serwisu internetowego https://kurdemikolajki.gerino.net (dalej: “serwis”), który umożliwia rejestrację chęci wzięcia udziału w akcji, oraz pozwala na anonimową oraz losową wymianę danych adresowych pomiędzy uczestnikami w celu wymiany prezentów.&lt;/li&gt;
+&lt;li&gt;Rejestracja w serwisie jest jednoznaczna z wyrażeniem zgody na poniższy regulamin oraz Politykę Prywatności, jak i dobrowolnym wyrażeniem woli wzięcia udziału w zabawie.&lt;/li&gt;
+&lt;li&gt;Każdy z uczestników musi spełnić następujące warunki wstępne:&lt;/li&gt;
+&lt;li&gt;Podać swój prawdziwy i prywatny adres e-mail, a następnie potwierdzić go otwierając link przesłany na podany adres.&lt;/li&gt;
+&lt;li&gt;Podać odnośnik do swojego profilu w portalu Facebook.&lt;/li&gt;
+&lt;li&gt;Być członkiem grupy Kurde xD&lt;/li&gt;
+&lt;li&gt;Mieć ukończone co najmniej 16 lat w momencie rejestracji&lt;/li&gt;
+&lt;li&gt;Podać prawdziwe dane dotyczące swojego wieku (tj. informację o ukończeniu/nieukończeniu 18 roku życia)&lt;/li&gt;
+&lt;li&gt;Rozumieć i akceptować zasady niniejszego regulaminu oraz Polityki Prywatności.&lt;/li&gt;
+&lt;li&gt;Każdy z zarejestrowanych uczestników zostanie poddany indywidualnej akceptacji przez organizatorów przed dopuszczeniem do udziału w zabawie. Organizatorzy zastrzegają prawo do niezaakceptowania zarejestrowanych uczestników (tj. wykluczenia z dalszego udziału) bez podania przyczyn.&lt;/li&gt;
+&lt;li&gt;Uczestnik biorąc udział w zabawie rozumie ryzyko i zgadza się na przekazanie podanych w serwisie danych osobowych innemu, losowo wybranemu użytkownikowi.&lt;/li&gt;
+&lt;li&gt;Uczestnik biorąc udział w zabawie zgadza się na przestrzeganie właściwych zasad ochrony otrzymanych danych osobowych innego użytkownika, tj. w szczególności nieupubliczniania tych danych osobom trzecim.&lt;/li&gt;
+&lt;li&gt;Jedna osoba może założyć jedynie jedno konto w serwisie.&lt;/li&gt;
+&lt;li&gt;Organizatorzy zastrzegają prawo do odszyfrowania i inspekcji wszelkich danych przekazanych do serwisu w celach weryfikacyjnych oraz w celu arbitracji.&lt;/li&gt;
+&lt;li&gt;Serwis przy pomocy algorytmu opartego o generator liczb pseudolosowych dokona przypisania użytkowników do siebie tak, że każdy komu przypisany zostanie inny użytkownik, jednocześnie będzie przypisany któremuś z użytkowników. Dane przypisanego użytkownika przesłane zostaną pocztą elektroniczną do odbiorcy, oraz będą dostępne po zalogowaniu w serwisie. Uczestnik akcji powinien przygotować świąteczny prezent dla swojego odbiorcy, oraz wysłać go na otrzymany adres.&lt;/li&gt;
+&lt;li&gt;Organizatorzy nie gwarantują, że każdy zarejestrowany i zaakceptowany uczestnik będzie mógł wziąć udział w zabawie. Ze względu na międzynarodowy charakter akcji może zaistnieć sytuacja w której niemożliwe będzie uwzględnienie jednego lub więcej uczestników w losowaniu tak, aby mógł jednocześnie wysłać jak i otrzymać prezent.&lt;/li&gt;
+&lt;li&gt;Organizatorzy nie wyznaczają ani nie sugerują wartości pieniężnej prezentu. Akcja ma charakter dobrowolny i oparty o różnorodną społeczność i zasady wzajemnego poszanowania i współżycia społecznego. Uczestnik biorąc udział w zabawie oświadcza, iż rozumie i zgadza się na możliwość, że otrzymany prezent będzie prezentował wartość dalece odmienną od prezentu wysłanego przez użytkownika.&lt;/li&gt;
+&lt;li&gt;Organizatorzy zapewniają system wymiany informacji adresowych; otrzymanie prezentu uzależnione jest od losowo przypisanego użytkownika serwisu i organizatorzy nie gwarantują otrzymania prezentu, oraz nie ponoszą odpowiedzialności w przypadku nieotrzymania takowego.&lt;/li&gt;
+&lt;li&gt;Organizatorzy nie biorą odpowiedzialności za działania uczestników, takie jak, ale nie ograniczone do:&lt;/li&gt;
+&lt;li&gt;Nadużycia systemu wymiany wiadomości, w szczególności przesyłania wiadomości obraźliwych i wulgarnych.&lt;/li&gt;
+&lt;li&gt;Nadużycia powierzonych użytkownikowi danych osobowych, w szczególności wysyłki przedmiotów o charakterze wulgarnym, pornograficznym lub innym, który łamie zasady współżycia społecznego&lt;/li&gt;
+&lt;li&gt;Jednocześnie organizatorzy zapewniają, że zgłoszone przez użytkowników przypadki łamania prawa, takie jak, ale nie ograniczone do:&lt;/li&gt;
+&lt;li&gt;Prześladowania&lt;/li&gt;
+&lt;li&gt;Cyber-bullyingu&lt;/li&gt;
+&lt;li&gt;Upubliczniania danych osobowych osobom trzecim&lt;/li&gt;
+&lt;li&gt;Wysyłki przedmiotów, których posiadanie jest prawnie wzbronione&lt;/li&gt;
+&lt;li&gt;Łamania przepisów ustawy o wychowaniu w trzeźwości zakazujących udostępniania osobom nieletnim wyrobów tytoniowych lub alkoholowych&lt;/li&gt;
+&lt;li&gt;zostaną przez organizatorów zgłoszone właściwym organom państwowym łącznie z odszyfrowanymi danymi przekazanymi przez użytkownika, co do którego istnieje podejrzenie popełnienia czynu zabronionego.&lt;/li&gt;
+&lt;li&gt;Organizatorzy zapewniają, że system informatyczny został stworzony zgodnie z ogólnie przyjętymi praktykami i jest zabezpieczony przed włamaniem. Jednak mimo dołożonych starań organizatorzy nie mogą zagwarantować, że dane przekazane do serwisu nie zostaną wykradzione i nie ponoszą odpowiedzialności za zaistnienie takiej sytuacji. Rejestrując się użytkownik rozumie i zgadza się na istniejące ryzyko.&lt;/li&gt;
+&lt;/ol&gt;</value>
+  </data>
+  <data name="Rules" xml:space="preserve">
+    <value>Zasady ogólne</value>
   </data>
 </root>

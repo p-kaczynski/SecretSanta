@@ -691,4 +691,13 @@ User "{0}" has just added following message for the Secret Santa Administrators:
   <data name="Email_NewSupportMessage_Subject" xml:space="preserve">
     <value>Secret Santa: New support message request</value>
   </data>
+  <data name="Content_Home" xml:space="preserve">
+    <value>Lorem ipsum</value>
+  </data>
+  <data name="Content_Rules" xml:space="preserve">
+    <value>Lorem ipsum</value>
+  </data>
+  <data name="Rules" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+  </data>
 </root>
