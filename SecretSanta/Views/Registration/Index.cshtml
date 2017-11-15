@@ -3,12 +3,14 @@
 
 @{
     ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.Registration}";
+    var privacyLink = Html.ActionLink(Resources.Global.PrivacyPolicy, "Index", "Privacy", null, new {target = "_blank"});
+    var rulesLink = Html.ActionLink(Resources.Global.Rules, "Rules", "Home", null, new {target = "_blank"});
 }
 
 <h2>@Resources.Global.Registration</h2>
 
 @if (!ViewData.ModelState.IsValid && ViewData.ModelState.Keys.Contains(Constants.GlobalModerError))
-{
+            {
     <div class="alert alert-danger" role="alert">
         @Html.ValidationMessage(Constants.GlobalModerError)
     </div>
@@ -17,10 +19,10 @@
 <p class="text-info">@Resources.Global.Registration_FieldsWithAsterisk</p>
 
 @using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+        {
+            @Html.AntiForgeryToken()
     foreach(var lambda in ModelHelper.SelectProperties<RegistrationPostModel>(m => m.DisplayName, m => m.Email, m=>m.FacebookProfileUrl, m => m.Password, m=>m.RepeatPassword, m => m.FullName, m => m.AddressLine1, m => m.AddressLine2, m => m.PostalCode, m => m.City))
-    {
+            {
         <div class="form-group">
             @Html.ValidationMessageFor(lambda)
             @Html.LabelFor(lambda)
@@ -51,7 +53,7 @@
         @Html.ValidationMessageFor(m => m.DataProtectionPolicyAgreement)
         @Html.EditorFor(m => m.DataProtectionPolicyAgreement)
         @Html.LabelFor(m => m.DataProtectionPolicyAgreement)
-        <p class="form-text text-muted">@Html.Raw(string.Format(Resources.Global.Registration_Form_Agreement_HelpText, Html.ActionLink(Resources.Global.PrivacyPolicy, "Index", "Privacy",null,new{ target = "_blank" })))</p>
+        <p class="form-text text-muted">@Html.Raw(string.Format(Resources.Global.Registration_Form_Agreement_HelpText, privacyLink, rulesLink))</p>
     </div>
     <button type="submit" class="btn btn-primary">@Resources.Global.Button_Submit</button>
 
