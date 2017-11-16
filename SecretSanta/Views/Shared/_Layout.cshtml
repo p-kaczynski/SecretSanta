@@ -65,6 +65,11 @@
                         <li>@Html.ActionLink(Resources.Global.AccountSettings, "Index", "Account")</li>
                         <li>@Html.ActionLink(Resources.Global.Messages, "Index", "Messages")</li>
                     }
+                    @if (!User.IsInRole(SantaUserManager.AdminRole))
+                    {
+                        <li>@Html.ActionLink(Resources.Global.PrivacyPolicy, "Index", "Privacy")</li>
+                        <li>@Html.ActionLink(Resources.Global.Rules, "Rules", "Home")</li>
+                    }
                 </ul>
                 @if (User?.Identity?.IsAuthenticated != true)
                 {

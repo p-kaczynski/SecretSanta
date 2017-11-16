@@ -10,5 +10,6 @@
         public string City { get; set; }
         public string Country { get; set; }
         public string Note { get; set; }
+        public bool IsAdult { get; set; }
     }
 }

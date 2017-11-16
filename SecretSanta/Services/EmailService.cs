@@ -90,7 +90,7 @@ namespace SecretSanta.Services
 
         public bool SendAssignmentEmail(SantaUser user, SantaUser target)
         {
-            var body = string.Format(Resources.Global.Email_Assignment_Body, target.FullName, target.AddressLine1, target.AddressLine2, target.PostalCode, target.City, _countryProvider.ByThreeLetterCode[target.Country].Name, target.Note, target.FacebookProfileUrl);
+            var body = string.Format(Resources.Global.Email_Assignment_Body, target.FullName, target.AddressLine1, target.AddressLine2, target.PostalCode, target.City, _countryProvider.ByThreeLetterCode[target.Country].Name, target.Note, target.IsAdult ? Resources.Global.Assignment_Adult : Resources.Global.Assignment_NotAdult, target.FacebookProfileUrl);
 
             return SendEmail(user.Email, Resources.Global.Email_Assignment_Subject, body);
         }

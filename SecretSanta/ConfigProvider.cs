@@ -29,6 +29,8 @@ namespace SecretSanta
             public const string MailgunFrom = "santa.email.mailgun_from";
             public const string AdminEmail = "santa.email.admin_email";
             public const string SendMessageNotifications = "santa.email.send_message_notifications";
+            public const string AdultAge = "santa.user.adult_age";
+            public const string MinimumAge = "santa.user.minimum_age";
         }
 
         public string ConnectionString 
@@ -86,5 +88,11 @@ namespace SecretSanta
 
         public bool SendMessageEmails =>
             WebConfigurationManager.AppSettings.GetBoolOrDefault(ConfigKeys.SendMessageNotifications, true);
+
+        public int AdultAge =>
+            WebConfigurationManager.AppSettings.GetInt(ConfigKeys.AdultAge, 18);
+
+        public int MinimumAge =>
+            WebConfigurationManager.AppSettings.GetInt(ConfigKeys.MinimumAge, 16);
     }
 }

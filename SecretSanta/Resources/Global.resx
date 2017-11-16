@@ -576,7 +576,9 @@ If you think, that this should not have had happened, please contact one of the 
 {5}
 Note from the user: {6}
 
-You can also find out more about the user by checking out their Facebook profile: {7}.
+{7}
+
+You can also find out more about the user by checking out their Facebook profile: {8}.
 
 Make sure to send gift as soon as possible and confirm that you did so by loging into the website - the confirmation button will be on your homepage.</value>
   </data>
@@ -637,9 +639,6 @@ Make sure to send gift as soon as possible and confirm that you did so by loging
   <data name="Messages_FromYou" xml:space="preserve">
     <value>You</value>
   </data>
-  <data name="Messages_NewConversation" xml:space="preserve">
-    <value>Start new conversation</value>
-  </data>
   <data name="Messages_NotAssigned" xml:space="preserve">
     <value>You are not currently assigned in Secret Santa.</value>
   </data>
@@ -693,5 +692,35 @@ User "{0}" has just added following message for the Secret Santa Administrators:
   </data>
   <data name="Email_NewSupportMessage_Subject" xml:space="preserve">
     <value>Secret Santa: New support message request</value>
+  </data>
+  <data name="Content_Home" xml:space="preserve">
+    <value>Lorem ipsum</value>
+  </data>
+  <data name="Content_Rules" xml:space="preserve">
+    <value>Lorem ipsum</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_HelpText" xml:space="preserve">
+    <value>Provide your exact date of birth. It is not going to be stored -  only processed to verify you are over 16 years old, and make a note on your profile whether you are a minor.</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_Invalid" xml:space="preserve">
+    <value>Date of birth must be a valid date</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_NotEnough" xml:space="preserve">
+    <value>You must have minimum of 16 years to register</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_Required" xml:space="preserve">
+    <value>You must provide your date of birth</value>
+  </data>
+  <data name="Rules" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+  </data>
+  <data name="Assignment_Adult" xml:space="preserve">
+    <value>Your recipient is over 18.</value>
+  </data>
+  <data name="Assignment_NotAdult" xml:space="preserve">
+    <value>Your recipient  is under 18!</value>
   </data>
 </root>

@@ -20,11 +20,13 @@ namespace SecretSanta
         {
             var encryptionProvider = DependencyResolver.Current.GetService<IEncryptionProvider>();
             var countryProvider = DependencyResolver.Current.GetService<CountryProvider>();
+            var configProvider = DependencyResolver.Current.GetService<IConfigProvider>();
 
             cfg.CreateMap<RegistrationPostModel, SantaUser>()
                 .ForMember(dest => dest.PasswordHash,
                     opt => opt.ResolveUsing(post => encryptionProvider.CalculatePasswordHash(post.Password)))
                 .ForMember(dest=>dest.Country, opt=>opt.ResolveUsing(post=>countryProvider.ById[post.Country.Id].ThreeLetterIsoCode))
+                .ForMember(dest=>dest.IsAdult, opt=>opt.ResolveUsing(post=> post.DateOfBirth.AddYears(configProvider.AdultAge) <= DateTime.Today))
                 .ForMember(dest=>dest.EmailConfirmed, opt=>opt.Ignore())
                 .ForMember(dest=>dest.AdminConfirmed, opt=>opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore())

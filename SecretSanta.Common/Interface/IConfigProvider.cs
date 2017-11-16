@@ -28,5 +28,7 @@ namespace SecretSanta.Common.Interface
         string AdminEmail { get; }
 
         bool SendMessageEmails { get; }
+        int AdultAge { get; }
+        int MinimumAge { get; }
     }
 }

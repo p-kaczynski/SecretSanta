@@ -13,7 +13,7 @@ namespace SecretSanta.Models.Validation
             var result = validator.Validate(password);
             if(result.Success)
                 return ValidationResult.Success;
-            return new ValidationResult(result.Message);
+            return new ValidationResult(Resources.Global.Password_Invalid);
         }
 
         public static ValidationResult ValidateAdminUserName(string username)
