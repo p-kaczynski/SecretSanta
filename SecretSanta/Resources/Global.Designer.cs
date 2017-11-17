@@ -1423,7 +1423,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I understand and agree to the {0}.
+        ///   Looks up a localized string similar to I understand and agree to the {0} and {1}.
         /// </summary>
         public static string Registration_Form_Agreement_HelpText {
             get {
