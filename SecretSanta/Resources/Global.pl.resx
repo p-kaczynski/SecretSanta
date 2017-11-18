@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AbandonedUsers" xml:space="preserve">
-    <value>Użytkownicy których nie udało się uwzględnić</value>
+    <value>Użytkownicy, których nie udało się sparować</value>
   </data>
   <data name="AbandonmentReason_Text_ComputerSaysNo" xml:space="preserve">
-    <value>Algorytm nie był w stanie utworzyć par dla wszystkich, więc niestety zostałeś losowo odrzucony/a aby udało się zapewnić udział dla jak największej liczby osób.</value>
+    <value>Algorytm nie był w stanie utworzyć par dla wszystkich, więc niestety zostałeś losowo odrzucony/a, aby udało się zapewnić udział jak największej liczbie osób.</value>
   </data>
   <data name="AbandonmentReason_Text_LoneWontSend" xml:space="preserve">
-    <value>Jesteś jedyną osobą w Twoim kraju, a jednocześnie wybrałeś opcję niewysyłania paczki za granicę.</value>
+    <value>Jesteś jedyną osobą w Twoim kraju, a jednocześnie wybrałeś/łaś opcję niewysyłania paczki za granicę.</value>
   </data>
   <data name="AbandonmentReason_Unknown" xml:space="preserve">
-    <value>Zostałeś wykluczony z udziału z nieznanych przyczyn - jest to niesamowicie mało prawdopodobne, ale niestety przywrócenie Cię do zabawy może być już niemożliwe. Przyjmij nasze najszczersze przeprosiny.</value>
+    <value>Zostałeś/łaś wykluczony/a z udziału z nieznanych przyczyn - jest to niesamowicie mało prawdopodobne, ale niestety przywrócenie Cię do zabawy może być już niemożliwe. Przyjmij nasze najszczersze przeprosiny.</value>
   </data>
   <data name="AccountRemove" xml:space="preserve">
     <value>Usuń się</value>
   </data>
   <data name="AccountRemoveIntro" xml:space="preserve">
-    <value>Zamierzasz usunąć swoje konto. Proces ten nie może być odwrócony. Niezbędna będzie ponowna rejestracja. Czy jesteś pewien kurde xD?</value>
+    <value>Zamierzasz usunąć swoje konto. Proces ten nie może być odwrócony. Niezbędna będzie ponowna rejestracja. Czy jesteś pewien, kurde xD?</value>
   </data>
   <data name="AccountSettings" xml:space="preserve">
     <value>Ustawienia konta</value>
@@ -160,7 +160,7 @@
     <value>Skrzynka Pomocy</value>
   </data>
   <data name="AdminMessages_Replied" xml:space="preserve">
-    <value>Wiadomości na które udzielono odpowiedzi</value>
+    <value>Wiadomości, na które udzielono odpowiedzi</value>
   </data>
   <data name="AdminMessages_WaitingForReply" xml:space="preserve">
     <value>Wiadomości oczekujące na odpowiedź</value>
@@ -207,17 +207,23 @@
   <data name="Assignments" xml:space="preserve">
     <value>Przypisania</value>
   </data>
+  <data name="Assignment_Adult" xml:space="preserve">
+    <value>Odbiorca Twojego prezentu jest osobą pełnoletnią.</value>
+  </data>
+  <data name="Assignment_NotAdult" xml:space="preserve">
+    <value>Odbiorca Twojego prezentu NIE JEST osobą pełnoletnią!</value>
+  </data>
   <data name="Button_Submit" xml:space="preserve">
     <value>Wyślij</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>Miasto</value>
+    <value>Miejscowość</value>
   </data>
   <data name="City_Required" xml:space="preserve">
-    <value>Nazwa miasta jest wymagana w celach wysyłkowych</value>
+    <value>Nazwa miejscowości jest wymagana w celach wysyłkowych</value>
   </data>
   <data name="City_TooLong" xml:space="preserve">
-    <value>Nazwa miasta</value>
+    <value>Nazwa miejscowości</value>
   </data>
   <data name="CloseRegistration" xml:space="preserve">
     <value>Zamknij rejestrację</value>
@@ -226,7 +232,58 @@
     <value>Potwierdzenie</value>
   </data>
   <data name="ConfirmationEmailSent" xml:space="preserve">
-    <value>Rejestracja zakończona powodzeniem. Email z linkiem potwierdzającym został wysłany do</value>
+    <value>Rejestracja zakończona pomyślnie. Email z linkiem potwierdzającym został wysłany do</value>
+  </data>
+  <data name="Content_Home" xml:space="preserve">
+    <value>&lt;h3&gt;Cześć!&lt;/h3&gt;
+&lt;p&gt;Witaj na stronie Kurde Mikołajek. Strona przeznaczona jest dla członków grupy Kurde xD - jeśli trafiłeś tu przypadkiem, niestety nie znajdziesz tu nic ciekawego :)&lt;/p&gt;
+&lt;p&gt;Kurde Mikołajki to nasza wersja znanego chyba wszystkim konceptu: każdy, kto chce wziąć udział, rejestruje się (przycisk “Rejestracja” w górnym menu) i podaje swoje dane. Po zakończeniu rejestracji i weryfikacji użytkowników losowo przypiszemy do siebie użytkowników tak, że każdy zostanie jednocześnie odbiorcą prezentu jak i Kurde Mikołajem.&lt;/p&gt;
+&lt;p&gt;Mamy nadzieję, że weźmiecie udział w naszej akcji i każdy z was otrzyma w te święta dodatkowy prezent od jednego z Kurdonów.&lt;/p&gt;
+&lt;h3&gt;Jak to działa?&lt;/h3&gt;
+&lt;p&gt;Od otwarcia rejestracji do jej zakończenia możliwe będzie założenie konta w serwisie. Następnie, gdy administratorzy skończą weryfikować zarejestrowanych użytkowników, naciśniemy magiczny przycisk i komputer odpali maszynę losującą. Każdy, kogo udało się uwzględnić w zabawie dostanie e-mail z danymi adresowymi innego użytkownika, razem z odnośnikiem do jego profilu na FB oraz będzie mógł te same informacje przeczytać tutaj, po zalogowaniu się.&lt;/p&gt;
+&lt;p&gt;Gdy już wybierzecie idealny prezent dla swojego odbiorcy oraz wyślecie paczkę, będziecie mogli ten fakt zarejestrować klikając przycisk, który będziecie widzieć na stronie głównej. Będzie tam też miejsce na numer referencyjny/śledzenia paczki, jeśli jest to przesyłka rejestrowana (do czego zachęcamy, aby uniknąć zaginięć). Ten numer będzie przechowywany w naszej bazie danych i domyślnie niewidoczny dla odbiorcy.&lt;/p&gt;
+&lt;p&gt;Gdy już dojdzie do was Kurde Prezent również będziecie mogli nas o tym poinformować klikając stosowny guzik, który będzie wyświetlony na stronie głównej. To pozwoli nam na monitorowanie postępu akcji. To pierwszy raz gdy organizujemy taką akcję i nie mamy pojęcia, jak to będzie w praktyce wyglądać :)&lt;/p&gt;
+&lt;p&gt;Jeżeli będziecie musieli pilnie skontaktować się ze swoim Kurde Mikołajem, albo chcieli przesłać wiadomość do odbiorcy swojego prezentu, będziecie mogli skorzystać z systemu wiadomości (“Wiadomości” w menu górnym). Dane waszego Kurde Mikołaja będą przed wami ukryte, jak również wasza tożsamość będzie niewidoczna dla odbiorcy waszego prezentu. Nie przynieście nam wstydu i pamiętajcie, że Administracja widzi wszystko ;)&lt;/p&gt;
+&lt;h3&gt;Zasady&lt;/h3&gt;
+&lt;p&gt;Przed rejestracją KONIECZNIE przeczytajcie “Zasady ogólne” oraz “Politykę Prywatności”. Musicie w końcu wiedzieć, na co się zgadzacie :)&lt;/p&gt;
+&lt;p&gt;Ponadto obowiązują te same zasady co na grupie: kochajmy i szanujmy się wszyscy, i spróbujmy uczynić te święta trochę bardziej magiczne.&lt;/p&gt;</value>
+  </data>
+  <data name="Content_Rules" xml:space="preserve">
+    <value>&lt;h2&gt;Kurde Mikołajki - Zasady ogólne&lt;/h2&gt;
+&lt;ol class="legal"&gt;
+&lt;li&gt;Organizatorzy zabawy zapewniają dostęp do serwisu internetowego https://kurdemikolajki.gerino.net (dalej: “serwis”), który umożliwia rejestrację chęci wzięcia udziału w akcji, oraz pozwala na anonimową oraz losową wymianę danych adresowych pomiędzy uczestnikami w celu wymiany prezentów.&lt;/li&gt;
+&lt;li&gt;Rejestracja w serwisie jest jednoznaczna z wyrażeniem zgody na poniższy regulamin oraz Politykę Prywatności, jak i dobrowolnym wyrażeniem woli wzięcia udziału w zabawie.
+&lt;ol class="legal"&gt;
+&lt;li&gt;Każdy z uczestników musi spełnić następujące warunki wstępne:&lt;/li&gt;
+&lt;li&gt;Podać swój prawdziwy i prywatny adres e-mail, a następnie potwierdzić go otwierając link przesłany na podany adres.&lt;/li&gt;
+&lt;li&gt;Podać odnośnik do swojego profilu w portalu Facebook.&lt;/li&gt;
+&lt;li&gt;Być członkiem grupy Kurde xD&lt;/li&gt;
+&lt;li&gt;Mieć ukończone co najmniej 16 lat w momencie rejestracji&lt;/li&gt;
+&lt;li&gt;Podać prawdziwe dane dotyczące swojego wieku (tj. informację o ukończeniu/nieukończeniu 18 roku życia)&lt;/li&gt;
+&lt;li&gt;Rozumieć i akceptować zasady niniejszego regulaminu oraz Polityki Prywatności.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Każdy z zarejestrowanych uczestników zostanie poddany indywidualnej akceptacji przez organizatorów przed dopuszczeniem do udziału w zabawie. Organizatorzy zastrzegają prawo do niezaakceptowania zarejestrowanych uczestników (tj. wykluczenia z dalszego udziału) bez podania przyczyn.&lt;/li&gt;
+&lt;li&gt;Uczestnik biorąc udział w zabawie rozumie ryzyko i zgadza się na przekazanie podanych w serwisie danych osobowych innemu, losowo wybranemu użytkownikowi.&lt;/li&gt;
+&lt;li&gt;Uczestnik biorąc udział w zabawie zgadza się na przestrzeganie właściwych zasad ochrony otrzymanych danych osobowych innego użytkownika, tj. w szczególności nieupubliczniania tych danych osobom trzecim.&lt;/li&gt;
+&lt;li&gt;Jedna osoba może założyć jedynie jedno konto w serwisie.&lt;/li&gt;
+&lt;li&gt;Organizatorzy zastrzegają prawo do odszyfrowania i inspekcji wszelkich danych przekazanych do serwisu w celach weryfikacyjnych oraz w celu arbitracji.&lt;/li&gt;
+&lt;li&gt;Serwis przy pomocy algorytmu opartego o generator liczb pseudolosowych dokona przypisania użytkowników do siebie tak, że każdy komu przypisany zostanie inny użytkownik, jednocześnie będzie przypisany któremuś z użytkowników. Dane przypisanego użytkownika przesłane zostaną pocztą elektroniczną do odbiorcy, oraz będą dostępne po zalogowaniu w serwisie. Uczestnik akcji powinien przygotować świąteczny prezent dla swojego odbiorcy, oraz wysłać go na otrzymany adres.&lt;/li&gt;
+&lt;li&gt;Organizatorzy nie gwarantują, że każdy zarejestrowany i zaakceptowany uczestnik będzie mógł wziąć udział w zabawie. Ze względu na międzynarodowy charakter akcji może zaistnieć sytuacja w której niemożliwe będzie uwzględnienie jednego lub więcej uczestników w losowaniu tak, aby mógł jednocześnie wysłać jak i otrzymać prezent.&lt;/li&gt;
+&lt;li&gt;Organizatorzy nie wyznaczają ani nie sugerują wartości pieniężnej prezentu. Akcja ma charakter dobrowolny i oparty o różnorodną społeczność i zasady wzajemnego poszanowania i współżycia społecznego. Uczestnik biorąc udział w zabawie oświadcza, iż rozumie i zgadza się na możliwość, że otrzymany prezent będzie prezentował wartość dalece odmienną od prezentu wysłanego przez użytkownika.&lt;/li&gt;
+&lt;li&gt;Organizatorzy zapewniają system wymiany informacji adresowych; otrzymanie prezentu uzależnione jest od losowo przypisanego użytkownika serwisu i organizatorzy nie gwarantują otrzymania prezentu, oraz nie ponoszą odpowiedzialności w przypadku nieotrzymania takowego.&lt;/li&gt;
+&lt;li&gt;Organizatorzy nie biorą odpowiedzialności za działania uczestników, takie jak, ale nie ograniczone do:&lt;/li&gt;
+&lt;li&gt;Nadużycia systemu wymiany wiadomości, w szczególności przesyłania wiadomości obraźliwych i wulgarnych.&lt;/li&gt;
+&lt;li&gt;Nadużycia powierzonych użytkownikowi danych osobowych, w szczególności wysyłki przedmiotów o charakterze wulgarnym, pornograficznym lub innym, który łamie zasady współżycia społecznego&lt;/li&gt;
+&lt;li&gt;Jednocześnie organizatorzy zapewniają, że zgłoszone przez użytkowników przypadki łamania prawa, takie jak, ale nie ograniczone do:
+&lt;ol class="legal"&gt;
+&lt;li&gt;Prześladowania&lt;/li&gt;
+&lt;li&gt;Cyber-bullyingu&lt;/li&gt;
+&lt;li&gt;Upubliczniania danych osobowych osobom trzecim&lt;/li&gt;
+&lt;li&gt;Wysyłki przedmiotów, których posiadanie jest prawnie wzbronione&lt;/li&gt;
+&lt;li&gt;Łamania przepisów ustawy o wychowaniu w trzeźwości zakazujących udostępniania osobom nieletnim wyrobów tytoniowych lub alkoholowych&lt;/li&gt;
+&lt;/ol&gt;zostaną przez organizatorów zgłoszone właściwym organom państwowym łącznie z odszyfrowanymi danymi przekazanymi przez użytkownika, co do którego istnieje podejrzenie popełnienia czynu zabronionego.&lt;/li&gt;
+&lt;li&gt;Organizatorzy zapewniają, że system informatyczny został stworzony zgodnie z ogólnie przyjętymi praktykami i jest zabezpieczony przed włamaniem. Jednak mimo dołożonych starań organizatorzy nie mogą zagwarantować, że dane przekazane do serwisu nie zostaną wykradzione i nie ponoszą odpowiedzialności za zaistnienie takiej sytuacji. Rejestrując się użytkownik rozumie i zgadza się na istniejące ryzyko.&lt;/li&gt;
+&lt;/ol&gt;</value>
   </data>
   <data name="ConversationPostModel_MessageText" xml:space="preserve">
     <value>Twoja wiadomość</value>
@@ -235,7 +292,7 @@
     <value>Wprowadź tu swoją wiadomość. Miej na uwadze, że wiadomości przechowywane są w sposób niezaszyfrowany, oraz mogą być widoczne dla administratorów niezależnie od tego, kto jest odbiorcą wiadomości.</value>
   </data>
   <data name="ConversationPostModel_MessageText_Invalid" xml:space="preserve">
-    <value>Wiadomość może mieć co najwyżej 2048 znaków</value>
+    <value>Wiadomość może mieć maksymalnie 2048 znaków.</value>
   </data>
   <data name="ConversationPostModel_MessageText_Required" xml:space="preserve">
     <value>Musisz wprowadzić jakąś wiadomość.</value>
@@ -259,13 +316,13 @@
     <value>Stwórz konto administratora</value>
   </data>
   <data name="DisplayName" xml:space="preserve">
-    <value>Nazwa wyświetlana</value>
+    <value>Nazwa użytkownika</value>
   </data>
   <data name="DisplayName_Required" xml:space="preserve">
-    <value>Nazwa wyświetlana jest wymagana</value>
+    <value>Nazwa użytkownika jest wymagana</value>
   </data>
   <data name="DisplayName_TooLong" xml:space="preserve">
-    <value>Nazwa wyświetlana jest ograniczona do 200 znaków</value>
+    <value>Nazwa użytkownika jest ograniczona do 200 znaków</value>
   </data>
   <data name="EditAdmin" xml:space="preserve">
     <value>Edytuj administratora</value>
@@ -274,7 +331,7 @@
     <value>Adres email</value>
   </data>
   <data name="EmailConfirmation_TokenInvalid" xml:space="preserve">
-    <value>Podany token jest nieprawidłowy lub wygasł. Skontaktuj się z administratorem.</value>
+    <value>Podany kod jest nieprawidłowy lub wygasł. Skontaktuj się z administratorem.</value>
   </data>
   <data name="EmailConfirmedMessage" xml:space="preserve">
     <value>Twój email został zatwierdzony</value>
@@ -284,32 +341,25 @@
   </data>
   <data name="Email_Abandonment_Body" xml:space="preserve">
     <value>Cześć {0},
-
-
-Z przykrością informujemy, że w tym roku nie udało się Ciebie z nikim sparować. Sytuacja ta jest wielce nieprawdopodobna. Pragniemy zwrócić uwagę, że dołożyliśmy wszelkich starań, aby zminimalizować prawdopodobieństwo występowania takich przypadków.
-Powód dla którego algorytm postanowił Cię odrzucić jest następujący: '{1}'.
-Jeszcze raz przepraszamy, że nie będziesz mógł partycypować w tegorocznej edycji zabawy.
-Jeżeli uważasz, że ta sytuacja nie powinna mieć miejsca, prosimy skontaktuj się z administratorami, którzy zgłębią temat. Jednakowoż, może okazać się, że nie da się nic zrobić.</value>
+ Z przykrością informujemy, że w tym roku nie udało się Ciebie z nikim sparować. Sytuacja ta jest wielce nieprawdopodobna. Pragniemy zwrócić uwagę, że dołożyliśmy wszelkich starań, aby zminimalizować prawdopodobieństwo występowania takich przypadków.
+ Powód dla którego algorytm postanowił Cię odrzucić jest następujący: '{1}'.
+ Jeszcze raz przepraszamy, że nie będziesz mógł partycypować w tegorocznej edycji zabawy.
+ Jeżeli uważasz, że ta sytuacja nie powinna mieć miejsca, prosimy skontaktuj się z administratorami, którzy zgłębią temat. Jednakowoż, może okazać się, że nie da się nic zrobić.</value>
   </data>
   <data name="Email_Abandonment_Subject" xml:space="preserve">
-    <value>KurdeMikołajki: O nie! Zostałeś wykluczony z tegorocznych mikołajek!</value>
+    <value>KurdeMikołajki: O nie!  Zostałeś wykluczony z tegorocznych mikołajek!</value>
   </data>
   <data name="Email_Assignment_Body" xml:space="preserve">
     <value>Cześć!  Właśnie nasz system wylosował osobę, dla której będziesz w tym roku Kurdemikołajem! Zapoznaj się z poniższymi informacjami i jak najszybciej wybierz i wyślij tej osobie jej wymarzony prezent!
-
 {0}
 {1}
 {2}
 {3} {4}
 {5}
 Dodatkowe info od użytkownika: {6}
-
 {7}
-
 Mozesz także postalkować profil FB tej osoby, aby wybrać jeszcze lepszy prezent: {8}.
-
 Postaraj się wysłać prezent tak szybko jak to możliwe, ponieważ czasy doręczenia są dużo dłuższe w okresie świątecznym. Gdy już to zrobisz, zaloguj się do serwisu, i potwierdź wysyłkę przyciskiem który jest na Twojej stronie głównej.
-
 Pozdrawiamy,
 Administracja Kurde Mikołajek :)</value>
   </data>
@@ -317,7 +367,7 @@ Administracja Kurde Mikołajek :)</value>
     <value>KurdeMikołajki: Właśnie zostałeś czyimś Kurde-Mikołajem!</value>
   </data>
   <data name="Email_Confirmed" xml:space="preserve">
-    <value>Twój email został potwierdzony</value>
+    <value>Twój adres email został potwierdzony</value>
   </data>
   <data name="Email_HelpText" xml:space="preserve">
     <value>Poprawny adres email</value>
@@ -328,9 +378,9 @@ Administracja Kurde Mikołajek :)</value>
   <data name="Email_NewMessage_Body" xml:space="preserve">
     <value>Cześć {0},
 Dostałeś nową wiadomość od {1}:
-------------------------------------------------------------
-{2}
-------------------------------------------------------------
+ ------------------------------------------------------------
+ {2}
+ ------------------------------------------------------------
 Aby odpowiedzieć odwiedź: {3}
 </value>
   </data>
@@ -339,11 +389,7 @@ Aby odpowiedzieć odwiedź: {3}
   </data>
   <data name="Email_NewSupportMessage_Body" xml:space="preserve">
     <value>Cześć!
-
-
 Użytkownik "{0}" dodał nową wiadomość dla Administratorów:
-
-
 {1}</value>
   </data>
   <data name="Email_NewSupportMessage_Subject" xml:space="preserve">
@@ -353,9 +399,7 @@ Użytkownik "{0}" dodał nową wiadomość dla Administratorów:
     <value>Twój adres email oczekuje na potwierdzenie</value>
   </data>
   <data name="Email_PasswordReset_Body" xml:space="preserve">
-    <value>Cześć {0}! 
-
-Kliknij w podany link aby przejść do formularza resetującego hasło: {1} Jeżeli nie chciałeś resetować hasła możesz spokojnie usunąć tą wiadomość. Token będzie ważny przez {2} minut.</value>
+    <value>Cześć {0}! Kliknij w podany link aby przejść do formularza resetującego hasło: {1} Jeżeli nie chciałeś resetować hasła możesz spokojnie usunąć tą wiadomość. Kod będzie ważny przez {2} minut.</value>
   </data>
   <data name="Email_PasswordReset_Subject" xml:space="preserve">
     <value>Zmiana hasła w Kurde Mikołajkach</value>
@@ -367,12 +411,10 @@ Kliknij w podany link aby przejść do formularza resetującego hasło: {1} Jeż
     <value>Wyśli ponownie wiadomość potwierdzającą</value>
   </data>
   <data name="Email_SendingFailure" xml:space="preserve">
-    <value>Nie udało się wysłać wiadomości. Poczekaj proszę 15 minut i spróbuj ponowanie. Jeżeli ta wiadomość pojawi się ponownie, skontaktuj się z administratorem.</value>
+    <value>Nie udało się wysłać wiadomości. Poczekaj 15 minut i spróbuj ponownie. Jeżeli ta wiadomość pojawi się ponownie, skontaktuj się z administratorem.</value>
   </data>
   <data name="Email_Verification_Body" xml:space="preserve">
-    <value>Cześć {0}! 
-
-Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
+    <value>Cześć {0}! Aby potwierdzić swój adres email, kliknij w poniższy link: {1}</value>
   </data>
   <data name="Email_Verification_Subject" xml:space="preserve">
     <value>Potwierdzenie adresu email Kurde Mikołajek</value>
@@ -381,7 +423,7 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
     <value>Odnośnik do profilu na Facebooku</value>
   </data>
   <data name="FacebookURL_HelpText" xml:space="preserve">
-    <value>Poprawny adres do twojego profilu na facebooku</value>
+    <value>Poprawny adres do Twojego profilu na Facebooku</value>
   </data>
   <data name="FacebookURL_Invalid" xml:space="preserve">
     <value>Odnośnik jest nieprawidłowy</value>
@@ -390,28 +432,28 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
     <value>Odnośnik jest wymagany do weryfikacji</value>
   </data>
   <data name="FullName" xml:space="preserve">
-    <value>Pełna nazwa (do wysyłki)</value>
+    <value>Imię i nazwisko</value>
   </data>
   <data name="FullName_Required" xml:space="preserve">
-    <value>Pełne imię jest wymagane do wysyłki</value>
+    <value>Imię i nazwisko są wymagane do wysyłki</value>
   </data>
   <data name="FullName_TooLong" xml:space="preserve">
-    <value>Pełne imię jest ograniczone do 200 znaków</value>
+    <value>Pole imię i nazwisko jest ograniczone do 200 znaków</value>
   </data>
   <data name="GiftSent" xml:space="preserve">
     <value>Potwierdzenie wysłania prezentu</value>
   </data>
   <data name="GiftSent_Form_Confirmation" xml:space="preserve">
-    <value>Potwierdzam, że wysłałem prezent do wyznaczonego kurdona</value>
+    <value>Potwierdzam, że wysłałem/łam prezent do wyznaczonego kurdona</value>
   </data>
   <data name="GiftSent_Form_Confirmation_HelpText" xml:space="preserve">
-    <value>Zaznaczając to pole, potwierdzam, że wysłałem prezent do osoby wyznaczonej. Rozumiem, że podawanie nieprawdziwych informacji jest haniebne i zostanie ukarane w stopniu, w jakim jest to dostepne organizatorom.</value>
+    <value>Zaznaczając to pole, potwierdzam, że wysłałem/łam prezent do osoby wyznaczonej. Rozumiem, że podawanie nieprawdziwych informacji jest haniebne i zostanie ukarane w stopniu, w jakim jest to dostępne organizatorom.</value>
   </data>
   <data name="GiftSent_Form_Tracking" xml:space="preserve">
     <value>Numer referencyjny/Numer przewozowy paczki</value>
   </data>
   <data name="GiftSent_Form_Tracking_HelpText" xml:space="preserve">
-    <value>Jeśli masz numer śledzenia / referencyjny dla paczki zawierającej wysłany przez Ciebie prezent, dodaj go do tego pola. Pomoże to rozwiązać problemy, jeśli się pojawią</value>
+    <value>Jeśli masz numer śledzenia/referencyjny dla paczki zawierającej wysłany przez Ciebie prezent, dodaj go do tego pola. Pomoże to rozwiązać problemy, jeśli się one pojawią.</value>
   </data>
   <data name="GiftSent_MustConfirm" xml:space="preserve">
     <value>Musisz potwierdzić, że prezent został wysłany</value>
@@ -438,7 +480,7 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
     <value>E-mail lub login admina</value>
   </data>
   <data name="Login_Invalid" xml:space="preserve">
-    <value>Login albo hasło są niepoprawne</value>
+    <value>Login lub hasło są nieprawidłowe</value>
   </data>
   <data name="Login_LockedOut" xml:space="preserve">
     <value>Konto zablokowane</value>
@@ -537,10 +579,10 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
     <value>Resetuj hasło</value>
   </data>
   <data name="PasswordReset_TokenInvalid" xml:space="preserve">
-    <value>Token resetu hasła jest niepoprawny albo wygasł</value>
+    <value>Kod resetu hasła jest niepoprawny lub wygasł</value>
   </data>
   <data name="PasswordReset_Token_Display" xml:space="preserve">
-    <value>Token resetu hasła</value>
+    <value>Kod resetu hasła</value>
   </data>
   <data name="Password_HelpText" xml:space="preserve">
     <value>Hasło musi mieć co najmniej 8 znaków, conajmniej trzy z: wielka litera (A), mała litera(a), cyfra(1), inny znak($)), znaki nie mogą się powtarzać więcej niż 3 razy (aaa), oraz nie może być trywialne do złamania ze względu na znany "wzór". Przeczytaj &lt;a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet#Password_Complexity"&gt;OWASP recommendation&lt;/a&gt; aby dowiedzieć się dlaczego istnieją takie wymagania.</value>
@@ -562,7 +604,6 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
   </data>
   <data name="PrivacyPolicy_Html" xml:space="preserve">
     <value>&lt;h1&gt;Polityka prywatności&lt;/h1&gt;
-
 &lt;ol&gt;
 &lt;li&gt;Rejestracja w serwisie https://kurdemikolajki.gerino.net/ oznacza wyrażenie zgody na poniższą politykę.&lt;/li&gt;
 &lt;li&gt;Dane przekazywane przez użytkownika poprzez formularz rejestracyjny serwisu są przekazywane dobrowolnie i będą wykorzystywane do realizacji funkcjonalności oferowanej przez serwis.&lt;/li&gt;
@@ -610,20 +651,35 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
   <data name="Registration_Form_Agreement_HelpText" xml:space="preserve">
     <value>Rozumiem i zgadzam się na {0} oraz {1}</value>
   </data>
+  <data name="Registration_Form_DateOfBirth" xml:space="preserve">
+    <value>Data urodzenia</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_HelpText" xml:space="preserve">
+    <value>Podaj swoją dokładną datę urodzenia w formacie dd/MM/yyyy. Nie zostanie ona zapisana, a posłuży jedynie do weryfikacji zgodności z regulaminem oraz oznaczenia Twojego konta jako osoby pełno/niepełnoletniej.</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_Invalid" xml:space="preserve">
+    <value>Data urodzenia jest niepoprawna</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_NotEnough" xml:space="preserve">
+    <value>Musisz mieć conajmniej 16 lat aby się zarejestrować.</value>
+  </data>
+  <data name="Registration_Form_DateOfBirth_Required" xml:space="preserve">
+    <value>Musisz podać swoją datę urodzenia</value>
+  </data>
   <data name="Registration_Form_Note" xml:space="preserve">
     <value>Notka dla Kurdemikołaja</value>
   </data>
   <data name="Registration_Form_Note_HelpText" xml:space="preserve">
-    <value>Wszelkie informacje, które chciałbyś przekazać osobie, która wybierze dla ciebie prezent - czy jesteś niepełnoletni/a? Nie pijesz alkoholu? Masz jakieś alergie? Masz jakieś marzenia lub pragnienia?</value>
+    <value>Wszelkie informacje, które chciałbyś przekazać osobie, która wybierze dla Ciebie prezent - czy jesteś niepełnoletni/a? Nie pijesz alkoholu? Masz jakieś alergie? Masz jakieś marzenia lub pragnienia?</value>
   </data>
   <data name="Registration_Form_Repeat_Password_HelpText" xml:space="preserve">
     <value>Powtórz hasło</value>
   </data>
   <data name="Registration_Form_Repeat_Password_Invalid" xml:space="preserve">
-    <value>Hasło nie jest zgodne z wprowadzonym.</value>
+    <value>Hasło jest niezgodne z uprzednio wprowadzonym.</value>
   </data>
   <data name="Registration_Form_SendAbroad" xml:space="preserve">
-    <value>Moje preferencje co do wysyłania prezentu za granicę.</value>
+    <value>Moje preferencje dotyczące wysyłania prezentu za granicę</value>
   </data>
   <data name="Registration_Form_SendAbroad_HelpText" xml:space="preserve">
     <value>Wybierz jedną z opcji. Pamiętaj, że wysyłanie paczki za granicę może oznaczać bardzo wysokie koszty przesyłki.</value>
@@ -633,6 +689,9 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
   </data>
   <data name="RemoveUserIntro" xml:space="preserve">
     <value>Zamierzasz usunąć użytkownika. Proces jest nieodwracalny i niezbędna będzie ponowna rejestracja.</value>
+  </data>
+  <data name="Rules" xml:space="preserve">
+    <value>Zasady ogólne</value>
   </data>
   <data name="SendAbroadOption_Can" xml:space="preserve">
     <value>Mogę wysłać prezent za granicę, jednakże wolałbym ograniczyć wysyłkę do swojego kraju</value>
@@ -668,13 +727,13 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
     <value>Twój Kurdemikołaj powiadomił nas o wysłaniu Ci prezentu!</value>
   </data>
   <data name="Status_Inbound_NotSent" xml:space="preserve">
-    <value>Twój Kurdemikołaj przygotowuje prezent dla ciebie!</value>
+    <value>Twój Kurdemikołaj przygotowuje dla Ciebie prezent!</value>
   </data>
   <data name="Status_Inbound_Received" xml:space="preserve">
-    <value>Powiadomiłeś nas o dostarczeniu twojego prezentu. Mamy nadzieję, że nasze Kurdemikołajki przypadły ci do gustu!</value>
+    <value>Powiadomiłeś nas o dostarczeniu twojego prezentu. Mamy nadzieję, że nasze Kurdemikołajki przypadły Ci do gustu!</value>
   </data>
   <data name="Status_Inbound_Received_Submit" xml:space="preserve">
-    <value>Otrzymałem swój prezent!</value>
+    <value>Otrzymałem/łam swój prezent!</value>
   </data>
   <data name="Status_Outbound_EnRoute" xml:space="preserve">
     <value>Powiadomiłeś nas o wysłaniu swojego prezentu. Dziękujemy za udział!</value>
@@ -686,7 +745,7 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
     <value>Twój prezent dotarł na miejsce! Dziękujemy za szerzenie kurde miłości!</value>
   </data>
   <data name="Status_Outbound_Sent_Submit" xml:space="preserve">
-    <value>Wysłałem prezent!</value>
+    <value>Wysłałem/łam prezent!</value>
   </data>
   <data name="SystemMessage" xml:space="preserve">
     <value>Informacje</value>
@@ -714,89 +773,5 @@ Aby potwierdzić swój email kliknij w poniższy link: {1}</value>
   </data>
   <data name="WillSendAbroad" xml:space="preserve">
     <value>Mogę wysłać za granicę</value>
-  </data>
-  <data name="Content_Home" xml:space="preserve">
-    <value>&lt;h3&gt;Cześć!&lt;/h3&gt;
-
-&lt;p&gt;Witaj na stronie Kurde Mikołajek. Strona przeznaczona jest dla członków grupy Kurde xD - jeśli trafiłeś tu przypadkiem, niestety nie znajdziesz tu nic ciekawego :)&lt;/p&gt;
-
-&lt;p&gt;Kurde Mikołajki to nasza wersja znanego chyba wszystkim konceptu: każdy, kto chce wziąć udział, rejestruje się (przycisk “Rejestracja” w górnym menu) i podaje swoje dane. Po zakończeniu rejestracji i weryfikacji użytkowników losowo przypiszemy do siebie użytkowników tak, że każdy zostanie jednocześnie odbiorcą prezentu jak i Kurde Mikołajem.&lt;/p&gt;
-
-&lt;p&gt;Mamy nadzieję, że weźmiecie udział w naszej akcji i każdy z was otrzyma w te święta dodatkowy prezent od jednego z Kurdonów.&lt;/p&gt;
-
-&lt;h3&gt;Jak to działa?&lt;/h3&gt;
-
-&lt;p&gt;Od otwarcia rejestracji do jej zakończenia możliwe będzie założenie konta w serwisie. Następnie, gdy administratorzy skończą weryfikować zarejestrowanych użytkowników, naciśniemy magiczny przycisk i komputer odpali maszynę losującą. Każdy, kogo udało się uwzględnić w zabawie dostanie e-mail z danymi adresowymi innego użytkownika, razem z odnośnikiem do jego profilu na FB oraz będzie mógł te same informacje przeczytać tutaj, po zalogowaniu się.&lt;/p&gt;
-
-&lt;p&gt;Gdy już wybierzecie idealny prezent dla swojego odbiorcy oraz wyślecie paczkę, będziecie mogli ten fakt zarejestrować klikając przycisk, który będziecie widzieć na stronie głównej. Będzie tam też miejsce na numer referencyjny/śledzenia paczki, jeśli jest to przesyłka rejestrowana (do czego zachęcamy, aby uniknąć zaginięć). Ten numer będzie przechowywany w naszej bazie danych i domyślnie niewidoczny dla odbiorcy.&lt;/p&gt;
-
-&lt;p&gt;Gdy już dojdzie do was Kurde Prezent również będziecie mogli nas o tym poinformować klikając stosowny guzik, który będzie wyświetlony na stronie głównej. To pozwoli nam na monitorowanie postępu akcji. To pierwszy raz gdy organizujemy taką akcję i nie mamy pojęcia, jak to będzie w praktyce wyglądać :)&lt;/p&gt;
-
-&lt;p&gt;Jeżeli będziecie musieli pilnie skontaktować się ze swoim Kurde Mikołajem, albo chcieli przesłać wiadomość do odbiorcy swojego prezentu, będziecie mogli skorzystać z systemu wiadomości (“Wiadomości” w menu górnym). Dane waszego Kurde Mikołaja będą przed wami ukryte, jak również wasza tożsamość będzie niewidoczna dla odbiorcy waszego prezentu. Nie przynieście nam wstydu i pamiętajcie, że Administracja widzi wszystko ;)&lt;/p&gt;
-
-&lt;h3&gt;Zasady&lt;/h3&gt;
-
-&lt;p&gt;Przed rejestracją KONIECZNIE przeczytajcie “Zasady ogólne” oraz “Politykę Prywatności”. Musicie w końcu wiedzieć, na co się zgadzacie :)&lt;/p&gt;
-
-&lt;p&gt;Ponadto obowiązują te same zasady co na grupie: kochajmy i szanujmy się wszyscy, i spróbujmy uczynić te święta trochę bardziej magiczne.&lt;/p&gt;</value>
-  </data>
-  <data name="Content_Rules" xml:space="preserve">
-    <value>&lt;h2&gt;Kurde Mikołajki - Zasady ogólne&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Organizatorzy zabawy zapewniają dostęp do serwisu internetowego https://kurdemikolajki.gerino.net (dalej: “serwis”), który umożliwia rejestrację chęci wzięcia udziału w akcji, oraz pozwala na anonimową oraz losową wymianę danych adresowych pomiędzy uczestnikami w celu wymiany prezentów.&lt;/li&gt;
-&lt;li&gt;Rejestracja w serwisie jest jednoznaczna z wyrażeniem zgody na poniższy regulamin oraz Politykę Prywatności, jak i dobrowolnym wyrażeniem woli wzięcia udziału w zabawie.&lt;/li&gt;
-&lt;li&gt;Każdy z uczestników musi spełnić następujące warunki wstępne:&lt;/li&gt;
-&lt;li&gt;Podać swój prawdziwy i prywatny adres e-mail, a następnie potwierdzić go otwierając link przesłany na podany adres.&lt;/li&gt;
-&lt;li&gt;Podać odnośnik do swojego profilu w portalu Facebook.&lt;/li&gt;
-&lt;li&gt;Być członkiem grupy Kurde xD&lt;/li&gt;
-&lt;li&gt;Mieć ukończone co najmniej 16 lat w momencie rejestracji&lt;/li&gt;
-&lt;li&gt;Podać prawdziwe dane dotyczące swojego wieku (tj. informację o ukończeniu/nieukończeniu 18 roku życia)&lt;/li&gt;
-&lt;li&gt;Rozumieć i akceptować zasady niniejszego regulaminu oraz Polityki Prywatności.&lt;/li&gt;
-&lt;li&gt;Każdy z zarejestrowanych uczestników zostanie poddany indywidualnej akceptacji przez organizatorów przed dopuszczeniem do udziału w zabawie. Organizatorzy zastrzegają prawo do niezaakceptowania zarejestrowanych uczestników (tj. wykluczenia z dalszego udziału) bez podania przyczyn.&lt;/li&gt;
-&lt;li&gt;Uczestnik biorąc udział w zabawie rozumie ryzyko i zgadza się na przekazanie podanych w serwisie danych osobowych innemu, losowo wybranemu użytkownikowi.&lt;/li&gt;
-&lt;li&gt;Uczestnik biorąc udział w zabawie zgadza się na przestrzeganie właściwych zasad ochrony otrzymanych danych osobowych innego użytkownika, tj. w szczególności nieupubliczniania tych danych osobom trzecim.&lt;/li&gt;
-&lt;li&gt;Jedna osoba może założyć jedynie jedno konto w serwisie.&lt;/li&gt;
-&lt;li&gt;Organizatorzy zastrzegają prawo do odszyfrowania i inspekcji wszelkich danych przekazanych do serwisu w celach weryfikacyjnych oraz w celu arbitracji.&lt;/li&gt;
-&lt;li&gt;Serwis przy pomocy algorytmu opartego o generator liczb pseudolosowych dokona przypisania użytkowników do siebie tak, że każdy komu przypisany zostanie inny użytkownik, jednocześnie będzie przypisany któremuś z użytkowników. Dane przypisanego użytkownika przesłane zostaną pocztą elektroniczną do odbiorcy, oraz będą dostępne po zalogowaniu w serwisie. Uczestnik akcji powinien przygotować świąteczny prezent dla swojego odbiorcy, oraz wysłać go na otrzymany adres.&lt;/li&gt;
-&lt;li&gt;Organizatorzy nie gwarantują, że każdy zarejestrowany i zaakceptowany uczestnik będzie mógł wziąć udział w zabawie. Ze względu na międzynarodowy charakter akcji może zaistnieć sytuacja w której niemożliwe będzie uwzględnienie jednego lub więcej uczestników w losowaniu tak, aby mógł jednocześnie wysłać jak i otrzymać prezent.&lt;/li&gt;
-&lt;li&gt;Organizatorzy nie wyznaczają ani nie sugerują wartości pieniężnej prezentu. Akcja ma charakter dobrowolny i oparty o różnorodną społeczność i zasady wzajemnego poszanowania i współżycia społecznego. Uczestnik biorąc udział w zabawie oświadcza, iż rozumie i zgadza się na możliwość, że otrzymany prezent będzie prezentował wartość dalece odmienną od prezentu wysłanego przez użytkownika.&lt;/li&gt;
-&lt;li&gt;Organizatorzy zapewniają system wymiany informacji adresowych; otrzymanie prezentu uzależnione jest od losowo przypisanego użytkownika serwisu i organizatorzy nie gwarantują otrzymania prezentu, oraz nie ponoszą odpowiedzialności w przypadku nieotrzymania takowego.&lt;/li&gt;
-&lt;li&gt;Organizatorzy nie biorą odpowiedzialności za działania uczestników, takie jak, ale nie ograniczone do:&lt;/li&gt;
-&lt;li&gt;Nadużycia systemu wymiany wiadomości, w szczególności przesyłania wiadomości obraźliwych i wulgarnych.&lt;/li&gt;
-&lt;li&gt;Nadużycia powierzonych użytkownikowi danych osobowych, w szczególności wysyłki przedmiotów o charakterze wulgarnym, pornograficznym lub innym, który łamie zasady współżycia społecznego&lt;/li&gt;
-&lt;li&gt;Jednocześnie organizatorzy zapewniają, że zgłoszone przez użytkowników przypadki łamania prawa, takie jak, ale nie ograniczone do:&lt;/li&gt;
-&lt;li&gt;Prześladowania&lt;/li&gt;
-&lt;li&gt;Cyber-bullyingu&lt;/li&gt;
-&lt;li&gt;Upubliczniania danych osobowych osobom trzecim&lt;/li&gt;
-&lt;li&gt;Wysyłki przedmiotów, których posiadanie jest prawnie wzbronione&lt;/li&gt;
-&lt;li&gt;Łamania przepisów ustawy o wychowaniu w trzeźwości zakazujących udostępniania osobom nieletnim wyrobów tytoniowych lub alkoholowych&lt;/li&gt;
-&lt;li&gt;zostaną przez organizatorów zgłoszone właściwym organom państwowym łącznie z odszyfrowanymi danymi przekazanymi przez użytkownika, co do którego istnieje podejrzenie popełnienia czynu zabronionego.&lt;/li&gt;
-&lt;li&gt;Organizatorzy zapewniają, że system informatyczny został stworzony zgodnie z ogólnie przyjętymi praktykami i jest zabezpieczony przed włamaniem. Jednak mimo dołożonych starań organizatorzy nie mogą zagwarantować, że dane przekazane do serwisu nie zostaną wykradzione i nie ponoszą odpowiedzialności za zaistnienie takiej sytuacji. Rejestrując się użytkownik rozumie i zgadza się na istniejące ryzyko.&lt;/li&gt;
-&lt;/ol&gt;</value>
-  </data>
-  <data name="Registration_Form_DateOfBirth" xml:space="preserve">
-    <value>Data urodzenia</value>
-  </data>
-  <data name="Registration_Form_DateOfBirth_HelpText" xml:space="preserve">
-    <value>Podaj swoją dokładną datę urodzenia w formacie dd/MM/yyyy. Nie zostanie ona zapisana, a posłuży jedynie do weryfikacji zgodności z regulaminem oraz oznaczenia Twojego konta jako osoby pełno/niepełnoletniej.</value>
-  </data>
-  <data name="Registration_Form_DateOfBirth_Invalid" xml:space="preserve">
-    <value>Data urodzenia jest niepoprawna</value>
-  </data>
-  <data name="Registration_Form_DateOfBirth_NotEnough" xml:space="preserve">
-    <value>Musisz mieć conajmniej 16 lat aby się zarejestrować.</value>
-  </data>
-  <data name="Registration_Form_DateOfBirth_Required" xml:space="preserve">
-    <value>Musisz podać swoją datę urodzenia</value>
-  </data>
-  <data name="Rules" xml:space="preserve">
-    <value>Zasady ogólne</value>
-  </data>
-  <data name="Assignment_Adult" xml:space="preserve">
-    <value>Odbiorca Twojego prezentu jest osobą pełnoletnią.</value>
-  </data>
-  <data name="Assignment_NotAdult" xml:space="preserve">
-    <value>Odbiorca Twojego prezentu NIE JEST osobą pełnoletnią!</value>
   </data>
 </root>

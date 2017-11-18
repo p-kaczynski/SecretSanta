@@ -463,7 +463,7 @@
     <value>I agree</value>
   </data>
   <data name="Registration_Form_Agreement_HelpText" xml:space="preserve">
-    <value>I understand and agree to the {0}</value>
+    <value>I understand and agree to the {0} and {1}</value>
   </data>
   <data name="User_Edit_EmailSent" xml:space="preserve">
     <value>Update succesful. Because you have changed your email, a confirmation link has been sent to provided address: {0}. You must also sign-in again!</value>

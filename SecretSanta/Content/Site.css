@@ -168,3 +168,18 @@ td {
             border-top: 0 none;
         }
 }
+
+ol.legal {
+    counter-reset: item
+}
+
+ol.legal li {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+ol.legal li:before {
+    content: counters(item, ".") " ";
+    counter-increment: item;
+}

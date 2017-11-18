@@ -27,6 +27,7 @@ namespace SecretSanta
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Login"),
+                CookieName = "SecretSantaUserCookie"
             });
         }
     }
