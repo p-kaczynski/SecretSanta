@@ -137,7 +137,7 @@ namespace SecretSanta.Controllers
             }
             catch (EmailAbuseProtection.EmailAbuseException abuseException)
             {
-                return View("Message", model: string.Format(Resources.Global.EmailAbuse_Wait_Format, abuseException.ExpiryTime.TotalMinutes));
+                return View("Message", model: string.Format(Resources.Global.EmailAbuse_Wait_Format, (int)abuseException.ExpiryTime.TotalMinutes));
             }
         }
 
@@ -170,7 +170,7 @@ namespace SecretSanta.Controllers
             }
             catch (EmailAbuseProtection.EmailAbuseException abuseException)
             {
-                return View("Message", model: string.Format(Resources.Global.EmailAbuse_Wait_Format, abuseException.ExpiryTime.TotalMinutes));
+                return View("Message", model: string.Format(Resources.Global.EmailAbuse_Wait_Format, (int)abuseException.ExpiryTime.TotalMinutes));
             }
         }
 
