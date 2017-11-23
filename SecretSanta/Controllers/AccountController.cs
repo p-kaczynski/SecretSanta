@@ -14,6 +14,7 @@ using SecretSanta.Domain.SecurityModels;
 using SecretSanta.Helpers;
 using SecretSanta.Models;
 using SecretSanta.Security;
+using SecretSanta.Services;
 
 namespace SecretSanta.Controllers
 {
@@ -128,9 +129,16 @@ namespace SecretSanta.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
             }
 
-            _emailService.SendConfirmationEmail(domainModel);
+            try
+            {
+                _emailService.SendConfirmationEmail(domainModel);
 
-            return View("Message", model: Resources.Global.Message_ResendConfirmation);
+                return View("Message", model: Resources.Global.Message_ResendConfirmation);
+            }
+            catch (EmailAbuseProtection.EmailAbuseException abuseException)
+            {
+                return View("Message", model: string.Format(Resources.Global.EmailAbuse_Wait_Format, abuseException.ExpiryTime.TotalMinutes));
+            }
         }
 
         [HttpGet]
@@ -152,11 +160,18 @@ namespace SecretSanta.Controllers
                 return View("Message", model: Resources.Global.PasswordReset_Sent);
 
             // we have user, so email is ok, send a reset
-            if(_emailService.SendPasswordResetEmail(user))
-                return View("Message", model:Resources.Global.PasswordReset_Sent);
+            try
+            {
+                if (_emailService.SendPasswordResetEmail(user))
+                    return View("Message", model: Resources.Global.PasswordReset_Sent);
 
-            // error!
-            return View("Message", model: Resources.Global.Email_SendingFailure);
+                // error!
+                return View("Message", model: Resources.Global.Email_SendingFailure);
+            }
+            catch (EmailAbuseProtection.EmailAbuseException abuseException)
+            {
+                return View("Message", model: string.Format(Resources.Global.EmailAbuse_Wait_Format, abuseException.ExpiryTime.TotalMinutes));
+            }
         }
 
         [HttpGet]
