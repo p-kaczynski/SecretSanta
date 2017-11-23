@@ -774,4 +774,7 @@ Użytkownik "{0}" dodał nową wiadomość dla Administratorów:
   <data name="WillSendAbroad" xml:space="preserve">
     <value>Mogę wysłać za granicę</value>
   </data>
+  <data name="EmailAbuse_Wait_Format" xml:space="preserve">
+    <value>Musisz poczekać {0} minut aby wysłać kolejnego maila.</value>
+  </data>
 </root>

@@ -723,4 +723,7 @@ User "{0}" has just added following message for the Secret Santa Administrators:
   <data name="Assignment_NotAdult" xml:space="preserve">
     <value>Your recipient  is under 18!</value>
   </data>
+  <data name="EmailAbuse_Wait_Format" xml:space="preserve">
+    <value>You have to wait {0} minutes to request a new token.</value>
+  </data>
 </root>

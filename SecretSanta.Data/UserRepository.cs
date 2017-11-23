@@ -80,7 +80,7 @@ namespace SecretSanta.Data
 
             if (emailChanged)
                 WithConnection(conn =>
-                    conn.Execute($"UPDATE [dbo].[{nameof(SantaUser)}s]   SET [EmailConfirmed] = 0"));
+                    conn.Execute($"UPDATE [dbo].[{nameof(SantaUser)}s]   SET [EmailConfirmed] = 0 WHERE [Id] = @Id", new{ updateUser.Id }));
 
             return new UserEditResult{Success = true, EmailChanged = emailChanged};
         }

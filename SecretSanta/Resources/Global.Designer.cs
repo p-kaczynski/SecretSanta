@@ -766,6 +766,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have to wait {0} minutes to request a new token..
+        /// </summary>
+        public static string EmailAbuse_Wait_Format {
+            get {
+                return ResourceManager.GetString("EmailAbuse_Wait_Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The confirmation token is invalid..
         /// </summary>
         public static string EmailConfirmation_TokenInvalid {
