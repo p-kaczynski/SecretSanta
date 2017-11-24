@@ -14,6 +14,7 @@ namespace SecretSanta.Common.Interface
 
         SantaUser GetUserWithoutProtectedData(long id);
         SantaUser GetUserWithoutProtectedDataByEmail(string emailAddress);
+        IList<SantaUser> GetAllUsers();
         IList<SantaUser> GetAllUsersWithoutProtectedData();
 
         void AdminConfirm(long id);
@@ -29,7 +30,7 @@ namespace SecretSanta.Common.Interface
 
         bool WasAssigned();
 
-        AssignmentResult AssignRecipients();
+        void AssignRecipients(AssignmentResult result);
 
         Assignment GetOutboundAssignment(long userId);
 

@@ -36,6 +36,7 @@ namespace SecretSanta.DI
             builder.RegisterType<EncryptionProvider>().As<IEncryptionProvider>().SingleInstance();
             builder.RegisterType<CountryProvider>().SingleInstance();
             builder.RegisterType<UserRepository>().As<IUserRepository>().SingleInstance();
+            builder.RegisterType<AssignmentService>().As<IAssignmentService>().SingleInstance();
             builder.RegisterType<SecurityRepository>().As<ISantaUserStore>().SingleInstance();
             builder.RegisterType<SantaUserManager>().As<UserManager<SantaSecurityUser, string>>().As<ISantaAdminProvider>().SingleInstance();
             builder.RegisterType<EmailService>().As<IEmailService>().SingleInstance();
