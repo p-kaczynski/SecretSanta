@@ -138,7 +138,7 @@ namespace SecretSanta.Data
             return models;
         }
 
-        private IList<SantaUser> GetAllUsers() => WithConnection(conn => conn.GetAll<SantaUser>()).Select(model =>
+        public IList<SantaUser> GetAllUsers() => WithConnection(conn => conn.GetAll<SantaUser>()).Select(model =>
             {
                 _encryptionProvider.Decrypt(model);
                 return model;
@@ -178,23 +178,8 @@ namespace SecretSanta.Data
             return WithConnection(conn => conn.ExecuteScalar<int>($"SELECT COUNT(*) FROM [{nameof(Assignment)}s]") > 0);
         }
 
-        public AssignmentResult AssignRecipients()
+        public void AssignRecipients(AssignmentResult result)
         {
-
-            // prepare predicate
-            bool ConfirmedOnly(SantaUser user) => user.AdminConfirmed && user.EmailConfirmed;
-
-            // get all users
-            var allUsers = GetAllUsers().Where(ConfirmedOnly).ToArray();
-
-            if (!allUsers.Any())
-                throw new InvalidOperationException("No users have signed up!");
-
-            var result =_algorithm.Assign(allUsers);
-
-            // verify algorithm
-            _algorithm.Verify(result); //this will throw for failures
-
             // we can now execute massive amount of inserts ;)
             WithConnection(conn =>
             {
@@ -217,8 +202,6 @@ namespace SecretSanta.Data
 
             if (assignmentsFromDb != result.Assignments.Count)
                 throw new InvalidOperationException("Inserts were performed, but there is numerical mismatch!");
-
-            return result;
         }
 
         public long? GetAssignedPartnerIdForUser(long id) => WithConnection(

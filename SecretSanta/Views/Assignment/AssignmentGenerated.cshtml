@@ -1,0 +1,17 @@
+﻿@using SecretSanta.Domain.Models
+@model SecretSanta.Common.Result.AssignmentResult
+
+@{
+    ViewBag.Title = $"{Resources.Global.SiteName} - {Resources.Global.AssignmentGenerated}";
+}
+
+
+<h2>@Resources.Global.AssignmentGenerated</h2>
+
+@Html.Partial("_AssignmentResult", Model)
+
+@using (Html.BeginForm("SaveLastAssignment", "Assignment"))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="@Resources.Global.Button_SaveLastAssignment"/>
+}

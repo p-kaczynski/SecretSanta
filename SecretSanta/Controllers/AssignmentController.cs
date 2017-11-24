@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Caching;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using SecretSanta.Common.Interface;
@@ -13,21 +14,23 @@ namespace SecretSanta.Controllers
     [Authorize(Roles = SantaUserManager.AdminRole)]
     public class AssignmentController : BaseController
     {
-        private readonly IUserRepository _userRepository;
+        private const string AssignmentCacheKey = "secret_santa.last_assignment_result";
+
+        private readonly IAssignmentService _assignmentService;
         private readonly IEmailService _emailService;
 
-        public AssignmentController(IUserRepository userRepository, IEmailService emailService)
+        public AssignmentController(IEmailService emailService, IAssignmentService assignmentService)
         {
-            _userRepository = userRepository;
             _emailService = emailService;
+            _assignmentService = assignmentService;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            if (_userRepository.WasAssigned())
+            if (_assignmentService.WasAssigned())
             {
-                return View(_userRepository.GetAssignments());
+                return View(_assignmentService.GetAssignments());
             }
             return View((AssignmentResult)null);
         }
@@ -36,11 +39,27 @@ namespace SecretSanta.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Assign()
         {
-            if (_userRepository.WasAssigned())
+            if (_assignmentService.WasAssigned())
                 return RedirectToAction("Index");
 
-            var assignments = _userRepository.AssignRecipients();
+            var assignments = _assignmentService.GenerateAssignments();
+            // Save to cache
+            HttpContext.Cache.Add(AssignmentCacheKey, assignments, null, Cache.NoAbsoluteExpiration,
+                Cache.NoSlidingExpiration, CacheItemPriority.NotRemovable, null);
 
+            return View("AssignmentGenerated", assignments);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveLastAssignment()
+        {
+            var assignments = (AssignmentResult) HttpContext.Cache.Get(AssignmentCacheKey);
+            if (assignments == null)
+                return View("Message",
+                    model: Resources.Global.Assignments_NoAssignmentsInCache);
+            
+            _assignmentService.SaveAssignments(assignments);
             return View("AssignmentCompleted", assignments);
         }
 
@@ -48,10 +67,10 @@ namespace SecretSanta.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SendAssignmentEmails()
         {
-            if (!_userRepository.WasAssigned())
+            if (!_assignmentService.WasAssigned())
                 return RedirectToAction("Index");
 
-            var assignments = _userRepository.GetAssignments();
+            var assignments = _assignmentService.GetAssignments();
             var assignmentModels = new ConcurrentBag<AssignmentEmailViewModel>();
             var abandonedModels = new ConcurrentBag<AbandonedEmailViewModel>();
             var parallelOptions = new ParallelOptions
