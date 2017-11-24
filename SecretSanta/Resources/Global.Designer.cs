@@ -340,11 +340,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assignments Generated.
+        /// </summary>
+        public static string AssignmentGenerated {
+            get {
+                return ResourceManager.GetString("AssignmentGenerated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assignments.
         /// </summary>
         public static string Assignments {
             get {
                 return ResourceManager.GetString("Assignments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no saved assignment result. Please generate a new one..
+        /// </summary>
+        public static string Assignments_NoAssignmentsInCache {
+            get {
+                return ResourceManager.GetString("Assignments_NoAssignmentsInCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save the assignment.
+        /// </summary>
+        public static string Button_SaveLastAssignment {
+            get {
+                return ResourceManager.GetString("Button_SaveLastAssignment", resourceCulture);
             }
         }
         

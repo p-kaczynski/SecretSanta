@@ -726,4 +726,13 @@ User "{0}" has just added following message for the Secret Santa Administrators:
   <data name="EmailAbuse_Wait_Format" xml:space="preserve">
     <value>You have to wait {0} minutes to request a new token.</value>
   </data>
+  <data name="Assignments_NoAssignmentsInCache" xml:space="preserve">
+    <value>There is no saved assignment result. Please generate a new one.</value>
+  </data>
+  <data name="AssignmentGenerated" xml:space="preserve">
+    <value>Assignments Generated</value>
+  </data>
+  <data name="Button_SaveLastAssignment" xml:space="preserve">
+    <value>Save the assignment</value>
+  </data>
 </root>

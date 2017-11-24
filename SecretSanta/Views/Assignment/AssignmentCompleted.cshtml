@@ -9,3 +9,9 @@
 <h2>@Resources.Global.AssignmentCompleted</h2>
 
 @Html.Partial("_AssignmentResult", Model)
+
+@using (Html.BeginForm("SendAssignmentEmails","Assignment"))
+{
+@Html.AntiForgeryToken()
+<button type="submit" class="btn btn-info">@Resources.Global.SendAssignmentEmails_Submit</button>
+}
