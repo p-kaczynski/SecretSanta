@@ -786,4 +786,10 @@ Użytkownik "{0}" dodał nową wiadomość dla Administratorów:
   <data name="Button_SaveLastAssignment" xml:space="preserve">
     <value>Zapisz przypisanie</value>
   </data>
+  <data name="AdminUser_Created_Format" xml:space="preserve">
+    <value>Utworzono użytkownika i wysłano email do {0}</value>
+  </data>
+  <data name="AdminUser_Create" xml:space="preserve">
+    <value>Utwórz ręcznie nowego użytkownika</value>
+  </data>
 </root>
