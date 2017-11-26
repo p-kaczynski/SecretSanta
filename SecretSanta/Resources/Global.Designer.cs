@@ -241,6 +241,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create new user manually.
+        /// </summary>
+        public static string AdminUser_Create {
+            get {
+                return ResourceManager.GetString("AdminUser_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created user and sent confirmation email to {0}.
+        /// </summary>
+        public static string AdminUser_Created_Format {
+            get {
+                return ResourceManager.GetString("AdminUser_Created_Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Admin User Name.
         /// </summary>
         public static string AdminUserName {
