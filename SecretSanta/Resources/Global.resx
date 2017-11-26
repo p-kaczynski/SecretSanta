@@ -735,4 +735,10 @@ User "{0}" has just added following message for the Secret Santa Administrators:
   <data name="Button_SaveLastAssignment" xml:space="preserve">
     <value>Save the assignment</value>
   </data>
+  <data name="AdminUser_Created_Format" xml:space="preserve">
+    <value>Created user and sent confirmation email to {0}</value>
+  </data>
+  <data name="AdminUser_Create" xml:space="preserve">
+    <value>Create new user manually</value>
+  </data>
 </root>

@@ -42,6 +42,9 @@ namespace SecretSanta.Controllers
             if (_assignmentService.WasAssigned())
                 return RedirectToAction("Index");
 
+            // remove any previous
+            HttpContext.Cache.Remove(AssignmentCacheKey);
+
             var assignments = _assignmentService.GenerateAssignments();
             // Save to cache
             HttpContext.Cache.Add(AssignmentCacheKey, assignments, null, Cache.NoAbsoluteExpiration,
