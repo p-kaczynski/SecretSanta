@@ -253,8 +253,22 @@ namespace SecretSanta.Data
         {
             WithConnection(conn =>
                 conn.Execute(
-                    $"UPDATE [dbo].[{nameof(Assignment)}s] SET Received = 1 WHERE RecepientId = @userId",
+                    $"UPDATE [dbo].[{nameof(Assignment)}s] SET Received = 1, Missing = 0 WHERE RecepientId = @userId",
                     new { userId }));
+        }
+
+        public bool SetGiftMissing(long userId)
+        {
+            var assignment = GetInboundAssignment(userId);
+            if (assignment.Received)
+                return false;
+
+            WithConnection(conn =>
+                conn.Execute(
+                    $"UPDATE [dbo].[{nameof(Assignment)}s] SET Missing = 1 WHERE RecepientId = @userId",
+                    new { userId }));
+
+            return true;
         }
     }
 }

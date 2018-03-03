@@ -11,5 +11,6 @@ namespace SecretSanta.Common.Interface
         bool SendAbandonmentEmail(SantaUser user, AbandonmentReason reason);
         void SendNewMessageNotification(SantaUser recipient, MessageRole from, string messageText);
         void SendNewAdminSupportMessageNotification(SantaUser sender, string messageText);
+        void SendMissingGiftEmail(SantaUser giverId);
     }
 }

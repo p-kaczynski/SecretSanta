@@ -35,6 +35,34 @@ else
 
 @if (Model.EmailConfirmed && Model.AdminConfirmed && Model.AssignmentPerformed)
 {
+    // Added for complaints
+    <div class="panel panel-warning">
+        @if (!Model.InboundGiftMissing)
+        {
+            using (Html.BeginForm("GiftMissing", "Account"))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">@Resources.Global.Status_Gift_Missing</button>
+            }
+        }
+        else
+        {
+            <p>@Resources.Global.Status_Inbound_Gift_Missing_Notified</p>
+            using (Html.BeginForm("GiftReceived", "Account"))
+             {
+                 @Html.AntiForgeryToken()
+                 <button type="submit" class="btn btn-primary">@Resources.Global.Status_Inbound_Received_Submit</button>
+             }
+        }
+    </div>
+
+    if (Model.OutboundGiftMissing)
+     {
+         <div class="panel panel-danger">
+             <p>@Resources.Global.Status_Outbound_Gift_Missing_Notified</p>
+         </div>
+     }
+
     if (Model.OutboundGiftEnRoute)
     {
         // Gift is en route, cool

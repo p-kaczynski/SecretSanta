@@ -122,6 +122,10 @@ namespace SecretSanta.Services
             SendEmail(_configProvider.AdminEmail, Resources.Global.Email_NewSupportMessage_Subject, body);
         }
 
+        public void SendMissingGiftEmail(SantaUser giver) => 
+            SendEmail(giver.Email, Resources.Global.Email_Your_Gift_Has_Not_Arrived_Subject,
+                Resources.Global.Email_Your_Gift_Has_Not_Arrived_Body);
+
         private bool SendEmail(string to, string subject, string body)
         {
             if (_configProvider.UseMailgun)

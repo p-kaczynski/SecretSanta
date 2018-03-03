@@ -7,5 +7,7 @@
         public bool Sent { get; set; }
         public string Tracking { get; set; }
         public bool Received { get; set; }
+
+        public bool Missing { get; set; }
     }
 }

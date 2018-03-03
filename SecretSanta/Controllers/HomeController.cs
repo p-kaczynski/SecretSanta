@@ -68,12 +68,19 @@ namespace SecretSanta.Controllers
                 // Has gift been confirmed as received?
                 model.InboundGiftArrived = inbound.Received;
 
+                // Has user notified us about missing gift?
+                model.InboundGiftMissing = inbound.Missing;
+
                 // Has outbound gift been received?
                 model.OutboundGiftArrived = outbound.Received;
 
                 // Has outbound gift been sent?
                 model.OutboundGiftEnRoute = outbound.Sent;
-                if(!outbound.Sent)
+
+                // Has user's recipient notified us about missing gift?
+                model.OutboundGiftMissing = outbound.Missing;
+
+                if (!outbound.Sent)
                 {
                     // nope, show that it awaits
                     var assignedUser = _userRepository.GetUser(assignedUserId.Value);

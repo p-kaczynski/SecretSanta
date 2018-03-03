@@ -40,5 +40,6 @@ namespace SecretSanta.Common.Interface
 
         void SetGiftSent(long userId, string tracking);
         void SetGiftReceived(long userId);
+        bool SetGiftMissing(long userId);
     }
 }

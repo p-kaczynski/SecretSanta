@@ -741,4 +741,24 @@ User "{0}" has just added following message for the Secret Santa Administrators:
   <data name="AdminUser_Create" xml:space="preserve">
     <value>Create new user manually</value>
   </data>
+  <data name="Status_Gift_Missing" xml:space="preserve">
+    <value>I did not get my gift!</value>
+  </data>
+  <data name="Status_Inbound_Gift_Missing_Notified" xml:space="preserve">
+    <value>You have notified us about your missing gift.</value>
+  </data>
+  <data name="Status_Outbound_Gift_Missing_Notified" xml:space="preserve">
+    <value>Your recipient has notified us that they have not received their gift. Contact them ASAP to clarify the issue.</value>
+  </data>
+  <data name="User_Set_Gift_Missing_Was_Received" xml:space="preserve">
+    <value>You have already told us you have received your gift. If that is not the case, please contact the administrator.</value>
+  </data>
+  <data name="Email_Your_Gift_Has_Not_Arrived_Body" xml:space="preserve">
+    <value>IMPORTANT!
+
+Your recipient has notified us that their gift has not been received. Please contact your recipient ASAP, before we will take actions to rectify  the issue!</value>
+  </data>
+  <data name="Email_Your_Gift_Has_Not_Arrived_Subject" xml:space="preserve">
+    <value>SecretSanta: Your gift has NOT arrived yet!</value>
+  </data>
 </root>
