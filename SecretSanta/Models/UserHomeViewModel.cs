@@ -11,5 +11,7 @@
         public bool OutboundGiftEnRoute { get; set; }
         public bool OutboundGiftArrived { get; set; }
         public bool AssignmentPerformed { get; set; }
+        public bool InboundGiftMissing { get; set; }
+        public bool OutboundGiftMissing { get; set; }
     }
 }

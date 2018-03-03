@@ -54,7 +54,9 @@ namespace SecretSanta
                 .ForMember(dest => dest.InboundGiftEnRoute, opt => opt.Ignore())
                 .ForMember(dest => dest.OutboundGiftEnRoute, opt => opt.Ignore())
                 .ForMember(dest => dest.OutboundGiftArrived, opt => opt.Ignore())
-                .ForMember(dest => dest.AssignmentPerformed, opt => opt.Ignore());
+                .ForMember(dest => dest.AssignmentPerformed, opt => opt.Ignore())
+                .ForMember(dest => dest.InboundGiftMissing, opt => opt.Ignore())
+                .ForMember(dest => dest.OutboundGiftMissing, opt => opt.Ignore());
 
             cfg.CreateMap<SantaUser, AssignmentViewModel>()
                 .ForMember(dest=>dest.Country, opt=>opt.ResolveUsing(src=>countryProvider.ByThreeLetterCode[src.Country].Name));

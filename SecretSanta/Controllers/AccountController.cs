@@ -327,5 +327,22 @@ namespace SecretSanta.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult GiftMissing()
+        {
+            var userId = GetUserId();
+            if (!userId.HasValue)
+                return RedirectToAction("Index", "Home");
+
+            var valueSet = _userRepository.SetGiftMissing(userId.Value);
+
+            if (valueSet)
+                _emailService.SendMissingGiftEmail(_userRepository.GetUserWithoutProtectedData(_userRepository.GetInboundAssignment(userId.Value).GiverId));
+            else
+                return View("Message", model: Resources.Global.User_Set_Gift_Missing_Was_Received);
+
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

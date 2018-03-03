@@ -811,6 +811,26 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IMPORTANT!
+        ///
+        ///Your recipient has notified us that their gift has not been received. Please contact your recipient ASAP, before we will take actions to rectify  the issue!.
+        /// </summary>
+        public static string Email_Your_Gift_Has_Not_Arrived_Body {
+            get {
+                return ResourceManager.GetString("Email_Your_Gift_Has_Not_Arrived_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SecretSanta: Your gift has NOT arrived yet!.
+        /// </summary>
+        public static string Email_Your_Gift_Has_Not_Arrived_Subject {
+            get {
+                return ResourceManager.GetString("Email_Your_Gift_Has_Not_Arrived_Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have to wait {0} minutes to request a new token..
         /// </summary>
         public static string EmailAbuse_Wait_Format {
@@ -1720,11 +1740,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I did not get my gift!.
+        /// </summary>
+        public static string Status_Gift_Missing {
+            get {
+                return ResourceManager.GetString("Status_Gift_Missing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Secret Santa has let us know that he has sent your gift!.
         /// </summary>
         public static string Status_Inbound_EnRoute {
             get {
                 return ResourceManager.GetString("Status_Inbound_EnRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have notified us about your missing gift..
+        /// </summary>
+        public static string Status_Inbound_Gift_Missing_Notified {
+            get {
+                return ResourceManager.GetString("Status_Inbound_Gift_Missing_Notified", resourceCulture);
             }
         }
         
@@ -1761,6 +1799,15 @@ namespace Resources {
         public static string Status_Outbound_EnRoute {
             get {
                 return ResourceManager.GetString("Status_Outbound_EnRoute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your recipient has notified us that they have not received their gift. Contact them ASAP to clarify the issue..
+        /// </summary>
+        public static string Status_Outbound_Gift_Missing_Notified {
+            get {
+                return ResourceManager.GetString("Status_Outbound_Gift_Missing_Notified", resourceCulture);
             }
         }
         
@@ -1824,6 +1871,15 @@ namespace Resources {
         public static string User_Edit_Warning {
             get {
                 return ResourceManager.GetString("User_Edit_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have already told us you have received your gift. If that is not the case, please contact the administrator..
+        /// </summary>
+        public static string User_Set_Gift_Missing_Was_Received {
+            get {
+                return ResourceManager.GetString("User_Set_Gift_Missing_Was_Received", resourceCulture);
             }
         }
         

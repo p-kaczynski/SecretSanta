@@ -792,4 +792,24 @@ Użytkownik "{0}" dodał nową wiadomość dla Administratorów:
   <data name="AdminUser_Create" xml:space="preserve">
     <value>Utwórz ręcznie nowego użytkownika</value>
   </data>
+  <data name="Status_Gift_Missing" xml:space="preserve">
+    <value>Nie dostałem prezentu!</value>
+  </data>
+  <data name="Status_Inbound_Gift_Missing_Notified" xml:space="preserve">
+    <value>Powiadomiłeś nas o nieotrzymaniu prezentu.</value>
+  </data>
+  <data name="Status_Outbound_Gift_Missing_Notified" xml:space="preserve">
+    <value>Twój odbiorca poinformował nas, że nie otrzymał od Ciebie przesyłki. Jak najszybciej skontaktuj się z nim w celu wyjaśnienia sprawy.</value>
+  </data>
+  <data name="User_Set_Gift_Missing_Was_Received" xml:space="preserve">
+    <value>Wcześniej poinformowałeś nas, że otrzymałeś swój prezent. Jeśli tak nie jest, zgłoś się do administratora.</value>
+  </data>
+  <data name="Email_Your_Gift_Has_Not_Arrived_Body" xml:space="preserve">
+    <value>UWAGA!
+
+Odbiorca Twojego prezentu w Kurdemikołajkach poinformował nas, że nie otrzymał od Ciebie prezentu. Skontaktuj się z nim jak najszybciej w celu wyjaśnienia sprawy, zanim będziemy zmuszeni podjąć działania zaradcze!</value>
+  </data>
+  <data name="Email_Your_Gift_Has_Not_Arrived_Subject" xml:space="preserve">
+    <value>KurdeMikołajki: Prezent dla Twojego odbiorcy NIE ZOSTAŁ OTRZYMANY</value>
+  </data>
 </root>
