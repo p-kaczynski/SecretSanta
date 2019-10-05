@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using SecretSanta.Domain.Enums;
 using SecretSanta.Domain.Models;
-using Should;
+using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -58,11 +58,11 @@ namespace SecretSanta.Data.Tests
             output.WriteLine($"Success={result.Success}, user count={users.Count}, assignments={result.Assignments.Count}, abandoned={result.Abandoned.Count} (Loner:{result.Abandoned.Count(a=>a.Reason == AbandonmentReason.LoneWontSend)}, Algorithm: {result.Abandoned.Count(a=>a.Reason == AbandonmentReason.ComputerSaysNo)})");
 
             // 1. Numbers should match
-            (result.Assignments.Count + result.Abandoned.Count).ShouldEqual(users.Count);
+            (result.Assignments.Count + result.Abandoned.Count).Should().Be(users.Count);
             output.WriteLine("Missing people: Not detected");
             
             // 2. Nobody should be sending to themselves
-            result.Assignments.All(a=>a.RecepientId != a.GiverId).ShouldBeTrue();
+            result.Assignments.All(a=>a.RecepientId != a.GiverId).Should().BeTrue();
             output.WriteLine("Sending to yourself: Not detected");
 
             // 3. Nobody should be sending abroad if they did not wish to
@@ -72,18 +72,18 @@ namespace SecretSanta.Data.Tests
                 var giver = lookup[a.GiverId];
                 var recipient = lookup[a.RecepientId];
                 if(giver.SendAbroad == SendAbroadOption.WillNot)
-                    giver.Country.ShouldEqual(recipient.Country);
+                    giver.Country.Should().Be(recipient.Country);
             }
             output.WriteLine("Sending abroad against preferences: Not detected");
 
             // 4. Everyone who sends, gets
             var givers = new HashSet<long>(result.Assignments.Select(a => a.GiverId));
             var recipients  = new HashSet<long>(result.Assignments.Select(a => a.RecepientId));
-            givers.SetEquals(recipients).ShouldBeTrue();
+            givers.SetEquals(recipients).Should().BeTrue();
             output.WriteLine("Unequal exchange: Not detected");
 
             // 5. Duplicates?
-            result.Assignments.Select(a=>a.RecepientId).Distinct().Count().ShouldEqual(result.Assignments.Select(a=>a.RecepientId).Count());
+            result.Assignments.Select(a=>a.RecepientId).Distinct().Count().Should().Be(result.Assignments.Select(a=>a.RecepientId).Count());
             output.WriteLine("Duplicates: Not detected");
 
             var canSendAbroad = result.Assignments
