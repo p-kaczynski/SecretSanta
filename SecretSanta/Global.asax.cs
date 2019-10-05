@@ -17,7 +17,6 @@ namespace SecretSanta
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DependencyConfig.RegisterDependencies();
             // Must be after DI:
-            MappingConfig.Configure();
             BindingConfig.Configure();
             Log.Info("App is starting.");
         }

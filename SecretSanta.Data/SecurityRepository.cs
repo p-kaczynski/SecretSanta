@@ -15,11 +15,13 @@ namespace SecretSanta.Data
 {
     public sealed class SecurityRepository : ISantaUserStore
     {
+        private readonly IMapper _mapper;
         private readonly string _connectionString;
         
-        public SecurityRepository(IConfigProvider configProvider)
+        public SecurityRepository(IConfigProvider configProvider, IMapper mapper)
         {
             _connectionString = configProvider.ConnectionString;
+            _mapper = mapper;
         }
 
         public void Dispose()
@@ -89,7 +91,7 @@ namespace SecretSanta.Data
             {
                 var santaUser = await conn.GetAsync<SantaUser>(id);
 
-                return santaUser != null ? Mapper.Map<SantaSecurityUser>(santaUser) : null;
+                return santaUser != null ? _mapper.Map<SantaSecurityUser>(santaUser) : null;
             }
         }
 
@@ -109,7 +111,7 @@ namespace SecretSanta.Data
                     $"SELECT {nameof(SantaUser.Id)}, {nameof(SantaUser.DisplayName)}, {nameof(SantaUser.Email)}, {nameof(SantaUser.PasswordHash)} FROM {nameof(SantaUser)}s WHERE {nameof(SantaUser.Email)} = @userName",
                     new {userName});
 
-                return santaUser == null ? null : Mapper.Map<SantaSecurityUser>(santaUser);
+                return santaUser == null ? null : _mapper.Map<SantaSecurityUser>(santaUser);
             }
         }
 

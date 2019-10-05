@@ -17,7 +17,7 @@ namespace SecretSanta.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //Mapper.Map<SettingsViewModel>(_settingsRepository)
+            //_mapper<SettingsViewModel>(_settingsRepository)
             var model = new SettingsViewModel{RegistrationOpen = _settingsRepository.RegistrationOpen};
             return View(model);
         }

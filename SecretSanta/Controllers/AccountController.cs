@@ -21,17 +21,19 @@ namespace SecretSanta.Controllers
     [Authorize(Roles=SantaUserManager.UserRole)]
     public class AccountController : BaseController
     {
+        private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
         private readonly UserManager<SantaSecurityUser, string> _userManager;
         private readonly IEmailService _emailService;
         private readonly SecureAccessTokenSource _emailConfirmationTokenSource;
         private readonly SecureAccessTokenSource _passwordResetTokenSource;
 
-        public AccountController(IUserRepository userRepository, UserManager<SantaSecurityUser, string> userManager, IEmailService emailService, IIndex<TokenSourceType,SecureAccessTokenSource> satIndex)
+        public AccountController(IUserRepository userRepository, UserManager<SantaSecurityUser, string> userManager, IEmailService emailService, IIndex<TokenSourceType,SecureAccessTokenSource> satIndex, IMapper mapper)
         {
             _userRepository = userRepository;
             _userManager = userManager;
             _emailService = emailService;
+            _mapper = mapper;
             _emailConfirmationTokenSource = satIndex[TokenSourceType.EmailConfirmation];
             _passwordResetTokenSource = satIndex[TokenSourceType.PasswordReset];
         }
@@ -50,7 +52,7 @@ namespace SecretSanta.Controllers
                 Log.Error($"Cannot load a user id={userId}");
                 return HttpNotFound();
             }
-            var model = Mapper.Map<SantaUserViewModel>(santaUser);
+            var model = _mapper.Map<SantaUserViewModel>(santaUser);
             return View(model);
         }
 
@@ -217,7 +219,7 @@ namespace SecretSanta.Controllers
             }
 
             // all good, reset password
-            _userRepository.SetPassword(Mapper.Map<PasswordResetModel>(model));
+            _userRepository.SetPassword(_mapper.Map<PasswordResetModel>(model));
             return View("Message", model: Resources.Global.PasswordReset_Success);
         }
 
@@ -232,7 +234,7 @@ namespace SecretSanta.Controllers
                 return RedirectToAction("Index", "Home");
 
             var santaUser = _userRepository.GetUser(userId.Value);
-            SantaUserPostModel model = Mapper.Map<SantaUserViewModel>(santaUser);
+            SantaUserPostModel model = _mapper.Map<SantaUserViewModel>(santaUser);
             return View(model);
         }
 
@@ -259,7 +261,7 @@ namespace SecretSanta.Controllers
                 return View(model);
             }
 
-            var updateModel = Mapper.Map<SantaUser>(model);
+            var updateModel = _mapper.Map<SantaUser>(model);
             updateModel.Id = userId.Value;
 
             var updateResult = _userRepository.UpdateUser(updateModel);
