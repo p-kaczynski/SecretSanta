@@ -1,0 +1,22 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+   <PropertyGroup>
+    <MajorVersion>2</MajorVersion>
+    <MinorVersion>0</MinorVersion>
+    <FixVersion>0</FixVersion>
+    <VersionPrefix>$(MajorVersion).$(MinorVersion).$(FixVersion)</VersionPrefix>
+    <DebugVersionPrefix>$(MajorVersion).$(MinorVersion).$([MSBuild]::Add($(FixVersion), 1))</DebugVersionPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Platform>Any CPU</Platform>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)' == ''">
+    <Configuration>Release</Configuration>
+  </PropertyGroup>
+  <PropertyGroup>
+	<SolutionDir Condition="'$(SolutionDir)' == ''">..\</SolutionDir>
+  </PropertyGroup>
+
+</Project>
