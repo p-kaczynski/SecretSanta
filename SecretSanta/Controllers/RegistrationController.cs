@@ -10,17 +10,19 @@ namespace SecretSanta.Controllers
 {
     public class RegistrationController : BaseController
     {
+        private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
         private readonly ISettingsRepository _settingsRepository;
         private readonly IEmailService _emailService;
         private readonly IConfigProvider _configProvider;
 
-        public RegistrationController(IUserRepository userRepository, ISettingsRepository settingsRepository, IEmailService emailService, IConfigProvider configProvider)
+        public RegistrationController(IUserRepository userRepository, ISettingsRepository settingsRepository, IEmailService emailService, IConfigProvider configProvider, IMapper mapper)
         {
             _userRepository = userRepository;
             _settingsRepository = settingsRepository;
             _emailService = emailService;
             _configProvider = configProvider;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -84,7 +86,7 @@ namespace SecretSanta.Controllers
             }
 
             // save to db
-            var domainModel = Mapper.Map<SantaUser>(model);
+            var domainModel = _mapper.Map<SantaUser>(model);
             _userRepository.InsertUser(domainModel);
             
             _emailService.SendConfirmationEmail(domainModel);

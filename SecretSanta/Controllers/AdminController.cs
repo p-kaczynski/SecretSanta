@@ -13,13 +13,15 @@ namespace SecretSanta.Controllers
     [Authorize(Roles = SantaUserManager.AdminRole)]
     public class AdminController : BaseController
     {
+        private readonly IMapper _mapper;
         private readonly UserManager<SantaSecurityUser, string> _userManager;
         private readonly ISantaAdminProvider _adminProvider;
 
-        public AdminController(UserManager<SantaSecurityUser, string> userManager, ISantaAdminProvider adminProvider)
+        public AdminController(UserManager<SantaSecurityUser, string> userManager, ISantaAdminProvider adminProvider, IMapper mapper)
         {
             _userManager = userManager;
             _adminProvider = adminProvider;
+            _mapper = mapper;
         }
 
         public ActionResult Index()
@@ -42,7 +44,7 @@ namespace SecretSanta.Controllers
             {
                 return View("EditAdmin", model);
             }
-            var santaAdmin = Mapper.Map<SantaAdmin>(model);
+            var santaAdmin = _mapper.Map<SantaAdmin>(model);
             var result = await _userManager.CreateAsync(santaAdmin);
             if (result.Succeeded)
                 return RedirectToAction("Index", "Admin");
@@ -58,7 +60,7 @@ namespace SecretSanta.Controllers
             var santaAdmin = await _userManager.FindByIdAsync(userId);
             if (santaAdmin == null)
                 return HttpNotFound();
-            var santaAdminPostModel = Mapper.Map<SantaAdminPostModel>(santaAdmin);
+            var santaAdminPostModel = _mapper.Map<SantaAdminPostModel>(santaAdmin);
             return View(santaAdminPostModel);
         }
 
@@ -70,7 +72,7 @@ namespace SecretSanta.Controllers
             {
                 return View("EditAdmin", model);
             }
-            var santaAdmin = Mapper.Map<SantaAdmin>(model);
+            var santaAdmin = _mapper.Map<SantaAdmin>(model);
             var result = await _userManager.UpdateAsync(santaAdmin);
             if (result.Succeeded)
                 return RedirectToAction("Index", "Home");

@@ -12,15 +12,17 @@ namespace SecretSanta.Controllers
     [Authorize(Roles = SantaUserManager.AdminRole)]
     public class UserController : BaseController
     {
+        private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
         private readonly IConfigProvider _configProvider;
         private readonly IEmailService _emailService;
 
-        public UserController(IUserRepository userRepository, IConfigProvider configProvider, IEmailService emailService)
+        public UserController(IUserRepository userRepository, IConfigProvider configProvider, IEmailService emailService, IMapper mapper)
         {
             _userRepository = userRepository;
             _configProvider = configProvider;
             _emailService = emailService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -84,7 +86,7 @@ namespace SecretSanta.Controllers
             }
 
             // save to db
-            var domainModel = Mapper.Map<SantaUser>(model);
+            var domainModel = _mapper.Map<SantaUser>(model);
             _userRepository.InsertUser(domainModel);
 
             _emailService.SendConfirmationEmail(domainModel);

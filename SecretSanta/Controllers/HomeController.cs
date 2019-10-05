@@ -12,13 +12,15 @@ namespace SecretSanta.Controllers
 {
     public class HomeController : BaseController
     {
+        private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
         private readonly UserManager<SantaSecurityUser, string> _userManager;
 
-        public HomeController(IUserRepository userRepository, UserManager<SantaSecurityUser, string> userManager)
+        public HomeController(IUserRepository userRepository, UserManager<SantaSecurityUser, string> userManager, IMapper mapper)
         {
             _userRepository = userRepository;
             _userManager = userManager;
+            _mapper = mapper;
         }
 
 
@@ -52,7 +54,7 @@ namespace SecretSanta.Controllers
             if (santaUser == null)
                 return HttpNotFound();
 
-            var model = Mapper.Map<UserHomeViewModel>(santaUser);
+            var model = _mapper.Map<UserHomeViewModel>(santaUser);
 
             var assignedUserId = _userRepository.GetAssignedPartnerIdForUser(userId);
             if (assignedUserId.HasValue)
@@ -90,7 +92,7 @@ namespace SecretSanta.Controllers
                         Log.Error($"Tried to retrieve current user id={userId} from repository, but got null");
                         return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
                     }
-                    model.Assignment = Mapper.Map<AssignmentViewModel>(assignedUser);
+                    model.Assignment = _mapper.Map<AssignmentViewModel>(assignedUser);
                 }
             }
 

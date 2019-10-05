@@ -13,19 +13,21 @@ namespace SecretSanta.Controllers
 {
     public class SetupController : BaseController
     {
+        private readonly IMapper _mapper;
         private readonly IConfigProvider _configProvider;
         private readonly UserManager<SantaSecurityUser, string> _userManager;
         private readonly ISantaAdminProvider _adminProvider;
         private readonly IEncryptionProvider _encryptionProvider;
         private readonly IUserRepository _userRepository;
 
-        public SetupController(IConfigProvider configProvider, UserManager<SantaSecurityUser, string> userManager, ISantaAdminProvider adminProvider, IEncryptionProvider encryptionProvider, IUserRepository userRepository)
+        public SetupController(IConfigProvider configProvider, UserManager<SantaSecurityUser, string> userManager, ISantaAdminProvider adminProvider, IEncryptionProvider encryptionProvider, IUserRepository userRepository, IMapper mapper)
         {
             _configProvider = configProvider;
             _userManager = userManager;
             _adminProvider = adminProvider;
             _encryptionProvider = encryptionProvider;
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         public async Task<ActionResult> Index()
@@ -48,7 +50,7 @@ namespace SecretSanta.Controllers
         {
             foreach (var postModel in TestUsers)
             {
-                var model = Mapper.Map<SantaUser>(postModel);
+                var model = _mapper.Map<SantaUser>(postModel);
                 _userRepository.InsertUser(model);
             }   
         }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
+using Autofac;
 using AutoMapper;
+using JetBrains.Annotations;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
 using SecretSanta.Domain.SecurityModels;
@@ -10,36 +12,45 @@ namespace SecretSanta
 {
     public static class MappingConfig
     {
-        public static void Configure()
+        //public static void Configure()
+        //{
+        //    Mapper.Initialize(RegisterMappings);
+        //    Mapper.AssertConfigurationIsValid();
+        //}
+
+        [NotNull]
+        public static MapperConfiguration GetMapperConfiguration(IComponentContext context)
         {
-            Mapper.Initialize(RegisterMappings);
-            Mapper.AssertConfigurationIsValid();
+            var config = new MapperConfiguration(expression => RegisterMappings(expression, context));
+            config.AssertConfigurationIsValid();
+
+            return config;
         }
 
-        private static void RegisterMappings(IMapperConfigurationExpression cfg)
+        private static void RegisterMappings([NotNull] IMapperConfigurationExpression cfg, IComponentContext context)
         {
-            var encryptionProvider = DependencyResolver.Current.GetService<IEncryptionProvider>();
-            var countryProvider = DependencyResolver.Current.GetService<CountryProvider>();
-            var configProvider = DependencyResolver.Current.GetService<IConfigProvider>();
+            var encryptionProvider = context.Resolve<IEncryptionProvider>();
+            var countryProvider = context.Resolve<CountryProvider>();
+            var configProvider = context.Resolve<IConfigProvider>();
 
             cfg.CreateMap<RegistrationPostModel, SantaUser>()
                 .ForMember(dest => dest.PasswordHash,
-                    opt => opt.ResolveUsing(post => encryptionProvider.CalculatePasswordHash(post.Password)))
-                .ForMember(dest=>dest.Country, opt=>opt.ResolveUsing(post=>countryProvider.ById[post.Country.Id].ThreeLetterIsoCode))
-                .ForMember(dest=>dest.IsAdult, opt=>opt.ResolveUsing(post=> post.DateOfBirth.AddYears(configProvider.AdultAge) <= DateTime.Today))
+                    opt => opt.MapFrom(post => encryptionProvider.CalculatePasswordHash(post.Password, null)))
+                .ForMember(dest=>dest.Country, opt=>opt.MapFrom(post=>countryProvider.ById[post.Country.Id].ThreeLetterIsoCode))
+                .ForMember(dest=>dest.IsAdult, opt=>opt.MapFrom(post=> post.DateOfBirth.AddYears(configProvider.AdultAge) <= DateTime.Today))
                 .ForMember(dest=>dest.EmailConfirmed, opt=>opt.Ignore())
                 .ForMember(dest=>dest.AdminConfirmed, opt=>opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
-                .ForMember(dest=>dest.CreateDate, opt=>opt.ResolveUsing(_=> DateTime.Now))
+                .ForMember(dest=>dest.CreateDate, opt=>opt.MapFrom(_=> DateTime.Now))
                 ;
 
             cfg.CreateMap<SantaUser, SantaSecurityUser>()
-                .ForMember(dest => dest.Id, opt => opt.ResolveUsing(model => SantaSecurityUser.GetId(model.Id, false)))
-                .ForMember(dest => dest.UserName, opt => opt.ResolveUsing(model => model.Email));
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(model => SantaSecurityUser.GetId(model.Id, false)))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(model => model.Email));
 
             cfg.CreateMap<SantaAdminPostModel, SantaAdmin>()
                 .ForMember(dest => dest.PasswordHash,
-                    opt => opt.ResolveUsing(post => encryptionProvider.CalculatePasswordHash(post.Password)))
+                    opt => opt.MapFrom(post => encryptionProvider.CalculatePasswordHash(post.Password,null)))
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.DisplayName, opt => opt.Ignore());
 
@@ -59,15 +70,15 @@ namespace SecretSanta
                 .ForMember(dest => dest.OutboundGiftMissing, opt => opt.Ignore());
 
             cfg.CreateMap<SantaUser, AssignmentViewModel>()
-                .ForMember(dest=>dest.Country, opt=>opt.ResolveUsing(src=>countryProvider.ByThreeLetterCode[src.Country].Name));
+                .ForMember(dest=>dest.Country, opt=>opt.MapFrom(src=>countryProvider.ByThreeLetterCode[src.Country].Name));
 
             cfg.CreateMap<PasswordResetViewModel, PasswordResetModel>()
                 .ForMember(dest => dest.PasswordBytes,
-                    opt => opt.ResolveUsing(post => encryptionProvider.CalculatePasswordHash(post.NewPassword)));
+                    opt => opt.MapFrom(post => encryptionProvider.CalculatePasswordHash(post.NewPassword, null)));
 
             cfg.CreateMap<SantaUser, SantaUserViewModel>()
                 .ForMember(dest => dest.Country,
-                    opt => opt.ResolveUsing(src => new CountryEntryViewModel{Id = countryProvider.ByThreeLetterCode[src.Country].Id}));
+                    opt => opt.MapFrom(src => new CountryEntryViewModel{Id = countryProvider.ByThreeLetterCode[src.Country].Id}));
 
             cfg.CreateMap<SantaUserPostModel, SantaUser>()
                 // let's do explicit for safety
@@ -79,7 +90,7 @@ namespace SecretSanta
                 .ForMember(dest => dest.AddressLine2, opt=>opt.MapFrom(src => src.AddressLine2))
                 .ForMember(dest => dest.City, opt=>opt.MapFrom(src => src.City))
                 .ForMember(dest => dest.PostalCode, opt=>opt.MapFrom(src => src.PostalCode))
-                .ForMember(dest => dest.Country, opt => opt.ResolveUsing(post => countryProvider.ById[post.Country.Id].ThreeLetterIsoCode))
+                .ForMember(dest => dest.Country, opt => opt.MapFrom(post => countryProvider.ById[post.Country.Id].ThreeLetterIsoCode))
                 .ForMember(dest => dest.SendAbroad, opt => opt.MapFrom(src => src.SendAbroad))
                 .ForMember(dest => dest.Note, opt => opt.MapFrom(src => src.Note))
                 .ForAllOtherMembers(opt=>opt.Ignore());

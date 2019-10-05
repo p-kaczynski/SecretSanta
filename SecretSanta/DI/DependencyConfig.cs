@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using SaturnV;
 using SecretSanta.Common;
@@ -77,6 +78,9 @@ namespace SecretSanta.DI
                         ValidateData = true,
                     });
                 }).Keyed<SecureAccessTokenSource>(TokenSourceType.EmailConfirmation).SingleInstance();
+
+            builder.Register(context => MappingConfig.GetMapperConfiguration(context).CreateMapper()).As<IMapper>()
+                .SingleInstance();
         }
     }
 }
