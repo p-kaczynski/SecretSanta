@@ -3,7 +3,7 @@ using System.Data;
 using Moq;
 using SecretSanta.Common.Interface;
 using SecretSanta.Domain.Models;
-using Should;
+using FluentAssertions;
 using Xunit;
 
 namespace SecretSanta.Data.Tests
@@ -26,7 +26,7 @@ namespace SecretSanta.Data.Tests
         [Fact]
         public void CanCreate()
         {
-            _userRepository.ShouldNotBeNull();
+            _userRepository.Should().NotBeNull();
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace SecretSanta.Data.Tests
             var userRepository = new UserRepository(_configProviderMock.Object,_encryptionProviderMock.Object,_assignmentAlgorithmMock.Object);
             var testFunc = new Func<string, IDbConnection>(connectionString =>
             {
-                connectionString.ShouldEqual(testConnectionString);
+                connectionString.Should().Be(testConnectionString);
                 return _dbConnectionMock.Object;
             });
 

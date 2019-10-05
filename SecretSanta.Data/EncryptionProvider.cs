@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -18,23 +17,23 @@ namespace SecretSanta.Data
         private readonly ConcurrentDictionary<Type,PropertyInfo[]> _propertyCache = new ConcurrentDictionary<Type, PropertyInfo[]>();
         private readonly RNGCryptoServiceProvider _rngProvider = new RNGCryptoServiceProvider();
         private readonly byte[] _key;
-        private readonly byte[] _secret;
-        private readonly int _saltLength;
+        //private readonly byte[] _secret;
+        //private readonly int _saltLength;
 
-        public EncryptionProvider(IConfigProvider configProvider)
+        public EncryptionProvider([NotNull] IConfigProvider configProvider)
         {
             if(string.IsNullOrWhiteSpace(configProvider.DataProtectionKey))
-                throw new ConfigurationErrorsException($"The config value for {nameof(configProvider.DataProtectionKey)} is null or whitespace. This is not allowed due to security concerns.");
+                throw new ArgumentException($"The config value for {nameof(configProvider.DataProtectionKey)} is null or whitespace. This is not allowed due to security concerns.");
             _key = SizeKey(Encoding.UTF8.GetBytes(configProvider.DataProtectionKey));
 
-            if (string.IsNullOrWhiteSpace(configProvider.HashSecret))
-                throw new ConfigurationErrorsException($"The config value for {nameof(configProvider.HashSecret)} is null or whitespace. This is not allowed due to security concerns.");
-            _secret = Encoding.UTF8.GetBytes(configProvider.HashSecret);
-
-            _saltLength = configProvider.SaltLength;
+            //if (string.IsNullOrWhiteSpace(configProvider.HashSecret))
+            //    throw new ArgumentException($"The config value for {nameof(configProvider.HashSecret)} is null or whitespace. This is not allowed due to security concerns.");
+            //_secret = Encoding.UTF8.GetBytes(configProvider.HashSecret);
+            //_saltLength = configProvider.SaltLength;
         }
 
-        private static byte[] SizeKey(byte[] bytes)
+        [NotNull]
+        private static byte[] SizeKey([NotNull] byte[] bytes)
         {
             using (var aes = Aes.Create())
             {
@@ -46,7 +45,8 @@ namespace SecretSanta.Data
             }
         }
 
-        private static byte[] FitBytes(byte[] bytes, int size)
+        [NotNull]
+        private static byte[] FitBytes([NotNull] byte[] bytes, int size)
         {
             var validArray = new byte[size];
             if (bytes.Length == size)
@@ -59,17 +59,18 @@ namespace SecretSanta.Data
             return validArray;
         }
 
-        public void Encrypt<T>(T theModel) where T : ModelBase
+        public void Encrypt<T>([NotNull] T theModel) where T : ModelBase
             => WithCrypto(theModel,
                 (model, property, encryptor) => property.SetValue(model,
                     EncryptValue(encryptor, property.GetValue(model) as string)));
 
-        public void Decrypt<T>(T theModel) where T : ModelBase
+        public void Decrypt<T>([NotNull] T theModel) where T : ModelBase
             => WithCrypto(theModel,
                 (model, property, decryptor) => property.SetValue(model,
                     DecryptValue(decryptor, property.GetValue(model) as string)), decrypt: true);
 
-        public byte[] CalculatePasswordHash(string password, byte[] associatedData = null)
+        [NotNull]
+        public byte[] CalculatePasswordHash(string password, [CanBeNull] byte[] associatedData = null)
         {
             var encoder = new ScryptEncoder();
             var hash = encoder.Encode(password);
@@ -77,7 +78,7 @@ namespace SecretSanta.Data
             return Encoding.UTF8.GetBytes(hash);
         }
 
-        public bool VerifyPasswordHash(string password, byte[] storedHash)
+        public bool VerifyPasswordHash(string password, [NotNull] byte[] storedHash)
         {
             var hashString = Encoding.UTF8.GetString(storedHash);
 
@@ -85,7 +86,7 @@ namespace SecretSanta.Data
             return encoder.Compare(password, hashString);
         }
 
-        private void WithCrypto<T>(T model, Action<T,PropertyInfo,ICryptoTransform> action, bool decrypt = false) where T : ModelBase
+        private void WithCrypto<T>([NotNull] T model, Action<T,PropertyInfo,ICryptoTransform> action, bool decrypt = false) where T : ModelBase
         {
             var properties = _propertyCache.GetOrAdd(typeof(T), DataProtection.LoadDataProtectedPropertiesFromType);
             using (var aes = Aes.Create())
@@ -110,6 +111,7 @@ namespace SecretSanta.Data
             }
         }
 
+        [CanBeNull]
         private static string EncryptValue([NotNull] ICryptoTransform encryptor, [CanBeNull] string value)
         {
             if (string.IsNullOrEmpty(value))
@@ -125,6 +127,7 @@ namespace SecretSanta.Data
             }
         }
 
+        [CanBeNull]
         private static string DecryptValue([NotNull] ICryptoTransform decryptor, [CanBeNull] string value)
         {
             if (string.IsNullOrEmpty(value))

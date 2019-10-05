@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Web;
-using System.Web.Caching;
 using Dapper;
 using JetBrains.Annotations;
+using Microsoft.Extensions.Caching.Memory;
 using SecretSanta.Common.Interface;
 
 namespace SecretSanta.Data
@@ -11,6 +10,8 @@ namespace SecretSanta.Data
 
     public class SettingsRepository : ISettingsRepository
     {
+        private readonly IMemoryCache _cache;
+
         private static class SettingKeys
         {
             public const string RegistrationOpen = "santa.registration_open";
@@ -19,8 +20,9 @@ namespace SecretSanta.Data
         private readonly string _connectionString;
         private readonly TimeSpan _cacheTime;
 
-        public SettingsRepository(IConfigProvider configProvider)
+        public SettingsRepository([NotNull] IConfigProvider configProvider, [NotNull] IMemoryCache cache)
         {
+            _cache = cache;
             _connectionString = configProvider.ConnectionString;
             _cacheTime = configProvider.SettingCacheTime;
         }
@@ -54,27 +56,28 @@ namespace SecretSanta.Data
             }
         }
 
-        private void SetSettingWithCache<T>(string key, T value, Func<T, string> factory)
+        private void SetSettingWithCache<T>([NotNull] string key, T value, [NotNull] Func<T, string> factory)
         {
             SetSetting(key, factory(value));
-            HttpRuntime.Cache.Remove(key);
-            HttpRuntime.Cache.Add(key, value, null, DateTime.Now + _cacheTime, Cache.NoSlidingExpiration,
-                CacheItemPriority.Default, null);
+            _cache.Set(key, value, _cacheTime);
         }
 
-        private T GetOrAddToCache<T>([NotNull] string key, Func<string, T> factory)
+        private T GetOrAddToCache<T>([NotNull] string key, [NotNull] Func<string, T> factory)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(key));
 
-            return (T)(HttpRuntime.Cache.Get(key) ?? AddToCache(key, factory));
+            return _cache.GetOrCreate(key,e=>
+            {
+                e.AbsoluteExpirationRelativeToNow = _cacheTime;
+                return AddToCache(key, factory);
+            });
         }
 
-        private T AddToCache<T>(string key, Func<string, T> factory)
+        private T AddToCache<T>(string key, [NotNull] Func<string, T> factory)
         {
             var value = factory(key);
-            HttpRuntime.Cache.Add(key, value, null,
-                DateTime.Now + _cacheTime, Cache.NoSlidingExpiration, CacheItemPriority.Default, null);
+            _cache.Set(key, value, _cacheTime);
             return value;
         }
 

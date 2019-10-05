@@ -5,7 +5,7 @@ using SecretSanta.Common.Helpers;
 using SecretSanta.Domain.Attributes;
 using SecretSanta.Domain.Enums;
 using SecretSanta.Domain.Models;
-using Should;
+using FluentAssertions;
 using Xunit;
 
 namespace SecretSanta.Common.Tests
@@ -40,7 +40,7 @@ namespace SecretSanta.Common.Tests
                 .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                 .Where(p => p.GetCustomAttribute<DataProtectionAttribute>() != null))
             {
-                dataProtectedProperty.GetValue(user).ShouldBeNull();
+                dataProtectedProperty.GetValue(user).Should().BeNull();
             }
         }
     }
